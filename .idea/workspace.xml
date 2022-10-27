@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="" />
+    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ImageProcessingController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +54,7 @@
       <workItem from="1666834528936" duration="8000" />
       <workItem from="1666904930027" duration="2596000" />
       <workItem from="1666907593986" duration="15000" />
+      <workItem from="1666912818468" duration="362000" />
     </task>
     <servers />
   </component>
