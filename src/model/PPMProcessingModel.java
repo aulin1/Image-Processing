@@ -16,11 +16,15 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * The constructor for the PPMProcessingModel.
    *
    * @param imageBoard the image as a 3D array.
-   * @throws IllegalArgumentException if imageBoard is null.
+   * @throws IllegalArgumentException if imageBoard is null, or if there are more than three values
+   * for colors.
    * */
   public PPMProcessingModel(int[][][] imageBoard){
     if(imageBoard == null){
       throw new IllegalArgumentException("Image cannot be null.");
+    }
+    if(imageBoard[0][0].length != 3){
+      throw new IllegalArgumentException("There must be three colors.");
     }
     this.imageBoard = imageBoard.clone();
   }
@@ -120,7 +124,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
   }
 
   @Override
-  public void flipImageVertically() {
+  public ImageProcessingModel flipImageVertically() {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
     for(int i = 0; i < this.getWidth()/2; i++){
       for(int j = 0; j < this.getHeight(); j++){
@@ -128,11 +132,11 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[this.getWidth() - 1 - i][j] = this.imageBoard[i][j];
       }
     }
-    this.imageBoard = img;
+    return new PPMProcessingModel(img);
   }
 
   @Override
-  public void flipImageHorizontally() {
+  public ImageProcessingModel flipImageHorizontally() {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
     for(int i = 0; i < this.getWidth(); i++){
       for(int j = 0; j < this.getHeight()/2; j++){
@@ -140,7 +144,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[i][this.getHeight() - 1 - j] = this.imageBoard[i][j];
       }
     }
-    this.imageBoard = img;
+    return new PPMProcessingModel(img);
   }
 
   /**
@@ -159,8 +163,10 @@ public class PPMProcessingModel implements ImageProcessingModel{
     return checked;
   }
 
-  @Override
-  public void changeBrightness(int factor) {
+  /**
+   * A helper function which changes the brightness (negative to darken) of an image.
+   * */
+  private ImageProcessingModel changeBrightness(int factor) {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
     for(int i = 0; i < this.getWidth(); i++){
       for(int j = 0; j < this.getHeight(); j++){
@@ -169,7 +175,17 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[i][j][2] = this.checkLimits(this.imageBoard[i][j][0] + factor);
       }
     }
-    this.imageBoard = img;
+    return new PPMProcessingModel(img);
+  }
+
+  @Override
+  public ImageProcessingModel brighten(int factor) {
+    return null;
+  }
+
+  @Override
+  public ImageProcessingModel darken(int factor) {
+    return null;
   }
 
   @Override
