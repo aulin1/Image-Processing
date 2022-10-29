@@ -75,7 +75,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
         return (this.imageBoard[row][col][0] + this.imageBoard[row][col][1]
                 + this.imageBoard[row][col][2])/3;
       case "luma":
-        return (int) (0.2126 * this.imageBoard[row][col][0]
+        return (int) Math.round(0.2126 * this.imageBoard[row][col][0]
                 + 0.7152 * this.imageBoard[row][col][1]
                 + 0.0722 * this.imageBoard[row][col][2]);
       default:
@@ -176,7 +176,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
   /**
    * A helper function which changes the brightness (negative to darken) of an image.
    * */
-  private ImageProcessingModel changeBrightness(int factor) {
+  private int[][][] changeBrightness(int factor) {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
     for(int i = 0; i < this.getWidth(); i++){
       for(int j = 0; j < this.getHeight(); j++){
@@ -185,8 +185,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[i][j][2] = this.checkLimits(this.imageBoard[i][j][0] + factor);
       }
     }
-    String newName = name + "_changedBrightness";
-    return new PPMProcessingModel(img, newName);
+    return img;
   }
 
   @Override
@@ -194,7 +193,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
     if(factor < 0){
       throw new IllegalArgumentException("Cannot be negative!");
     }
-    return changeBrightness(factor);
+    String newName = name + "_brighten";
+    return new PPMProcessingModel(changeBrightness(factor), newName);
   }
 
   @Override
@@ -202,7 +202,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
     if(factor < 0){
       throw new IllegalArgumentException("Cannot be negative!");
     }
-    return changeBrightness(-1 * factor);
+    String newName = name + "_darken";
+    return new PPMProcessingModel(changeBrightness(-1 * factor), newName);
   }
 
   @Override
