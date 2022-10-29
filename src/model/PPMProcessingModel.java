@@ -11,6 +11,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * The image saved as a 3D integer array.
    * */
   private int[][][] imageBoard;
+  private String name;
 
   /**
    * The constructor for the PPMProcessingModel.
@@ -19,14 +20,15 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * @throws IllegalArgumentException if imageBoard is null, or if there are more than three values
    * for colors.
    * */
-  public PPMProcessingModel(int[][][] imageBoard){
-    if(imageBoard == null){
-      throw new IllegalArgumentException("Image cannot be null.");
+  public PPMProcessingModel(int[][][] imageBoard, String name){
+    if(imageBoard == null || name == null){
+      throw new IllegalArgumentException("Image or name cannot be null.");
     }
     if(imageBoard[0][0].length != 3){
       throw new IllegalArgumentException("There must be three colors.");
     }
     this.imageBoard = imageBoard.clone();
+    this.name = name;
   }
 
   /**
@@ -84,42 +86,48 @@ public class PPMProcessingModel implements ImageProcessingModel{
   @Override
   public ImageProcessingModel returnRedImage() {
     int[][][] img = this.getGreyScale("red");
-    ImageProcessingModel red = new PPMProcessingModel(img);
+    String newName = name + "_red";
+    ImageProcessingModel red = new PPMProcessingModel(img, newName);
     return red;
   }
 
   @Override
   public ImageProcessingModel returnGreenImage() {
     int[][][] img = this.getGreyScale("green");
-    ImageProcessingModel green = new PPMProcessingModel(img);
+    String newName = name + "_green";
+    ImageProcessingModel green = new PPMProcessingModel(img, newName);
     return green;
   }
 
   @Override
   public ImageProcessingModel returnBlueImage() {
     int[][][] img = this.getGreyScale("blue");
-    ImageProcessingModel blue = new PPMProcessingModel(img);
+    String newName = name + "_blue";
+    ImageProcessingModel blue = new PPMProcessingModel(img, newName);
     return blue;
   }
 
   @Override
   public ImageProcessingModel returnValueImage() {
     int[][][] img = this.getGreyScale("value");
-    ImageProcessingModel value = new PPMProcessingModel(img);
+    String newName = name + "_value";
+    ImageProcessingModel value = new PPMProcessingModel(img, newName);
     return value;
   }
 
   @Override
   public ImageProcessingModel returnIntensityImage() {
     int[][][] img = this.getGreyScale("intensity");
-    ImageProcessingModel intensity = new PPMProcessingModel(img);
+    String newName = name + "_intensity";
+    ImageProcessingModel intensity = new PPMProcessingModel(img, newName);
     return intensity;
   }
 
   @Override
   public ImageProcessingModel returnLumaImage() {
     int[][][] img = this.getGreyScale("luma");
-    ImageProcessingModel luma = new PPMProcessingModel(img);
+    String newName = name + "_luma";
+    ImageProcessingModel luma = new PPMProcessingModel(img, newName);
     return luma;
   }
 
@@ -132,7 +140,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[this.getWidth() - 1 - i][j] = this.imageBoard[i][j];
       }
     }
-    return new PPMProcessingModel(img);
+    String newName = name + "_verticalFlip";
+    return new PPMProcessingModel(img, newName);
   }
 
   @Override
@@ -144,7 +153,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[i][this.getHeight() - 1 - j] = this.imageBoard[i][j];
       }
     }
-    return new PPMProcessingModel(img);
+    String newName = name + "_horizontalFlip";
+    return new PPMProcessingModel(img, newName);
   }
 
   /**
@@ -175,17 +185,24 @@ public class PPMProcessingModel implements ImageProcessingModel{
         img[i][j][2] = this.checkLimits(this.imageBoard[i][j][0] + factor);
       }
     }
-    return new PPMProcessingModel(img);
+    String newName = name + "_changedBrightness";
+    return new PPMProcessingModel(img, newName);
   }
 
   @Override
   public ImageProcessingModel brighten(int factor) {
-    return null;
+    if(factor < 0){
+      throw new IllegalArgumentException("Cannot be negative!");
+    }
+    return changeBrightness(factor);
   }
 
   @Override
   public ImageProcessingModel darken(int factor) {
-    return null;
+    if(factor < 0){
+      throw new IllegalArgumentException("Cannot be negative!");
+    }
+    return changeBrightness(-1 * factor);
   }
 
   @Override
@@ -203,4 +220,16 @@ public class PPMProcessingModel implements ImageProcessingModel{
     return this.imageBoard.clone();
   }
 
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  @Override
+  public void changeName(String name) throws IllegalArgumentException {
+    if(name == null){
+      throw new IllegalArgumentException("Name cannot be null.");
+    }
+    this.name = name;
+  }
 }
