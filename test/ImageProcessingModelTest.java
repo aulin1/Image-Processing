@@ -13,7 +13,7 @@ public class ImageProcessingModelTest {
   /**
    * A 3D array for testing operations.
    * */
-  int[][][] testBoard;
+  private int[][][] testBoard;
 
   /**
    * Initializes and creates a standard testBoard for simple testing.
@@ -33,9 +33,8 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testConstructor(){
-
-    ImageProcessingModel test = new PPMProcessingModel(this.testBoard);
-
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
+    
   }
 
   /**
@@ -98,6 +97,34 @@ public class ImageProcessingModelTest {
    * */
 
   /**
-   *
+   * Checks if brighten does what it is supposed to.
+   * */
+
+  /**
+   * Checks if darken does what it is supposed to.
+   * */
+
+  /**
+   * Checks if brighten would stop at a limit of 255.
+   * */
+
+  /**
+   * Checks if darken stops at a limit of 0.
+   * */
+
+  /**
+   * Checks if brighten throws an IllegalArgumentException if the factor is negative.
+   * */
+
+  /**
+   * Checks if darken throws an IllegalArgumentException if the factor is negative.
+   * */
+
+  /**
+   * Checks if getWidth returns the correct value.
+   * */
+
+  /**
+   * Checks if getHeight returns the correct value.
    * */
 }
