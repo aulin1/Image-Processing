@@ -69,7 +69,7 @@ public interface ImageProcessingModel {
    * Darkens the image.
    *
    * @param factor the factor by which the brightness changes.
-   * @throws IllegalARgumentException if the factor is negative.
+   * @throws IllegalArgumentException if the factor is negative.
    * */
   ImageProcessingModel darken(int factor) throws IllegalArgumentException;
 

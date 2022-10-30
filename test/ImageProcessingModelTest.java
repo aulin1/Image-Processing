@@ -33,7 +33,7 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testConstructor(){
-    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255, "test");
     
   }
 
