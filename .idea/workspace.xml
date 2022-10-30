@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/command/ImageProcessingCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
+    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/RedCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,8 +105,16 @@
       <workItem from="1666912818468" duration="362000" />
       <workItem from="1666973568668" duration="1700000" />
       <workItem from="1667056075251" duration="3118000" />
-      <workItem from="1667085097218" duration="14872000" />
+      <workItem from="1667085097218" duration="18076000" />
     </task>
+    <task id="LOCAL-00001" summary="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)">
+      <created>1667101463311</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667101463311</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,5 +130,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)" />
   </component>
 </project>

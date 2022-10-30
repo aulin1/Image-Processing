@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 /**
  * This class represents tests for controller.ImageUtil.
  */
+// TODO: FIGURE OUT HOW TO TEST WITH PICTURES
 public class ImageUtilTest {
 //  @Test
 //  public void checkWidth() {

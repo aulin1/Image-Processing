@@ -52,7 +52,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   @Override
-  public void start() {
+  public void start() { //FIXME: transmit exceptions to the user instead of force quitting the
+                        // program.
     Scanner sc = new Scanner(input);
 
     this.welcomeMessage();
@@ -80,7 +81,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } else {
             // try to find the file based on the file name
             ImageProcessingModel model = memory.getOrDefault(imageName, null);
-            writeMessage("model retrieved. ");
             if (model == null) {
               writeMessage("The image has yet loaded to the program. Please load a valid image "
                       + "before processing it. ");
@@ -101,20 +101,25 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
   // initiates the commands into the command map
   private void initiateComms() {
-    this.commandMap.put("red-component", s -> new RedCompCommand(s.next(), s.next()));
+    this.commandMap.put("red-component", s -> new RedCompCommand());
   }
 
   // loads an image from the designated image path and put it in the memory map with the designated
   // name
-  private void loadImage(String imagePath, String imageName) throws IllegalArgumentException {
-    ImageProcessingModel model = readPPM(imagePath);
-    memory.put(imageName, model);
-    writeMessage("Load image " + imageName + " successful!");
+  private void loadImage(String imagePath, String imageName) {
+    try {
+      ImageProcessingModel model = readPPM(imagePath);
+      memory.put(imageName, model);
+      writeMessage("Load image " + imageName + " successful!");
+    } catch (IllegalArgumentException e) {
+      writeMessage(e.getMessage());
+    }
   }
 
   // saves an image with the given name to the specified path which should include the name of
   // the file
-  private void saveImage(String imagePath, String imageName) throws IllegalArgumentException {
+  //TODO: CHECK SAVING IMAGE FOR WINDOWS
+  private void saveImage(String imagePath, String imageName) {
     ImageProcessingModel model = memory.getOrDefault(imageName, null);
     if (model == null) {
       writeMessage(imageName + "have yet loaded to the program. ");
@@ -122,9 +127,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
 
     try {
-      PrintWriter outfile = new PrintWriter(imagePath + ".ppm");
+      PrintWriter outfile = new PrintWriter(imagePath + "/" + imageName + ".ppm");
       System.out.println("Writing out to file: " + imageName + ".ppm");
       outfile.println("P3");
+      outfile.println("# Image created by Trang Do and Audrey Lin's program");
+      outfile.println(model.getWidth() + " " + model.getHeight());
+      outfile.println(255); //FIXME: use the max value returned from the model instead
 
       int[][][] imageBoard = model.getImage();
       for (int r = 0; r < model.getHeight(); r++) {

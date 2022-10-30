@@ -66,18 +66,5 @@ public class ImageUtil {
     ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue, filename);
     return model;
   }
-
-//  //demo main
-//  public static void main(String[] args) {
-//    String filename;
-//
-//    if (args.length > 0) {
-//      filename = args[0];
-//    } else {
-//      filename = "/Users/marydo/Downloads/code/Koala.ppm";
-//    }
-//
-//    ImageProcessingModel model = controller.ImageUtil.readPPM(filename);
-//  }
 }
 
