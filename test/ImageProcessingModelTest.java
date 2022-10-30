@@ -8,9 +8,6 @@ import static org.junit.Assert.*;
 /**
  * Tests for the ImageProcessingModel.
  * */
-//FIX: flip board issues
-  //FIX: darken and brighten issues
-  //FIX: expected and actual are switched
 public class ImageProcessingModelTest {
 
   /**
@@ -98,7 +95,7 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     int[][][] returnTest = test.getImage();
     returnTest[0][0][0] = 10;
-    assertArrayEquals(test.getImage(), otherTest);
+    assertArrayEquals(otherTest, test.getImage());
   }
 
   /**
@@ -109,8 +106,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel red = test.returnRedImage();
     assertEquals("test_red", red.getName());
-    assertArrayEquals(red.getImage(), new int[][][]{{{1, 1, 1},{4, 4, 4}},{{7, 7, 7}
-            ,{10, 10, 10}}});
+    assertArrayEquals(new int[][][]{{{1, 1, 1},{4, 4, 4}},{{7, 7, 7}
+            ,{10, 10, 10}}}, red.getImage());
   }
 
   /**
@@ -121,8 +118,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel green = test.returnGreenImage();
     assertEquals("test_green", green.getName());
-    assertArrayEquals(green.getImage(), new int[][][]{{{2, 2, 2},{5, 5, 5}},{{8, 8, 8}
-            ,{11, 11, 11}}});
+    assertArrayEquals(new int[][][]{{{2, 2, 2},{5, 5, 5}},{{8, 8, 8}
+            ,{11, 11, 11}}}, green.getImage());
   }
 
   /**
@@ -133,8 +130,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel blue = test.returnBlueImage();
     assertEquals("test_blue", blue.getName());
-    assertArrayEquals(blue.getImage(), new int[][][]{{{3, 3, 3},{6, 6, 6}},{{9, 9, 9}
-            ,{12, 12, 12}}});
+    assertArrayEquals(new int[][][]{{{3, 3, 3},{6, 6, 6}},{{9, 9, 9}
+            ,{12, 12, 12}}}, blue.getImage());
   }
 
   /**
@@ -146,8 +143,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     ImageProcessingModel value = test.returnValueImage();
     assertEquals("test_value", value.getName());
-    assertArrayEquals(value.getImage(), new int[][][]{{{3, 3, 3},{6, 6, 6}},{{9, 9, 9}
-            ,{12, 12, 12}}});
+    assertArrayEquals( new int[][][]{{{3, 3, 3},{6, 6, 6}},{{9, 9, 9}
+            ,{12, 12, 12}}}, value.getImage());
   }
 
   /**
@@ -159,8 +156,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     ImageProcessingModel intensity = test.returnIntensityImage();
     assertEquals("test_intensity", intensity.getName());
-    assertArrayEquals(intensity.getImage(), new int[][][]{{{2, 2, 2},{5, 5, 5}},{{8, 8, 8}
-            ,{11, 11, 11}}});
+    assertArrayEquals( new int[][][]{{{2, 2, 2},{5, 5, 5}},{{8, 8, 8}
+            ,{11, 11, 11}}}, intensity.getImage());
   }
 
   /**
@@ -172,8 +169,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     ImageProcessingModel luma = test.returnLumaImage();
     assertEquals("test_luma", luma.getName());
-    assertArrayEquals(luma.getImage(), new int[][][]{{{2, 2, 2},{24, 24, 24}},{{9, 9, 9}
-            ,{12, 12, 12}}});
+    assertArrayEquals(new int[][][]{{{2, 2, 2},{24, 24, 24}},{{9, 9, 9}
+            ,{12, 12, 12}}}, luma.getImage());
     }
 
   /**
@@ -181,11 +178,18 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testFlipVert(){
+    int[][][] otherBoard = new int[][][]{{{1, 1, 1}, {2, 2, 2}}, {{3, 3, 3}, {4, 4, 4}},
+            {{5, 5, 5}, {6, 6, 6}}};
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
-    ImageProcessingModel flip = test.flipImageHorizontally();
-    assertEquals("test_horizontalFlip", flip.getName());
-    assertArrayEquals(flip.getImage(), new int[][][]{{{10, 11, 12},{7, 8, 9}},{{4, 5, 6}
-            ,{1, 2, 3}}});
+    ImageProcessingModel test2 = new PPMProcessingModel(otherBoard, "test2");
+    ImageProcessingModel flip = test.flipImageVertically();
+    ImageProcessingModel flip2 = test2.flipImageVertically();
+    assertEquals("test_verticalFlip", flip.getName());
+    assertEquals("test2_verticalFlip", flip2.getName());
+    assertArrayEquals( new int[][][]{{{7, 8, 9},{10, 11, 12}},{{1, 2, 3}
+            ,{4, 5, 6}}}, flip.getImage());
+    assertArrayEquals(new int[][][]{{{5, 5, 5}, {6, 6, 6}}, {{3, 3, 3}, {4, 4, 4}},
+            {{1, 1, 1}, {2, 2, 2}}}, flip2.getImage());
   }
 
   /**
@@ -193,11 +197,17 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testFlipHoriz(){
+    int[][][] otherBoard = {{{1, 1, 1}, {2, 2, 2}, {3, 3, 3}}, {{4, 4, 4}, {5, 5, 5}, {6, 6, 6}}};
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
+    ImageProcessingModel test2 = new PPMProcessingModel(otherBoard, "test2");
     ImageProcessingModel flip = test.flipImageHorizontally();
+    ImageProcessingModel flip2 = test2.flipImageHorizontally();
     assertEquals("test_horizontalFlip", flip.getName());
-    assertArrayEquals(flip.getImage(), new int[][][]{{{3, 2, 1},{6, 5, 4}},{{9, 8, 7}
-            ,{12, 11, 10}}});
+    assertEquals("test2_horizontalFlip", flip2.getName());
+    assertArrayEquals(new int[][][]{{{4, 5, 6},{1, 2, 3}},{{10, 11, 12}
+            ,{7, 8, 9}}}, flip.getImage());
+    assertArrayEquals(new int[][][]{{{3, 3, 3}, {2, 2, 2}, {1, 1, 1}},
+            {{6, 6, 6}, {5, 5, 5}, {4, 4, 4}}}, flip2.getImage());
   }
 
   /**
@@ -208,8 +218,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel brighten = test.brighten(10);
     assertEquals("test_brighten", brighten.getName());
-    assertArrayEquals(brighten.getImage(), new int[][][]{{{11, 12, 13},{14, 15, 16}},{{17, 18, 19}
-            ,{20, 21, 22}}});
+    assertArrayEquals(new int[][][]{{{11, 12, 13},{14, 15, 16}},{{17, 18, 19}
+            ,{20, 21, 22}}}, brighten.getImage());
   }
 
   /**
@@ -222,8 +232,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     ImageProcessingModel darken = test.darken(10);
     assertEquals("test_darken", darken.getName());
-    assertArrayEquals(darken.getImage(), new int[][][]{{{1, 2, 3},{4, 5, 6}},{{7, 8, 9}
-            ,{10, 11, 12}}});
+    assertArrayEquals(new int[][][]{{{1, 2, 3},{4, 5, 6}},{{7, 8, 9}
+            ,{10, 11, 12}}}, darken.getImage());
   }
 
   /**
@@ -236,8 +246,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(otherTest, "test");
     ImageProcessingModel brighten = test.brighten(5);
     assertEquals("test_brighten", brighten.getName());
-    assertArrayEquals(brighten.getImage(), new int[][][]{{{255, 255, 255},{255, 255, 255}},{{5, 15, 25}
-            ,{254, 254, 55}}});
+    assertArrayEquals(new int[][][]{{{255, 255, 255},{255, 255, 255}},{{5, 15, 25}
+            ,{254, 253, 55}}}, brighten.getImage());
   }
 
   /**
@@ -248,8 +258,8 @@ public class ImageProcessingModelTest {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel darken = test.darken(6);
     assertEquals("test_darken", darken.getName());
-    assertArrayEquals(darken.getImage(), new int[][][]{{{0, 0, 0},{0, 0, 0}},{{1, 2, 3}
-            ,{4, 5, 6}}});
+    assertArrayEquals(new int[][][]{{{0, 0, 0},{0, 0, 0}},{{1, 2, 3}
+            ,{4, 5, 6}}}, darken.getImage());
   }
 
   /**
@@ -271,20 +281,30 @@ public class ImageProcessingModelTest {
   }
 
   /**
-   * Checks if getWidth returns the correct value.
+   * Checks if getWidth returns the correct value. Width is the amount of columns in a row.
    * */
   @Test
   public void testGetWidth(){
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
     ImageProcessingModel test2 = new PPMProcessingModel(new int[3][5][3], "test");
     ImageProcessingModel test3 = new PPMProcessingModel(new int[10][1][3], "test");
-    //assertEquals(2, test.getWidth());
-    //finish
+    assertEquals(2, test.getWidth());
+    assertEquals(5, test2.getWidth());
+    assertEquals(1, test3.getWidth());
   }
 
   /**
-   * Checks if getHeight returns the correct value.
+   * Checks if getHeight returns the correct value. Height is the amount of rows in a column.
    * */
+  @Test
+  public void testGetHeight(){
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, "test");
+    ImageProcessingModel test2 = new PPMProcessingModel(new int[3][5][3], "test");
+    ImageProcessingModel test3 = new PPMProcessingModel(new int[10][1][3], "test");
+    assertEquals(2, test.getHeight());
+    assertEquals(3, test2.getHeight());
+    assertEquals(10, test3.getHeight());
+  }
 
   /**
    * Tests if getName returns the correct value.

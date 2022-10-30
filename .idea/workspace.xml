@@ -53,31 +53,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingModelTest.testBrightenLimit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="METHOD_NAME" value="testBrightenLimit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testConstructor2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingModelTest.testDarken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testConstructor2" />
+      <option name="METHOD_NAME" value="testDarken" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testWrongArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingModelTest.testFlipHoriz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testWrongArray" />
+      <option name="METHOD_NAME" value="testFlipHoriz" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingModelTest.testFlipVert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
+      <option name="METHOD_NAME" value="testFlipVert" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -86,9 +96,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ImageProcessingModelTest" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testConstructor2" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testConstructor" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testWrongArray" />
+        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipHoriz" />
+        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipVert" />
+        <item itemvalue="JUnit.ImageProcessingModelTest.testBrightenLimit" />
+        <item itemvalue="JUnit.ImageProcessingModelTest.testDarken" />
       </list>
     </recent_temporary>
   </component>
@@ -108,6 +119,7 @@
       <workItem from="1666973568668" duration="1700000" />
       <workItem from="1667056075251" duration="9198000" />
       <workItem from="1667076338211" duration="36000" />
+      <workItem from="1667094908365" duration="2498000" />
     </task>
     <servers />
   </component>
