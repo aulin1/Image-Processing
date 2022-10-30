@@ -11,6 +11,10 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * The image saved as a 3D integer array.
    * */
   private int[][][] imageBoard;
+
+  /**
+   * The name of the image.
+   * */
   private String name;
 
   /**
