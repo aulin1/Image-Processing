@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ImageProcessingController.java" afterDir="false" />
+    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/RedCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +15,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -29,8 +32,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_opened_file_path": "/Users/aulin/Documents/GitHub/Image-Processing/src"
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
@@ -45,6 +58,45 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
+      <module name="Image-Processing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.ImageUtil" />
+      <module name="Image-Processing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageUtilTest.checkWidth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
+      <option name="METHOD_NAME" value="checkWidth" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ImageProcessing" />
+        <item itemvalue="Application.ImageUtil" />
+        <item itemvalue="JUnit.ImageUtilTest.checkWidth" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="RunManager" selected="JUnit.ImageProcessingModelTest">
     <configuration name="ImageProcessingModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -120,11 +172,21 @@
       <workItem from="1666907593986" duration="15000" />
       <workItem from="1666912818468" duration="362000" />
       <workItem from="1666973568668" duration="1700000" />
+      <workItem from="1667056075251" duration="3118000" />
+      <workItem from="1667085097218" duration="18076000" />
+    </task>
+    <task id="LOCAL-00001" summary="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)">
+      <created>1667101463311</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667101463311</updated>
       <workItem from="1667056075251" duration="9198000" />
       <workItem from="1667076338211" duration="36000" />
       <workItem from="1667094908365" duration="2498000" />
       <workItem from="1667097774470" duration="28000" />
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,5 +202,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)" />
   </component>
 </project>
