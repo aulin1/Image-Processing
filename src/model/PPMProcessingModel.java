@@ -10,8 +10,13 @@ public class PPMProcessingModel implements ImageProcessingModel{
   /**
    * The image saved as a 3D integer array.
    * */
-  private final int[][][] imageBoard;
-  private final int maxValue;
+   
+  private int[][][] imageBoard;
+
+  /**
+   * The name of the image.
+   * */
+   
   private String name;
 
   /**
@@ -44,9 +49,9 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * @return a 3D array which represents the greyscale image.
    * */
   private int[][][] getGreyScale(String factor){
-    int[][][] img = new int[this.getWidth()][this.getHeight()][3];
-    for(int i = 0; i < this.getWidth(); i++){
-      for(int j = 0; j < this.getHeight(); j++){
+    int[][][] img = new int[this.getHeight()][this.getWidth()][3];
+    for(int i = 0; i < this.getHeight(); i++){
+      for(int j = 0; j < this.getWidth(); j++){
         img[i][j][0] = getCorrectValue(factor, i, j);
         img[i][j][1] = getCorrectValue(factor, i, j);
         img[i][j][2] = getCorrectValue(factor, i, j);
@@ -79,7 +84,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
         return (this.imageBoard[row][col][0] + this.imageBoard[row][col][1]
                 + this.imageBoard[row][col][2])/3;
       case "luma":
-        return (int) (0.2126 * this.imageBoard[row][col][0]
+        return (int) Math.round(0.2126 * this.imageBoard[row][col][0]
                 + 0.7152 * this.imageBoard[row][col][1]
                 + 0.0722 * this.imageBoard[row][col][2]);
       default:
@@ -137,11 +142,11 @@ public class PPMProcessingModel implements ImageProcessingModel{
 
   @Override
   public ImageProcessingModel flipImageVertically() {
-    int[][][] img = new int[this.getWidth()][this.getHeight()][3];
-    for(int i = 0; i < this.getWidth()/2; i++){
-      for(int j = 0; j < this.getHeight(); j++){
-        img[i][j] = this.imageBoard[this.getWidth() - 1 - i][j];
-        img[this.getWidth() - 1 - i][j] = this.imageBoard[i][j];
+    int[][][] img = new int[this.getHeight()][this.getWidth()][3];
+    for(int i = 0; i <= this.getHeight()/2; i++){
+      for(int j = 0; j < this.getWidth(); j++){
+        img[i][j] = this.imageBoard[this.getHeight() - 1 - i][j];
+        img[this.getHeight() - 1 - i][j] = this.imageBoard[i][j];
       }
     }
     String newName = name + "_verticalFlip";
@@ -150,11 +155,11 @@ public class PPMProcessingModel implements ImageProcessingModel{
 
   @Override
   public ImageProcessingModel flipImageHorizontally() {
-    int[][][] img = new int[this.getWidth()][this.getHeight()][3];
-    for(int i = 0; i < this.getWidth(); i++){
-      for(int j = 0; j < this.getHeight()/2; j++){
-        img[i][j] = this.imageBoard[i][this.getHeight() - 1 - j];
-        img[i][this.getHeight() - 1 - j] = this.imageBoard[i][j];
+    int[][][] img = new int[this.getHeight()][this.getWidth()][3];
+    for(int i = 0; i < this.getHeight(); i++){
+      for(int j = 0; j <= this.getWidth()/2; j++){
+        img[i][j] = this.imageBoard[i][this.getWidth() - 1 - j];
+        img[i][this.getWidth() - 1 - j] = this.imageBoard[i][j];
       }
     }
     String newName = name + "_horizontalFlip";
@@ -180,13 +185,13 @@ public class PPMProcessingModel implements ImageProcessingModel{
   /**
    * A helper function which changes the brightness (negative to darken) of an image.
    * */
-  private ImageProcessingModel changeBrightness(int factor) {
+  private int[][][] changeBrightness(int factor) {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
     for(int i = 0; i < this.getWidth(); i++){
       for(int j = 0; j < this.getHeight(); j++){
         img[i][j][0] = this.checkLimits(this.imageBoard[i][j][0] + factor);
-        img[i][j][1] = this.checkLimits(this.imageBoard[i][j][0] + factor);
-        img[i][j][2] = this.checkLimits(this.imageBoard[i][j][0] + factor);
+        img[i][j][1] = this.checkLimits(this.imageBoard[i][j][1] + factor);
+        img[i][j][2] = this.checkLimits(this.imageBoard[i][j][2] + factor);
       }
     }
     String newName = name + "_changedBrightness";
@@ -198,7 +203,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
     if(factor < 0){
       throw new IllegalArgumentException("Cannot be negative!");
     }
-    return changeBrightness(factor);
+    String newName = name + "_brighten";
+    return new PPMProcessingModel(changeBrightness(factor), newName);
   }
 
   @Override
@@ -206,16 +212,17 @@ public class PPMProcessingModel implements ImageProcessingModel{
     if(factor < 0){
       throw new IllegalArgumentException("Cannot be negative!");
     }
-    return changeBrightness(-1 * factor);
-  }
-
-  @Override
-  public int getWidth() {
-    return this.imageBoard.length;
+    String newName = name + "_darken";
+    return new PPMProcessingModel(changeBrightness(-1 * factor), newName);
   }
 
   @Override
   public int getHeight() {
+    return this.imageBoard.length;
+  }
+
+  @Override
+  public int getWidth() {
     return this.imageBoard[0].length;
   }
 
