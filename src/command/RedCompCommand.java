@@ -3,7 +3,7 @@ package command;
 import model.ImageProcessingModel;
 
 /**
- * This class represents a load command.
+ * This class represents a red component command.
  */
 public class RedCompCommand implements ImageProcessingCommand {
 
