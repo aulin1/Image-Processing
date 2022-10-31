@@ -11,13 +11,18 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * The image saved as a 3D integer array.
    * */
    
-  private int[][][] imageBoard;
+  private final int[][][] imageBoard;
 
   /**
    * The name of the image.
    * */
    
   private String name;
+
+  /**
+   * The max value of a color.
+   */
+  private final int maxValue;
 
   /**
    * The constructor for the PPMProcessingModel.
@@ -195,7 +200,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
       }
     }
     String newName = name + "_changedBrightness";
-    return new PPMProcessingModel(img, this.maxValue, newName);
+    return img;
   }
 
   @Override
@@ -204,7 +209,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
       throw new IllegalArgumentException("Cannot be negative!");
     }
     String newName = name + "_brighten";
-    return new PPMProcessingModel(changeBrightness(factor), newName);
+    return new PPMProcessingModel(changeBrightness(factor), this.maxValue, newName);
   }
 
   @Override
@@ -213,7 +218,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
       throw new IllegalArgumentException("Cannot be negative!");
     }
     String newName = name + "_darken";
-    return new PPMProcessingModel(changeBrightness(-1 * factor), newName);
+    return new PPMProcessingModel(changeBrightness(-1 * factor), this.maxValue, newName);
   }
 
   @Override
