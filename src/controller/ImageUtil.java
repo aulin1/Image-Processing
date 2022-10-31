@@ -50,16 +50,16 @@ public class ImageUtil {
     int height = sc.nextInt();
     int maxValue = sc.nextInt();
 
-    int[][][] imageBoard = new int[width][height][3];
+    int[][][] imageBoard = new int[height][width][3];
 
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
+    for (int i = 0; i < height; i++) { // row
+      for (int j = 0; j < width; j++) { // col
         int r = sc.nextInt();
         int g = sc.nextInt();
         int b = sc.nextInt();
-        imageBoard[j][i][0] = r;
-        imageBoard[j][i][1] = g;
-        imageBoard[j][i][2] = b;
+        imageBoard[i][j][0] = r;
+        imageBoard[i][j][1] = g;
+        imageBoard[i][j][2] = b;
       }
     }
 

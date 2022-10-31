@@ -1,19 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Altered ImageUtils to function properly, wrote code for controller and main, made adjustments in model to work along with the controller. Initiate command pattern (not yet working)">
-      <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <change afterPath="$PROJECT_DIR$/res/Koala.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/PixelP6.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/BlueCompCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/BrightnessCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/GreenCompCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/HorizontalFlipCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/IntensityCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/LumaCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/ValueCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/VerticalFlipCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/MockModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMG_5044 (1).ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/IMG_5044 (1).ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Image-Processing/ImageProcessingModelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Image-Processing/ImageProcessingModelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/RedCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="command" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
+      <module name="Image-Processing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Image-Processing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageUtilTest.readPPMWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
+      <option name="METHOD_NAME" value="readPPMWorks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ImageProcessing" />
+        <item itemvalue="JUnit.ImageUtilTest" />
+        <item itemvalue="JUnit.ImageUtilTest.readPPMWorks" />
+        <item itemvalue="JUnit.All in Image-Processing" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <created>1667230103727</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667230103727</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add field and argument maxValue to the constructor and fix them in the model tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add field and argument maxValue to the constructor and fix them in the model tests" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

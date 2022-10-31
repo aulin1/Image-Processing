@@ -8,8 +8,16 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import command.BlueCompCommand;
+import command.BrightnessCommand;
+import command.GreenCompCommand;
+import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
+import command.IntensityCommand;
+import command.LumaCommand;
 import command.RedCompCommand;
+import command.ValueCommand;
+import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
 
 import static controller.ImageUtil.readPPM;
@@ -39,7 +47,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param input  the desired input of the user's interaction
    * @throws IllegalArgumentException if any of the field is null
    */
-  public ImageProcessingControllerImpl(Appendable output, Readable input) throws IllegalArgumentException {
+  public ImageProcessingControllerImpl(Appendable output, Readable input)
+          throws IllegalArgumentException {
     if (input == null || output == null) {
       throw new IllegalArgumentException("The fields to the controller constructor cannot be " +
               "null" + ". ");
@@ -52,8 +61,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   @Override
-  public void start() { //FIXME: transmit exceptions to the user instead of force quitting the
-                        // program.
+  public void start() {
     Scanner sc = new Scanner(input);
 
     this.welcomeMessage();
@@ -70,6 +78,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         case "q":
           writeMessage("Thank you for using the program!");
           return;
+        case "m":
+          printInstructions();
+          break;
         default:
           Function<Scanner, ImageProcessingCommand> commandFunc;
           commandFunc = commandMap.getOrDefault(s, null);
@@ -87,21 +98,32 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             } else {
               ImageProcessingCommand command = commandFunc.apply(sc);
               ImageProcessingModel processedModel = command.execute(model);
-              writeMessage("command executed. ");
               // saves new model with designated name
               memory.put(destImageName, processedModel);
-              writeMessage("Command successfully processed!");
+              writeMessage("Command " + s + " successfully processed!");
             }
           }
       }
     }
-    throw new IllegalStateException("The program ran out of arguments even though the program "
-            + "has not quit. ");
+
+    // program has not quit but ran out of inputs
+    if (!sc.hasNext()) {
+      throw new IllegalStateException("The program ran out of arguments even though the program "
+              + "has not quit. ");
+    }
   }
 
   // initiates the commands into the command map
   private void initiateComms() {
     this.commandMap.put("red-component", s -> new RedCompCommand());
+    this.commandMap.put("green-component", s -> new GreenCompCommand());
+    this.commandMap.put("blue-component", s -> new BlueCompCommand());
+    this.commandMap.put("value", s -> new ValueCommand());
+    this.commandMap.put("luma", s -> new LumaCommand());
+    this.commandMap.put("intensity", s -> new IntensityCommand());
+    this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
+    this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
+    this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
   }
 
   // loads an image from the designated image path and put it in the memory map with the designated
@@ -110,7 +132,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     try {
       ImageProcessingModel model = readPPM(imagePath);
       memory.put(imageName, model);
-      writeMessage("Load image " + imageName + " successful!");
+      writeMessage("Load image " + imageName + " successful!" + System.lineSeparator());
     } catch (IllegalArgumentException e) {
       writeMessage(e.getMessage());
     }
@@ -118,7 +140,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
   // saves an image with the given name to the specified path which should include the name of
   // the file
-  //TODO: CHECK SAVING IMAGE FOR WINDOWS
   private void saveImage(String imagePath, String imageName) {
     ImageProcessingModel model = memory.getOrDefault(imageName, null);
     if (model == null) {
@@ -127,23 +148,24 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
 
     try {
-      PrintWriter outfile = new PrintWriter(imagePath + "/" + imageName + ".ppm");
-      System.out.println("Writing out to file: " + imageName + ".ppm");
+      PrintWriter outfile = new PrintWriter(imagePath);
+      System.out.println("Writing out to file: " + imageName + ".ppm" + System.lineSeparator());
       outfile.println("P3");
       outfile.println("# Image created by Trang Do and Audrey Lin's program");
       outfile.println(model.getWidth() + " " + model.getHeight());
-      outfile.println(255); //FIXME: use the max value returned from the model instead
+      outfile.println(255);
 
       int[][][] imageBoard = model.getImage();
       for (int r = 0; r < model.getHeight(); r++) {
         for (int c = 0; c < model.getWidth(); c++) {
-          outfile.println(imageBoard[c][r][0]); // print red value
-          outfile.println(imageBoard[c][r][1]); // print green value
-          outfile.println(imageBoard[c][r][2]); // print blue value
+          outfile.println(imageBoard[r][c][0]); // print red value
+          outfile.println(imageBoard[r][c][1]); // print green value
+          outfile.println(imageBoard[r][c][2]); // print blue value
         }
       }
       outfile.close();
-      writeMessage("Save image " + imageName + " successful!");
+      writeMessage("Save image " + imageName + " successful!" + System.lineSeparator());
+
     } catch (Exception e) {
       writeMessage("Unable to save file to destination. ");
     }
@@ -171,14 +193,21 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             + System.lineSeparator());
     writeMessage("All commands below will be referred by the designated destination name " +
             "after the command by the program:" + System.lineSeparator());
+    // grey scale comms
     writeMessage("Greyscale commands:" + System.lineSeparator());
     writeMessage("red-component image-name dest-image-name: Create a greyscale image with the " +
             "red" + " component of the image with the given name" + System.lineSeparator());
     writeMessage("green-component image-name dest-image-name: Create a greyscale image with the "
             + "green component of the image with the given name" + System.lineSeparator());
     writeMessage("blue-component image-name dest-image-name: Create a greyscale image with the "
-            + "blue component of the image with the given name" + System.lineSeparator()
-            + System.lineSeparator());
+            + "blue component of the image with the given name" + System.lineSeparator());
+    writeMessage("value image-name dest-image-name: Create a greyscale image with the maximum " +
+            "value of the three component for each pixel" + System.lineSeparator());
+    writeMessage("intensity image-name dest-image-name: Create a greyscale image with the " +
+            "average of the three components for each pixel" + System.lineSeparator());
+    writeMessage("luma image-name dest-image-name: Create a greyscale image with the weighted " +
+            "sum 0.2126r + 0.7152g + 0.0722b" + System.lineSeparator() + System.lineSeparator());
+    // flip image comms
     writeMessage("Flip image commands:" + System.lineSeparator());
     writeMessage("horizontal-flip image-name dest-image-name: Flip an image horizontally to " +
             "create a new image" + System.lineSeparator());
@@ -189,6 +218,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             + "increment to create a new image. Positive value will brighten the image and " +
             "negative value will darken the image" + System.lineSeparator()
             + System.lineSeparator());
+    // user help comms
     writeMessage("Input m to see the supported commands. " + System.lineSeparator());
     writeMessage("Input q to quit the program. " + System.lineSeparator());
   }
