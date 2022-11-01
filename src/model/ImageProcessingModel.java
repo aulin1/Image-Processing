@@ -49,29 +49,25 @@ public interface ImageProcessingModel {
 
   /**
    * Flips the image vertically.
+   *
+   * @return the flipped image.
    * */
   ImageProcessingModel flipImageVertically();
 
   /**
    * Flips the image horizontally.
+   *
+   * @return the flipped image.
    * */
   ImageProcessingModel flipImageHorizontally();
 
   /**
-   * Brightens the image.
+   * Changes the brightness of the image.
    *
    * @param factor the factor by which the brightness changes.
-   * @throws IllegalArgumentException if the factor is negative.
+   * @return the changed image.
    * */
-  ImageProcessingModel brighten(int factor) throws IllegalArgumentException;
-
-  /**
-   * Darkens the image.
-   *
-   * @param factor the factor by which the brightness changes.
-   * @throws IllegalArgumentException if the factor is negative.
-   * */
-  ImageProcessingModel darken(int factor) throws IllegalArgumentException;
+  ImageProcessingModel changeBrightness(int factor);
 
   /**
    * Returns the width of the image.

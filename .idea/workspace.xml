@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Change the controller to delegate the save and load method to the view. Need to make view store the models instead">
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/BrightnessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/BrightnessCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ImageProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ImageProcessingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,16 +141,12 @@
       <workItem from="1667309160307" duration="2163000" />
       <workItem from="1667318921633" duration="86000" />
       <workItem from="1667319288048" duration="3740000" />
-      <workItem from="1667332427570" duration="5104000" />
+      <workItem from="1667332427570" duration="3397000" />
+      <workItem from="1667331068586" duration="2075000" />
+      <workItem from="1667333573406" duration="21000" />
+      <workItem from="1667334047724" duration="113000" />
     </task>
-    <task id="LOCAL-00002" summary="Change the controller to delegate the save and load method to the view. Need to make view store the models instead">
-      <created>1667335915362</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1667335915362</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,8 +166,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add field and argument maxValue to the constructor and fix them in the model tests" />
-    <MESSAGE value="Change the controller to delegate the save and load method to the view. Need to make view store the models instead" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change the controller to delegate the save and load method to the view. Need to make view store the models instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add field and argument maxValue to the constructor and fix them in the model tests" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
