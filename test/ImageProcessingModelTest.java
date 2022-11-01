@@ -218,8 +218,8 @@ public class ImageProcessingModelTest {
   @Test
   public void testBrighten() {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255, "test");
-    ImageProcessingModel brighten = test.brighten(10);
-    assertEquals("test_brighten", brighten.getName());
+    ImageProcessingModel brighten = test.changeBrightness(10);
+    assertEquals("test_changedBrightness", brighten.getName());
     assertArrayEquals(new int[][][]{{{11, 12, 13}, {14, 15, 16}}, {{17, 18, 19}, {20, 21, 22}}},
             brighten.getImage());
   }
@@ -231,8 +231,8 @@ public class ImageProcessingModelTest {
   public void testDarken() {
     int[][][] otherTest = new int[][][]{{{11, 12, 13}, {14, 15, 16}}, {{17, 18, 19}, {20, 21, 22}}};
     ImageProcessingModel test = new PPMProcessingModel(otherTest, 255, "test");
-    ImageProcessingModel darken = test.darken(10);
-    assertEquals("test_darken", darken.getName());
+    ImageProcessingModel darken = test.changeBrightness(-10);
+    assertEquals("test_changedBrightness", darken.getName());
     assertArrayEquals(new int[][][]{{{1, 2, 3}, {4, 5, 6}}, {{7, 8, 9}, {10, 11, 12}}},
             darken.getImage());
   }
@@ -245,7 +245,7 @@ public class ImageProcessingModelTest {
     int[][][] otherTest = new int[][][]{{{250, 251, 252}, {253, 254, 255}}, {{0, 10, 20}, {249,
             248, 50}}};
     ImageProcessingModel test = new PPMProcessingModel(otherTest, 255, "test");
-    ImageProcessingModel brighten = test.brighten(5);
+    ImageProcessingModel brighten = test.changeBrightness(5);
     assertEquals("test_brighten", brighten.getName());
     assertArrayEquals(new int[][][]{{{255, 255, 255}, {255, 255, 255}}, {{5, 15, 25}, {254, 253,
             55}}}, brighten.getImage());
@@ -257,28 +257,10 @@ public class ImageProcessingModelTest {
   @Test
   public void testDarkenLimit() {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255, "test");
-    ImageProcessingModel darken = test.darken(6);
+    ImageProcessingModel darken = test.changeBrightness(-6);
     assertEquals("test_darken", darken.getName());
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {0, 0, 0}}, {{1, 2, 3}, {4, 5, 6}}},
             darken.getImage());
-  }
-
-  /**
-   * Checks if brighten throws an IllegalArgumentException if the factor is negative.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeBrighten() {
-    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255, "test");
-    ImageProcessingModel brighten = test.brighten(-5);
-  }
-
-  /**
-   * Checks if darken throws an IllegalArgumentException if the factor is negative.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testNegativeDarken() {
-    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255, "test");
-    ImageProcessingModel darken = test.darken(-5);
   }
 
   /**

@@ -32,38 +32,6 @@ public interface ImageProcessingView {
    * @param model the model to be stored
    */
   void storeImage(String imageName, ImageProcessingModel model);
-  /**
-   * Changes the image path to which it should be saved.
-   *
-   * @param imagePath the new image path.
-   * */
-  void changePath(String imagePath) throws IllegalArgumentException;
-  //FIXME: I don't think we need this method since the file is directly saved only when using the
-  // save method
-
-  /**
-   * Changes the image's name.
-   *
-   * @param oldName the old name of the image
-   * @param newName the new name of the image
-   * @throws IllegalArgumentException if the names provided are null
-   * */
-  void changeName(String oldName, String newName) throws IllegalArgumentException;
-
-  /**
-   * Returns the image's name.
-   *
-   * @return the name of the image.
-   * */
-  String getName();
-
-  /**
-   * Returns the path of the image.
-   *
-   * @return the path of the image.
-   * */
-  String getPath();
-  //FIXME: I don't think we need this since the path has no use and should not be stored
 
   /**
    * Returns the model stored in the map with the provided name.
