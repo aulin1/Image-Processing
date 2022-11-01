@@ -32,7 +32,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   protected final Map<String, Function<Scanner, ImageProcessingCommand>> commandMap;
   private final Appendable output;
   private final Readable input;
-  private final Map<String, ImageProcessingModel> memory = new HashMap<>(); //TODO: Delete this
   private final ImageProcessingView view;
 
 
@@ -78,9 +77,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String filePath = sc.next();
             String fileName = sc.next();
-            view.loadImage(filePath, fileName); //TODO: fix load in view
+            view.loadImage(filePath, fileName); //TODO: add the function to change name of file
             writeMessage("Load image " + fileName + " successful!" + System.lineSeparator());
-          } catch (FileNotFoundException e) {
+          } catch (IllegalArgumentException e) {
             writeMessage("File not found at the indicated location!" + System.lineSeparator());
           }
           break;
@@ -111,7 +110,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           } else {
             // try to find the file based on the file name
             ImageProcessingModel model = view.getModel(imageName);
-                    //memory.getOrDefault(imageName, null);
             if (model == null) {
               writeMessage("The image has yet loaded to the program. Please load a valid image "
                       + "before processing it. ");
@@ -119,7 +117,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               ImageProcessingCommand command = commandFunc.apply(sc);
               ImageProcessingModel processedModel = command.execute(model);
               // saves new model with designated name
-              memory.put(destImageName, processedModel);
+              view.storeImage(destImageName, processedModel);
               writeMessage("Command " + s + " successfully processed!");
             }
           }
@@ -127,10 +125,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
 
     // program has not quit but ran out of inputs
-    if (!sc.hasNext()) {
-      throw new IllegalStateException("The program ran out of arguments even though the program "
+    throw new IllegalStateException("The program ran out of arguments even though the program "
               + "has not quit. ");
-    }
   }
 
   // initiates the commands into the command map
@@ -145,55 +141,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
 
-  }
-
-  // loads an image from the designated image path and put it in the memory map with the designated
-  // name
-  private void loadImage(String imagePath, String imageName) { //TODO: move this to view and have
-                                                               // it throw exceptions if the file
-                                                               // does not exist
-    try {
-      ImageProcessingModel model = readPPM(imagePath);
-      memory.put(imageName, model);
-      writeMessage("Load image " + imageName + " successful!" + System.lineSeparator());
-    } catch (IllegalArgumentException e) {
-      writeMessage(e.getMessage());
-    }
-  }
-
-  // saves an image with the given name to the specified path which should include the name of
-  // the file
-  private void saveImage(String imagePath, String imageName) { //TODO: move this to view and have
-                                                               // it throw exceptions instead of
-                                                               // write message
-    ImageProcessingModel model = memory.getOrDefault(imageName, null);
-    if (model == null) {
-      writeMessage(imageName + "have yet loaded to the program. ");
-      return;
-    }
-
-    try {
-      PrintWriter outfile = new PrintWriter(imagePath);
-      System.out.println("Writing out to file: " + imageName + ".ppm" + System.lineSeparator());
-      outfile.println("P3");
-      outfile.println("# Image created by Trang Do and Audrey Lin's program");
-      outfile.println(model.getWidth() + " " + model.getHeight());
-      outfile.println(255);
-
-      int[][][] imageBoard = model.getImage();
-      for (int r = 0; r < model.getHeight(); r++) {
-        for (int c = 0; c < model.getWidth(); c++) {
-          outfile.println(imageBoard[r][c][0]); // print red value
-          outfile.println(imageBoard[r][c][1]); // print green value
-          outfile.println(imageBoard[r][c][2]); // print blue value
-        }
-      }
-      outfile.close();
-      writeMessage("Save image " + imageName + " successful!" + System.lineSeparator());
-
-    } catch (Exception e) {
-      writeMessage("Unable to save file to destination. ");
-    }
   }
 
   // writes the message to the designated output

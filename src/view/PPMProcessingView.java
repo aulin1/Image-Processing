@@ -2,66 +2,68 @@ package view;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.ImageProcessingModel;
 
 import static controller.ImageUtil.readPPM;
 
 /**
- * A class that represents a view for PPM images.
+ * A class that represents a view for PPM images. A view is mainly responsible for managing the
+ * saving and loading of images to and from the program.
  * */
 public class PPMProcessingView implements ImageProcessingView{
-
-  private String imagePath;
-  private String imageName;
+  private final Map<String, ImageProcessingModel> memory;
 
   /**
    * A constructor for a PPMProcessingView.
-   *
-   * @param imagePath the path for the image.
-   * @param imageName the name of the image.
-   * @throws IllegalArgumentException if either of them are null.
-   * */
-  public PPMProcessingView(String imagePath, String imageName){
-    if(imagePath == null || imageName == null){
-      throw new IllegalArgumentException("Path and name must not be null.");
-    }
-    this.imagePath = imagePath;
-    this.imageName = imageName;
+   */
+  public PPMProcessingView(){
+    this.memory = new HashMap<>();
   }
 
   @Override
-  public ImageProcessingModel loadImage() {
-    ImageProcessingModel model = readPPM(this.imagePath);
-    model.changeName(this.imageName);
+  public ImageProcessingModel loadImage(String imagePath, String imageName)
+          throws IllegalArgumentException {
+    ImageProcessingModel model = readPPM(imagePath);
+    model.changeName(imageName);
     return model;
   }
 
   @Override
-  public void saveImage(ImageProcessingModel img) throws IllegalArgumentException,
+  public void saveImage(String imagePath, String imageName) throws IllegalArgumentException,
           IllegalStateException {
-    if(img == null){
-      throw new IllegalArgumentException("Image cannot be null.");
+    ImageProcessingModel model = this.memory.getOrDefault(imageName, null);
+    if (model == null) {
+      throw new IllegalArgumentException("The image has yet to be loaded to the program.");
     }
+
     try {
       PrintWriter outfile = new PrintWriter(imagePath);
+      System.out.println("Writing out to file: " + imageName + ".ppm" + System.lineSeparator());
       outfile.println("P3");
       outfile.println("# Image created by Trang Do and Audrey Lin's program");
-      outfile.println(img.getWidth() + " " + img.getHeight());
+      outfile.println(model.getWidth() + " " + model.getHeight());
       outfile.println(255);
 
-      int[][][] imageBoard = img.getImage();
-      for (int r = 0; r < img.getHeight(); r++) {
-        for (int c = 0; c < img.getWidth(); c++) {
+      int[][][] imageBoard = model.getImage();
+      for (int r = 0; r < model.getHeight(); r++) {
+        for (int c = 0; c < model.getWidth(); c++) {
           outfile.println(imageBoard[r][c][0]); // print red value
           outfile.println(imageBoard[r][c][1]); // print green value
           outfile.println(imageBoard[r][c][2]); // print blue value
         }
       }
       outfile.close();
-    } catch (FileNotFoundException e) {
-      throw new IllegalStateException("The file cannot be exported.");
+    } catch (Exception e) {
+      throw new IllegalStateException("Unable to save file to destination. ");
     }
+  }
+
+  @Override
+  public void storeImage(String imageName, ImageProcessingModel model) {
+    memory.put(imageName, model);
   }
 
   @Override
@@ -69,24 +71,34 @@ public class PPMProcessingView implements ImageProcessingView{
     if(imagePath == null){
       throw new IllegalArgumentException("Path cannot be null.");
     }
-    this.imagePath = imagePath;
   }
 
   @Override
-  public void changeName(String imageName) throws IllegalArgumentException {
-    if(imageName == null){
+  public void changeName(String oldName, String newName) throws IllegalArgumentException {
+    if(oldName == null || newName == null) {
       throw new IllegalArgumentException("Name cannot be null.");
     }
-    this.imageName = imageName;
+    if (this.memory.containsKey(oldName)) {
+      ImageProcessingModel model = this.memory.get(oldName);
+      this.memory.put(newName, model);
+    } else {
+      throw new IllegalArgumentException("There is no existing file with the provided name in the" +
+              " program. ");
+    }
   }
 
   @Override
   public String getName() {
-    return this.imageName;
+    return "bool";
   }
 
   @Override
   public String getPath(){
-    return this.imagePath;
+    return "this.imagePath";
+  }
+
+  @Override
+  public ImageProcessingModel getModel(String imageName) {
+    return this.memory.getOrDefault(imageName, null);
   }
 }
