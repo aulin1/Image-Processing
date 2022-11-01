@@ -40,6 +40,11 @@ the methods that all image processing models should contain.
 <ol>
   <li><strong>PPMProcessingModel</strong>: A model which implements the model interface and represents a PPM image.</li>
 </ol>
+<li>Interface <strong>ImageProcessingView</strong>: a representation of what an image processing view which contains all the methods that all image processing views should contain.</li>
+<ol>
+<li><strong>PPMProcessingView</strong>: A view which implements the view interface and can load and save a PPM image.</li>
+</ol>
+
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
 <ol><li><strong>ImageProcessingControllerImplTest</strong>: Tests for ImageProcessingControllerImpl 
