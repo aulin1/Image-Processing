@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <change afterPath="$PROJECT_DIR$/src/view/ImageProcessingView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
     </list>
@@ -14,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -58,7 +61,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingModelTest">
+  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testLoad">
     <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="Image-Processing" />
@@ -66,10 +69,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in Image-Processing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingIntegrationTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingIntegrationTest.testLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testLoad" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,23 +107,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageUtilTest.readPPMWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
-      <option name="METHOD_NAME" value="readPPMWorks" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testLoad" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testConstructor" />
         <item itemvalue="JUnit.ImageProcessingModelTest" />
         <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.ImageUtilTest" />
-        <item itemvalue="JUnit.ImageUtilTest.readPPMWorks" />
-        <item itemvalue="JUnit.All in Image-Processing" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +133,10 @@
       <option name="presentableId" value="Default" />
       <updated>1667261375135</updated>
       <workItem from="1667261377332" duration="1312000" />
-      <workItem from="1667267361132" duration="690000" />
+      <workItem from="1667267361132" duration="2654000" />
+      <workItem from="1667271065439" duration="317000" />
+      <workItem from="1667309160307" duration="2163000" />
+      <workItem from="1667318921633" duration="86000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
