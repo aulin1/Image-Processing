@@ -41,4 +41,13 @@ public interface ImageProcessingView {
    * the map
    */
   ImageProcessingModel getModel(String imageName);
+
+  /**
+   * Changes the name of an image.
+   *
+   * @param oldName the old name of the image.
+   * @param newName the new name of the image.
+   * @throws IllegalArgumentException if either name is null.
+   */
+  void changeName(String oldName, String newName) throws IllegalArgumentException;
 }
