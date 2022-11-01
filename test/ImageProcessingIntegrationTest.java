@@ -40,18 +40,21 @@ public class ImageProcessingIntegrationTest {
   public void testConstructorController(){
     StringBuffer out = new StringBuffer();
     Reader in = new StringReader("");
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     assertNotNull("Failed", test);
   }
 
   /**
-   * Tests the constructor for the view.
+   * Tests the empty constructor for the view.
    * */
   @Test
   public void testConstructorView(){
-    ImageProcessingView test = new PPMProcessingView(this.filePath, this.fileName);
+    ImageProcessingView test = new PPMProcessingView();
     assertNotNull("Failed", test);
   }
+
+
 
   /**
    * Tests if the constructor for the view correctly throws an IllegalArgumentException if

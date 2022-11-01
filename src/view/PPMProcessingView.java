@@ -28,8 +28,12 @@ public class PPMProcessingView implements ImageProcessingView{
    * A constructor for a PPMProcessingView that takes in a HashMap.
    *
    * @param map the hashmap for memory.
+   * @throws IllegalArgumentException if the map is null.
    * */
   public PPMProcessingView(Map<String, ImageProcessingModel> map){
+    if(map == null){
+      throw new IllegalArgumentException("Map cannot be null.");
+    }
     this.memory = map;
   }
 
