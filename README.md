@@ -34,13 +34,19 @@ into an Image
 Processing Model.
 </li></ol></li>
 
-<li>Interface <strong>ImageProcessingModel</strong>:</li>
+<li>Interface <strong>ImageProcessingModel</strong>:</li> a representation of what an image processing model which contains 
+the methods that all image processing models should contain.
+<ol>
+  <li><strong>PPMProcessingModel</strong>: A model which implements the model interface and represents a PPM image.</li>
+</ol>
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
 <ol><li><strong>ImageProcessingControllerImplTest</strong>: Tests for ImageProcessingControllerImpl 
 class.</li>
 <li><strong>ImageProcessingModelTest</strong>: Tests for ImageProcessingModel class.</li>
-<li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li></ol></li>
+<li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>
+<li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
+</ol></li>
 </ol>
 
 ### Accepted script of commands
