@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -19,6 +20,8 @@ import command.RedCompCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
+import view.ImageProcessingView;
+import view.PPMProcessingView;
 
 import static controller.ImageUtil.readPPM;
 
@@ -29,7 +32,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   protected final Map<String, Function<Scanner, ImageProcessingCommand>> commandMap;
   private final Appendable output;
   private final Readable input;
-  private final Map<String, ImageProcessingModel> memory = new HashMap<>();
+  private final Map<String, ImageProcessingModel> memory = new HashMap<>(); //TODO: Delete this
+  private final ImageProcessingView view;
 
 
   /**
@@ -37,7 +41,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * to the user's console.
    */
   public ImageProcessingControllerImpl() throws IllegalArgumentException {
-    this(System.out, new InputStreamReader(System.in));
+    this(System.out, new InputStreamReader(System.in), new PPMProcessingView());
   }
 
   /**
@@ -47,7 +51,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param input  the desired input of the user's interaction
    * @throws IllegalArgumentException if any of the field is null
    */
-  public ImageProcessingControllerImpl(Appendable output, Readable input)
+  public ImageProcessingControllerImpl(Appendable output, Readable input, ImageProcessingView view)
           throws IllegalArgumentException {
     if (input == null || output == null) {
       throw new IllegalArgumentException("The fields to the controller constructor cannot be " +
@@ -56,6 +60,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       this.output = output;
       this.input = input;
       this.commandMap = new HashMap<>();
+      this.view = view;
       initiateComms();
     }
   }
@@ -70,10 +75,24 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
       switch (s) {
         case "load":
-          loadImage(sc.next(), sc.next());
+          try {
+            String filePath = sc.next();
+            String fileName = sc.next();
+            view.loadImage(filePath, fileName); //TODO: fix load in view
+            writeMessage("Load image " + fileName + " successful!" + System.lineSeparator());
+          } catch (FileNotFoundException e) {
+            writeMessage("File not found at the indicated location!" + System.lineSeparator());
+          }
           break;
         case "save":
-          saveImage(sc.next(), sc.next());
+          try {
+            String filePath = sc.next();
+            String fileName = sc.next();
+            view.saveImage(filePath, fileName); //TODO: fix save in view
+            writeMessage("Save image " + fileName + " successful!" + System.lineSeparator());
+          } catch (Exception e) {
+            writeMessage("Error saving the image" + System.lineSeparator());
+          }
           break;
         case "q":
           writeMessage("Thank you for using the program!");
@@ -91,7 +110,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             writeMessage("Command is not supported. ");
           } else {
             // try to find the file based on the file name
-            ImageProcessingModel model = memory.getOrDefault(imageName, null);
+            ImageProcessingModel model = view.getModel(imageName);
+                    //memory.getOrDefault(imageName, null);
             if (model == null) {
               writeMessage("The image has yet loaded to the program. Please load a valid image "
                       + "before processing it. ");
@@ -124,11 +144,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
     this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
+
   }
 
   // loads an image from the designated image path and put it in the memory map with the designated
   // name
-  private void loadImage(String imagePath, String imageName) {
+  private void loadImage(String imagePath, String imageName) { //TODO: move this to view and have
+                                                               // it throw exceptions if the file
+                                                               // does not exist
     try {
       ImageProcessingModel model = readPPM(imagePath);
       memory.put(imageName, model);
@@ -140,7 +163,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
   // saves an image with the given name to the specified path which should include the name of
   // the file
-  private void saveImage(String imagePath, String imageName) {
+  private void saveImage(String imagePath, String imageName) { //TODO: move this to view and have
+                                                               // it throw exceptions instead of
+                                                               // write message
     ImageProcessingModel model = memory.getOrDefault(imageName, null);
     if (model == null) {
       writeMessage(imageName + "have yet loaded to the program. ");
