@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
-      <change afterPath="$PROJECT_DIR$/res/Koala.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/PixelP6.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/BlueCompCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/BrightnessCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/GreenCompCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/HorizontalFlipCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/IntensityCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/LumaCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/ValueCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/VerticalFlipCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/MockModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMG_5044 (1).ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/IMG_5044 (1).ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Image-Processing/ImageProcessingModelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Image-Processing/ImageProcessingModelTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/RedCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,14 +20,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GvFudSHRZtLL3MWW5oR7MWmoNI" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_opened_file_path": "/Users/aulin/Documents/GitHub/Image-Processing",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
   }
 }]]></component>
@@ -66,7 +57,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ImageProcessing">
+  <component name="RunManager" selected="JUnit.ImageProcessingModelTest">
     <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="Image-Processing" />
@@ -78,6 +69,15 @@
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageProcessingModelTest" />
         <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.ImageUtilTest" />
         <item itemvalue="JUnit.ImageUtilTest.readPPMWorks" />
@@ -110,6 +111,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Add field and argument maxValue to the constructor and fix them in the model tests">
       <created>1667230103727</created>
@@ -118,8 +120,19 @@
       <option name="project" value="LOCAL" />
       <updated>1667230103727</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests" />
+      <created>1667261375135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667261375135</updated>
+      <workItem from="1667261377332" duration="103000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
