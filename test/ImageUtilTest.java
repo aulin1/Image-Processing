@@ -12,10 +12,8 @@ import static org.junit.Assert.assertEquals;
  * This class represents tests for controller.ImageUtil.
  */
 public class ImageUtilTest {
-  Path koala = Paths.get("Koala.ppm");
-  Path pixel = Paths.get("Pixel.ppm");
-  String koalaPath = koala.toString();
-  String pixelPath = pixel.toString();
+  String koalaPath = "res/Koala.ppm";
+  String pixelPath = "res/Pixel.ppm";
 
   String pixelImg = "0\n" + "0\n" + "0\n" + "153\n" + "217\n" + "234\n" + "153\n" + "217\n" +
           "234\n" + "127\n" + "127\n" + "127\n" + "153\n" + "217\n" + "234\n" + "237\n" + "28\n"
