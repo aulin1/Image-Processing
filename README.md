@@ -34,7 +34,8 @@ into an Image
 Processing Model.
 </li></ol></li>
 
-<li>Interface <strong>ImageProcessingModel</strong>:</li> a representation of what an image processing model which contains 
+<li>Interface <strong>ImageProcessingModel</strong>:</li> a representation of what 
+  an image processing model which contains 
 the methods that all image processing models should contain.
 <ol>
   <li><strong>PPMProcessingModel</strong>: A model which implements the model interface and represents a PPM image.</li>
