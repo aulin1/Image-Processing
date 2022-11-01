@@ -45,6 +45,7 @@ public class PPMProcessingView implements ImageProcessingView{
     }
     try {
       PrintWriter outfile = new PrintWriter(imagePath);
+      outfile.println("P3");
       outfile.println("# Image created by Trang Do and Audrey Lin's program");
       outfile.println(img.getWidth() + " " + img.getHeight());
       outfile.println(255);
