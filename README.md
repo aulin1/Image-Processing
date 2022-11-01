@@ -47,7 +47,7 @@ class.</li>
 
 ### Image citation
 
-The image IMG_5044 (1).ppm is the work of Audrey Lin, and she has authorized its usage in this
+The image img.ppm is the work of Audrey Lin, and she has authorized its usage in this
 assignment. It is an original image converted to a PPM image format.
 
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
