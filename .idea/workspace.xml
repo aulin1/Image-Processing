@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
-      <change afterPath="$PROJECT_DIR$/res/dot.ppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +137,9 @@
       <workItem from="1667309160307" duration="2163000" />
       <workItem from="1667318921633" duration="86000" />
       <workItem from="1667319288048" duration="3740000" />
+      <workItem from="1667331068586" duration="2075000" />
+      <workItem from="1667333573406" duration="21000" />
+      <workItem from="1667334047724" duration="113000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
