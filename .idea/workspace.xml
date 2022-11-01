@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <change afterPath="$PROJECT_DIR$/classDiagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/classDiagram.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +129,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667261375135</updated>
-      <workItem from="1667261377332" duration="103000" />
+      <workItem from="1667261377332" duration="1312000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
