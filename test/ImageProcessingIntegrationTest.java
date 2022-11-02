@@ -204,6 +204,9 @@ public class ImageProcessingIntegrationTest {
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
+    assertNotNull(map.get(fileName));
+    String[] splitString = out.toString().split("\n");
+    assertEquals("Command is not supported.", splitString[splitString.length - 2]);
   }
 
   /**
@@ -213,17 +216,16 @@ public class ImageProcessingIntegrationTest {
   public void testIncorrectCorrectCommand(){
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName + "fakeCommand"
-            + "red-component"
-            + " horizontal-flip brighten 10 save res/PixelEdit.ppm PixelEdit.ppm" + "q");
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
+            + "red-component " + fileName + " edit " + "q");
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
-    ImageProcessingView view =
-            new PPMProcessingView("res/PixelEdit.ppm", "PixelEdit.ppm");
-    assertArrayEquals(new int[][][] {{{137, 137, 137}, {163, 163, 163}, {163, 163, 163}, {10, 10, 10}},
-            {{163, 163, 163}, {215, 215, 215}, {247,247,247}, {163, 163, 163}},
-            {{163, 163, 163}, {255,255,255}, {22,22,22}, {163, 163, 163}},
-            {{255,255,255}, {163, 163, 163}, {163, 163, 163}, {10,10,10}}},
-            view.loadImage().getImage());
+    assertArrayEquals(new int[][][] {{{0, 0, 0}, {153, 153, 153}, {153, 153, 153}, {127, 127, 127}},
+                    {{153, 153, 153}, {237, 237, 237}, {205,205,205}, {153, 153, 153}},
+                    {{153, 153, 153}, {12,12,12}, {255,255,255}, {153, 153, 153}},
+                    {{0,0,0}, {153, 153, 153}, {153, 153, 153}, {255,255,255}}},
+            view.getModel("edit").getImage());
   }
 
   /**
@@ -234,7 +236,9 @@ public class ImageProcessingIntegrationTest {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName + "red-component"
             + " horizontal-flip brighten 10 save res/PixelEdit.ppm PixelEdit.ppm");
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
   }
 
@@ -245,9 +249,15 @@ public class ImageProcessingIntegrationTest {
   public void testLoadMultiple(){
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName + "load"
-            + "res/img.ppm img.ppm load res/Koala.ppm Koala.ppm");
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
+            + "res/img.ppm img.ppm load res/Koala.ppm Koala.ppm q");
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
-    //TODO: add asserts once you know what's happening with controller
+    assertArrayEquals(view.getModel(fileName).getImage(), map.get(fileName).getImage());
+    assertArrayEquals(view.getModel("img.ppm").getImage(),
+            map.get("img.ppm").getImage());
+    assertArrayEquals(view.getModel("Koala.ppm").getImage(),
+            map.get("Koala.ppm").getImage());
   }
 }

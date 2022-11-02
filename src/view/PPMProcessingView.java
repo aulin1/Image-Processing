@@ -41,7 +41,6 @@ public class PPMProcessingView implements ImageProcessingView{
   public ImageProcessingModel loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {
     ImageProcessingModel model = readPPM(imagePath);
-    model.changeName(imageName);
     this.storeImage(imageName, model);
     return model;
   }
