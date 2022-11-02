@@ -147,7 +147,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
     this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
-
   }
 
   // writes the message to the designated output
@@ -196,7 +195,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     writeMessage("vertical-flip image-name dest-image-name: Flip an image vertically to " +
             "create a new image" + System.lineSeparator() + System.lineSeparator());
     writeMessage("Brightness command:" + System.lineSeparator());
-    writeMessage("brighten increment image-name dest-image-name: brighten the image by the given "
+    writeMessage("brighten image-name dest-image-name increment: brighten the image by the given "
             + "increment to create a new image. Positive value will brighten the image and " +
             "negative value will darken the image" + System.lineSeparator()
             + System.lineSeparator());

@@ -85,7 +85,7 @@ Create a greyscale image with the average of the three components for each pixel
 Flip an image horizontally/vertically to create an image and store it with the provided 
 destination image name. 
 </li>
-<li><strong>brighten increment image-name dest-image-name</strong>: 
+<li><strong>brighten image-name dest-image-name increment</strong>: 
 Brighten an image by a given increment to create a new image and stores in the program as the 
 provided destination name.
 <ul><li>Positive increment brightens the image </li>
