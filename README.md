@@ -58,7 +58,7 @@ class.</li>
 </ol></li>
 </ol>
 
-###How to run the program
+### How to run the program
 Run the main function, and type a command from the accepted script of commands into the console. 
 
 ### Accepted script of commands
