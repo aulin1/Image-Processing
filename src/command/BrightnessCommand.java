@@ -1,6 +1,7 @@
 package command;
 
 import model.ImageProcessingModel;
+import view.ImageProcessingView;
 
 /**
  * This class represents a brightness command.
@@ -25,5 +26,10 @@ public class BrightnessCommand implements ImageProcessingCommand {
       ImageProcessingModel processed = model.changeBrightness(this.factor);
       return processed;
     }
+  }
+
+  @Override
+  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
+    throw new UnsupportedOperationException("This method is not supported by this command oject");
   }
 }
