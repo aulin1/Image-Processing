@@ -65,8 +65,4 @@ public class MockViewTest {
     controller.start();
     assertEquals("koala fancyKoala", receivedInput.toString());
   }
-
-  /**
-   * Check if the view receives the correct input for getModel().
-   */
 }
