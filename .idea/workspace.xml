@@ -60,22 +60,19 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testCommands">
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
+      <module name="Image-Processing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingIntegrationTest.testAllCommands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="METHOD_NAME" value="testAllCommands" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,6 +109,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testCommands" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testAllCommands" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest" />

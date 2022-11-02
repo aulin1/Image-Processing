@@ -85,7 +85,7 @@ Create a greyscale image with the average of the three components for each pixel
 Flip an image horizontally/vertically to create an image and store it with the provided 
 destination image name. 
 </li>
-<li><strong>brighten increment image-name dest-image-name</strong>: 
+<li><strong>brighten image-name dest-image-name increment</strong>: 
 Brighten an image by a given increment to create a new image and stores in the program as the 
 provided destination name.
 <ul><li>Positive increment brightens the image </li>
@@ -97,8 +97,8 @@ name</li></ul>
 
 ### Image citation
 
-The image img.ppm is the work of Audrey Lin, and she has authorized its usage in this
-assignment. It is an original image converted to a PPM image format.
+The image dot.ppm is the work of Audrey Lin, and she has authorized its usage in this
+assignment. It is an original image created in the PPM image format.
 
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
 in this assignment. They are original images converted to PPM image format.
