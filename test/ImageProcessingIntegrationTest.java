@@ -138,25 +138,25 @@ public class ImageProcessingIntegrationTest {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName
             + " red-component " + fileName + " " + fileName + "_red"
-            + " save res/" + fileName + "_red.ppm" + fileName + "_red"
+            + " save res/" + fileName + "_red.ppm " + fileName + "_red"
             + " green-component " + fileName + " " + fileName + "_green"
-            + " save res/" + fileName + "_green.ppm" + fileName + "_green"
+            + " save res/" + fileName + "_green.ppm " + fileName + "_green"
             + " blue-component " + fileName + " " + fileName + "_blue"
-            + " save res/" + fileName + "_blue.ppm" + fileName + "_blue"
+            + " save res/" + fileName + "_blue.ppm " + fileName + "_blue"
             + " value " + fileName + " " + fileName + "_value"
-            + " save res/" + fileName + "_value.ppm" + fileName + "_value"
+            + " save res/" + fileName + "_value.ppm " + fileName + "_value"
             + " intensity " + fileName + " " + fileName + "_intensity"
-            + " save res/" + fileName + "_intensity.ppm" + fileName + "_intensity"
+            + " save res/" + fileName + "_intensity.ppm " + fileName + "_intensity"
             + " luma " + fileName + " " + fileName + "_luma"
-            + " save res/" + fileName + "_luma.ppm" + fileName + "_luma"
+            + " save res/" + fileName + "_luma.ppm " + fileName + "_luma"
             + " horizontal-flip " + fileName + " " + fileName + "_horizontal_flip"
-            + " save res/" + fileName + "_horizontal_flip.ppm" + fileName + "_horizontal_flip"
+            + " save res/" + fileName + "_horizontal_flip.ppm " + fileName + "_horizontal_flip"
             + " vertical-flip " + fileName + " " + fileName + "_vertical_flip"
-            + " save res/" + fileName + "_vertical_flip.ppm" + fileName + "_vertical_flip"
+            + " save res/" + fileName + "_vertical_flip.ppm " + fileName + "_vertical_flip"
             + " brighten " + fileName + " " + fileName + "_brighten 10"
-            + " save res/" + fileName + "_brighten.ppm" + fileName + "_brighten"
+            + " save res/" + fileName + "_brighten.ppm " + fileName + "_brighten"
             + " brighten " + fileName + " " + fileName + "_darken -10"
-            + " save res/" + fileName + "_darken.ppm" + fileName + "_darken");
+            + " save res/" + fileName + "_darken.ppm " + fileName + "_darken q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
@@ -179,7 +179,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testCommands(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "red-component "
+    StringReader in = new StringReader("load " + filePath + " " + fileName + " red-component "
             + fileName + " edit horizontal-flip edit edit brighten edit edit 10 q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);

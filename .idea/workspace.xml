@@ -2,6 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
+      <change afterPath="$PROJECT_DIR$/res/Pixel_blue.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_brighten.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_darken.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_green.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_horizontal_flip.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_intensity.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_luma.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_red.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_value.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Pixel_vertical_flip.ppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
     </list>
@@ -61,7 +71,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testIncorrectCorrectCommand">
+  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testCommands">
     <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
@@ -113,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCorrectCommand" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testCommands" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testAllCommands" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCorrectCommand" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +156,7 @@
       <workItem from="1667331068586" duration="2075000" />
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
-      <workItem from="1667355555322" duration="1688000" />
+      <workItem from="1667355555322" duration="2213000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
@@ -196,7 +206,27 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java</url>
           <line>162</line>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
