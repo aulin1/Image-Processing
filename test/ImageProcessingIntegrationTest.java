@@ -94,6 +94,7 @@ public class ImageProcessingIntegrationTest {
   public void testSave(){
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
+    test.loadImage(filePath, fileName);
     test.saveImage(filePath, fileName);
     ImageProcessingModel model2 = test.loadImage(filePath, fileName);
     assertArrayEquals(test.getModel(fileName).getImage(),model2.getImage());
@@ -136,26 +137,26 @@ public class ImageProcessingIntegrationTest {
   public void testAllCommands(){
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName
-            + "red-component " + fileName + " " + fileName + "_red"
-            + "save res/" + fileName + "_red.ppm" + fileName + "_red"
-            + "green-component " + fileName + " " + fileName + "_green"
-            + "save res/" + fileName + "_green.ppm" + fileName + "_green"
-            + "blue-component " + fileName + " " + fileName + "_blue"
-            + "save res/" + fileName + "_blue.ppm" + fileName + "_blue"
-            + "value " + fileName + " " + fileName + "_value"
-            + "save res/" + fileName + "_value.ppm" + fileName + "_value"
-            + "intensity " + fileName + " " + fileName + "_intensity"
-            + "save res/" + fileName + "_intensity.ppm" + fileName + "_intensity"
-            + "luma " + fileName + " " + fileName + "_luma"
-            + "save res/" + fileName + "_luma.ppm" + fileName + "_luma"
-            + "horizontal-flip " + fileName + " " + fileName + "_horizontal_flip"
-            + "save res/" + fileName + "_horizontal_flip.ppm" + fileName + "_horizontal_flip"
-            + "vertical-flip " + fileName + " " + fileName + "_vertical_flip"
-            + "save res/" + fileName + "_vertical_flip.ppm" + fileName + "_vertical_flip"
-            + "brighten 10 " + fileName + " " + fileName + "_brighten"
-            + "save res/" + fileName + "_brighten.ppm" + fileName + "_brighten"
-            + "brighten -10 " + fileName + " " + fileName + "_darken"
-            + "save res/" + fileName + "_darken.ppm" + fileName + "_darken");
+            + " red-component " + fileName + " " + fileName + "_red"
+            + " save res/" + fileName + "_red.ppm" + fileName + "_red"
+            + " green-component " + fileName + " " + fileName + "_green"
+            + " save res/" + fileName + "_green.ppm" + fileName + "_green"
+            + " blue-component " + fileName + " " + fileName + "_blue"
+            + " save res/" + fileName + "_blue.ppm" + fileName + "_blue"
+            + " value " + fileName + " " + fileName + "_value"
+            + " save res/" + fileName + "_value.ppm" + fileName + "_value"
+            + " intensity " + fileName + " " + fileName + "_intensity"
+            + " save res/" + fileName + "_intensity.ppm" + fileName + "_intensity"
+            + " luma " + fileName + " " + fileName + "_luma"
+            + " save res/" + fileName + "_luma.ppm" + fileName + "_luma"
+            + " horizontal-flip " + fileName + " " + fileName + "_horizontal_flip"
+            + " save res/" + fileName + "_horizontal_flip.ppm" + fileName + "_horizontal_flip"
+            + " vertical-flip " + fileName + " " + fileName + "_vertical_flip"
+            + " save res/" + fileName + "_vertical_flip.ppm" + fileName + "_vertical_flip"
+            + " brighten 10 " + fileName + " " + fileName + "_brighten"
+            + " save res/" + fileName + "_brighten.ppm" + fileName + "_brighten"
+            + " brighten -10 " + fileName + " " + fileName + "_darken"
+            + " save res/" + fileName + "_darken.ppm" + fileName + "_darken");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
@@ -197,7 +198,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testIncorrectCommand(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "fakeCommand "
+    StringReader in = new StringReader("load " + filePath + " " + fileName + " fakeCommand "
             + "q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
@@ -247,15 +248,15 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testLoadMultiple(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "load"
-            + "res/img.ppm img.ppm load res/Koala.ppm Koala.ppm q");
+    StringReader in = new StringReader("load " + filePath + " " + fileName + " load"
+            + " res/dot.ppm dot.ppm load res/Koala.ppm Koala.ppm q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
     assertArrayEquals(view.getModel(fileName).getImage(), map.get(fileName).getImage());
-    assertArrayEquals(view.getModel("img.ppm").getImage(),
-            map.get("img.ppm").getImage());
+    assertArrayEquals(view.getModel("dot.ppm").getImage(),
+            map.get("dot.ppm").getImage());
     assertArrayEquals(view.getModel("Koala.ppm").getImage(),
             map.get("Koala.ppm").getImage());
   }
