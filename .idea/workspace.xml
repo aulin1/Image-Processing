@@ -6,11 +6,10 @@
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MockView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,50 +67,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingControllerImplTest">
-    <configuration name="ImageProcessingControllerImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand">
-    <configuration name="ImageProcessingIntegrationTest.testIncorrectCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="METHOD_NAME" value="testIncorrectCommand" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingControllerImplTest.controllerPrintsFarewell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="METHOD_NAME" value="controllerPrintsFarewell" />
-      <option name="TEST_OBJECT" value="method" />
-    <configuration name="ImageProcessingModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testSave">
     <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <extension name="coverage">
@@ -123,12 +79,7 @@
       <option name="PACKAGE_NAME" value="controller" />
       <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
       <option name="METHOD_NAME" value="controllerPrintsInstructions" />
-    <configuration name="ImageProcessingModelTest.testBrightenLimit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testBrightenLimit" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -165,18 +116,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingIntegrationTest.testSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testSave" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testSave" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsFarewell" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand" />
-        <item itemvalue="JUnit.ImageProcessingModelTest" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipHoriz" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipVert" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testBrightenLimit" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +176,6 @@
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1667341475834</updated>
       <updated>1666831274192</updated>
       <workItem from="1666831276412" duration="125000" />
       <workItem from="1666834528936" duration="8000" />
