@@ -27,7 +27,7 @@ public class ImageProcessingIntegrationTest {
   @Before
   public void getImageFile() {
     filePath = "res/Pixel.ppm";
-    fileName = "Pixel.ppm";
+    fileName = "Pixel";
     pixelArr = new int[][][]
             {{{0, 0, 0}, {153, 217, 234}, {153, 217, 234}, {127, 127, 127}},
                     {{153, 217, 234}, {237, 28, 36}, {205,85,207}, {153, 217, 234}},
@@ -61,7 +61,7 @@ public class ImageProcessingIntegrationTest {
    * */
   @Test
   public void testConstructorView2(){
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     assertNotNull("Failed", test);
   }
@@ -79,7 +79,7 @@ public class ImageProcessingIntegrationTest {
    * */
   @Test
   public void testLoad(){
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     ImageProcessingModel model = test.loadImage(filePath, fileName);
     assertArrayEquals(pixelArr, model.getImage());
@@ -92,7 +92,7 @@ public class ImageProcessingIntegrationTest {
    * */
   @Test
   public void testSave(){
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     test.saveImage(filePath, fileName);
     ImageProcessingModel model2 = test.loadImage(filePath, fileName);
@@ -107,7 +107,7 @@ public class ImageProcessingIntegrationTest {
   public void testStoreImage(){
     int[][][] img = {{{0, 0, 0}}};
     ImageProcessingModel model = new PPMProcessingModel(img, 255);
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);
     assertArrayEquals(model.getImage(), test.getModel("dot.ppm").getImage());
@@ -121,7 +121,7 @@ public class ImageProcessingIntegrationTest {
   public void testChangeName(){
     int[][][] img = {{{0, 0, 0}}};
     ImageProcessingModel model = new PPMProcessingModel(img, 255);
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);
     test.changeName("dot.ppm", "name.ppm");
@@ -135,19 +135,53 @@ public class ImageProcessingIntegrationTest {
    * */
   @Test
   public void testAllCommands(){
-    
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load " + filePath + " " + fileName
+            + "red-component " + fileName + " " + fileName + "_red"
+            + "save res/" + fileName + "_red.ppm" + fileName + "_red"
+            + "green-component " + fileName + " " + fileName + "_green"
+            + "save res/" + fileName + "_green.ppm" + fileName + "_green"
+            + "blue-component " + fileName + " " + fileName + "_blue"
+            + "save res/" + fileName + "_blue.ppm" + fileName + "_blue"
+            + "value " + fileName + " " + fileName + "_value"
+            + "save res/" + fileName + "_value.ppm" + fileName + "_value"
+            + "intensity " + fileName + " " + fileName + "_intensity"
+            + "save res/" + fileName + "_intensity.ppm" + fileName + "_intensity"
+            + "luma " + fileName + " " + fileName + "_luma"
+            + "save res/" + fileName + "_luma.ppm" + fileName + "_luma"
+            + "horizontal-flip " + fileName + " " + fileName + "_horizontal_flip"
+            + "save res/" + fileName + "_horizontal_flip.ppm" + fileName + "_horizontal_flip"
+            + "vertical-flip " + fileName + " " + fileName + "_vertical_flip"
+            + "save res/" + fileName + "_vertical_flip.ppm" + fileName + "_vertical_flip"
+            + "brighten 10 " + fileName + " " + fileName + "_brighten"
+            + "save res/" + fileName + "_brighten.ppm" + fileName + "_brighten"
+            + "brighten -10 " + fileName + " " + fileName + "_darken"
+            + "save res/" + fileName + "_darken.ppm" + fileName + "_darken");
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    assertNotNull(map.get(fileName + "_red"));
+    assertNotNull(map.get(fileName + "_green"));
+    assertNotNull(map.get(fileName + "_blue"));
+    assertNotNull(map.get(fileName + "_value"));
+    assertNotNull(map.get(fileName + "_intensity"));
+    assertNotNull(map.get(fileName + "_luma"));
+    assertNotNull(map.get(fileName + "_horizontal_flip"));
+    assertNotNull(map.get(fileName + "_vertical_flip"));
+    assertNotNull(map.get(fileName + "_brighten"));
+    assertNotNull(map.get(fileName + "_darken"));
   }
 
-
   /**
-   * Tests if loading, using multiple correct commands works, and saving works.
+   * Tests if loading, using multiple correct commands works.
    * */
   @Test
   public void testCommands(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "red-component"
-            + " horizontal-flip brighten 10 save res/PixelEdit.ppm PixelEdit.ppm q");
-    Map<String, ImageProcessingModel> map = new HashMap<>;
+    StringReader in = new StringReader("load " + filePath + " " + fileName + "red-component "
+            + fileName + " edit horizontal-flip edit edit brighten 10 edit edit q");
+    Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
@@ -155,8 +189,7 @@ public class ImageProcessingIntegrationTest {
             {{163, 163, 163}, {215, 215, 215}, {247,247,247}, {163, 163, 163}},
             {{163, 163, 163}, {255,255,255}, {22,22,22}, {163, 163, 163}},
             {{255,255,255}, {163, 163, 163}, {163, 163, 163}, {10,10,10}}},
-            view.getModel("PixelEdit.ppm").getImage());
-    //TODO: Fix once you know how the controller saves things.
+            view.getModel("edit").getImage());
   }
 
   /**
@@ -165,14 +198,12 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testIncorrectCommand(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "fakeCommand"
+    StringReader in = new StringReader("load " + filePath + " " + fileName + "fakeCommand "
             + "q");
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
     test.start();
-    ImageProcessingView view =
-            new PPMProcessingView("res/PixelEdit.ppm", "PixelEdit.ppm");
-    ImageProcessingView view2 = new PPMProcessingView(this.filePath, this.fileName);
-    assertArrayEquals(view.loadImage().getImage(), view2.loadImage().getImage());
   }
 
   /**
