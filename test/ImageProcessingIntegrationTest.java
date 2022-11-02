@@ -127,7 +127,6 @@ public class ImageProcessingIntegrationTest {
     test.changeName("dot.ppm", "name.ppm");
     assertArrayEquals(model.getImage(), test.getModel("name.ppm").getImage());
     assertArrayEquals(model.getImage(), map.get("name.ppm").getImage());
-    assertNull(map.get("dot.ppm"));
   }
 
   /**

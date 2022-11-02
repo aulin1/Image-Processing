@@ -38,23 +38,8 @@ public class MockView implements ImageProcessingView {
   }
 
   @Override
-  public void changePath(String imagePath) throws IllegalArgumentException {
-
-  }
-
-  @Override
   public void changeName(String oldName, String newName) throws IllegalArgumentException {
     this.receivedInput = this.receivedInput.append(oldName).append(" ").append(newName);
-  }
-
-  @Override
-  public String getName() {
-    return null;
-  }
-
-  @Override
-  public String getPath() {
-    return null;
   }
 
   @Override
