@@ -111,7 +111,6 @@
       <list>
         <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testCommands" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testAllCommands" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCorrectCommand" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand" />
