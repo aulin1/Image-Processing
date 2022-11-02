@@ -52,15 +52,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   public ImageProcessingControllerImpl(Appendable output, Readable input, ImageProcessingView view)
           throws IllegalArgumentException {
     if (input == null || output == null) {
-      throw new IllegalArgumentException("The fields to the controller constructor cannot be " +
-              "null" + ". ");
-    } else {
-      this.output = output;
-      this.input = input;
-      this.commandMap = new HashMap<>();
-      this.view = view;
-      initiateComms();
+      throw new IllegalArgumentException("The fields to the controller"
+              + " constructor cannot be null.");
     }
+    this.output = output;
+    this.input = input;
+    this.commandMap = new HashMap<>();
+    this.view = view;
+    initiateComms();
   }
 
   @Override
@@ -79,51 +78,56 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           printInstructions();
           break;
         default:
-          Function<Scanner, ImageProcessingCommand> commandFunc;
-          commandFunc = commandMap.getOrDefault(s, null);
-          // try to find the command
-          if (commandFunc == null) {
-            writeMessage("Command is not supported." + System.lineSeparator());
-          } else {
-            if (s.equalsIgnoreCase("load") || s.equalsIgnoreCase("save")
-                    || s.equalsIgnoreCase("change-name")) {
-              ImageProcessingCommand command = commandFunc.apply(sc);
-              try {
-                command.execute(view);
-                writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-                break;
-              } catch (Exception e) {
-                writeMessage(e.getMessage() + System.lineSeparator());
-                break;
-              }
-            } else {
-              String imageName = sc.next();
-              String destImageName = sc.next();
-              // try to find the file based on the file name
-              ImageProcessingModel model = view.getModel(imageName);
-              if (model == null) {
-                writeMessage("The image has yet loaded to the program. Please load a valid image "
-                        + "before processing it." + System.lineSeparator());
-              } else {
-                ImageProcessingCommand command = commandFunc.apply(sc);
-                ImageProcessingModel processedModel = command.execute(model);
-                // saves new model with designated name
-                view.storeImage(destImageName, processedModel);
-                writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-              }
-            }
-          }
+          readComm(s.toLowerCase(), sc);
       }
     }
-
     // program has not quit but ran out of inputs
     throw new IllegalStateException("The program ran out of arguments even though the program "
-              + "has not quit. ");
+            + "has not quit. ");
+  }
+
+  /**
+   * A helper function which deals with command reading.
+   *
+   * @param s the string that represents the command.
+   * @param sc the scanner which would read additional parameters as necessary.
+   * */
+  private void readComm(String s, Scanner sc){
+    Function<Scanner, ImageProcessingCommand> commandFunc;
+    commandFunc = commandMap.getOrDefault(s, null);
+    if (commandFunc == null) {
+      writeMessage("Command is not supported." + System.lineSeparator());
+    } else {
+      if (s.equals("load") || s.equals("save") || s.equals("change-name")) {
+        ImageProcessingCommand command = commandFunc.apply(sc);
+        try {
+          command.execute(view);
+          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+        } catch (Exception e) {
+          writeMessage(e.getMessage() + System.lineSeparator());
+        }
+      } else {
+        String imageName = sc.next();
+        String destImageName = sc.next();
+        // try to find the file based on the file name
+        ImageProcessingModel model = view.getModel(imageName);
+        if (model == null) {
+          writeMessage("The image has yet loaded to the program. Please load a valid image "
+                  + "before processing it." + System.lineSeparator());
+        } else {
+          ImageProcessingCommand command = commandFunc.apply(sc);
+          ImageProcessingModel processedModel = command.execute(model);
+          // saves new model with designated name
+          view.storeImage(destImageName, processedModel);
+          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+        }
+      }
+    }
   }
 
   /**
    * A helper function which initiates the commands into the map.
-   * */
+   */
   private void initiateComms() {
     this.commandMap.put("red-component", s -> new RedCompCommand());
     this.commandMap.put("green-component", s -> new GreenCompCommand());
@@ -144,7 +148,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    *
    * @param message the message to be written.
    * @throws IllegalStateException if the message cannot be appended.
-   * */
+   */
   private void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);
@@ -157,7 +161,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * Writes the welcome message for the program.
    *
    * @throws IllegalStateException if the message cannot be printed.
-   * */
+   */
   private void welcomeMessage() throws IllegalStateException {
     writeMessage("Welcome to Image Processing Program!" + System.lineSeparator());
     printInstructions();
@@ -167,7 +171,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * Prints the instructions for the program.
    *
    * @throws IllegalStateException if the messages cannot be printed.
-   * */
+   */
   private void printInstructions() throws IllegalStateException {
     writeMessage("Supported commands in this program:" + System.lineSeparator());
     writeMessage("load image-path image-name: Load the image with the given image path and " +
@@ -179,7 +183,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             + System.lineSeparator());
     writeMessage("All commands below will be referred by the designated destination name " +
             "after the command by the program:" + System.lineSeparator());
-    // grey scale comms
+    // grey scale commands
     writeMessage("Greyscale commands:" + System.lineSeparator());
     writeMessage("red-component image-name dest-image-name: Create a greyscale image with the " +
             "red" + " component of the image with the given name" + System.lineSeparator());
@@ -193,7 +197,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             "average of the three components for each pixel" + System.lineSeparator());
     writeMessage("luma image-name dest-image-name: Create a greyscale image with the weighted " +
             "sum 0.2126r + 0.7152g + 0.0722b" + System.lineSeparator() + System.lineSeparator());
-    // flip image comms
+    // flip image commands
     writeMessage("Flip image commands:" + System.lineSeparator());
     writeMessage("horizontal-flip image-name dest-image-name: Flip an image horizontally to " +
             "create a new image" + System.lineSeparator());
