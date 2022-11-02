@@ -153,9 +153,9 @@ public class ImageProcessingIntegrationTest {
             + " save res/" + fileName + "_horizontal_flip.ppm " + fileName + "_horizontal_flip"
             + " vertical-flip " + fileName + " " + fileName + "_vertical_flip"
             + " save res/" + fileName + "_vertical_flip.ppm " + fileName + "_vertical_flip"
-            + " brighten " + fileName + " " + fileName + "_brighten 10"
+            + " brighten " + fileName + " " + fileName + "_brighten 100"
             + " save res/" + fileName + "_brighten.ppm " + fileName + "_brighten"
-            + " brighten " + fileName + " " + fileName + "_darken -10"
+            + " brighten " + fileName + " " + fileName + "_darken -100"
             + " save res/" + fileName + "_darken.ppm " + fileName + "_darken q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);

@@ -74,8 +74,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionNotP3PPM() {
     try {
-      Path path = Paths.get("PixelP6.ppm");
-      ImageProcessingModel model = ImageUtil.readPPM(path.toString());
+      ImageProcessingModel model = ImageUtil.readPPM("res/PixelP6.ppm");
     } catch (IllegalArgumentException e) {
       assertEquals("Invalid PPM file: plain RAW file should begin with P3", e.getMessage());
     }
