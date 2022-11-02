@@ -9,12 +9,15 @@ import java.util.function.Function;
 
 import command.BlueCompCommand;
 import command.BrightnessCommand;
+import command.ChangeNameCommand;
 import command.GreenCompCommand;
 import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
 import command.IntensityCommand;
+import command.LoadCommand;
 import command.LumaCommand;
 import command.RedCompCommand;
+import command.SaveCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
@@ -68,38 +71,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     while (sc.hasNext()) {
       String s = sc.next();
 
-      switch (s) {
-        case "load":
-          try {
-            String filePath = sc.next();
-            String fileName = sc.next();
-            view.loadImage(filePath, fileName);
-            writeMessage("Load image " + fileName + " successful!" + System.lineSeparator());
-          } catch (IllegalArgumentException e) {
-            writeMessage("File not found at the indicated location!" + System.lineSeparator());
-          }
-          break;
-        case "save":
-          try {
-            String filePath = sc.next();
-            String fileName = sc.next();
-            view.saveImage(filePath, fileName);
-            writeMessage("Save image " + fileName + " successful!" + System.lineSeparator());
-          } catch (Exception e) {
-            writeMessage("Error saving the image" + System.lineSeparator());
-          }
-          break;
-        case "change-name":
-          try {
-            String oldName = sc.next();
-            String newName = sc.next();
-            view.saveImage(oldName, newName);
-            writeMessage("Name changed from " + oldName + " " + newName + " successful!"
-                    + System.lineSeparator());
-          } catch (Exception e) {
-            writeMessage("Error changing the name of the image" + System.lineSeparator());
-          }
-          break;
+      switch (s.toLowerCase()) { // make the controller case-insensitive
         case "q":
           writeMessage("Thank you for using the program!");
           return;
@@ -113,19 +85,32 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           if (commandFunc == null) {
             writeMessage("Command is not supported." + System.lineSeparator());
           } else {
-            String imageName = sc.next();
-            String destImageName = sc.next();
-            // try to find the file based on the file name
-            ImageProcessingModel model = view.getModel(imageName);
-            if (model == null) {
-              writeMessage("The image has yet loaded to the program. Please load a valid image "
-                      + "before processing it." + System.lineSeparator());
-            } else {
+            if (s.equalsIgnoreCase("load") || s.equalsIgnoreCase("save")
+                    || s.equalsIgnoreCase("change-name")) {
               ImageProcessingCommand command = commandFunc.apply(sc);
-              ImageProcessingModel processedModel = command.execute(model);
-              // saves new model with designated name
-              view.storeImage(destImageName, processedModel);
-              writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+              try {
+                command.execute(view);
+                writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+                break;
+              } catch (Exception e) {
+                writeMessage(e.getMessage() + System.lineSeparator());
+                break;
+              }
+            } else {
+              String imageName = sc.next();
+              String destImageName = sc.next();
+              // try to find the file based on the file name
+              ImageProcessingModel model = view.getModel(imageName);
+              if (model == null) {
+                writeMessage("The image has yet loaded to the program. Please load a valid image "
+                        + "before processing it." + System.lineSeparator());
+              } else {
+                ImageProcessingCommand command = commandFunc.apply(sc);
+                ImageProcessingModel processedModel = command.execute(model);
+                // saves new model with designated name
+                view.storeImage(destImageName, processedModel);
+                writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+              }
             }
           }
       }
@@ -149,6 +134,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
     this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
+    this.commandMap.put("save", s -> new SaveCommand(s.next(), s.next()));
+    this.commandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
+    this.commandMap.put("change-name", s -> new ChangeNameCommand(s.next(), s.next()));
   }
 
   /**
