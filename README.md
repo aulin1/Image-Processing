@@ -58,6 +58,9 @@ class.</li>
 </ol></li>
 </ol>
 
+###How to run the program
+Run the main function, and type a command from the accepted script of commands into the console. 
+
 ### Accepted script of commands
 <li><strong>load image-path image-name</strong>: Load an image from the provided image path and 
 store it in the program under the provided name.
