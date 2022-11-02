@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
-      <change afterPath="$PROJECT_DIR$/src/command/ChangeNameCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/LoadCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/command/SaveCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Image-Processing/controller/ImageProcessingControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Image-Processing/controller/ImageProcessingControllerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/BlueCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/BlueCompCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/BrightnessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/BrightnessCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/GreenCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/GreenCompCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/HorizontalFlipCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/HorizontalFlipCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/ImageProcessingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/ImageProcessingCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/IntensityCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/IntensityCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/LumaCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/LumaCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/RedCompCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/RedCompCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/ValueCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/ValueCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/VerticalFlipCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/VerticalFlipCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +169,7 @@
       <workItem from="1667334047724" duration="113000" />
       <workItem from="1667355555322" duration="8248000" />
       <workItem from="1667415541741" duration="1421000" />
+      <workItem from="1667423576681" duration="38000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
