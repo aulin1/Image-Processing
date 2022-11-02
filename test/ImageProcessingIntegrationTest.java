@@ -3,6 +3,8 @@ import org.junit.Test;
 
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.ImageProcessingController;
 import controller.ImageProcessingControllerImpl;
@@ -54,43 +56,22 @@ public class ImageProcessingIntegrationTest {
     assertNotNull("Failed", test);
   }
 
-
-
   /**
-   * Tests if the constructor for the view correctly throws an IllegalArgumentException if
-   * the path is null.
+   * Tests if the other constructor for the view works.
    * */
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testConstructorView2(){
-    ImageProcessingView test = new PPMProcessingView(null, this.fileName);
+    Map<String, ImageProcessingModel> map = new HashMap<>;
+    ImageProcessingView test = new PPMProcessingView(map);
+    assertNotNull("Failed", test);
   }
+
   /**
-   * Tests if the constructor for the view correctly throws an IllegalArgumentException if the
-   * name is null.
+   * Tests if the constructor for the view correctly throws an IllegalArgumentException.
    * */
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorView3(){
-    ImageProcessingView test = new PPMProcessingView(this.filePath, null);
-  }
-
-  /**
-   * Tests if changing the name works.
-   * */
-  @Test
-  public void testViewChangeName(){
-    ImageProcessingView test = new PPMProcessingView(this.filePath, this.fileName);
-    test.changeName("newName.ppm");
-    assertEquals("newName.ppm", test.getName());
-  }
-
-  /**
-   * Tests if changing the path works.
-   * */
-  @Test
-  public void testViewChangePath(){
-    ImageProcessingView test = new PPMProcessingView(this.filePath, this.fileName);
-    test.changePath("res/newName.ppm");
-    assertEquals("res/newName.ppm", test.getPath());
+    ImageProcessingView test = new PPMProcessingView(null);
   }
 
   /**
@@ -98,27 +79,42 @@ public class ImageProcessingIntegrationTest {
    * */
   @Test
   public void testLoad(){
-    ImageProcessingView test = new PPMProcessingView(this.filePath, this.fileName);
-    ImageProcessingModel model = test.loadImage();
+    Map<String, ImageProcessingModel> map = new HashMap<>;
+    ImageProcessingView test = new PPMProcessingView(map);
+    ImageProcessingModel model = test.loadImage(filePath, fileName);
     assertArrayEquals(model.getImage(), pixelArr);
+    assertArrayEquals(model.getImage(), test.getModel(fileName).getImage());
   }
 
   /**
    * Tests if saving an image works with the view.
-   * */
+   *
   @Test
   public void testSave(){
     int[][][] img = {{{0, 0, 0}}};
     ImageProcessingModel model = new PPMProcessingModel(img, 255,"dot.ppm");
-    ImageProcessingView test = new PPMProcessingView("res/dot.ppm", "dot.ppm");
-    test.saveImage(model);
+    Map<String, ImageProcessingModel> map = new HashMap<>;
+    ImageProcessingView test = new PPMProcessingView(map);
+    test.saveImage("dot.ppm", model);
     ImageProcessingModel model2 = test.loadImage();
     assertArrayEquals(model.getImage(),model2.getImage());
   }
 
   /**
+   * Tests if storing an image works.
+   *
+  @Test
+  public void testStoreImage(){
+    int[][][] img = {}
+  }
+
+  /**
+   * Tests if changing a name works.
+   *
+
+  /**
    * Tests if loading, using multiple correct commands works, and saving works.
-   * */
+   *
   @Test
   public void testCommands(){
     StringBuffer out = new StringBuffer();
@@ -137,7 +133,7 @@ public class ImageProcessingIntegrationTest {
 
   /**
    * Tests if using an incorrect command does what is expected.
-   * */
+   *
   @Test
   public void testIncorrectCommand(){
     StringBuffer out = new StringBuffer();
@@ -153,7 +149,7 @@ public class ImageProcessingIntegrationTest {
 
   /**
    * Tests if using an incorrect, then correct command works.
-   * */
+   *
   @Test
   public void testIncorrectCorrectCommand(){
     StringBuffer out = new StringBuffer();
@@ -173,7 +169,7 @@ public class ImageProcessingIntegrationTest {
 
   /**
    * Tests if it throws an IllegalStateException if not quit.
-   * */
+   *
   @Test(expected = IllegalStateException.class)
   public void testNoQuit(){
     StringBuffer out = new StringBuffer();
@@ -185,7 +181,7 @@ public class ImageProcessingIntegrationTest {
 
   /**
    * Tests if loading in multiple images works.
-   * */
+   *
   @Test
   public void testLoadMultiple(){
     StringBuffer out = new StringBuffer();
@@ -194,5 +190,5 @@ public class ImageProcessingIntegrationTest {
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in);
     test.start();
     //add asserts once you know what's happening with controller
-  }
+  }*/
 }
