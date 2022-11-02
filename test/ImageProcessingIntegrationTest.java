@@ -153,9 +153,9 @@ public class ImageProcessingIntegrationTest {
             + " save res/" + fileName + "_horizontal_flip.ppm" + fileName + "_horizontal_flip"
             + " vertical-flip " + fileName + " " + fileName + "_vertical_flip"
             + " save res/" + fileName + "_vertical_flip.ppm" + fileName + "_vertical_flip"
-            + " brighten 10 " + fileName + " " + fileName + "_brighten"
+            + " brighten " + fileName + " " + fileName + "_brighten 10"
             + " save res/" + fileName + "_brighten.ppm" + fileName + "_brighten"
-            + " brighten -10 " + fileName + " " + fileName + "_darken"
+            + " brighten " + fileName + " " + fileName + "_darken -10"
             + " save res/" + fileName + "_darken.ppm" + fileName + "_darken");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
@@ -180,7 +180,7 @@ public class ImageProcessingIntegrationTest {
   public void testCommands(){
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName + "red-component "
-            + fileName + " edit horizontal-flip edit edit brighten 10 edit edit q");
+            + fileName + " edit horizontal-flip edit edit brighten edit edit 10 q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
@@ -215,7 +215,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testIncorrectCorrectCommand(){
     StringBuffer out = new StringBuffer();
-    StringReader in = new StringReader("load " + filePath + " " + fileName + "fakeCommand"
+    StringReader in = new StringReader("load " + filePath + " " + fileName + " fakeCommand "
             + "red-component " + fileName + " edit " + "q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
