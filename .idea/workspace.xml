@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
-      <change afterPath="$PROJECT_DIR$/res/Pixel_blue.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_brighten.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_darken.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_green.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_horizontal_flip.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_intensity.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_luma.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_red.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_value.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Pixel_vertical_flip.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MockViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +145,7 @@
       <workItem from="1667331068586" duration="2075000" />
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
-      <workItem from="1667355555322" duration="2213000" />
+      <workItem from="1667355555322" duration="2259000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
