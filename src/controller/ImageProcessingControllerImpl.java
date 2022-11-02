@@ -68,12 +68,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     while (sc.hasNext()) {
       String s = sc.next();
 
-      switch (s) {//TODO: try and simplify load, save and store
+      switch (s) {
         case "load":
           try {
             String filePath = sc.next();
             String fileName = sc.next();
-            view.loadImage(filePath, fileName); //TODO: add the function to change name of file
+            view.loadImage(filePath, fileName);
             writeMessage("Load image " + fileName + " successful!" + System.lineSeparator());
           } catch (IllegalArgumentException e) {
             writeMessage("File not found at the indicated location!" + System.lineSeparator());
@@ -83,7 +83,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           try {
             String filePath = sc.next();
             String fileName = sc.next();
-            view.saveImage(filePath, fileName); //TODO: fix save in view
+            view.saveImage(filePath, fileName);
             writeMessage("Save image " + fileName + " successful!" + System.lineSeparator());
           } catch (Exception e) {
             writeMessage("Error saving the image" + System.lineSeparator());
@@ -109,23 +109,23 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         default:
           Function<Scanner, ImageProcessingCommand> commandFunc;
           commandFunc = commandMap.getOrDefault(s, null);
-          String imageName = sc.next();
-          String destImageName = sc.next();
           // try to find the command
           if (commandFunc == null) {
-            writeMessage("Command is not supported. ");
+            writeMessage("Command is not supported." + System.lineSeparator());
           } else {
+            String imageName = sc.next();
+            String destImageName = sc.next();
             // try to find the file based on the file name
             ImageProcessingModel model = view.getModel(imageName);
             if (model == null) {
               writeMessage("The image has yet loaded to the program. Please load a valid image "
-                      + "before processing it. ");
+                      + "before processing it." + System.lineSeparator());
             } else {
               ImageProcessingCommand command = commandFunc.apply(sc);
               ImageProcessingModel processedModel = command.execute(model);
               // saves new model with designated name
               view.storeImage(destImageName, processedModel);
-              writeMessage("Command " + s + " successfully processed!");
+              writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
             }
           }
       }
@@ -164,7 +164,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     printInstructions();
   }
 
-  private void printInstructions() throws IllegalStateException { //TODO: update instructions
+  private void printInstructions() throws IllegalStateException {
     writeMessage("Supported commands in this program:" + System.lineSeparator());
     writeMessage("load image-path image-name: Load the image with the given image path and " +
             "refers to it with the given name" + System.lineSeparator());

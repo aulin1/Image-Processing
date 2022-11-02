@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/MockModelTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Pixel.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/Pixel.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/img.ppm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,55 +64,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest">
-    <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="METHOD_NAME" value="controllerPrintsInstructions" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="METHOD_NAME" value="controllerThrowsExceptionFailAppendable" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="METHOD_NAME" value="controllerThrowsExceptionFailReadable" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testCommands">
     <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
@@ -119,11 +74,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingIntegrationTest.testSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingIntegrationTest.testAllCommands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="METHOD_NAME" value="testSave" />
+      <option name="METHOD_NAME" value="testAllCommands" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingIntegrationTest.testCommands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testCommands" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingIntegrationTest.testIncorrectCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testIncorrectCommand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingIntegrationTest.testIncorrectCorrectCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="METHOD_NAME" value="testIncorrectCorrectCommand" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,11 +116,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testCommands" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCommand" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testIncorrectCorrectCommand" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testSave" />
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" />
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" />
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testAllCommands" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +149,7 @@
       <workItem from="1667331068586" duration="2075000" />
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
-      <workItem from="1667355555322" duration="313000" />
+      <workItem from="1667355555322" duration="1420000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
@@ -207,6 +192,22 @@
     <MESSAGE value="Change the view to greatly manage the save and load of the program and accordingly for the controller&#10;blocked out the intergration test since i havent fix the new changes to view in there yet" />
     <MESSAGE value="uncommented the integration test ;v; sowwieee" />
     <option name="LAST_COMMIT_MESSAGE" value="uncommented the integration test ;v; sowwieee" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java</url>
+          <line>162</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
