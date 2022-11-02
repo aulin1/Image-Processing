@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.CharBuffer;
 
 /**
- * This class represents a readable that always fail; use for testing the controller.
+ * This class represents a readable that always fails; use for testing the controller.
  */
 public class FailReadable implements Readable {
   @Override

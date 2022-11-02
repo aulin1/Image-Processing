@@ -58,6 +58,9 @@ class.</li>
 </ol></li>
 </ol>
 
+### How to run the program
+Run the main function, and type a command from the accepted script of commands into the console. 
+
 ### Accepted script of commands
 <li><strong>load image-path image-name</strong>: Load an image from the provided image path and 
 store it in the program under the provided name.
@@ -97,8 +100,8 @@ name</li></ul>
 
 ### Image citation
 
-The image img.ppm is the work of Audrey Lin, and she has authorized its usage in this
-assignment. It is an original image converted to a PPM image format.
+The image dot.ppm is the work of Audrey Lin, and she has authorized its usage in this
+assignment. It is an original image created in the PPM image format.
 
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
 in this assignment. They are original images converted to PPM image format.

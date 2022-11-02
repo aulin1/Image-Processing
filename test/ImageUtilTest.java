@@ -41,9 +41,9 @@ public class ImageUtilTest {
     StringBuilder imageRead = new StringBuilder();
     for (int i = 0; i < pixelModel.getHeight(); i++) {
       for (int j = 0; j < pixelModel.getWidth(); j++) {
-        imageRead.append(image[j][i][0]).append("\n"); // red value
-        imageRead.append(image[j][i][1]).append("\n"); // green value
-        imageRead.append(image[j][i][2]).append("\n"); // blue value
+        imageRead.append(image[i][j][0]).append("\n"); // red value
+        imageRead.append(image[i][j][1]).append("\n"); // green value
+        imageRead.append(image[i][j][2]).append("\n"); // blue value
       }
     }
     assertEquals(pixelImg, imageRead.toString());
@@ -74,8 +74,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionNotP3PPM() {
     try {
-      Path path = Paths.get("PixelP6.ppm");
-      ImageProcessingModel model = ImageUtil.readPPM(path.toString());
+      ImageProcessingModel model = ImageUtil.readPPM("res/PixelP6.ppm");
     } catch (IllegalArgumentException e) {
       assertEquals("Invalid PPM file: plain RAW file should begin with P3", e.getMessage());
     }

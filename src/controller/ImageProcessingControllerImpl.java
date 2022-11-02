@@ -136,7 +136,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               + "has not quit. ");
   }
 
-  // initiates the commands into the command map
+  /**
+   * A helper function which initiates the commands into the map.
+   * */
   private void initiateComms() {
     this.commandMap.put("red-component", s -> new RedCompCommand());
     this.commandMap.put("green-component", s -> new GreenCompCommand());
@@ -149,7 +151,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
   }
 
-  // writes the message to the designated output
+  /**
+   * A helper function which writes a message to the appendable output.
+   *
+   * @param message the message to be written.
+   * @throws IllegalStateException if the message cannot be appended.
+   * */
   private void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);
@@ -158,11 +165,21 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
   }
 
+  /**
+   * Writes the welcome message for the program.
+   *
+   * @throws IllegalStateException if the message cannot be printed.
+   * */
   private void welcomeMessage() throws IllegalStateException {
     writeMessage("Welcome to Image Processing Program!" + System.lineSeparator());
     printInstructions();
   }
 
+  /**
+   * Prints the instructions for the program.
+   *
+   * @throws IllegalStateException if the messages cannot be printed.
+   * */
   private void printInstructions() throws IllegalStateException {
     writeMessage("Supported commands in this program:" + System.lineSeparator());
     writeMessage("load image-path image-name: Load the image with the given image path and " +

@@ -38,7 +38,7 @@ public class ImageProcessingControllerImplTest {
           ".7152g + 0.0722b\n" + "\n" + "Flip image commands:\n" + "horizontal-flip image-name " +
           "dest-image-name: Flip an image horizontally to create a new image\n" + "vertical-flip " +
           "image-name dest-image-name: Flip an image vertically to create a new image\n" + "\n"
-          + "Brightness command:\n" + "brighten increment image-name dest-image-name: brighten " +
+          + "Brightness command:\n" + "brighten image-name dest-image-name increment: brighten " +
           "the image by the given increment to create a new image. Positive value will brighten " +
           "the image and negative value will darken the image\n" + "\n" + "Input m to see the " +
           "supported commands. \n" + "Input q to quit the program. \n";
@@ -160,31 +160,69 @@ public class ImageProcessingControllerImplTest {
   /**
    * Check if the controller throws an exception if the appendable fails when writing message.
    */
-  @Test
+  @Test(expected = IllegalStateException.class)
   public void controllerThrowsExceptionFailAppendable() {
-    try {
       ImageProcessingController controller =
               new ImageProcessingControllerImpl(new FailAppendable(), new StringReader("bool"),
                       new PPMProcessingView());
       controller.start();
-    } catch (IllegalStateException e) {
-      assertEquals("Cannot append message.", e.getMessage());
-    }
   }
 
   /**
    * Check if the controller throws an exception if the readable fails when receiving inputs.
    */
-  @Test
+  @Test(expected = IllegalStateException.class)
   public void controllerThrowsExceptionFailReadable() {
-    try {
       ImageProcessingController controller =
               new ImageProcessingControllerImpl(new StringBuilder(), new FailReadable(),
                       new PPMProcessingView());
       controller.start();
-    } catch (IllegalStateException e) {
-      assertEquals("Readable fails or the program ran out of inputs before " +
-              "quitting.", e.getMessage());
-    }
+  }
+
+  /**
+   * Check if the controller prints the correct message if a command doesn't exist.
+   * */
+  @Test
+  public void controllerIncorrectCommand(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load res/Pixel.ppm Pixel f q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("Command is not supported.", splitString[splitString.length - 2]);
+  }
+
+  /**
+   * Check if the controller prints the correct message if a command does exist.
+   * */
+  @Test
+  public void controllerCorrectCommand(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load res/Pixel.ppm Pixel brighten Pixel brightenImage"
+            + " 100 q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("Command brighten successfully processed!",
+            splitString[splitString.length - 2]);
+  }
+
+  /**
+   * Check if the controller prints the correct message if the image hasn't been loaded into
+   * the program.
+   * */
+  @Test
+  public void controllerNotLoad(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("brighten Pixel brightenImage"
+            + "100 q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("The image has yet loaded to the program. Please load a valid image "
+            + "before processing it.", splitString[splitString.length - 2]);
   }
 }
