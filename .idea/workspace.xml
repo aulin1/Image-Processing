@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Pixel_brighten.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/Pixel_brighten.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Pixel_darken.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/Pixel_darken.ppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/FailReadable.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/FailReadable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MockViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,14 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageUtilTest.readPPMWorks">
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
+      <module name="Image-Processing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImageProcessingControllerImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <extension name="coverage">
@@ -80,18 +87,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
-      <option name="METHOD_NAME" value="controllerPrintsInstructions" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,22 +116,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MockViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MockViewTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.ImageUtilTest.readPPMWorks" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
         <item itemvalue="JUnit.ImageUtilTest.readPPMThrowsExceptionNotP3PPM" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest" />
-        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
-        <item itemvalue="JUnit.MockViewTest" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +151,7 @@
       <workItem from="1667331068586" duration="2075000" />
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
-      <workItem from="1667355555322" duration="5231000" />
+      <workItem from="1667355555322" duration="5794000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
