@@ -63,7 +63,7 @@ public class ImageUtil {
       }
     }
 
-    ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue, filename);
+    ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue);
     return model;
   }
 }

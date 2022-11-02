@@ -106,7 +106,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testStoreImage(){
     int[][][] img = {{{0, 0, 0}}};
-    ImageProcessingModel model = new PPMProcessingModel(img, 255,"dot.ppm");
+    ImageProcessingModel model = new PPMProcessingModel(img, 255);
     Map<String, ImageProcessingModel> map = new HashMap<>;
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);
@@ -120,7 +120,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testChangeName(){
     int[][][] img = {{{0, 0, 0}}};
-    ImageProcessingModel model = new PPMProcessingModel(img, 255,"dot.ppm");
+    ImageProcessingModel model = new PPMProcessingModel(img, 255);
     Map<String, ImageProcessingModel> map = new HashMap<>;
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);

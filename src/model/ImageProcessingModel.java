@@ -90,19 +90,4 @@ public interface ImageProcessingModel {
    * @returns a 3D integer array.
    * */
   int[][][] getImage();
-
-  /**
-   * Returns the current name of the image.
-   *
-   * @return the current name.
-   * */
-  String getName();
-
-  /**
-   * Changes the name of the image.
-   *
-   * @param name the new name of the image.
-   * @throws IllegalArgumentException if the name is null.
-   * */
-  void changeName(String name) throws IllegalArgumentException;
 }

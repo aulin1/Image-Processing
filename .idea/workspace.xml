@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +128,7 @@
       <workItem from="1667076338211" duration="36000" />
       <workItem from="1667094908365" duration="2498000" />
       <workItem from="1667097774470" duration="28000" />
-      <workItem from="1667350837643" duration="58000" />
+      <workItem from="1667350837643" duration="353000" />
     </task>
     <servers />
   </component>
