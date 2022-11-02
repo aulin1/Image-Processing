@@ -60,13 +60,7 @@ public class MockModel implements ImageProcessingModel {
   }
 
   @Override
-  public ImageProcessingModel brighten(int factor) throws IllegalArgumentException {
-    log.append("factor: ").append(factor).append("\n");
-    return null;
-  }
-
-  @Override
-  public ImageProcessingModel darken(int factor) throws IllegalArgumentException {
+  public ImageProcessingModel changeBrightness(int factor) throws IllegalArgumentException {
     log.append("factor: ").append(factor).append("\n");
     return null;
   }

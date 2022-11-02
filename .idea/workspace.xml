@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Change the view to greatly manage the save and load of the program and accordingly for the controller&#10;blocked out the intergration test since i havent fix the new changes to view in there yet">
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
+      <change afterPath="$PROJECT_DIR$/src/view/MockView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/MockViewTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controller/FailAppendable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controller/FailReadable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/MockModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Image-Processing/model/ImageProcessingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Image-Processing/model/ImageProcessingModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Image-Processing/model/PPMProcessingModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Image-Processing/ImageProcessingModelTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/command/BrightnessCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/BrightnessCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -54,13 +68,15 @@
       <recent name="$PROJECT_DIR$/res" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
+      <recent name="model" />
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest">
+  <component name="RunManager" selected="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions">
     <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="Image-Processing" />
@@ -68,51 +84,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerPrintsFarewell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingIntegrationTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="METHOD_NAME" value="testConstructor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerPrintsFarewell" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingIntegrationTest.testLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingIntegrationTest" />
-      <option name="METHOD_NAME" value="testLoad" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerPrintsInstructions" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerPrintsWelcome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerPrintsWelcome" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageProcessingControllerImplTest.controllerThrowsExceptionAppendableNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Image-Processing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerThrowsExceptionAppendableNull" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testLoad" />
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testConstructor" />
-        <item itemvalue="JUnit.ImageProcessingModelTest" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsFarewell" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsWelcome" />
         <item itemvalue="Application.ImageProcessing" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionAppendableNull" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +184,14 @@
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
+      <created>1667341475834</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667341475834</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +212,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add field and argument maxValue to the constructor and fix them in the model tests" />
     <MESSAGE value="Change the view to greatly manage the save and load of the program and accordingly for the controller&#10;blocked out the intergration test since i havent fix the new changes to view in there yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change the view to greatly manage the save and load of the program and accordingly for the controller&#10;blocked out the intergration test since i havent fix the new changes to view in there yet" />
+    <MESSAGE value="uncommented the integration test ;v; sowwieee" />
+    <option name="LAST_COMMIT_MESSAGE" value="uncommented the integration test ;v; sowwieee" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -47,7 +47,7 @@ the methods that all image processing models should contain.
 
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
-<ol><li><strong>ImageProcessingControllerImplTest</strong>: Tests for ImageProcessingControllerImpl 
+<ol><li><strong>MockViewTest</strong>: Tests for ImageProcessingControllerImpl 
 class.</li>
 <li><strong>ImageProcessingModelTest</strong>: Tests for ImageProcessingModel class.</li>
 <li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>

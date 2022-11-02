@@ -1,9 +1,7 @@
 package controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -22,8 +20,6 @@ import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 import view.PPMProcessingView;
-
-import static controller.ImageUtil.readPPM;
 
 /**
  * This class represents the implementation of the Image Processing Controller.
@@ -72,7 +68,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     while (sc.hasNext()) {
       String s = sc.next();
 
-      switch (s) {
+      switch (s) {//TODO: try and simplify load, save and store
         case "load":
           try {
             String filePath = sc.next();
@@ -91,6 +87,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             writeMessage("Save image " + fileName + " successful!" + System.lineSeparator());
           } catch (Exception e) {
             writeMessage("Error saving the image" + System.lineSeparator());
+          }
+          break;
+        case "change-name":
+          try {
+            String oldName = sc.next();
+            String newName = sc.next();
+            view.saveImage(oldName, newName);
+            writeMessage("Name changed from " + oldName + " " + newName + " successful!"
+                    + System.lineSeparator());
+          } catch (Exception e) {
+            writeMessage("Error changing the name of the image" + System.lineSeparator());
           }
           break;
         case "q":
@@ -147,7 +154,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);
-
     } catch (IOException e) {
       throw new IllegalStateException(e.getMessage());
     }
@@ -158,10 +164,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     printInstructions();
   }
 
-  private void printInstructions() throws IllegalStateException {
+  private void printInstructions() throws IllegalStateException { //TODO: update instructions
     writeMessage("Supported commands in this program:" + System.lineSeparator());
+    writeMessage("load image-path image-name: Load the image with the given image path and " +
+            "refers to it with the given name" + System.lineSeparator());
     writeMessage("save image-path image-name: Save the image with the given name to the " +
-            "specified" + " path which includes the name of the file" + System.lineSeparator()
+            "specified" + " path which includes the name of the file" + System.lineSeparator());
+    writeMessage("change-name old-name new-name: change the name of a loaded image to the new " +
+            "provided name" + System.lineSeparator()
             + System.lineSeparator());
     writeMessage("All commands below will be referred by the designated destination name " +
             "after the command by the program:" + System.lineSeparator());
