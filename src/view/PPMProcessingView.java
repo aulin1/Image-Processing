@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.ImageProcessingModel;
+import model.PPMProcessingModel;
 
 import static controller.ImageUtil.readPPM;
 
@@ -23,11 +24,25 @@ public class PPMProcessingView implements ImageProcessingView{
     this.memory = new HashMap<>();
   }
 
+  /**
+   * A constructor for a PPMProcessingView that takes in a HashMap.
+   *
+   * @param map the hashmap for memory.
+   * @throws IllegalArgumentException if the map is null.
+   * */
+  public PPMProcessingView(Map<String, ImageProcessingModel> map){
+    if(map == null){
+      throw new IllegalArgumentException("Map cannot be null.");
+    }
+    this.memory = map;
+  }
+
   @Override
   public ImageProcessingModel loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {
     ImageProcessingModel model = readPPM(imagePath);
     model.changeName(imageName);
+    this.storeImage(imageName, model);
     return model;
   }
 
@@ -67,13 +82,6 @@ public class PPMProcessingView implements ImageProcessingView{
   }
 
   @Override
-  public void changePath(String imagePath) throws IllegalArgumentException {
-    if(imagePath == null){
-      throw new IllegalArgumentException("Path cannot be null.");
-    }
-  }
-
-  @Override
   public void changeName(String oldName, String newName) throws IllegalArgumentException {
     if(oldName == null || newName == null) {
       throw new IllegalArgumentException("Name cannot be null.");
@@ -87,15 +95,6 @@ public class PPMProcessingView implements ImageProcessingView{
     }
   }
 
-  @Override
-  public String getName() {
-    return "bool";
-  }
-
-  @Override
-  public String getPath(){
-    return "this.imagePath";
-  }
 
   @Override
   public ImageProcessingModel getModel(String imageName) {

@@ -22,8 +22,7 @@ public class BrightnessCommand implements ImageProcessingCommand {
     if (this.factor == 0) {
       return model;
     } else {
-      ImageProcessingModel processed = model.brighten(this.factor); //TODO: change after fixing
-                                                                    // to changeBrightness
+      ImageProcessingModel processed = model.changeBrightness(this.factor);
       return processed;
     }
   }

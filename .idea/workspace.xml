@@ -17,6 +17,8 @@
       <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingControllerImplTest.java" beforeDir="false" />
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
     </list>
