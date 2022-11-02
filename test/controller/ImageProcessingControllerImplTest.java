@@ -106,8 +106,8 @@ public class ImageProcessingControllerImplTest {
       ImageProcessingControllerImpl controller =
               new ImageProcessingControllerImpl(new StringBuilder(), input, null);
     } catch (IllegalStateException e) {
-      assertEquals("The program ran out of arguments even though the program " + "has not quit. "
-              , e.getMessage());
+      assertEquals("Readable fails or the program ran out of inputs before " +
+                      "quitting.", e.getMessage());
     }
   }
 
@@ -162,10 +162,29 @@ public class ImageProcessingControllerImplTest {
    */
   @Test
   public void controllerThrowsExceptionFailAppendable() {
-
+    try {
+      ImageProcessingController controller =
+              new ImageProcessingControllerImpl(new FailAppendable(), new StringReader("bool"),
+                      new PPMProcessingView());
+      controller.start();
+    } catch (IllegalStateException e) {
+      assertEquals("Cannot append message.", e.getMessage());
+    }
   }
 
   /**
-   * Check if the controller throws an exception if the readable fails when writing message.
+   * Check if the controller throws an exception if the readable fails when receiving inputs.
    */
+  @Test
+  public void controllerThrowsExceptionFailReadable() {
+    try {
+      ImageProcessingController controller =
+              new ImageProcessingControllerImpl(new StringBuilder(), new FailReadable(),
+                      new PPMProcessingView());
+      controller.start();
+    } catch (IllegalStateException e) {
+      assertEquals("Readable fails or the program ran out of inputs before " +
+              "quitting.", e.getMessage());
+    }
+  }
 }

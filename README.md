@@ -40,10 +40,13 @@ the methods that all image processing models should contain.
 <ol>
   <li><strong>PPMProcessingModel</strong>: A model which implements the model interface and represents a PPM image.</li>
 </ol>
-<li>Interface <strong>ImageProcessingView</strong>: a representation of what an image processing view which contains all the methods that all image processing views should contain.</li>
+<li>Interface <strong>ImageProcessingView</strong>: a representation of what an image processing 
+view which contains all the methods that all image processing views should contain. It greatly 
+handles the loading and saving of images in the program.</li>
 <ol>
 <li><strong>PPMProcessingView</strong>: A view which implements the view interface and can load and save a PPM image.</li>
-</ol>
+<li><strong>MockView</strong>: A view which takes in a log. It is uses to test controller's input.
+</li></ol>
 
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
@@ -56,6 +59,41 @@ class.</li>
 </ol>
 
 ### Accepted script of commands
+<li><strong>load image-path image-name</strong>: Load an image from the provided image path and 
+store it in the program under the provided name.
+</li>
+<li><strong>save image-path image-name</strong>: Save an image of the provided name to a PPM 
+file at the provided file path.
+</li>
+<li><strong>change-name old-name new-name</strong>: Change the name of a currently stored image 
+in the program to the new provided name.
+</li>
+<li><strong>red-component/green-component/blue-component image-name dest-image-name</strong>: 
+Create 
+a greyscale image with the red/green/blue component and store it in the program with the given name.
+</li>
+<li><strong>value image-name dest-image-name</strong>: 
+Create a greyscale image with the maximum value of three components for each pixel.
+</li>
+<li><strong>luma image-name dest-image-name</strong>: 
+create a greyscale image with the weighted sum 0.2126r + 0.7152g + 0.0722b.
+</li>
+<li><strong>intensity image-name dest-image-name</strong>: 
+Create a greyscale image with the average of the three components for each pixel.
+</li>
+<li><strong>horizontal-flip/vertical-flip image-name dest-image-name</strong>: 
+Flip an image horizontally/vertically to create an image and store it with the provided 
+destination image name. 
+</li>
+<li><strong>brighten increment image-name dest-image-name</strong>: 
+Brighten an image by a given increment to create a new image and stores in the program as the 
+provided destination name.
+<ul><li>Positive increment brightens the image </li>
+<li>Negative increment darkens the image</li>
+<li>An increment of 0 returns the original image and store it with the provided destination 
+name</li></ul>
+</li>
+
 
 ### Image citation
 
