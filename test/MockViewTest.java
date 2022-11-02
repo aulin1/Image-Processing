@@ -62,8 +62,4 @@ public class MockViewTest {
     controller.start();
     assertEquals("koala fancyKoala", receivedInput.toString());
   }
-
-  /**
-   * Tests if the commands
-   * */
 }

@@ -178,4 +178,51 @@ public class ImageProcessingControllerImplTest {
                       new PPMProcessingView());
       controller.start();
   }
+
+  /**
+   * Check if the controller prints the correct message if a command doesn't exist.
+   * */
+  @Test
+  public void controllerIncorrectCommand(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load res/Pixel.ppm Pixel f q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("Command is not supported.", splitString[splitString.length - 2]);
+  }
+
+  /**
+   * Check if the controller prints the correct message if a command does exist.
+   * */
+  @Test
+  public void controllerCorrectCommand(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load res/Pixel.ppm Pixel brighten Pixel brightenImage"
+            + " 100 q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("Command brighten successfully processed!",
+            splitString[splitString.length - 2]);
+  }
+
+  /**
+   * Check if the controller prints the correct message if the image hasn't been loaded into
+   * the program.
+   * */
+  @Test
+  public void controllerNotLoad(){
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("brighten Pixel brightenImage"
+            + "100 q");
+    ImageProcessingView view = new PPMProcessingView();
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    String[] splitString = out.toString().split("\n");
+    assertEquals("The image has yet loaded to the program. Please load a valid image "
+            + "before processing it.", splitString[splitString.length - 2]);
+  }
 }
