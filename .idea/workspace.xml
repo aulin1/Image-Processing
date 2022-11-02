@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="">
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="uncommented the integration test ;v; sowwieee">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MockView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PPMProcessingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PPMProcessingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/MockModelTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +61,7 @@
       <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest.testSave">
+  <component name="RunManager" selected="JUnit.ImageProcessingIntegrationTest">
     <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
       <extension name="coverage">
@@ -137,8 +131,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testSave" />
         <item itemvalue="JUnit.ImageProcessingIntegrationTest" />
+        <item itemvalue="JUnit.ImageProcessingIntegrationTest.testSave" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" />
         <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
@@ -170,6 +164,7 @@
       <workItem from="1667331068586" duration="2075000" />
       <workItem from="1667333573406" duration="21000" />
       <workItem from="1667334047724" duration="113000" />
+      <workItem from="1667355555322" duration="313000" />
     </task>
     <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
       <created>1667341475834</created>
