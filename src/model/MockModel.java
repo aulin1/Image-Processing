@@ -61,7 +61,7 @@ public class MockModel implements ImageProcessingModel {
 
   @Override
   public ImageProcessingModel changeBrightness(int factor) throws IllegalArgumentException {
-    log.append("factor: ").append(factor).append("\n");
+    log.append(factor);
     return null;
   }
 
@@ -78,15 +78,5 @@ public class MockModel implements ImageProcessingModel {
   @Override
   public int[][][] getImage() {
     return new int[0][][];
-  }
-
-  @Override
-  public String getName() {
-    return null;
-  }
-
-  @Override
-  public void changeName(String name) throws IllegalArgumentException {
-    log.append("name changed to: ").append(name).append("\n");
   }
 }

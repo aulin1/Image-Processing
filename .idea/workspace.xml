@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="">
+    <list default="true" id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageProcessingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PPMProcessingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageProcessingControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MockView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ImageProcessingControllerImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -28,73 +30,117 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2GhC90jPNd1tNiOc9PtJFWY1tKN" />
+  <component name="ProjectId" id="2GvFudSHRZtLL3MWW5oR7MWmoNI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/aulin/Documents/GitHub/Image-Processing/src&quot;
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/aulin/Documents/GitHub/Image-Processing&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
+      <recent name="model" />
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="command" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageProcessingModelTest">
-    <configuration name="ImageProcessingModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ImageProcessingControllerImplTest">
+    <configuration name="ImageProcessingControllerImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testBrightenLimit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerPrintsFarewell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testBrightenLimit" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerPrintsFarewell" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testDarken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerPrintsInstructions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testDarken" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerPrintsInstructions" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testFlipHoriz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testFlipHoriz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerThrowsExceptionFailAppendable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageProcessingModelTest.testFlipVert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Image-Processing" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingModelTest" />
-      <option name="METHOD_NAME" value="testFlipVert" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ImageProcessingControllerImplTest" />
+      <option name="METHOD_NAME" value="controllerThrowsExceptionFailReadable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -102,34 +148,48 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ImageProcessingModelTest" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipHoriz" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testFlipVert" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testBrightenLimit" />
-        <item itemvalue="JUnit.ImageProcessingModelTest.testDarken" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailReadable" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerThrowsExceptionFailAppendable" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsInstructions" />
+        <item itemvalue="JUnit.ImageProcessingControllerImplTest.controllerPrintsFarewell" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Add field and argument maxValue to the constructor and fix them in the model tests">
+      <created>1667230103727</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667230103727</updated>
+    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="27a14ce0-9a5e-48ed-a44b-d5981d174b81" name="Changes" comment="" />
-      <created>1666831274192</created>
+      <changelist id="909ab1f2-c926-409d-a334-74392dbd7ee2" name="Changes" comment="Add field and argument maxValue to the constructor and fix them in the model tests" />
+      <created>1667261375135</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1666831274192</updated>
-      <workItem from="1666831276412" duration="125000" />
-      <workItem from="1666834528936" duration="8000" />
-      <workItem from="1666904930027" duration="2596000" />
-      <workItem from="1666907593986" duration="15000" />
-      <workItem from="1666912818468" duration="362000" />
-      <workItem from="1666973568668" duration="1700000" />
-      <workItem from="1667056075251" duration="9198000" />
-      <workItem from="1667076338211" duration="36000" />
-      <workItem from="1667094908365" duration="2498000" />
-      <workItem from="1667097774470" duration="28000" />
-      <workItem from="1667350837643" duration="353000" />
+      <updated>1667261375135</updated>
+      <workItem from="1667261377332" duration="1312000" />
+      <workItem from="1667267361132" duration="2654000" />
+      <workItem from="1667271065439" duration="317000" />
+      <workItem from="1667309160307" duration="2163000" />
+      <workItem from="1667318921633" duration="86000" />
+      <workItem from="1667319288048" duration="3740000" />
+      <workItem from="1667332427570" duration="3397000" />
+      <workItem from="1667331068586" duration="2075000" />
+      <workItem from="1667333573406" duration="21000" />
+      <workItem from="1667334047724" duration="113000" />
     </task>
+    <task id="LOCAL-00002" summary="uncommented the integration test ;v; sowwieee">
+      <created>1667341475834</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667341475834</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,5 +205,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add field and argument maxValue to the constructor and fix them in the model tests" />
+    <MESSAGE value="Change the view to greatly manage the save and load of the program and accordingly for the controller&#10;blocked out the intergration test since i havent fix the new changes to view in there yet" />
+    <MESSAGE value="uncommented the integration test ;v; sowwieee" />
+    <option name="LAST_COMMIT_MESSAGE" value="uncommented the integration test ;v; sowwieee" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
