@@ -9,7 +9,10 @@ import view.ImageProcessingView;
 public class BlueCompCommand implements ImageProcessingCommand {
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) {
+  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
+    if (model == null) {
+      throw new IllegalArgumentException("The model cannot be null");
+    }
     ImageProcessingModel processed = model.returnBlueImage();
     return processed;
   }

@@ -28,12 +28,16 @@ public class SaveCommand implements ImageProcessingCommand {
 
   @Override
   public ImageProcessingModel execute(ImageProcessingModel model) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("A save command does not support execute(model) " +
-            "operation");
+    throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 
   @Override
-  public void execute(ImageProcessingView view) throws IllegalStateException {
+  public void execute(ImageProcessingView view) throws IllegalStateException,
+          IllegalArgumentException {
+    if (view == null) {
+      throw new IllegalArgumentException("The view cannot be null");
+    }
+
     view.saveImage(this.filePath, this.fileName);
   }
 }
