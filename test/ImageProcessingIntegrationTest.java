@@ -180,7 +180,8 @@ public class ImageProcessingIntegrationTest {
   public void testCommands(){
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load " + filePath + " " + fileName + " red-component "
-            + fileName + " edit horizontal-flip edit edit brighten edit edit 10 q");
+            + fileName + " edit horizontal-flip edit edit brighten edit edit 10 "
+            + "save res/edit.ppm edit q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
     ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);

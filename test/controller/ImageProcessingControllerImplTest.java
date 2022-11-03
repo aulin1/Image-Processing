@@ -65,7 +65,7 @@ public class ImageProcessingControllerImplTest {
       ImageProcessingControllerImpl controller = new ImageProcessingControllerImpl(null,
               new StringReader("bool"), new PPMProcessingView());
     } catch (IllegalArgumentException e) {
-      assertEquals("The fields to the controller constructor cannot be null. ", e.getMessage());
+      assertEquals("The fields to the controller constructor cannot be null.", e.getMessage());
     }
   }
 
@@ -78,7 +78,7 @@ public class ImageProcessingControllerImplTest {
       ImageProcessingControllerImpl controller =
               new ImageProcessingControllerImpl(new StringBuilder(), null, new PPMProcessingView());
     } catch (IllegalArgumentException e) {
-      assertEquals("The fields to the controller constructor cannot be null. ", e.getMessage());
+      assertEquals("The fields to the controller constructor cannot be null.", e.getMessage());
     }
   }
 
