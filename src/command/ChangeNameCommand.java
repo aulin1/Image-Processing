@@ -28,11 +28,14 @@ public class ChangeNameCommand implements ImageProcessingCommand {
 
   @Override
   public ImageProcessingModel execute(ImageProcessingModel model) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by ChangeNameCommand");
+    throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 
   @Override
   public void execute(ImageProcessingView view) throws IllegalArgumentException {
+    if (view == null) {
+      throw new IllegalArgumentException("The view cannot be null");
+    }
     view.changeName(this.oldName, this.newName);
   }
 }
