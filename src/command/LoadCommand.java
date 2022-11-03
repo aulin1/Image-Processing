@@ -19,7 +19,7 @@ public class LoadCommand implements ImageProcessingCommand {
    */
   public LoadCommand(String imagePath, String imageName) throws IllegalArgumentException {
     if (imagePath == null || imageName == null) {
-      throw new IllegalArgumentException("The arguments cannot be null.");
+      throw new IllegalArgumentException("The arguments cannot be null. ");
     }
     this.imagePath = imagePath;
     this.imageName = imageName;
@@ -28,11 +28,15 @@ public class LoadCommand implements ImageProcessingCommand {
 
   @Override
   public ImageProcessingModel execute(ImageProcessingModel model) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by a LoadCommand");
+    throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 
   @Override
   public void execute(ImageProcessingView view) throws IllegalArgumentException {
+    if (view == null) {
+      throw new IllegalArgumentException("The view cannot be null");
+    }
+
     view.loadImage(this.imagePath, this.imageName);
   }
 }

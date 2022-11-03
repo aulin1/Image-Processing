@@ -14,12 +14,16 @@ public class BrightnessCommand implements ImageProcessingCommand {
    *
    * @param factor the brightness factor to process the image
    */
-  public BrightnessCommand(int factor) throws IllegalArgumentException {
+  public BrightnessCommand(int factor) {
     this.factor = factor;
   }
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) {
+  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
+    if (model == null) {
+      throw new IllegalArgumentException("The model cannot be null");
+    }
+
     if (this.factor == 0) {
       return model;
     } else {
