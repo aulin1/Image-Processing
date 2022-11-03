@@ -4,13 +4,13 @@ import static java.lang.Math.max;
 
 /**
  * A model that processes PPM Images.
- * */
-public class PPMProcessingModel implements ImageProcessingModel{
+ */
+public class PPMProcessingModel implements ImageProcessingModel {
 
   /**
    * The image saved as a 3D integer array.
-   * */
-   
+   */
+
   private final int[][][] imageBoard;
 
   /**
@@ -22,15 +22,15 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * The constructor for the PPMProcessingModel.
    *
    * @param imageBoard the image as a 3D array.
-   * @param maxValue the max value of a color in this file
+   * @param maxValue   the max value of a color in this file
    * @throws IllegalArgumentException if imageBoard is null, or if there are more than three values
-   * for colors.
-   * */
-  public PPMProcessingModel(int[][][] imageBoard, int maxValue){
-    if(imageBoard == null){
+   *                                  for colors.
+   */
+  public PPMProcessingModel(int[][][] imageBoard, int maxValue) {
+    if (imageBoard == null) {
       throw new IllegalArgumentException("Image or name cannot be null.");
     }
-    if(imageBoard[0][0].length != 3){
+    if (imageBoard[0][0].length != 3) {
       throw new IllegalArgumentException("There must be three colors.");
     }
     this.imageBoard = imageBoard.clone();
@@ -44,11 +44,11 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * @param factor the factor by which the greyscale image is created: "red", "blue", "green",
    *               "value", "intensity", "luma".
    * @return a 3D array which represents the greyscale image.
-   * */
-  private int[][][] getGreyScale(String factor){
+   */
+  private int[][][] getGreyScale(String factor) {
     int[][][] img = new int[this.getHeight()][this.getWidth()][3];
-    for(int i = 0; i < this.getHeight(); i++){
-      for(int j = 0; j < this.getWidth(); j++){
+    for (int i = 0; i < this.getHeight(); i++) {
+      for (int j = 0; j < this.getWidth(); j++) {
         img[i][j][0] = getCorrectValue(factor, i, j);
         img[i][j][1] = getCorrectValue(factor, i, j);
         img[i][j][2] = getCorrectValue(factor, i, j);
@@ -61,12 +61,12 @@ public class PPMProcessingModel implements ImageProcessingModel{
    * Another helper function which gets the correct value for the greyscale image.
    *
    * @param factor the factor by which the greyscale image is created as specified by getGreyScale.
-   * @param row the row of the pixel to get the value for.
-   * @param col the column of the pixel to get the value for.
+   * @param row    the row of the pixel to get the value for.
+   * @param col    the column of the pixel to get the value for.
    * @return the correct value for the pixel.
    * @throws IllegalArgumentException if the factor value doesn't exist.
-   * */
-  private int getCorrectValue(String factor, int row, int col) throws IllegalArgumentException{
+   */
+  private int getCorrectValue(String factor, int row, int col) throws IllegalArgumentException {
     switch (factor) {
       case "red":
         return this.imageBoard[row][col][0];
@@ -79,7 +79,7 @@ public class PPMProcessingModel implements ImageProcessingModel{
                 this.imageBoard[row][col][2]);
       case "intensity":
         return (this.imageBoard[row][col][0] + this.imageBoard[row][col][1]
-                + this.imageBoard[row][col][2])/3;
+                + this.imageBoard[row][col][2]) / 3;
       case "luma":
         return (int) Math.round(0.2126 * this.imageBoard[row][col][0]
                 + 0.7152 * this.imageBoard[row][col][1]
@@ -134,8 +134,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
   @Override
   public ImageProcessingModel flipImageVertically() {
     int[][][] img = new int[this.getHeight()][this.getWidth()][3];
-    for(int i = 0; i <= this.getHeight()/2; i++){
-      for(int j = 0; j < this.getWidth(); j++){
+    for (int i = 0; i <= this.getHeight() / 2; i++) {
+      for (int j = 0; j < this.getWidth(); j++) {
         img[i][j] = this.imageBoard[this.getHeight() - 1 - i][j];
         img[this.getHeight() - 1 - i][j] = this.imageBoard[i][j];
       }
@@ -146,8 +146,8 @@ public class PPMProcessingModel implements ImageProcessingModel{
   @Override
   public ImageProcessingModel flipImageHorizontally() {
     int[][][] img = new int[this.getHeight()][this.getWidth()][3];
-    for(int i = 0; i < this.getHeight(); i++){
-      for(int j = 0; j <= this.getWidth()/2; j++){
+    for (int i = 0; i < this.getHeight(); i++) {
+      for (int j = 0; j <= this.getWidth() / 2; j++) {
         img[i][j] = this.imageBoard[i][this.getWidth() - 1 - j];
         img[i][this.getWidth() - 1 - j] = this.imageBoard[i][j];
       }
@@ -160,12 +160,12 @@ public class PPMProcessingModel implements ImageProcessingModel{
    *
    * @param checked the integer to be checked.
    * @return the result within the limits set.
-   * */
-  private int checkLimits(int checked){
+   */
+  private int checkLimits(int checked) {
     if (checked < 0) {
       return 0;
     }
-    if (checked > this.maxValue){
+    if (checked > this.maxValue) {
       return this.maxValue;
     }
     return checked;
@@ -173,12 +173,12 @@ public class PPMProcessingModel implements ImageProcessingModel{
 
   /**
    * A helper function which changes the brightness (negative to darken) of an image.
-   * */
+   */
   @Override
   public ImageProcessingModel changeBrightness(int factor) {
     int[][][] img = new int[this.getWidth()][this.getHeight()][3];
-    for(int i = 0; i < this.getWidth(); i++){
-      for(int j = 0; j < this.getHeight(); j++){
+    for (int i = 0; i < this.getWidth(); i++) {
+      for (int j = 0; j < this.getHeight(); j++) {
         img[i][j][0] = this.checkLimits(this.imageBoard[i][j][0] + factor);
         img[i][j][1] = this.checkLimits(this.imageBoard[i][j][1] + factor);
         img[i][j][2] = this.checkLimits(this.imageBoard[i][j][2] + factor);

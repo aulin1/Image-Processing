@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import controller.ImageUtil;
 import model.ImageProcessingModel;
 
@@ -15,8 +12,8 @@ public class ImageUtilTest {
   String koalaPath = "res/Koala.ppm";
   String pixelPath = "res/Pixel.ppm";
 
-  String pixelImg = "0\n" + "0\n" + "0\n" + "153\n" + "217\n" + "234\n" + "153\n" + "217\n" +
-          "234\n" + "127\n" + "127\n" + "127\n" + "153\n" + "217\n" + "234\n" + "237\n" + "28\n"
+  String pixelImg = "0\n" + "0\n" + "0\n" + "153\n" + "217\n" + "234\n" + "153\n" + "217\n"
+          + "234\n" + "127\n" + "127\n" + "127\n" + "153\n" + "217\n" + "234\n" + "237\n" + "28\n"
           + "36\n" + "205\n" + "85\n" + "207\n" + "153\n" + "217\n" + "234\n" + "153\n" + "217\n"
           + "234\n" + "12\n" + "102\n" + "36\n" + "255\n" + "242\n" + "0\n" + "153\n" + "217\n"
           + "234\n" + "0\n" + "162\n" + "232\n" + "153\n" + "217\n" + "234\n" + "153\n" + "217\n"

@@ -20,6 +20,7 @@ public class MockView implements ImageProcessingView {
     }
     this.receivedInput = receivedInput;
   }
+
   @Override
   public ImageProcessingModel loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {

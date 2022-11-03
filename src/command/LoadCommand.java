@@ -27,7 +27,8 @@ public class LoadCommand implements ImageProcessingCommand {
 
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) throws UnsupportedOperationException {
+  public ImageProcessingModel execute(ImageProcessingModel model)
+          throws UnsupportedOperationException {
     throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 

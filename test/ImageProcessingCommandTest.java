@@ -23,7 +23,8 @@ import model.PPMProcessingModel;
 import view.ImageProcessingView;
 import view.PPMProcessingView;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * This class represents tests for all classes which implements the interface
@@ -32,13 +33,13 @@ import static org.junit.Assert.*;
 public class ImageProcessingCommandTest {
   List<Function<String[], ImageProcessingCommand>> listCommsTwoArgs = // support execute(view)
           new ArrayList<>(Arrays.asList((String[] l) -> new SaveCommand(l[0], l[1]),
-                  (String[] l) -> new LoadCommand(l[0], l[1]),
-                  (String[] l) -> new ChangeNameCommand(l[0], l[1])));
+              (String[] l) -> new LoadCommand(l[0], l[1]),
+              (String[] l) -> new ChangeNameCommand(l[0], l[1])));
   List<ImageProcessingCommand> listCommsSupportModel =
           // does not have BrightnessComm, test separately
           new ArrayList<>(Arrays.asList(new BlueCompCommand(), new GreenCompCommand(),
-                  new RedCompCommand(), new IntensityCommand(), new LumaCommand(),
-                  new ValueCommand(), new HorizontalFlipCommand(), new VerticalFlipCommand()));
+              new RedCompCommand(), new IntensityCommand(), new LumaCommand(),
+              new ValueCommand(), new HorizontalFlipCommand(), new VerticalFlipCommand()));
 
   /**
    * Test commands with two String fields do not take null in the first argument.

@@ -6,7 +6,7 @@ import controller.ImageProcessingControllerImpl;
 import view.ImageProcessingView;
 import view.MockView;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains tests for image processing controller impl.

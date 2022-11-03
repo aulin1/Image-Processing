@@ -20,28 +20,28 @@ public class ImageProcessingControllerImplTest {
   String[] actualOutput;
 
   String welcomeMessage = "Welcome to Image Processing Program!\n";
-  String instructions = "Supported commands in this program:\n" + "load image-path image-name: " +
-          "Load the image with the given image path and refers to it with the given name\n" +
-          "save image-path image-name: Save the image with the given name to the specified path " +
-          "which includes the name of the file\n" + "change-name old-name new-name: change the " +
-          "name of a loaded image to the new provided name\n" + "\n" + "All commands below will " +
-          "be referred by the designated destination name after the command by the program:\n" +
-          "Greyscale commands:\n" + "red-component image-name dest-image-name: Create a greyscale" +
-          " image with the red component of the image with the given name\n" + "green-component " +
-          "image-name dest-image-name: Create a greyscale image with the green component of the " +
-          "image with the given name\n" + "blue-component image-name dest-image-name: Create a " +
-          "greyscale image with the blue component of the image with the given name\n" + "value " +
-          "image-name dest-image-name: Create a greyscale image with the maximum value of the " +
-          "three component for each pixel\n" + "intensity image-name dest-image-name: Create a " +
-          "greyscale image with the average of the three components for each pixel\n" + "luma " +
-          "image-name dest-image-name: Create a greyscale image with the weighted sum 0.2126r + 0" +
-          ".7152g + 0.0722b\n" + "\n" + "Flip image commands:\n" + "horizontal-flip image-name " +
-          "dest-image-name: Flip an image horizontally to create a new image\n" + "vertical-flip " +
-          "image-name dest-image-name: Flip an image vertically to create a new image\n" + "\n"
-          + "Brightness command:\n" + "brighten image-name dest-image-name increment: brighten " +
-          "the image by the given increment to create a new image. Positive value will brighten " +
-          "the image and negative value will darken the image\n" + "\n" + "Input m to see the " +
-          "supported commands. \n" + "Input q to quit the program. \n";
+  String instructions = "Supported commands in this program:\n" + "load image-path image-name: "
+          + "Load the image with the given image path and refers to it with the given name\n"
+          + "save image-path image-name: Save the image with the given name to the specified path "
+          + "which includes the name of the file\n" + "change-name old-name new-name: change the "
+          + "name of a loaded image to the new provided name\n" + "\n" + "All commands below will "
+          + "be referred by the designated destination name after the command by the program:\n"
+          + "Greyscale commands:\n" + "red-component image-name dest-image-name: Create a greyscale"
+          + " image with the red component of the image with the given name\n" + "green-component "
+          + "image-name dest-image-name: Create a greyscale image with the green component of the "
+          + "image with the given name\n" + "blue-component image-name dest-image-name: Create a "
+          + "greyscale image with the blue component of the image with the given name\n" + "value "
+          + "image-name dest-image-name: Create a greyscale image with the maximum value of the "
+          + "three component for each pixel\n" + "intensity image-name dest-image-name: Create a "
+          + "greyscale image with the average of the three components for each pixel\n" + "luma "
+          + "image-name dest-image-name: Create a greyscale image with the weighted sum 0.2126r + 0"
+          + ".7152g + 0.0722b\n" + "\n" + "Flip image commands:\n" + "horizontal-flip image-name "
+          + "dest-image-name: Flip an image horizontally to create a new image\n" + "vertical-flip "
+          + "image-name dest-image-name: Flip an image vertically to create a new image\n" + "\n"
+          + "Brightness command:\n" + "brighten image-name dest-image-name increment: brighten "
+          + "the image by the given increment to create a new image. Positive value will brighten "
+          + "the image and negative value will darken the image\n" + "\n" + "Input m to see the "
+          + "supported commands. \n" + "Input q to quit the program. \n";
   String farewellMessage = "Thank you for using the program!\n";
 
   /**
@@ -107,7 +107,7 @@ public class ImageProcessingControllerImplTest {
               new ImageProcessingControllerImpl(new StringBuilder(), input, null);
     } catch (IllegalStateException e) {
       assertEquals("Readable fails or the program ran out of inputs before " +
-                      "quitting.", e.getMessage());
+              "quitting.", e.getMessage());
     }
   }
 
@@ -162,10 +162,10 @@ public class ImageProcessingControllerImplTest {
    */
   @Test(expected = IllegalStateException.class)
   public void controllerThrowsExceptionFailAppendable() {
-      ImageProcessingController controller =
-              new ImageProcessingControllerImpl(new FailAppendable(), new StringReader("bool"),
-                      new PPMProcessingView());
-      controller.start();
+    ImageProcessingController controller =
+            new ImageProcessingControllerImpl(new FailAppendable(), new StringReader("bool"),
+                    new PPMProcessingView());
+    controller.start();
   }
 
   /**
@@ -173,17 +173,17 @@ public class ImageProcessingControllerImplTest {
    */
   @Test(expected = IllegalStateException.class)
   public void controllerThrowsExceptionFailReadable() {
-      ImageProcessingController controller =
-              new ImageProcessingControllerImpl(new StringBuilder(), new FailReadable(),
-                      new PPMProcessingView());
-      controller.start();
+    ImageProcessingController controller =
+            new ImageProcessingControllerImpl(new StringBuilder(), new FailReadable(),
+                    new PPMProcessingView());
+    controller.start();
   }
 
   /**
    * Check if the controller prints the correct message if a command doesn't exist.
-   * */
+   */
   @Test
-  public void controllerIncorrectCommand(){
+  public void controllerIncorrectCommand() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load res/Pixel.ppm Pixel f q");
     ImageProcessingView view = new PPMProcessingView();
@@ -195,9 +195,9 @@ public class ImageProcessingControllerImplTest {
 
   /**
    * Check if the controller prints the correct message if a command does exist.
-   * */
+   */
   @Test
-  public void controllerCorrectCommand(){
+  public void controllerCorrectCommand() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load res/Pixel.ppm Pixel brighten Pixel brightenImage"
             + " 100 q");
@@ -212,9 +212,9 @@ public class ImageProcessingControllerImplTest {
   /**
    * Check if the controller prints the correct message if the image hasn't been loaded into
    * the program.
-   * */
+   */
   @Test
-  public void controllerNotLoad(){
+  public void controllerNotLoad() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("brighten Pixel brightenImage"
             + "100 q");

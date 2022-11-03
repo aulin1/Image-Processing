@@ -4,7 +4,7 @@ import model.ImageProcessingModel;
 
 /**
  * An interface for an image processing view.
- * */
+ */
 public interface ImageProcessingView {
 
   /**
@@ -13,8 +13,9 @@ public interface ImageProcessingView {
    * @param imagePath the path to the image which need to be load
    * @param imageName the name of the image to be referred to while using the program
    * @return an ImageProcessingModel which represents the image you have loaded in.
-   * */
-   ImageProcessingModel loadImage(String imagePath, String imageName) throws IllegalArgumentException;
+   */
+  ImageProcessingModel loadImage(String imagePath, String imageName)
+          throws IllegalArgumentException;
 
   /**
    * Saves a given image to the image path.
@@ -22,14 +23,14 @@ public interface ImageProcessingView {
    * @param imagePath the path which the image will be saved to
    * @param imageName the referred name of the image in the program to be saved
    * @throws IllegalStateException if the image cannot be saved.
-   * */
+   */
   void saveImage(String imagePath, String imageName) throws IllegalStateException;
 
   /**
    * Stores the provided model with the provided image name as the key.
    *
    * @param imageName the key to the model in the map
-   * @param model the model to be stored
+   * @param model     the model to be stored
    */
   void storeImage(String imageName, ImageProcessingModel model);
 
@@ -37,8 +38,7 @@ public interface ImageProcessingView {
    * Returns the model stored in the map with the provided name.
    *
    * @param imageName the name of the image to be retrieved the model for
-   * @return the model if the model exists under the provided key and null if the model is not in
-   * the map
+   * @return the model if the model exists in the map and null if the model is not in the map.
    */
   ImageProcessingModel getModel(String imageName);
 

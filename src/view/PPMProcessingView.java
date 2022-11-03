@@ -1,26 +1,24 @@
 package view;
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
 
 import static controller.ImageUtil.readPPM;
 
 /**
  * A class that represents a view for PPM images. A view is mainly responsible for managing the
  * saving and loading of images to and from the program.
- * */
-public class PPMProcessingView implements ImageProcessingView{
+ */
+public class PPMProcessingView implements ImageProcessingView {
   private final Map<String, ImageProcessingModel> memory; //according to prof, memory is in view
 
   /**
    * A constructor for a PPMProcessingView.
    */
-  public PPMProcessingView(){
+  public PPMProcessingView() {
     this.memory = new HashMap<>();
   }
 
@@ -29,9 +27,9 @@ public class PPMProcessingView implements ImageProcessingView{
    *
    * @param map the hashmap for memory.
    * @throws IllegalArgumentException if the map is null.
-   * */
-  public PPMProcessingView(Map<String, ImageProcessingModel> map){
-    if(map == null){
+   */
+  public PPMProcessingView(Map<String, ImageProcessingModel> map) {
+    if (map == null) {
       throw new IllegalArgumentException("Map cannot be null.");
     }
     this.memory = map;
@@ -81,15 +79,15 @@ public class PPMProcessingView implements ImageProcessingView{
 
   @Override
   public void changeName(String oldName, String newName) throws IllegalArgumentException {
-    if(oldName == null || newName == null) {
+    if (oldName == null || newName == null) {
       throw new IllegalArgumentException("Name cannot be null.");
     }
     if (this.memory.containsKey(oldName)) {
       ImageProcessingModel model = this.memory.get(oldName);
       this.memory.put(newName, model);
     } else {
-      throw new IllegalArgumentException("There is no existing file with the provided name in the" +
-              " program. ");
+      throw new IllegalArgumentException("There is no existing file with the provided name in the"
+              + " program. ");
     }
   }
 
