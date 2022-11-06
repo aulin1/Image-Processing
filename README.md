@@ -108,4 +108,4 @@ in this assignment. They are original images converted to PPM image format.
 
 ### Design Changes
 
-The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters.
+The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
