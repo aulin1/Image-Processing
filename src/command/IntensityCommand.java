@@ -1,25 +1,14 @@
 package command;
 
-import model.ImageProcessingModel;
-import view.ImageProcessingView;
-
 /**
- * This class represents an intensity component command.
+ * This class represents a command that returns a greyscale image based on the intensity of an
+ * image.
  */
-public class IntensityCommand implements ImageProcessingCommand {
+public class IntensityCommand extends GreyscaleCommand {
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
-    if (model == null) {
-      throw new IllegalArgumentException("The model cannot be null");
-    }
-
-    ImageProcessingModel processed = model.returnIntensityImage();
-    return processed;
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
+  int getCorrectValue(int[][][] image, int row, int col) {
+    return (image[row][col][0] + image[row][col][1]
+            + image[row][col][2]) / 3;
   }
 }

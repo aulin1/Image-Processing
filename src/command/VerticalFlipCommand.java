@@ -1,10 +1,11 @@
 package command;
 
 import model.ImageProcessingModel;
+import model.PPMProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This class represents a vertical flip command.
+ * This class represents a command that flips an image vertically.
  */
 public class VerticalFlipCommand implements ImageProcessingCommand {
 
@@ -13,9 +14,14 @@ public class VerticalFlipCommand implements ImageProcessingCommand {
     if (model == null) {
       throw new IllegalArgumentException("The model cannot be null");
     }
-
-    ImageProcessingModel processed = model.flipImageVertically();
-    return processed;
+    int[][][] img = new int[model.getHeight()][model.getWidth()][3];
+    for (int i = 0; i <= model.getHeight() / 2; i++) {
+      for (int j = 0; j < model.getWidth(); j++) {
+        img[i][j] = model.getImage()[model.getHeight() - 1 - i][j];
+        img[model.getHeight() - 1 - i][j] = model.getImage()[i][j];
+      }
+    }
+    return new PPMProcessingModel(img, model.getMax());
   }
 
   @Override

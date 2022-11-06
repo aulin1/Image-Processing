@@ -1,26 +1,15 @@
 package command;
 
-import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import static java.lang.Math.max;
 
 /**
- * This class represents a value component command.
+ * This class represents a command that creates an greyscale image based on the value of an image.
  */
-public class ValueCommand implements ImageProcessingCommand {
+public class ValueCommand extends GreyscaleCommand {
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
-    if (model == null) {
-      throw new IllegalArgumentException("The model cannot be null");
-    }
-
-    ImageProcessingModel processed = model.returnValueImage();
-    return processed;
+  int getCorrectValue(int[][][] image, int row, int col) {
+    return max(max(image[row][col][0], image[row][col][1]),
+            image[row][col][2]);
   }
-
-  @Override
-  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
-  }
-
 }
