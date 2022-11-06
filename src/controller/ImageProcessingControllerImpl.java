@@ -14,10 +14,10 @@ import command.GreenCompCommand;
 import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
 import command.IntensityCommand;
-import command.LoadCommand;
+import command.LoadPPMCommand;
 import command.LumaCommand;
 import command.RedCompCommand;
-import command.SaveCommand;
+import command.SavePPMCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
@@ -138,8 +138,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
     this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
     this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
-    this.commandMap.put("save", s -> new SaveCommand(s.next(), s.next()));
-    this.commandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
+    this.commandMap.put("save", s -> new SavePPMCommand(s.next(), s.next()));
+    this.commandMap.put("load", s -> new LoadPPMCommand(s.next(), s.next()));
     this.commandMap.put("change-name", s -> new ChangeNameCommand(s.next(), s.next()));
   }
 

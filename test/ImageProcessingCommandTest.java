@@ -12,10 +12,10 @@ import command.GreenCompCommand;
 import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
 import command.IntensityCommand;
-import command.LoadCommand;
+import command.LoadPPMCommand;
 import command.LumaCommand;
 import command.RedCompCommand;
-import command.SaveCommand;
+import command.SavePPMCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
@@ -32,8 +32,8 @@ import static org.junit.Assert.fail;
  */
 public class ImageProcessingCommandTest {
   List<Function<String[], ImageProcessingCommand>> listCommsTwoArgs = // support execute(view)
-          new ArrayList<>(Arrays.asList((String[] l) -> new SaveCommand(l[0], l[1]),
-              (String[] l) -> new LoadCommand(l[0], l[1]),
+          new ArrayList<>(Arrays.asList((String[] l) -> new SavePPMCommand(l[0], l[1]),
+              (String[] l) -> new LoadPPMCommand(l[0], l[1]),
               (String[] l) -> new ChangeNameCommand(l[0], l[1])));
   List<ImageProcessingCommand> listCommsSupportModel =
           // does not have BrightnessComm, test separately

@@ -4,9 +4,9 @@ import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This class represents a load command.
+ * This class represents a command that loads in an image.
  */
-public class LoadCommand implements ImageProcessingCommand {
+public class LoadPPMCommand implements ImageProcessingCommand {
   private final String imagePath;
   private final String imageName;
 
@@ -17,7 +17,7 @@ public class LoadCommand implements ImageProcessingCommand {
    * @param imageName the name of the image to be referred by the program
    * @throws IllegalArgumentException if any of the arguments are null
    */
-  public LoadCommand(String imagePath, String imageName) throws IllegalArgumentException {
+  public LoadPPMCommand(String imagePath, String imageName) throws IllegalArgumentException {
     if (imagePath == null || imageName == null) {
       throw new IllegalArgumentException("The arguments cannot be null. ");
     }
