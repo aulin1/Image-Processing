@@ -105,3 +105,7 @@ assignment. It is an original image created in the PPM image format.
 
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
 in this assignment. They are original images converted to PPM image format.
+
+### Design Changes
+
+The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters.
