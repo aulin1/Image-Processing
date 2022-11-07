@@ -11,7 +11,7 @@ public class SavePPMCommand implements ImageProcessingCommand {
   private final String fileName;
 
   /**
-   * Constructs a new save command.
+   * Constructs a new save command which saves the image in the program to a PPM file.
    *
    * @param filePath the path where the image will be saved to
    * @param fileName the name of the image as it is referred to in the program which the user

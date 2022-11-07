@@ -128,7 +128,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   /**
    * A helper function which initiates the commands into the map.
    */
-  private void initiateComms() {
+  protected void initiateComms() {
     this.commandMap.put("red-component", s -> new RedCompCommand());
     this.commandMap.put("green-component", s -> new GreenCompCommand());
     this.commandMap.put("blue-component", s -> new BlueCompCommand());
@@ -149,7 +149,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param message the message to be written.
    * @throws IllegalStateException if the message cannot be appended.
    */
-  private void writeMessage(String message) throws IllegalStateException {
+  protected void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);
     } catch (IOException e) {
@@ -174,6 +174,25 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    */
   private void printInstructions() throws IllegalStateException {
     writeMessage("Supported commands in this program:" + System.lineSeparator());
+
+   printSaveLoadInst();
+
+    writeMessage("All commands below will be referred by the designated destination name "
+            + "after the command by the program:" + System.lineSeparator());
+
+    printImageProcessingInst();
+
+    // user help comms
+    writeMessage("Input m to see the supported commands. " + System.lineSeparator());
+    writeMessage("Input q to quit the program. " + System.lineSeparator());
+  }
+
+  /**
+   * Prints the instructions for regarding the reference of the file in the program.
+   *
+   * @throws IllegalStateException if the messages cannot be printed.
+   */
+  protected void printSaveLoadInst() throws IllegalStateException {
     writeMessage("load image-path image-name: Load the image with the given image path and "
             + "refers to it with the given name" + System.lineSeparator());
     writeMessage("save image-path image-name: Save the image with the given name to the "
@@ -181,9 +200,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     writeMessage("change-name old-name new-name: change the name of a loaded image to the new "
             + "provided name" + System.lineSeparator()
             + System.lineSeparator());
-    writeMessage("All commands below will be referred by the designated destination name "
-            + "after the command by the program:" + System.lineSeparator());
-    // grey scale commands
+  }
+
+  /**
+   * Prints the instructions for the image processing methods in the program.
+   *
+   * @throws IllegalStateException if the messages cannot be printed.
+   */
+  protected void printImageProcessingInst() throws IllegalStateException {
     writeMessage("Greyscale commands:" + System.lineSeparator());
     writeMessage("red-component image-name dest-image-name: Create a greyscale image with the "
             + "red" + " component of the image with the given name" + System.lineSeparator());
@@ -197,7 +221,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             + "average of the three components for each pixel" + System.lineSeparator());
     writeMessage("luma image-name dest-image-name: Create a greyscale image with the weighted "
             + "sum 0.2126r + 0.7152g + 0.0722b" + System.lineSeparator() + System.lineSeparator());
-    // flip image commands
     writeMessage("Flip image commands:" + System.lineSeparator());
     writeMessage("horizontal-flip image-name dest-image-name: Flip an image horizontally to "
             + "create a new image" + System.lineSeparator());
@@ -208,8 +231,5 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             + "increment to create a new image. Positive value will brighten the image and "
             + "negative value will darken the image" + System.lineSeparator()
             + System.lineSeparator());
-    // user help comms
-    writeMessage("Input m to see the supported commands. " + System.lineSeparator());
-    writeMessage("Input q to quit the program. " + System.lineSeparator());
   }
 }
