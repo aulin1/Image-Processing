@@ -351,10 +351,10 @@ public class ImageProcessingCommandTest {
     ImageProcessingCommand command = new ImageSharpenCommand();
     ImageProcessingModel test = new PPMProcessingModel(img, 255);
     ImageProcessingModel result = command.execute(test);
-    assertArrayEquals(new int[][][]{{{0, 0, 0}, {153, 217, 234}, {153, 217, 234}, {127, 127, 127}},
-            {{153, 217, 234}, {237, 28, 36}, {205, 85, 207}, {153, 217, 234}},
-            {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
-            {{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}}}, result.getImage());
+    assertArrayEquals(new int[][][]{{{39, 0, 0}, {255, 217, 234}, {255, 217, 234}, {154, 127, 127}},
+            {{177, 217, 234}, {255, 28, 36}, {255, 85, 207}, {255, 217, 234}},
+            {{177, 217, 234}, {215, 102, 36}, {255, 242, 0}, {255, 217, 234}},
+            {{0, 162, 232}, {152, 217, 234}, {247, 217, 234}, {255, 255, 255}}}, result.getImage());
   }
 
   /**
@@ -365,10 +365,10 @@ public class ImageProcessingCommandTest {
     ImageProcessingCommand command = new GaussianBlurCommand();
     ImageProcessingModel test = new PPMProcessingModel(img, 255);
     ImageProcessingModel result = command.execute(test);
-    assertArrayEquals(new int[][][]{{{0, 0, 0}, {234, 234, 234}, {234, 234, 234}, {127, 127, 127}},
-                    {{234, 234, 234}, {36, 36, 36}, {207, 207, 207}, {234, 234, 234}},
-                    {{234, 234, 234}, {36, 36, 36}, {0, 0, 0}, {234, 234, 234}},
-                    {{232, 232, 232}, {234, 234, 234}, {234, 234, 234}, {255, 255, 255}}},
+    assertArrayEquals(new int[][][]{{{0, 0, 0}, {153, 217, 234}, {153, 217, 234}, {127, 127, 127}},
+                    {{153, 217, 234}, {237, 28, 36}, {205, 85, 207}, {153, 217, 234}},
+                    {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
+                    {{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}}},
             result.getImage());
   }
   /**

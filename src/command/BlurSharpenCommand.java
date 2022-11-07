@@ -29,6 +29,9 @@ abstract class BlurSharpenCommand extends FilterCommand {
         }
       }
     }
+    vals[0] = this.checkLimits(vals[0]);
+    vals[1] = this.checkLimits(vals[1]);
+    vals[2] = this.checkLimits(vals[2]);
     return vals;
   }
 }
