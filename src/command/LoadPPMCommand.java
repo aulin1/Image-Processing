@@ -4,14 +4,14 @@ import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This class represents a command that loads in an image.
+ * This class represents a command that loads in a PPM image.
  */
 public class LoadPPMCommand implements ImageProcessingCommand {
   private final String imagePath;
   private final String imageName;
 
   /**
-   * Constructs a new load command.
+   * Constructs a new load command for loading PPM image.
    *
    * @param imagePath the path of the image to be load to the program
    * @param imageName the name of the image to be referred by the program

@@ -16,15 +16,18 @@ public interface ImageProcessingView {
    */
   ImageProcessingModel loadImage(String imagePath, String imageName)
           throws IllegalArgumentException;
+  //TODO: check if returning a model is needed
 
   /**
    * Saves a given image to the image path.
    *
    * @param imagePath the path which the image will be saved to
    * @param imageName the referred name of the image in the program to be saved
-   * @throws IllegalStateException if the image cannot be saved.
+   * @throws IllegalStateException if the image cannot be saved
+   * @throws IllegalArgumentException if the image name provided does not exist in the memory
    */
-  void saveImage(String imagePath, String imageName) throws IllegalStateException;
+  void saveImage(String imagePath, String imageName) throws IllegalStateException,
+          IllegalArgumentException;
 
   /**
    * Stores the provided model with the provided image name as the key.

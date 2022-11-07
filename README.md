@@ -59,44 +59,7 @@ class.</li>
 </ol>
 
 ### How to run the program
-Run the main function, and type a command from the accepted script of commands into the console. 
-
-### Accepted script of commands
-<li><strong>load image-path image-name</strong>: Load an image from the provided image path and 
-store it in the program under the provided name.
-</li>
-<li><strong>save image-path image-name</strong>: Save an image of the provided name to a PPM 
-file at the provided file path.
-</li>
-<li><strong>change-name old-name new-name</strong>: Change the name of a currently stored image 
-in the program to the new provided name.
-</li>
-<li><strong>red-component/green-component/blue-component image-name dest-image-name</strong>: 
-Create 
-a greyscale image with the red/green/blue component and store it in the program with the given name.
-</li>
-<li><strong>value image-name dest-image-name</strong>: 
-Create a greyscale image with the maximum value of three components for each pixel.
-</li>
-<li><strong>luma image-name dest-image-name</strong>: 
-create a greyscale image with the weighted sum 0.2126r + 0.7152g + 0.0722b.
-</li>
-<li><strong>intensity image-name dest-image-name</strong>: 
-Create a greyscale image with the average of the three components for each pixel.
-</li>
-<li><strong>horizontal-flip/vertical-flip image-name dest-image-name</strong>: 
-Flip an image horizontally/vertically to create an image and store it with the provided 
-destination image name. 
-</li>
-<li><strong>brighten image-name dest-image-name increment</strong>: 
-Brighten an image by a given increment to create a new image and stores in the program as the 
-provided destination name.
-<ul><li>Positive increment brightens the image </li>
-<li>Negative increment darkens the image</li>
-<li>An increment of 0 returns the original image and store it with the provided destination 
-name</li></ul>
-</li>
-
+Run the main function, and type a command from the accepted script of commands into the console.
 
 ### Image citation
 
@@ -109,3 +72,6 @@ in this assignment. They are original images converted to PPM image format.
 ### Design Changes
 
 The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
+
+Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
+accepted commands* to USEME.md for usage clarity.
