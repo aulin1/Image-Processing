@@ -3,10 +3,10 @@ package command;
 /**
  * This class represents a green component command.
  */
-public class GreenCompCommand extends GreyscaleCommand {
+public class GreenCompCommand extends ColorTransformCommand {
 
   @Override
-  int getCorrectValue(int[][][] image, int row, int col) {
-    return image[row][col][1];
+  protected double[][] getColorMatrix() {
+    return new double[][]{{0, 1, 0}, {0, 1, 0}, {0, 1, 0}};
   }
 }

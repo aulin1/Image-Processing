@@ -4,10 +4,10 @@ package command;
  * This class represents a command that returns a greyscale image based on the blue colors of
  * an image.
  */
-public class BlueCompCommand extends GreyscaleCommand {
+public class BlueCompCommand extends ColorTransformCommand {
 
   @Override
-  int getCorrectValue(int[][][] image, int row, int col) {
-    return image[row][col][2];
+  protected double[][] getColorMatrix() {
+    return new double[][]{{0, 0, 1}, {0, 0, 1}, {0, 0, 1}};
   }
 }

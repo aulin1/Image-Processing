@@ -60,27 +60,6 @@ public class ImageProcessingModelTest {
   }
 
   /**
-   * Tests if the constructor of the model throws an IllegalArgumentException if the amount of
-   * colors is too little.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testTwoColors() {
-    int[][][] test = new int[2][2][2];
-    ImageProcessingModel test2 = new PPMProcessingModel(test, 255);
-  }
-
-
-  /**
-   * Tests if the constructor of the model throws an IllegalArgumentException if the amount of
-   * colors is too much.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void testFourColors() {
-    int[][][] test = new int[2][2][4];
-    ImageProcessingModel test2 = new PPMProcessingModel(test, 255);
-  }
-
-  /**
    * Tests if returning the array still doesn't allow the user to edit the array in the model.
    */
   @Test

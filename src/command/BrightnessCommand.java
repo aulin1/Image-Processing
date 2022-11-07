@@ -7,7 +7,7 @@ import view.ImageProcessingView;
 /**
  * This class represents a command that brightens or darkens an image.
  */
-public class BrightnessCommand implements ImageProcessingCommand {
+public class BrightnessCommand extends FilterCommand {
   private final int factor;
 
   /**
@@ -19,41 +19,12 @@ public class BrightnessCommand implements ImageProcessingCommand {
     this.factor = factor;
   }
 
-  /**
-   * A helper function to check the limits for the changeBrightness function.
-   *
-   * @param max the maximum value that is allowed
-   * @param value the integer to be checked.
-   * @return the result within the limits set.
-   */
-  private int checkLimits(int max, int value){
-    if (value < 0) {
-      return 0;
-    }
-    if (value > max) {
-      return max;
-    }
-    return value;
-  }
-
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
-    if (model == null) {
-      throw new IllegalArgumentException("The model cannot be null");
-    }
-    int[][][] img = new int[model.getWidth()][model.getHeight()][3];
-    for (int i = 0; i < model.getWidth(); i++) {
-      for (int j = 0; j < model.getHeight(); j++) {
-        img[i][j][0] = this.checkLimits(model.getMax(), model.getImage()[i][j][0] + factor);
-        img[i][j][1] = this.checkLimits(model.getMax(), model.getImage()[i][j][1] + factor);
-        img[i][j][2] = this.checkLimits(model.getMax(), model.getImage()[i][j][2] + factor);
-      }
-    }
-    return new PPMProcessingModel(img, model.getMax());
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
+  protected int[] getCorrectValues(int[][][] img, int row, int col) {
+    int[] vals = new int[3];
+    vals[0] = this.checkLimits(img[row][col][0] + factor);
+    vals[1] = this.checkLimits(img[row][col][1] + factor);
+    vals[2] = this.checkLimits(img[row][col][2] + factor);
+    return vals;
   }
 }
