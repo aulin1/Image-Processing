@@ -5,7 +5,7 @@ import model.PPMProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This class represents a command the flips an image horizontally.
+ * This class represents a command the flips an image horizontally (across a vertical axis).
  */
 public class HorizontalFlipCommand implements ImageProcessingCommand {
 
