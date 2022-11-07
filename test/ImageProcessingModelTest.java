@@ -60,6 +60,23 @@ public class ImageProcessingModelTest {
   }
 
   /**
+   * Tests if the constructor of the model throws an IllegalArgumentException if the max value is
+   * negative.
+   * */
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeMax(){
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, -10);
+  }
+
+  /**
+   * Tests if the constructor of the model throws an IllegalArgumentException if the max value is 0.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testZeroMax(){
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 0);
+  }
+
+  /**
    * Tests if returning the array still doesn't allow the user to edit the array in the model.
    */
   @Test
@@ -71,6 +88,9 @@ public class ImageProcessingModelTest {
     assertArrayEquals(otherTest, test.getImage());
   }
 
+  /**
+   * Tests if getWidth gets the correct value. Width is the amount of columns in a row.
+   * */
   @Test
   public void testGetWidth() {
     ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255);
@@ -92,5 +112,18 @@ public class ImageProcessingModelTest {
     assertEquals(2, test.getHeight());
     assertEquals(3, test2.getHeight());
     assertEquals(10, test3.getHeight());
+  }
+
+  /**
+   * Tests if getMax returns the correct value.
+   * */
+  @Test
+  public void testGetMax(){
+    ImageProcessingModel test = new PPMProcessingModel(this.testBoard, 255);
+    ImageProcessingModel test2 = new PPMProcessingModel(new int[3][5][3], 10);
+    ImageProcessingModel test3 = new PPMProcessingModel(new int[10][1][3], 300);
+    assertEquals(255, test.getMax());
+    assertEquals(10, test2.getMax());
+    assertEquals(300, test3.getMax());
   }
 }

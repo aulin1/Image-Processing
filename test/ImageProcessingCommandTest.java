@@ -8,14 +8,17 @@ import java.util.function.Function;
 import command.BlueCompCommand;
 import command.BrightnessCommand;
 import command.ChangeNameCommand;
+import command.GaussianBlurCommand;
 import command.GreenCompCommand;
 import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
+import command.ImageSharpenCommand;
 import command.IntensityCommand;
 import command.LoadPPMCommand;
 import command.LumaCommand;
 import command.RedCompCommand;
 import command.SavePPMCommand;
+import command.SepiaToneCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
@@ -39,7 +42,8 @@ public class ImageProcessingCommandTest {
           // does not have BrightnessComm, test separately
           new ArrayList<>(Arrays.asList(new BlueCompCommand(), new GreenCompCommand(),
               new RedCompCommand(), new IntensityCommand(), new LumaCommand(),
-              new ValueCommand(), new HorizontalFlipCommand(), new VerticalFlipCommand()));
+              new ValueCommand(), new HorizontalFlipCommand(), new VerticalFlipCommand(),
+                  new GaussianBlurCommand(), new SepiaToneCommand(), new ImageSharpenCommand()));
 
   /**
    * Test commands with two String fields do not take null in the first argument.

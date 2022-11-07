@@ -42,10 +42,10 @@ abstract class FilterCommand implements ImageProcessingCommand{
 
   @Override
   public ImageProcessingModel execute(ImageProcessingModel model) {
-    this.max = model.getMax();
     if(model == null){
       throw new IllegalArgumentException("The model cannot be null");
     }
+    this.max = model.getMax();
     int[][][] img = new int[model.getHeight()][model.getWidth()][3];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {
