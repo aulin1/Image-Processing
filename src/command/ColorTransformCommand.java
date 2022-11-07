@@ -23,6 +23,9 @@ abstract class ColorTransformCommand extends FilterCommand{
             + vals[1][2] * image[row][col][2]);
     colors[2] = (int) (vals[2][0] * image[row][col][0] + vals[2][1] * image[row][col][1]
             + vals[2][2] * image[row][col][2]);
+    colors[0] = this.checkLimits(colors[0]);
+    colors[1] = this.checkLimits(colors[1]);
+    colors[2] = this.checkLimits(colors[2]);
     return colors;
   }
 
