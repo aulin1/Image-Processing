@@ -23,12 +23,15 @@ public class PPMProcessingModel implements ImageProcessingModel {
    *
    * @param imageBoard the image as a 3D array.
    * @param maxValue   the max value of a color in this file
-   * @throws IllegalArgumentException if imageBoard is null, or if there are more than three values
-   *                                  for colors.
+   * @throws IllegalArgumentException if imageBoard is null, or if the max value is less than or
+   * equal to 0.
    */
   public PPMProcessingModel(int[][][] imageBoard, int maxValue) {
     if (imageBoard == null) {
       throw new IllegalArgumentException("Image or name cannot be null.");
+    }
+    if(maxValue <= 0 ){
+      throw new IllegalArgumentException("Max value must be greater than 0.");
     }
     this.imageBoard = imageBoard.clone();
     this.maxValue = maxValue;
