@@ -3,10 +3,9 @@ package command;
 /**
  * This class represents a red component command.
  */
-public class RedCompCommand extends GreyscaleCommand {
-
+public class RedCompCommand extends ColorTransformCommand {
   @Override
-  int getCorrectValue(int[][][] image, int row, int col) {
-    return image[row][col][0];
+  protected double[][] getColorMatrix() {
+    return new double[][]{{1, 0, 0},{1, 0, 0},{1, 0, 0}};
   }
 }

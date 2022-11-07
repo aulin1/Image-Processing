@@ -30,9 +30,6 @@ public class PPMProcessingModel implements ImageProcessingModel {
     if (imageBoard == null) {
       throw new IllegalArgumentException("Image or name cannot be null.");
     }
-    if (imageBoard[0][0].length != 3) {
-      throw new IllegalArgumentException("There must be three colors.");
-    }
     this.imageBoard = imageBoard.clone();
     this.maxValue = maxValue;
   }
