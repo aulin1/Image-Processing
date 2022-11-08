@@ -9,7 +9,7 @@ import java.util.Map;
 import controller.ImageProcessingController;
 import controller.ImageProcessingControllerImpl;
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 import view.ImageProcessingView;
 import view.PPMProcessingView;
 
@@ -109,7 +109,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testStoreImage() {
     int[][][] img = {{{0, 0, 0}}};
-    ImageProcessingModel model = new PPMProcessingModel(img, 255);
+    ImageProcessingModel model = new ImageProcessingModelImpl(img, 255);
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);
@@ -123,7 +123,7 @@ public class ImageProcessingIntegrationTest {
   @Test
   public void testChangeName() {
     int[][][] img = {{{0, 0, 0}}};
-    ImageProcessingModel model = new PPMProcessingModel(img, 255);
+    ImageProcessingModel model = new ImageProcessingModelImpl(img, 255);
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView test = new PPMProcessingView(map);
     test.storeImage("dot.ppm", model);
