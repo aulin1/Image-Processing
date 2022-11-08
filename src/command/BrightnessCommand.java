@@ -1,9 +1,5 @@
 package command;
 
-import model.ImageProcessingModel;
-import model.PPMProcessingModel;
-import view.ImageProcessingView;
-
 /**
  * This class represents a command that brightens or darkens an image.
  */
