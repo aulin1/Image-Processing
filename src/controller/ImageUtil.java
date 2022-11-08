@@ -9,7 +9,7 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 
 
 /**
@@ -73,7 +73,7 @@ public class ImageUtil {
       }
     }
 
-    ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue);
+    ImageProcessingModel model = new ImageProcessingModelImpl(imageBoard, maxValue);
     return model;
   }
 
@@ -124,7 +124,7 @@ public class ImageUtil {
       }
     }
 
-    model = new PPMProcessingModel(imageBoard, maxValue);
+    model = new ImageProcessingModelImpl(imageBoard, maxValue);
     return model;
   }
 }

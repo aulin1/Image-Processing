@@ -4,15 +4,14 @@ import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * This class represents a load command object which loads a designated image from the user's
- * machine to the program.
+ * This class represents a command that loads in a PPM image.
  */
 public class LoadCommand implements ImageProcessingCommand {
   private final String imagePath;
   private final String imageName;
 
   /**
-   * Constructs a new load command for loading any supported format of image.
+   * Constructs a new load command for loading PPM image.
    *
    * @param imagePath the path of the image to be load to the program
    * @param imageName the name of the image to be referred by the program
@@ -26,16 +25,19 @@ public class LoadCommand implements ImageProcessingCommand {
     this.imageName = imageName;
   }
 
+
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) {
-    return null;
+  public ImageProcessingModel execute(ImageProcessingModel model)
+          throws UnsupportedOperationException {
+    throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 
   @Override
   public void execute(ImageProcessingView view) throws IllegalArgumentException {
     if (view == null) {
-      throw new IllegalArgumentException("The view cannot be null.");
+      throw new IllegalArgumentException("The view cannot be null");
     }
+
     view.loadImage(this.imagePath, this.imageName);
   }
 }

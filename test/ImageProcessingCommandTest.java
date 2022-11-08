@@ -14,15 +14,15 @@ import command.HorizontalFlipCommand;
 import command.ImageProcessingCommand;
 import command.ImageSharpenCommand;
 import command.IntensityCommand;
-import command.LoadPPMCommand;
+import command.LoadCommand;
 import command.LumaCommand;
 import command.RedCompCommand;
-import command.SavePPMCommand;
+import command.SaveCommand;
 import command.SepiaToneCommand;
 import command.ValueCommand;
 import command.VerticalFlipCommand;
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 import view.ImageProcessingView;
 import view.PPMProcessingView;
 
@@ -43,8 +43,8 @@ public class ImageProcessingCommandTest {
                   {{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}}};
 
   List<Function<String[], ImageProcessingCommand>> listCommsTwoArgs = // support execute(view)
-          new ArrayList<>(Arrays.asList((String[] l) -> new SavePPMCommand(l[0], l[1]),
-              (String[] l) -> new LoadPPMCommand(l[0], l[1]),
+          new ArrayList<>(Arrays.asList((String[] l) -> new SaveCommand(l[0], l[1]),
+              (String[] l) -> new LoadCommand(l[0], l[1]),
               (String[] l) -> new ChangeNameCommand(l[0], l[1])));
   List<ImageProcessingCommand> listCommsSupportModel =
           // does not have BrightnessComm, test separately
@@ -176,7 +176,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void CommThrowExceptionNotSupportedExeModel() {
     String[] arr = new String[]{"bool", "foo"};
-    ImageProcessingModel model = new PPMProcessingModel(new int[120][100][3], 255);
+    ImageProcessingModel model = new ImageProcessingModelImpl(new int[120][100][3], 255);
 
     for (Function<String[], ImageProcessingCommand> commandFunction : listCommsTwoArgs) {
       try {
@@ -195,7 +195,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testRedCompCommand(){
     ImageProcessingCommand command = new RedCompCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {153, 153, 153}, {153, 153, 153}, {127, 127, 127}},
             {{153, 153, 153}, {237, 237, 237}, {205, 205, 205}, {153, 153, 153}},
@@ -209,7 +209,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testGreenCompCommand(){
     ImageProcessingCommand command = new GreenCompCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {217, 217, 217}, {217, 217, 217}, {127, 127, 127}},
                     {{217, 217, 217}, {28, 28, 28}, {85, 85, 85}, {217, 217, 217}},
@@ -224,7 +224,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testBlueCompCommand(){
     ImageProcessingCommand command = new BlueCompCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {234, 234, 234}, {234, 234, 234}, {127, 127, 127}},
                     {{234, 234, 234}, {36, 36, 36}, {207, 207, 207}, {234, 234, 234}},
@@ -240,11 +240,11 @@ public class ImageProcessingCommandTest {
   public void testBrightnessCommand(){
     ImageProcessingCommand command = new BrightnessCommand(100);
     ImageProcessingCommand command2 = new BrightnessCommand(-100);
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     ImageProcessingModel result2 = command2.execute(test);
     assertArrayEquals(new int[][][]
-                    {{{100, 100, 100}, {253, 255, 25}, {255, 255, 255}, {227, 227, 227}},
+                    {{{100, 100, 100}, {253, 255, 255}, {253, 255, 255}, {227, 227, 227}},
                     {{253, 255, 255}, {255, 128, 136}, {255, 185, 255}, {253, 255, 255}},
                     {{253, 255, 255}, {112, 202, 136}, {255, 255, 100}, {253, 255, 255}},
                     {{100, 255, 255}, {253, 255, 255}, {253, 255, 255}, {255, 255, 255}}},
@@ -263,7 +263,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testHorizontalFlipCommand(){
     ImageProcessingCommand command = new HorizontalFlipCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{127, 127, 127}, {153, 217, 234}, {153, 217, 234}, {0, 0, 0}},
             {{153, 217, 234}, {205, 85, 207}, {237, 28, 36}, {153, 217, 234}},
@@ -277,7 +277,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testVerticalFlipCommand(){
     ImageProcessingCommand command = new VerticalFlipCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]
             {{{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}},
@@ -292,7 +292,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testIntensityCommand(){
     ImageProcessingCommand command = new IntensityCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {201, 201, 201}, {201, 201, 201}, {127, 127, 127}},
             {{201, 201, 201}, {100, 100, 100}, {166, 166, 166}, {201, 201, 201}},
@@ -306,11 +306,11 @@ public class ImageProcessingCommandTest {
   @Test
   public void testLumaCommand(){
     ImageProcessingCommand command = new LumaCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {205, 205, 205}, {205, 205, 205}, {127, 127, 127}},
             {{205, 205, 205}, {73, 73, 73}, {119, 119, 119}, {205, 205, 205}},
-            {{205, 205, 205}, {78, 78, 78}, {277, 277, 277}, {205, 205, 205}},
+            {{205, 205, 205}, {78, 78, 78}, {227, 227, 227}, {205, 205, 205}},
             {{133, 133, 133}, {205, 205, 205}, {205, 205, 205}, {255, 255, 255}}}, result.getImage());
   }
 
@@ -320,7 +320,7 @@ public class ImageProcessingCommandTest {
   @Test
   public void testValueCommand(){
     ImageProcessingCommand command = new ValueCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {234, 234, 234}, {234, 234, 234}, {127, 127, 127}},
             {{234, 234, 234}, {237, 237, 237}, {207, 207, 207}, {234, 234, 234}},
@@ -334,27 +334,28 @@ public class ImageProcessingCommandTest {
   @Test
   public void testSepiaToneCommand(){
     ImageProcessingCommand command = new SepiaToneCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
     ImageProcessingModel result = command.execute(test);
-    assertArrayEquals(new int[][][]{{{0, 0, 0}, {255, 242, 188}, {255, 242, 188}, {127, 127, 127}},
+    assertArrayEquals(new int[][][]{{{0, 0, 0}, {255, 242, 188}, {255, 242, 188}, {172, 153, 119}},
             {{255, 242, 188}, {121, 108, 84}, {185, 165, 128}, {255, 242, 188}},
-            {{255, 242, 188}, {90, 80, 62}, {255, 255, 198}, {255, 242, 188}},
-            {{168, 150, 116}, {255, 242, 188}, {255, 242, 188}, {255, 255, 239}}}, result.getImage());
+            {{255, 242, 188}, {90, 80, 62}, {255, 255, 199}, {255, 242, 188}},
+            {{168, 150, 117}, {255, 242, 188}, {255, 242, 188}, {255, 255, 239}}},
+            result.getImage());
   }
 
-  //TODO: continue here
   /**
    * Test ImageSharpenCommand.
    * */
   @Test
   public void testImageSharpenCommand(){
     ImageProcessingCommand command = new ImageSharpenCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 300);
     ImageProcessingModel result = command.execute(test);
-    assertArrayEquals(new int[][][]{{{39, 0, 0}, {255, 217, 234}, {255, 217, 234}, {154, 127, 127}},
-            {{177, 217, 234}, {255, 28, 36}, {255, 85, 207}, {255, 217, 234}},
-            {{177, 217, 234}, {215, 102, 36}, {255, 242, 0}, {255, 217, 234}},
-            {{0, 162, 232}, {152, 217, 234}, {247, 217, 234}, {255, 255, 255}}}, result.getImage());
+    assertArrayEquals(new int[][][]
+            {{{39, 8, 37}, {233, 214, 300}, {281, 261, 300}, {154, 156, 228}},
+            {{177, 216, 226}, {300, 176, 137}, {300, 266, 300}, {256, 300, 300}},
+            {{177, 276, 300}, {215, 292, 224}, {300, 300, 206}, {300, 300, 300}},
+            {{0, 197, 269}, {152, 300, 268}, {247, 300, 277}, {300, 300, 279}}}, result.getImage());
   }
 
   /**
@@ -363,15 +364,31 @@ public class ImageProcessingCommandTest {
   @Test
   public void testGaussianBlurCommand(){
     ImageProcessingCommand command = new GaussianBlurCommand();
-    ImageProcessingModel test = new PPMProcessingModel(img, 255);
+    ImageProcessingModel test = new ImageProcessingModelImpl(img, 300);
     ImageProcessingModel result = command.execute(test);
-    assertArrayEquals(new int[][][]{{{0, 0, 0}, {153, 217, 234}, {153, 217, 234}, {127, 127, 127}},
-                    {{153, 217, 234}, {237, 28, 36}, {205, 85, 207}, {153, 217, 234}},
-                    {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
-                    {{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}}},
+    assertArrayEquals(new int[][][]
+                    {{{53, 56, 61}, {109, 104, 120}, {123, 123, 146}, {83, 91, 103}},
+                    {{97, 105, 109}, {160, 127, 127}, {179, 151, 154}, {124, 137, 144}},
+                    {{83, 130, 138}, {135, 156, 129}, {179, 183, 136}, {144, 162, 147}},
+                    {{39, 101, 119}, {84, 143, 136}, {131, 163, 137}, {118, 133, 122}}},
             result.getImage());
   }
+
   /**
-   * Test ChangeNameCommand, Load, and Save.
+   * Test ChangeNameCommand.
    * */
+  @Test
+  public void testChangeName(){
+    int[][][] img = {{{0, 0, 0}}};
+    ImageProcessingModel model = new ImageProcessingModelImpl(img, 255);
+    ImageProcessingView test = new PPMProcessingView();
+    test.storeImage("dot.ppm", model);
+    ImageProcessingCommand command =
+            new ChangeNameCommand("dot.ppm", "changeName.ppm");
+    command.execute(test);
+    assertArrayEquals(model.getImage(), test.getModel("changeName.ppm").getImage());
+  }
+
+  //Testing loading and saving relies a lot more on other classes and thus is only tested in
+  //Integration tests.
 }
