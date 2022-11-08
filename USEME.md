@@ -1,5 +1,13 @@
 # How to run the program
 
+### Choosing Image Processing Program Version
+Through command line, provide the string **"new"** to use the new version and **"old"** to use the 
+older version of the program. Arguments besides the ones mentioned above will throw an exception 
+when running the program.
+
+The expected command has to be the <strong>first string in the command line</strong>. The program 
+would not run if provided otherwise.
+
 ### Condition of command usage
 <li>A valid image path has to be used while loading and saving the image to and from the 
 program in order for the process to be successful
@@ -50,9 +58,6 @@ name</li></ul>
 the 
 provided image path and 
 store it in the program under the provided name.
-</li>
-<li><strong>save image-path image-name</strong>: Save a <em>supported format</em> of image of the provided name to a PPM 
-file at the provided file path.
 </li>
 <li><strong>gaussian-blur image-name dest-image-name</strong>: 
 create a blurred image from the image of the provided name and store it with the provided 

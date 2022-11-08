@@ -32,7 +32,10 @@ public class LoadCommand implements ImageProcessingCommand {
   }
 
   @Override
-  public void execute(ImageProcessingView view) {
-
+  public void execute(ImageProcessingView view) throws IllegalArgumentException {
+    if (view == null) {
+      throw new IllegalArgumentException("The view cannot be null.");
+    }
+    view.loadImage(this.imagePath, this.imageName);
   }
 }
