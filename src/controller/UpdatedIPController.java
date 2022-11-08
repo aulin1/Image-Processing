@@ -2,12 +2,12 @@ package controller;
 
 import java.io.InputStreamReader;
 
-import command.GaussianBlurCommand;
-import command.ImageSharpenCommand;
-import command.LoadCommand;
-import command.LumaCommand;
-import command.SepiaToneCommand;
-import view.UpdatedProcessingView;
+import model.GaussianBlurCommand;
+import model.ImageProcessingModel;
+import model.ImageSharpenCommand;
+import model.LumaCommand;
+import model.SepiaToneCommand;
+import model.UpdatedProcessingModel;
 
 /**
  * <p>This class represented an Image Processing Controller which supports all functionality from
@@ -24,18 +24,28 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
    * processing view.
    */
   public UpdatedIPController() {
-    super(System.out, new InputStreamReader(System.in), new UpdatedProcessingView());
+    super(System.out, new InputStreamReader(System.in), new UpdatedProcessingModel());
+  }
+
+  /**
+   * Creates a new controller for the Image Processing Program.
+   *
+   * @param output the desired output of the messages
+   * @param input  the desired input of the user's interaction
+   * @throws IllegalArgumentException if any of the field is null
+   */
+  public UpdatedIPController(Appendable output, Readable input, ImageProcessingModel view)
+          throws IllegalArgumentException {
+    super(output, input, view);
   }
 
   @Override
   protected void initiateComms() {
     super.initiateComms();
-    this.commandMap.put("greyscale", s -> new LumaCommand());
-    this.commandMap.put("gaussian-blur", s -> new GaussianBlurCommand());
-    this.commandMap.put("sharpen", s -> new ImageSharpenCommand());
-    this.commandMap.put("sepia", s -> new SepiaToneCommand());
-    // universal save and load
-    this.commandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
+    this.imgProcCommandMap.put("greyscale", s -> new LumaCommand());
+    this.imgProcCommandMap.put("gaussian-blur", s -> new GaussianBlurCommand());
+    this.imgProcCommandMap.put("sharpen", s -> new ImageSharpenCommand());
+    this.imgProcCommandMap.put("sepia", s -> new SepiaToneCommand());
   }
 
   @Override

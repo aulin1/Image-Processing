@@ -5,26 +5,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
-import command.BlueCompCommand;
-import command.BrightnessCommand;
-import command.ChangeNameCommand;
-import command.GaussianBlurCommand;
-import command.GreenCompCommand;
-import command.HorizontalFlipCommand;
-import command.ImageProcessingCommand;
-import command.ImageSharpenCommand;
-import command.IntensityCommand;
-import command.LoadCommand;
-import command.LumaCommand;
-import command.RedCompCommand;
-import command.SaveCommand;
-import command.SepiaToneCommand;
-import command.ValueCommand;
-import command.VerticalFlipCommand;
+import model.BlueCompCommand;
+import model.BrightnessCommand;
+import controller.ChangeNameCommand;
+import model.GaussianBlurCommand;
+import model.GreenCompCommand;
+import model.HorizontalFlipCommand;
+import model.ImageProcessingCommand;
+import model.ImageSharpenCommand;
+import model.IntensityCommand;
+import controller.LoadCommand;
+import model.LumaCommand;
+import controller.ModelCommand;
+import model.RedCompCommand;
+import controller.SaveCommand;
+import model.SepiaToneCommand;
+import model.ValueCommand;
+import model.VerticalFlipCommand;
+import image.ImageClass;
+import image.ImageClassImpl;
 import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
-import view.ImageProcessingView;
-import view.PPMProcessingView;
+import model.PPMProcessingModel;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -42,7 +43,7 @@ public class ImageProcessingCommandTest {
                   {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
                   {{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}}};
 
-  List<Function<String[], ImageProcessingCommand>> listCommsTwoArgs = // support execute(view)
+  List<Function<String[], ModelCommand>> listCommsTwoArgs = // support execute(view)
           new ArrayList<>(Arrays.asList((String[] l) -> new SaveCommand(l[0], l[1]),
               (String[] l) -> new LoadCommand(l[0], l[1]),
               (String[] l) -> new ChangeNameCommand(l[0], l[1])));
@@ -60,9 +61,9 @@ public class ImageProcessingCommandTest {
   public void testCommandThrowExceptionNullFirstArg() {
     String[] arr = new String[]{null, "bool"};
 
-    for (Function<String[], ImageProcessingCommand> commandFunction : listCommsTwoArgs) {
+    for (Function<String[], ModelCommand> commandFunction : listCommsTwoArgs) {
       try {
-        ImageProcessingCommand command = commandFunction.apply(arr);
+        ModelCommand command = commandFunction.apply(arr);
         fail("The command should not construct with first arg null");
       } catch (IllegalArgumentException e) {
         assertEquals("The arguments cannot be null. ", e.getMessage());
@@ -77,9 +78,9 @@ public class ImageProcessingCommandTest {
   public void testCommandThrowExceptionNullSecondArg() {
     String[] arr = new String[]{"bool", null};
 
-    for (Function<String[], ImageProcessingCommand> commandFunction : listCommsTwoArgs) {
+    for (Function<String[], ModelCommand> commandFunction : listCommsTwoArgs) {
       try {
-        ImageProcessingCommand command = commandFunction.apply(arr);
+        ModelCommand command = commandFunction.apply(arr);
         fail("The command should not construct with second arg null");
       } catch (IllegalArgumentException e) {
         assertEquals("The arguments cannot be null. ", e.getMessage());
@@ -92,7 +93,7 @@ public class ImageProcessingCommandTest {
    */
   @Test
   public void CommThrowExceptionNullExeModel() {
-    ImageProcessingModel model = null;
+    ImageClass model = null;
     for (ImageProcessingCommand command : listCommsSupportModel) {
       try {
         command.execute(model);
@@ -108,7 +109,7 @@ public class ImageProcessingCommandTest {
    */
   @Test
   public void BrightCommThrowExceptionNullExeModel() {
-    ImageProcessingModel model = null;
+    ImageClass model = null;
     try {
       ImageProcessingCommand command = new BrightnessCommand(10);
       command.execute(model);
@@ -119,72 +120,18 @@ public class ImageProcessingCommandTest {
   }
 
   /**
-   * Test commands that does not support execute(view) throw exception.
-   */
-  @Test
-  public void CommThrowExceptionNotSupportedExeView() {
-    ImageProcessingView view = new PPMProcessingView();
-
-    for (ImageProcessingCommand command : listCommsSupportModel) {
-      try {
-        command.execute(view);
-        fail("The command should not execute unsupported method");
-      } catch (UnsupportedOperationException e) {
-        assertEquals("This method is not supported by this command object.", e.getMessage());
-      }
-    }
-  }
-
-  /**
-   * Test BrightnessCommand does not support execute(view) and throw exception.
-   */
-  @Test
-  public void BrightCommThrowExceptionUnsupportedExeView() {
-    ImageProcessingView view = new PPMProcessingView();
-
-    try {
-      ImageProcessingCommand command = new BrightnessCommand(10);
-      command.execute(view);
-      fail("Brightness command should not support execute(view)");
-    } catch (UnsupportedOperationException e) {
-      assertEquals("This method is not supported by this command object.", e.getMessage());
-    }
-  }
-
-  /**
    * Test null view.
    */
   @Test
   public void CommThrowExceptionNullExeView() {
     String[] arr = new String[]{"bool", "foo"};
-    ImageProcessingView view = null;
-
-    for (Function<String[], ImageProcessingCommand> commandFunction : listCommsTwoArgs) {
+    for (Function<String[], ModelCommand> commandFunction : listCommsTwoArgs) {
       try {
-        ImageProcessingCommand command = commandFunction.apply(arr);
-        command.execute(view);
+        ModelCommand command = commandFunction.apply(arr);
+        command.execute(null);
         fail("The command should not execute with null view");
       } catch (IllegalArgumentException e) {
         assertEquals("The view cannot be null", e.getMessage());
-      }
-    }
-  }
-
-  /**
-   * Test commands that does not support execute(model) throw exception.
-   */
-  @Test
-  public void CommThrowExceptionNotSupportedExeModel() {
-    String[] arr = new String[]{"bool", "foo"};
-    ImageProcessingModel model = new ImageProcessingModelImpl(new int[120][100][3], 255);
-
-    for (Function<String[], ImageProcessingCommand> commandFunction : listCommsTwoArgs) {
-      try {
-        ImageProcessingCommand command = commandFunction.apply(arr);
-        command.execute(model);
-        fail("The command should not execute unsupported method.");
-      } catch (UnsupportedOperationException e) {
-        assertEquals("This method is not supported by this command object.", e.getMessage());
       }
     }
   }
@@ -195,8 +142,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testRedCompCommand(){
     ImageProcessingCommand command = new RedCompCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {153, 153, 153}, {153, 153, 153}, {127, 127, 127}},
             {{153, 153, 153}, {237, 237, 237}, {205, 205, 205}, {153, 153, 153}},
             {{153, 153, 153}, {12, 12, 12}, {255, 255, 255}, {153, 153, 153}},
@@ -209,8 +156,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testGreenCompCommand(){
     ImageProcessingCommand command = new GreenCompCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {217, 217, 217}, {217, 217, 217}, {127, 127, 127}},
                     {{217, 217, 217}, {28, 28, 28}, {85, 85, 85}, {217, 217, 217}},
                     {{217, 217, 217}, {102, 102, 102}, {242, 242, 242}, {217, 217, 217}},
@@ -224,8 +171,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testBlueCompCommand(){
     ImageProcessingCommand command = new BlueCompCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {234, 234, 234}, {234, 234, 234}, {127, 127, 127}},
                     {{234, 234, 234}, {36, 36, 36}, {207, 207, 207}, {234, 234, 234}},
                     {{234, 234, 234}, {36, 36, 36}, {0, 0, 0}, {234, 234, 234}},
@@ -240,9 +187,9 @@ public class ImageProcessingCommandTest {
   public void testBrightnessCommand(){
     ImageProcessingCommand command = new BrightnessCommand(100);
     ImageProcessingCommand command2 = new BrightnessCommand(-100);
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
-    ImageProcessingModel result2 = command2.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
+    ImageClass result2 = command2.execute(test);
     assertArrayEquals(new int[][][]
                     {{{100, 100, 100}, {253, 255, 255}, {253, 255, 255}, {227, 227, 227}},
                     {{253, 255, 255}, {255, 128, 136}, {255, 185, 255}, {253, 255, 255}},
@@ -263,8 +210,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testHorizontalFlipCommand(){
     ImageProcessingCommand command = new HorizontalFlipCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{127, 127, 127}, {153, 217, 234}, {153, 217, 234}, {0, 0, 0}},
             {{153, 217, 234}, {205, 85, 207}, {237, 28, 36}, {153, 217, 234}},
             {{153, 217, 234}, {255, 242, 0}, {12, 102, 36}, {153, 217, 234}},
@@ -277,8 +224,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testVerticalFlipCommand(){
     ImageProcessingCommand command = new VerticalFlipCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]
             {{{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}},
             {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
@@ -292,8 +239,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testIntensityCommand(){
     ImageProcessingCommand command = new IntensityCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {201, 201, 201}, {201, 201, 201}, {127, 127, 127}},
             {{201, 201, 201}, {100, 100, 100}, {166, 166, 166}, {201, 201, 201}},
             {{201, 201, 201}, {50, 50, 50}, {166, 166, 166}, {201, 201, 201}},
@@ -306,8 +253,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testLumaCommand(){
     ImageProcessingCommand command = new LumaCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {205, 205, 205}, {205, 205, 205}, {127, 127, 127}},
             {{205, 205, 205}, {73, 73, 73}, {119, 119, 119}, {205, 205, 205}},
             {{205, 205, 205}, {78, 78, 78}, {227, 227, 227}, {205, 205, 205}},
@@ -320,8 +267,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testValueCommand(){
     ImageProcessingCommand command = new ValueCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {234, 234, 234}, {234, 234, 234}, {127, 127, 127}},
             {{234, 234, 234}, {237, 237, 237}, {207, 207, 207}, {234, 234, 234}},
             {{234, 234, 234}, {102, 102, 102}, {255, 255, 255}, {234, 234, 234}},
@@ -334,8 +281,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testSepiaToneCommand(){
     ImageProcessingCommand command = new SepiaToneCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 255);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]{{{0, 0, 0}, {255, 242, 188}, {255, 242, 188}, {172, 153, 119}},
             {{255, 242, 188}, {121, 108, 84}, {185, 165, 128}, {255, 242, 188}},
             {{255, 242, 188}, {90, 80, 62}, {255, 255, 199}, {255, 242, 188}},
@@ -349,8 +296,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testImageSharpenCommand(){
     ImageProcessingCommand command = new ImageSharpenCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 300);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 300);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]
             {{{39, 8, 37}, {233, 214, 300}, {281, 261, 300}, {154, 156, 228}},
             {{177, 216, 226}, {300, 176, 137}, {300, 266, 300}, {256, 300, 300}},
@@ -364,8 +311,8 @@ public class ImageProcessingCommandTest {
   @Test
   public void testGaussianBlurCommand(){
     ImageProcessingCommand command = new GaussianBlurCommand();
-    ImageProcessingModel test = new ImageProcessingModelImpl(img, 300);
-    ImageProcessingModel result = command.execute(test);
+    ImageClass test = new ImageClassImpl(img, 300);
+    ImageClass result = command.execute(test);
     assertArrayEquals(new int[][][]
                     {{{53, 56, 61}, {109, 104, 120}, {123, 123, 146}, {83, 91, 103}},
                     {{97, 105, 109}, {160, 127, 127}, {179, 151, 154}, {124, 137, 144}},
@@ -380,13 +327,13 @@ public class ImageProcessingCommandTest {
   @Test
   public void testChangeName(){
     int[][][] img = {{{0, 0, 0}}};
-    ImageProcessingModel model = new ImageProcessingModelImpl(img, 255);
-    ImageProcessingView test = new PPMProcessingView();
+    ImageClass model = new ImageClassImpl(img, 255);
+    ImageProcessingModel test = new PPMProcessingModel();
     test.storeImage("dot.ppm", model);
-    ImageProcessingCommand command =
+    ModelCommand command =
             new ChangeNameCommand("dot.ppm", "changeName.ppm");
     command.execute(test);
-    assertArrayEquals(model.getImage(), test.getModel("changeName.ppm").getImage());
+    assertArrayEquals(model.getImage(), test.getImage("changeName.ppm").getImage());
   }
 
   //Testing loading and saving relies a lot more on other classes and thus is only tested in

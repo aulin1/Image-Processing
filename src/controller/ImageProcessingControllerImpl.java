@@ -7,31 +7,29 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 
-import command.BlueCompCommand;
-import command.BrightnessCommand;
-import command.ChangeNameCommand;
-import command.GreenCompCommand;
-import command.HorizontalFlipCommand;
-import command.ImageProcessingCommand;
-import command.IntensityCommand;
-import command.LoadCommand;
-import command.LumaCommand;
-import command.RedCompCommand;
-import command.SaveCommand;
-import command.ValueCommand;
-import command.VerticalFlipCommand;
+import image.ImageClass;
+import model.BlueCompCommand;
+import model.BrightnessCommand;
+import model.GreenCompCommand;
+import model.HorizontalFlipCommand;
+import model.ImageProcessingCommand;
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
-import view.PPMProcessingView;
+import model.IntensityCommand;
+import model.LumaCommand;
+import model.PPMProcessingModel;
+import model.RedCompCommand;
+import model.ValueCommand;
+import model.VerticalFlipCommand;
 
 /**
  * This class represents the implementation of the Image Processing Controller.
  */
 public class ImageProcessingControllerImpl implements ImageProcessingController {
-  protected final Map<String, Function<Scanner, ImageProcessingCommand>> commandMap;
+  protected final Map<String, Function<Scanner, ImageProcessingCommand>> imgProcCommandMap;
+  protected final Map<String, Function<Scanner, ModelCommand>> modelCommandMap;
   private final Appendable output;
   private final Readable input;
-  private final ImageProcessingView view;
+  private final ImageProcessingModel view;
 // TODO: add example of supported comms for the old ver of the assignment
 
   /**
@@ -39,7 +37,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * to the user's console.
    */
   public ImageProcessingControllerImpl() throws IllegalArgumentException {
-    this(System.out, new InputStreamReader(System.in), new PPMProcessingView());
+    this(System.out, new InputStreamReader(System.in), new PPMProcessingModel());
   }
 
   /**
@@ -49,7 +47,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param input  the desired input of the user's interaction
    * @throws IllegalArgumentException if any of the field is null
    */
-  public ImageProcessingControllerImpl(Appendable output, Readable input, ImageProcessingView view)
+  public ImageProcessingControllerImpl(Appendable output, Readable input, ImageProcessingModel view)
           throws IllegalArgumentException {
     if (input == null || output == null) {
       throw new IllegalArgumentException("The fields to the controller"
@@ -57,7 +55,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
     this.output = output;
     this.input = input;
-    this.commandMap = new HashMap<>();
+    this.imgProcCommandMap = new HashMap<>();
+    this.modelCommandMap = new HashMap<>();
     this.view = view;
     initiateComms();
   }
@@ -93,35 +92,38 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param sc the scanner which would read additional parameters as necessary.
    */
   private void readComm(String s, Scanner sc) {
-    Function<Scanner, ImageProcessingCommand> commandFunc;
-    commandFunc = commandMap.getOrDefault(s, null);
-    if (commandFunc == null) {
-      writeMessage("Command is not supported." + System.lineSeparator());
-    } else {
-      if (s.equals("load") || s.equals("save") || s.equals("change-name")) {
-        ImageProcessingCommand command = commandFunc.apply(sc);
-        try {
-          command.execute(view);
-          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-        } catch (Exception e) {
-          writeMessage(e.getMessage() + System.lineSeparator());
-        }
-      } else {
-        String imageName = sc.next();
-        String destImageName = sc.next();
-        // try to find the file based on the file name
-        ImageProcessingModel model = view.getModel(imageName);
-        if (model == null) {
-          writeMessage("The image has yet loaded to the program. Please load a valid image "
-                  + "before processing it." + System.lineSeparator());
-        } else {
-          ImageProcessingCommand command = commandFunc.apply(sc);
-          ImageProcessingModel processedModel = command.execute(model);
-          // saves new model with designated name
-          view.storeImage(destImageName, processedModel);
-          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-        }
+    Function<Scanner, ModelCommand> modelCommFunc = this.modelCommandMap.getOrDefault(s, null);
+    Function<Scanner, ImageProcessingCommand> imgProCommFunc = this.imgProcCommandMap.getOrDefault(s, null);
+
+    if (modelCommFunc != null) {
+      ModelCommand command = modelCommFunc.apply(sc);
+      try {
+        command.execute(view);
+        writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+      } catch (Exception e) {
+        writeMessage(e.getMessage() + System.lineSeparator());
       }
+    }
+
+    if (imgProCommFunc != null) {
+      String imageName = sc.next();
+      String destImageName = sc.next();
+      // try to find the file based on the file name
+      ImageClass model = view.getImage(imageName);
+      if (model == null) {
+        writeMessage("The image has yet loaded to the program. Please load a valid image "
+                + "before processing it." + System.lineSeparator());
+      } else {
+        ImageProcessingCommand command = imgProCommFunc.apply(sc);
+        ImageClass processedModel = command.execute(model);
+        // saves new model with designated name
+        view.storeImage(destImageName, processedModel);
+        writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+      }
+    }
+
+    if (modelCommFunc == null && imgProCommFunc == null) {
+      writeMessage("Command is not supported." + System.lineSeparator());
     }
   }
 
@@ -129,18 +131,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * A helper function which initiates the commands into the map.
    */
   protected void initiateComms() {
-    this.commandMap.put("red-component", s -> new RedCompCommand());
-    this.commandMap.put("green-component", s -> new GreenCompCommand());
-    this.commandMap.put("blue-component", s -> new BlueCompCommand());
-    this.commandMap.put("value", s -> new ValueCommand());
-    this.commandMap.put("luma", s -> new LumaCommand());
-    this.commandMap.put("intensity", s -> new IntensityCommand());
-    this.commandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
-    this.commandMap.put("vertical-flip", s -> new VerticalFlipCommand());
-    this.commandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
-    this.commandMap.put("save", s -> new SaveCommand(s.next(), s.next()));
-    this.commandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
-    this.commandMap.put("change-name", s -> new ChangeNameCommand(s.next(), s.next()));
+    this.imgProcCommandMap.put("red-component", s -> new RedCompCommand());
+    this.imgProcCommandMap.put("green-component", s -> new GreenCompCommand());
+    this.imgProcCommandMap.put("blue-component", s -> new BlueCompCommand());
+    this.imgProcCommandMap.put("value", s -> new ValueCommand());
+    this.imgProcCommandMap.put("luma", s -> new LumaCommand());
+    this.imgProcCommandMap.put("intensity", s -> new IntensityCommand());
+    this.imgProcCommandMap.put("horizontal-flip", s -> new HorizontalFlipCommand());
+    this.imgProcCommandMap.put("vertical-flip", s -> new VerticalFlipCommand());
+    this.imgProcCommandMap.put("brighten", s -> new BrightnessCommand(s.nextInt()));
+    this.modelCommandMap.put("save", s -> new SaveCommand(s.next(), s.next()));
+    this.modelCommandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
+    this.modelCommandMap.put("change-name", s -> new ChangeNameCommand(s.next(), s.next()));
   }
 
   /**

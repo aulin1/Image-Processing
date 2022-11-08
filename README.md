@@ -6,11 +6,11 @@
 <li>Interface <strong>ImageProcessingCommand</strong> : a representation of a command in the 
 Controller; contains method execute() which all commands which 
 implements this interface includes.
+  <ol>
 <li><strong>FilterCommand</strong> : an abstract class which represents a command that runs a filter over an image.
 <li><strong>ColorChangeCommand</strong> : an abstract class which represents a command that changes the color of an image.
   <li><strong>BlurSharpenCommand</strong> : an abstract class which represents a command that changes the focus of an image.
 implements this interface includes.
-<ol>
 <li><strong>RedCompCommand/GreenCompCommand/BlueCompCommand</strong>: a function object which 
 create a 
 greyscale 
@@ -25,14 +25,21 @@ with the average of the three components for each pixel.</li>
 image 
 horizontally/vertically to create a new image.</li>
 <li><strong>BrightnessCommand</strong>: a function object changes the brightness of an object.</li>
-<li><strong>ChangeNameCommand</strong>: a function object which changes the name under which an image is saved.</li>
 <li><strong>GaussianBlurCommand</strong>: a function object which puts a Gaussian Blur on an image.</li>
 <li><strong>ImageSharpenCommand</strong>: a function object which sharpens an image.</li>
   <li><strong>SepiaToneCommand</strong>: a function object which creates a Sepia Tone filter on an image.</li>
-  <li><strong>LoadPPMCommand</strong>: a function object which contains the function to load a PPM image.</li>
-  <li><strong>SavePPMCommand</strong>: a function object which contains the function to save a PPM image.</li>
-</ol>
+    </ol>
+  <li>Interface <strong>ModelCommand</strong> : a representation of a command in the 
+Controller; contains method execute() which all commands which 
+implements this interface includes.
+  <ol>
+  <li><strong>LoadCommand</strong>: a function object which contains the function to load an image.</li>
+  <li><strong>SaveCommand</strong>: a function object which contains the function to save an image.</li>
+    <li><strong>ChangeNameCommand</strong>: a function object which changes the name under which an image is saved.</li>
+
+  </ol>
 </li>
+  
 
 <li>Interface <strong>ImageProcessingController</strong>: a representation of an image processing 
 controller 
@@ -43,27 +50,28 @@ which supports all commands included in the script command.</li>
 <li><strong>ImageUtil</strong>: A Util which has the method readPPM() which helps read a PPM file 
 into an Image 
 Processing Model.
+  <li><strong>UpdatedIPController</strong>: A controller which adds the new methods and can read in other image types.
+into an Image 
+Processing Model.
 </li></ol></li>
 
-<li>Interface <strong>ImageProcessingModel</strong>:</li> a representation of what 
-  an image processing model which contains 
-the methods that all image processing models should contain.
+<li>Interface <strong>ImageClass</strong>:</li> a representation of an image and contains get methods for what is needed for an image.
 <ol>
-  <li><strong>ImageProcessingModelImpl</strong>: A model which implements the model interface and represents an image.</li>
+  <li><strong>ImageClassImpl</strong>: A image which implements the image interface and represents an image.</li>
 </ol>
-<li>Interface <strong>ImageProcessingView</strong>: a representation of what an image processing 
-view which contains all the methods that all image processing views should contain. It greatly 
+<li>Interface <strong>ImageProcessingModel</strong>: a representation of what an image processing 
+model which contains all the methods that all image processing models should contain. It greatly 
 handles the loading and saving of images in the program.</li>
 <ol>
-<li><strong>PPMProcessingView</strong>: A view which implements the view interface and can load and save a PPM image.</li>
-<li><strong>MockView</strong>: A view which takes in a log. It is uses to test controller's input.
+<li><strong>PPMProcessingModel</strong>: A model which implements the model interface and can load and save a PPM image.</li>
+<li><strong>MockModel</strong>: A model which takes in a log. It is uses to test controller's input.
 </li></ol>
 
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
-<ol><li><strong>MockViewTest</strong>: Tests for ImageProcessingControllerImpl 
+<ol><li><strong>MockModelTest</strong>: Tests for ImageProcessingControllerImpl 
 class.</li>
-<li><strong>ImageProcessingModelTest</strong>: Tests for ImageProcessingModel class.</li>
+<li><strong>ImageClassTest</strong>: Tests for ImageProcessingModel class.</li>
 <li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>
 <li><strong>ImageProcessingCommandTest</strong>: Tests for the commands.</li>
 <li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
@@ -83,12 +91,16 @@ in this assignment. They are original images converted to PPM image format.
 
 ### Design Changes
 
-The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
+The image was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The image should now be complete. 
 
-The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the model. This is for abstraction and better mutability as now new commands can be added without changing the model interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
+The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the image. This is for abstraction and better mutability as now new commands can be added without changing the image interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
+
+The commands have been split into two types: ImageProcessingCommands which process an image and ModelCommands which are commands that directly change the model. This is for better code seperation. 
+
+The commands have been moved into the respective packages that they belong into, rather than a command package. Additionally, model has been renamed into image, and view has been renamed into model to better represent what they actually are.
 
 Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
 accepted commands* to USEME.md for usage clarity.
 
-saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this view only supports save and load of PPM files
+saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this model only supports save and load of PPM files
 

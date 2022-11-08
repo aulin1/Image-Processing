@@ -1,9 +1,7 @@
 import org.junit.Test;
 
-import java.awt.*;
-
 import controller.ImageUtil;
-import model.ImageProcessingModel;
+import image.ImageClass;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,11 +31,11 @@ public class ImageUtilTest {
   @Test
   public void readPPMWorks() {
     // check if the method build the array with the correct dimension to the image
-    ImageProcessingModel model = ImageUtil.readPPM(koalaPath);
+    ImageClass model = ImageUtil.readPPM(koalaPath);
     assertEquals(768, model.getHeight());
     assertEquals(1024, model.getWidth());
 
-    ImageProcessingModel pixelModel = ImageUtil.readPPM(pixelPath);
+    ImageClass pixelModel = ImageUtil.readPPM(pixelPath);
     assertEquals(4, pixelModel.getHeight());
     assertEquals(4, pixelModel.getWidth());
 
@@ -61,7 +59,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionIncorrectInput() {
     try {
-      ImageProcessingModel model = ImageUtil.readPPM("bool");
+      ImageClass model = ImageUtil.readPPM("bool");
     } catch (IllegalArgumentException e) {
       assertEquals("Cannot find file! ", e.getMessage());
     }
@@ -73,7 +71,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionPPMDoesntExist() {
     try {
-      ImageProcessingModel model = ImageUtil.readPPM("Chicken.ppm");
+      ImageClass model = ImageUtil.readPPM("Chicken.ppm");
     } catch (IllegalArgumentException e) {
       assertEquals("Cannot find file! ", e.getMessage());
     }
@@ -85,7 +83,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionNotP3PPM() {
     try {
-      ImageProcessingModel model = ImageUtil.readPPM("res/PixelP6.ppm");
+      ImageClass model = ImageUtil.readPPM("res/PixelP6.ppm");
     } catch (IllegalArgumentException e) {
       assertEquals("Invalid PPM file: plain RAW file should begin with P3", e.getMessage());
     }
@@ -97,7 +95,7 @@ public class ImageUtilTest {
   @Test
   public void readPPMThrowsExceptionNullFileName() {
     try {
-      ImageProcessingModel model = ImageUtil.readPPM(null);
+      ImageClass model = ImageUtil.readPPM(null);
     } catch (IllegalArgumentException e) {
       assertEquals("The filename cannot be null.", e.getMessage());
     }
@@ -108,7 +106,7 @@ public class ImageUtilTest {
    */
   @Test
   public void readIMGWorksPNG() {
-    ImageProcessingModel pixelModel = ImageUtil.readIMG("res/Pixel.png");
+    ImageClass pixelModel = ImageUtil.readIMG("res/Pixel.png");
     // check if every pixel has the correct rgb
     int[][][] image = pixelModel.getImage();
     StringBuilder imageRead = new StringBuilder();
@@ -129,7 +127,7 @@ public class ImageUtilTest {
    */
   @Test
   public void readIMGWorksJPG() {
-    ImageProcessingModel pixelModel = ImageUtil.readIMG("res/Pixel.jpg");
+    ImageClass pixelModel = ImageUtil.readIMG("res/Pixel.jpg");
     // check if every pixel has the correct rgb
     int[][][] image = pixelModel.getImage();
     StringBuilder imageRead = new StringBuilder();
@@ -148,7 +146,7 @@ public class ImageUtilTest {
    */
   @Test
   public void readIMGWorksBMP() {
-    ImageProcessingModel pixelModel = ImageUtil.readIMG("res/Pixel.bmp");
+    ImageClass pixelModel = ImageUtil.readIMG("res/Pixel.bmp");
     // check if every pixel has the correct rgb
     int[][][] image = pixelModel.getImage();
     StringBuilder imageRead = new StringBuilder();
@@ -167,7 +165,7 @@ public class ImageUtilTest {
    */
   @Test
   public void readIMGWorksPPM() {
-    ImageProcessingModel pixelModel = ImageUtil.readIMG("res/Pixel.ppm");
+    ImageClass pixelModel = ImageUtil.readIMG("res/Pixel.ppm");
     // check if every pixel has the correct rgb
     int[][][] image = pixelModel.getImage();
     StringBuilder imageRead = new StringBuilder();
@@ -188,7 +186,7 @@ public class ImageUtilTest {
   @Test
   public void readIMGThrowsExceptionUnfoundFile() {
     try {
-      ImageProcessingModel model = ImageUtil.readIMG("res/chicken.png");
+      ImageClass model = ImageUtil.readIMG("res/chicken.png");
     } catch (IllegalArgumentException e) {
       assertEquals("Cannot find file or format not supported.", e.getMessage());
     }
@@ -200,7 +198,7 @@ public class ImageUtilTest {
   @Test
   public void readIMGThrowsExceptionNullFileName() {
     try {
-      ImageProcessingModel model = ImageUtil.readPPM(null);
+      ImageClass model = ImageUtil.readPPM(null);
     } catch (IllegalArgumentException e) {
       assertEquals("The filename cannot be null.", e.getMessage());
     }

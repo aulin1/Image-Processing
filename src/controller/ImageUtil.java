@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
+import image.ImageClass;
+import image.ImageClassImpl;
 
 
 /**
@@ -26,7 +26,7 @@ public class ImageUtil {
    * @throws IllegalArgumentException if the file cannot be found, the file is not a PPM file or
    * the file name is null
    */
-  public static ImageProcessingModel readPPM(String filename) throws IllegalArgumentException {
+  public static ImageClass readPPM(String filename) throws IllegalArgumentException {
     if (filename == null) {
       throw new IllegalArgumentException("The filename cannot be null.");
     }
@@ -73,7 +73,7 @@ public class ImageUtil {
       }
     }
 
-    ImageProcessingModel model = new ImageProcessingModelImpl(imageBoard, maxValue);
+    ImageClass model = new ImageClassImpl(imageBoard, maxValue);
     return model;
   }
 
@@ -84,8 +84,8 @@ public class ImageUtil {
    * @return an ImageProcessingModel representation of the loaded image
    * @throws IllegalArgumentException if the file cannot be found or if the file is not a PPM file
    */
-  public static ImageProcessingModel readIMG(String filename) throws IllegalArgumentException {
-    ImageProcessingModel model;
+  public static ImageClass readIMG(String filename) throws IllegalArgumentException {
+    ImageClass model;
 
     if (filename == null) {
       throw new IllegalArgumentException("The filename cannot be null.");
@@ -124,7 +124,7 @@ public class ImageUtil {
       }
     }
 
-    model = new ImageProcessingModelImpl(imageBoard, maxValue);
+    model = new ImageClassImpl(imageBoard, maxValue);
     return model;
   }
 }
