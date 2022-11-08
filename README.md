@@ -6,11 +6,11 @@
 <li>Interface <strong>ImageProcessingCommand</strong> : a representation of a command in the 
 Controller; contains method execute() which all commands which 
 implements this interface includes.
+  <ol>
 <li><strong>FilterCommand</strong> : an abstract class which represents a command that runs a filter over an image.
 <li><strong>ColorChangeCommand</strong> : an abstract class which represents a command that changes the color of an image.
   <li><strong>BlurSharpenCommand</strong> : an abstract class which represents a command that changes the focus of an image.
 implements this interface includes.
-<ol>
 <li><strong>RedCompCommand/GreenCompCommand/BlueCompCommand</strong>: a function object which 
 create a 
 greyscale 
@@ -29,9 +29,9 @@ horizontally/vertically to create a new image.</li>
 <li><strong>GaussianBlurCommand</strong>: a function object which puts a Gaussian Blur on an image.</li>
 <li><strong>ImageSharpenCommand</strong>: a function object which sharpens an image.</li>
   <li><strong>SepiaToneCommand</strong>: a function object which creates a Sepia Tone filter on an image.</li>
+    </ol>
   <li><strong>LoadPPMCommand</strong>: a function object which contains the function to load a PPM image.</li>
   <li><strong>SavePPMCommand</strong>: a function object which contains the function to save a PPM image.</li>
-</ol>
 </li>
 
 <li>Interface <strong>ImageProcessingController</strong>: a representation of an image processing 
