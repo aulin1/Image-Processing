@@ -92,16 +92,20 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param sc the scanner which would read additional parameters as necessary.
    */
   private void readComm(String s, Scanner sc) {
-    if (s.equals("load") || s.equals("save") || s.equals("change-name")) {
-      ModelCommand modelComm = this.ModelCommandMap.getOrDefault(s, null);
-      ImageProcessingCommand command = commandFunc.apply(sc);
+    Function<Scanner, ModelCommand> modelCommFunc = this.modelCommandMap.getOrDefault(s, null);
+    Function<Scanner, ImageProcessingCommand> imgProCommFunc = this.imgProcCommandMap.getOrDefault(s, null);
+
+    if (modelCommFunc != null) {
+      ModelCommand command = modelCommFunc.apply(sc);
       try {
         command.execute(view);
         writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       } catch (Exception e) {
         writeMessage(e.getMessage() + System.lineSeparator());
       }
-    } else {
+    }
+
+    if (imgProCommFunc != null) {
       String imageName = sc.next();
       String destImageName = sc.next();
       // try to find the file based on the file name
@@ -110,46 +114,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         writeMessage("The image has yet loaded to the program. Please load a valid image "
                 + "before processing it." + System.lineSeparator());
       } else {
-        ImageProcessingCommand command = commandFunc.apply(sc);
+        ImageProcessingCommand command = imgProCommFunc.apply(sc);
         ImageClass processedModel = command.execute(model);
         // saves new model with designated name
         view.storeImage(destImageName, processedModel);
         writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       }
     }
+
+    if (modelCommFunc == null && imgProCommFunc == null) {
+      writeMessage("Command is not supported." + System.lineSeparator());
+    }
   }
-//  private void readComm(String s, Scanner sc) {
-//    Function<Scanner, ImageProcessingCommand> commandFunc;
-//    commandFunc = commandMap.getOrDefault(s, null);
-//    if (commandFunc == null) {
-//      writeMessage("Command is not supported." + System.lineSeparator());
-//    } else {
-//      if (s.equals("load") || s.equals("save") || s.equals("change-name")) {
-//        ImageProcessingCommand command = commandFunc.apply(sc);
-//        try {
-//          command.execute(view);
-//          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-//        } catch (Exception e) {
-//          writeMessage(e.getMessage() + System.lineSeparator());
-//        }
-//      } else {
-//        String imageName = sc.next();
-//        String destImageName = sc.next();
-//        // try to find the file based on the file name
-//        ImageClass model = view.getImage(imageName);
-//        if (model == null) {
-//          writeMessage("The image has yet loaded to the program. Please load a valid image "
-//                  + "before processing it." + System.lineSeparator());
-//        } else {
-//          ImageProcessingCommand command = commandFunc.apply(sc);
-//          ImageClass processedModel = command.execute(model);
-//          // saves new model with designated name
-//          view.storeImage(destImageName, processedModel);
-//          writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-//        }
-//      }
-//    }
-//  }
 
   /**
    * A helper function which initiates the commands into the map.

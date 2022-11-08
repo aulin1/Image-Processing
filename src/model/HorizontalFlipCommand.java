@@ -2,7 +2,6 @@ package model;
 
 import image.ImageClass;
 import image.ImageClassImpl;
-import model.ImageProcessingModel;
 
 /**
  * This class represents a command the flips an image horizontally (across a vertical axis).
@@ -22,10 +21,5 @@ public class HorizontalFlipCommand implements ImageProcessingCommand {
       }
     }
     return new ImageClassImpl(img, model.getMax());
-  }
-
-  @Override
-  public void execute(ImageProcessingModel view) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 }

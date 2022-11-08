@@ -42,12 +42,10 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
   @Override
   protected void initiateComms() {
     super.initiateComms();
-    this.commandMap.put("greyscale", s -> new LumaCommand());
-    this.commandMap.put("gaussian-blur", s -> new GaussianBlurCommand());
-    this.commandMap.put("sharpen", s -> new ImageSharpenCommand());
-    this.commandMap.put("sepia", s -> new SepiaToneCommand());
-    // universal save and load
-    this.commandMap.put("load", s -> new LoadCommand(s.next(), s.next()));
+    this.imgProcCommandMap.put("greyscale", s -> new LumaCommand());
+    this.imgProcCommandMap.put("gaussian-blur", s -> new GaussianBlurCommand());
+    this.imgProcCommandMap.put("sharpen", s -> new ImageSharpenCommand());
+    this.imgProcCommandMap.put("sepia", s -> new SepiaToneCommand());
   }
 
   @Override
