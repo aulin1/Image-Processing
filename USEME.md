@@ -17,7 +17,7 @@ applied to it. An error message will appear if otherwise</li>
 <li>The newer version of the program supports <strong>most conventional image formats</strong></li>
 
 
-### Accepted script of commands (old version)
+### Accepted script of commands (old and new version)
 <li><strong>load image-path image-name</strong>: Load a PPM image from the provided image path and 
 store it in the program under the provided name.
 </li>
