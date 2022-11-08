@@ -59,7 +59,7 @@ abstract class FilterCommand implements ImageProcessingCommand{
   }
 
   @Override
-  public void execute(ImageProcessingView view) {
+  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
     throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 }

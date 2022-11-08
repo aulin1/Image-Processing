@@ -275,4 +275,8 @@ public class ImageProcessingIntegrationTest {
     assertArrayEquals(map.get(fileName + "_darken").getImage(),
             view.getModel(fileName).changeBrightness(-100).getImage());*/
   }
+  //TODO: tests loading in png, jpg, and bmp
+  //TODO: tests saving in png, jpb, and bmp
+  //As long as you test that loading and saving give the correct model, then it can be assumed that
+  //Since the operations are on the model in general, the operations are correct.
 }
