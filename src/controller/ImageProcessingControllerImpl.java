@@ -32,7 +32,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private final Appendable output;
   private final Readable input;
   private final ImageProcessingView view;
-
+// TODO: add example of supported comms for the old ver of the assignment
 
   /**
    * Default constructor for image processing controller with input from the keyboard and output

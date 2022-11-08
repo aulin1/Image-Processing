@@ -25,7 +25,7 @@ public class SaveCommand implements ImageProcessingCommand {
     this.filePath = filePath;
     this.fileName = fileName;
   }
- //TODO: refactor to be a generic save command
+
   @Override
   public ImageProcessingModel execute(ImageProcessingModel model)
           throws UnsupportedOperationException {
