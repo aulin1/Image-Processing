@@ -3,16 +3,16 @@ import org.junit.Test;
 import java.io.StringReader;
 
 import controller.ImageProcessingControllerImpl;
-import view.ImageProcessingView;
-import view.MockView;
+import model.ImageProcessingModel;
+import model.MockModel;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains tests for image processing controller impl.
  */
-public class MockViewTest {
-  ImageProcessingView view;
+public class MockModelTest {
+  ImageProcessingModel view;
   ImageProcessingControllerImpl controller;
   StringBuilder receivedInput;
   StringBuilder controllerOutput;
@@ -24,7 +24,7 @@ public class MockViewTest {
   private void init() {
     receivedInput = new StringBuilder();
     controllerOutput = new StringBuilder();
-    view = new MockView(receivedInput);
+    view = new MockModel(receivedInput);
   }
 
   /**

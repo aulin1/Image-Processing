@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * A class that represents a way to blur or sharpen an image.

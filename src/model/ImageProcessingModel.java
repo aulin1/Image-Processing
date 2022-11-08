@@ -1,36 +1,56 @@
 package model;
 
+import image.ImageClass;
+
 /**
- * An interface which contains the methods that a model for image processing should contain.
+ * An interface for an image processing view.
  */
 public interface ImageProcessingModel {
 
   /**
-   * Returns the width of the image.
+   * Loads an image using a given imagePath and imageName.
    *
-   * @return the width of the image.
+   * @param imagePath the path to the image which need to be load
+   * @param imageName the name of the image to be referred to while using the program
+   * @return an ImageProcessingModel which represents the image you have loaded in.
    */
-  int getWidth();
+  ImageClass loadImage(String imagePath, String imageName)
+          throws IllegalArgumentException;
 
   /**
-   * Returns the height of the image.
+   * Saves a given image to the image path with the format indicated through the provided image
+   * path.
    *
-   * @return the height of the image.
+   * @param imagePath  the path which the image will be saved to
+   * @param imageName  the referred name of the image in the program to be saved
+   * @throws IllegalStateException if the image cannot be saved
+   * @throws IllegalArgumentException if the image name provided does not exist in the memory
    */
-  int getHeight();
+  void saveImage(String imagePath, String imageName) throws IllegalStateException,
+          IllegalArgumentException;
 
   /**
-   * Returns an 3D array of pixel values that indicates the amount of that particular color has
-   * for that pixel. The values are kept as such: [row][column][color].
+   * Stores the provided model with the provided image name as the key.
    *
-   * @returns a 3D integer array.
+   * @param imageName the key to the model in the map
+   * @param model     the model to be stored
    */
-  int[][][] getImage();
+  void storeImage(String imageName, ImageClass model);
 
   /**
-   * Returns the max value for the colors in the image.
+   * Returns the model stored in the map with the provided name.
    *
-   * @return the max value for the colors in the image.
-   * */
-  int getMax();
+   * @param imageName the name of the image to be retrieved the model for
+   * @return the model if the model exists in the map and null if the model is not in the map.
+   */
+  ImageClass getImage(String imageName);
+
+  /**
+   * Changes the name of an image.
+   *
+   * @param oldName the old name of the image.
+   * @param newName the new name of the image.
+   * @throws IllegalArgumentException if either name is null.
+   */
+  void changeName(String oldName, String newName) throws IllegalArgumentException;
 }

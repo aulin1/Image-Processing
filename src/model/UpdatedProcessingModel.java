@@ -1,15 +1,16 @@
-package view;
+package model;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.imageio.stream.ImageOutputStream;
 
 import controller.ImageUtil;
-import model.ImageProcessingModel;
+import image.ImageClass;
 
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
@@ -18,7 +19,21 @@ import static java.awt.image.BufferedImage.TYPE_INT_RGB;
  * the program. It supports all functionality of the previous view version but also able to save,
  * load and store images of all supported format besides PPM, such as JPEG, PNG,....
  */
-public class UpdatedProcessingView extends PPMProcessingView {
+public class UpdatedProcessingModel extends PPMProcessingModel {
+
+  /**
+   * Basic constructor for UpdatedProcessingView.
+   * */
+  public UpdatedProcessingModel(){
+    super();
+  }
+
+  /**
+   * Another constructor for the updated view.
+   * */
+  public UpdatedProcessingModel(Map<String, ImageClass> map){
+    super(map);
+  }
 
   @Override
   public void saveImage(String imagePath, String imageName)
@@ -34,7 +49,7 @@ public class UpdatedProcessingView extends PPMProcessingView {
     }
 
     // buffered image then ImageIO write
-    ImageProcessingModel model = this.getModel(imageName);
+    ImageClass model = this.getImage(imageName);
     int[][][] imageBoard = model.getImage();
     BufferedImage buffImg = new BufferedImage(model.getWidth(), model.getHeight(), TYPE_INT_RGB);
 
@@ -57,9 +72,9 @@ public class UpdatedProcessingView extends PPMProcessingView {
   }
 
   @Override
-  public ImageProcessingModel loadImage(String imagePath, String imageName)
+  public ImageClass loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {
-    ImageProcessingModel model = ImageUtil.readIMG(imagePath);
+    ImageClass model = ImageUtil.readIMG(imagePath);
     this.storeImage(imageName, model);
     return model;
   }

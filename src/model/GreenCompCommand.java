@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * This class represents a green component command.

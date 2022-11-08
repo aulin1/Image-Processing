@@ -1,4 +1,4 @@
-package command;
+package model;
 
 import static java.lang.Math.max;
 

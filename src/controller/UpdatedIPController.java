@@ -2,13 +2,12 @@ package controller;
 
 import java.io.InputStreamReader;
 
-import command.GaussianBlurCommand;
-import command.ImageSharpenCommand;
-import command.LoadCommand;
-import command.LumaCommand;
-import command.SepiaToneCommand;
-import view.ImageProcessingView;
-import view.UpdatedProcessingView;
+import model.GaussianBlurCommand;
+import model.ImageProcessingModel;
+import model.ImageSharpenCommand;
+import model.LumaCommand;
+import model.SepiaToneCommand;
+import model.UpdatedProcessingModel;
 
 /**
  * <p>This class represented an Image Processing Controller which supports all functionality from
@@ -25,7 +24,7 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
    * processing view.
    */
   public UpdatedIPController() {
-    super(System.out, new InputStreamReader(System.in), new UpdatedProcessingView());
+    super(System.out, new InputStreamReader(System.in), new UpdatedProcessingModel());
   }
 
   /**
@@ -35,7 +34,7 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
    * @param input  the desired input of the user's interaction
    * @throws IllegalArgumentException if any of the field is null
    */
-  public UpdatedIPController(Appendable output, Readable input, ImageProcessingView view)
+  public UpdatedIPController(Appendable output, Readable input, ImageProcessingModel view)
           throws IllegalArgumentException {
     super(output, input, view);
   }

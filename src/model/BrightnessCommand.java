@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * This class represents a command that brightens or darkens an image.

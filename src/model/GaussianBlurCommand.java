@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * A class that represents a command that puts a Gaussian filter on an image.

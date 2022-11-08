@@ -1,10 +1,10 @@
-package view;
+package model;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.ImageProcessingModel;
+import image.ImageClass;
 
 import static controller.ImageUtil.readPPM;
 
@@ -12,13 +12,13 @@ import static controller.ImageUtil.readPPM;
  * A class that represents a view for PPM images. A view is mainly responsible for managing the
  * saving and loading of images to and from the program.
  */
-public class PPMProcessingView implements ImageProcessingView {
-  private final Map<String, ImageProcessingModel> memory; //according to prof, memory is in view
+public class PPMProcessingModel implements ImageProcessingModel {
+  private final Map<String, ImageClass> memory; //according to prof, memory is in view
 
   /**
    * A constructor for a PPMProcessingView.
    */
-  public PPMProcessingView() {
+  public PPMProcessingModel() {
     this.memory = new HashMap<>();
   }
 
@@ -28,7 +28,7 @@ public class PPMProcessingView implements ImageProcessingView {
    * @param map the hashmap for memory.
    * @throws IllegalArgumentException if the map is null.
    */
-  public PPMProcessingView(Map<String, ImageProcessingModel> map) {
+  public PPMProcessingModel(Map<String, ImageClass> map) {
     if (map == null) {
       throw new IllegalArgumentException("Map cannot be null.");
     }
@@ -36,9 +36,9 @@ public class PPMProcessingView implements ImageProcessingView {
   }
 
   @Override
-  public ImageProcessingModel loadImage(String imagePath, String imageName)
+  public ImageClass loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {
-    ImageProcessingModel model = readPPM(imagePath);
+    ImageClass model = readPPM(imagePath);
     this.storeImage(imageName, model);
     return model;
   }
@@ -56,7 +56,7 @@ public class PPMProcessingView implements ImageProcessingView {
               ".");
     }
 
-    ImageProcessingModel model = this.memory.getOrDefault(imageName, null);
+    ImageClass model = this.memory.getOrDefault(imageName, null);
     if (model == null) {
       throw new IllegalArgumentException("The image has yet to be loaded to the program.");
     }
@@ -83,7 +83,7 @@ public class PPMProcessingView implements ImageProcessingView {
   }
 
   @Override
-  public void storeImage(String imageName, ImageProcessingModel model) {
+  public void storeImage(String imageName, ImageClass model) {
     memory.put(imageName, model);
   }
 
@@ -93,7 +93,7 @@ public class PPMProcessingView implements ImageProcessingView {
       throw new IllegalArgumentException("Name cannot be null.");
     }
     if (this.memory.containsKey(oldName)) {
-      ImageProcessingModel model = this.memory.get(oldName);
+      ImageClass model = this.memory.get(oldName);
       this.memory.put(newName, model);
     } else {
       throw new IllegalArgumentException("There is no existing file with the provided name in the"
@@ -102,7 +102,7 @@ public class PPMProcessingView implements ImageProcessingView {
   }
 
   @Override
-  public ImageProcessingModel getModel(String imageName) {
+  public ImageClass getImage(String imageName) {
     return this.memory.getOrDefault(imageName, null);
   }
 }

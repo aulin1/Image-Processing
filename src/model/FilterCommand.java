@@ -1,8 +1,7 @@
-package command;
+package model;
 
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
-import view.ImageProcessingView;
+import image.ImageClass;
+import image.ImageClassImpl;
 
 /**
  * A command that represents running a filter over an image.
@@ -41,7 +40,7 @@ abstract class FilterCommand implements ImageProcessingCommand{
   abstract int[] getCorrectValues(int[][][] img, int row, int col);
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) {
+  public ImageClass execute(ImageClass model) {
     if(model == null){
       throw new IllegalArgumentException("The model cannot be null");
     }
@@ -55,11 +54,6 @@ abstract class FilterCommand implements ImageProcessingCommand{
         img[i][j][2] = vals[2];
       }
     }
-    return new ImageProcessingModelImpl(img, model.getMax());
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
+    return new ImageClassImpl(img, model.getMax());
   }
 }

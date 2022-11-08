@@ -1,12 +1,11 @@
-package command;
+package controller;
 
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
 
 /**
  * This class represents a command that loads in a PPM image.
  */
-public class LoadCommand implements ImageProcessingCommand {
+public class LoadCommand implements ModelCommand {
   private final String imagePath;
   private final String imageName;
 
@@ -25,15 +24,8 @@ public class LoadCommand implements ImageProcessingCommand {
     this.imageName = imageName;
   }
 
-
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model)
-          throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws IllegalArgumentException {
+  public void execute(ImageProcessingModel view) throws IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException("The view cannot be null");
     }

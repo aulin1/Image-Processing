@@ -1,12 +1,11 @@
-package command;
+package controller;
 
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
 
 /**
  * This class represents a save command.
  */
-public class SaveCommand implements ImageProcessingCommand {
+public class SaveCommand implements ModelCommand {
   private final String filePath;
   private final String fileName;
 
@@ -27,13 +26,7 @@ public class SaveCommand implements ImageProcessingCommand {
   }
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model)
-          throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws IllegalStateException,
+  public void execute(ImageProcessingModel view) throws IllegalStateException,
           IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException("The view cannot be null");

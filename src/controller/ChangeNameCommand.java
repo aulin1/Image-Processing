@@ -1,13 +1,12 @@
-package command;
+package controller;
 
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
 
 /**
  * This class represents a change name command which allows the user to change the name an image
  * which is previously loaded to the program to a new name.
  */
-public class ChangeNameCommand implements ImageProcessingCommand {
+public class ChangeNameCommand implements ModelCommand {
   private final String oldName;
   private final String newName;
 
@@ -27,13 +26,7 @@ public class ChangeNameCommand implements ImageProcessingCommand {
   }
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model)
-          throws UnsupportedOperationException {
-    throw new UnsupportedOperationException("This method is not supported by this command object.");
-  }
-
-  @Override
-  public void execute(ImageProcessingView view) throws IllegalArgumentException {
+  public void execute(ImageProcessingModel view) throws IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException("The view cannot be null");
     }

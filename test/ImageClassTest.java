@@ -1,8 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
+import image.ImageClass;
+import image.ImageClassImpl;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Tests for the ImageProcessingModel.
  */
-public class ImageProcessingModelTest {
+public class ImageClassTest {
 
   /**
    * A 3D array for testing operations.
@@ -34,7 +34,7 @@ public class ImageProcessingModelTest {
    */
   @Test
   public void testConstructor() {
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, 255);
+    ImageClass test = new ImageClassImpl(this.testBoard, 255);
     int[][][] returnTest = test.getImage();
     assertArrayEquals(returnTest, this.testBoard);
   }
@@ -45,7 +45,7 @@ public class ImageProcessingModelTest {
   @Test
   public void testConstructor2() {
     int[][][] otherTest = new int[][][]{{{1, 1, 1}, {1, 1, 1}}, {{1, 1, 1}, {1, 1, 1}}};
-    ImageProcessingModel test = new ImageProcessingModelImpl(otherTest, 255);
+    ImageClass test = new ImageClassImpl(otherTest, 255);
     this.testBoard[0][0][0] = 10;
     int[][][] returnTest = new int[][][]{{{1, 1, 1}, {1, 1, 1}}, {{1, 1, 1}, {1, 1, 1}}};
     assertArrayEquals(test.getImage(), returnTest);
@@ -56,7 +56,7 @@ public class ImageProcessingModelTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNullArray() {
-    ImageProcessingModel test = new ImageProcessingModelImpl(null, 255);
+    ImageClass test = new ImageClassImpl(null, 255);
   }
 
   /**
@@ -65,7 +65,7 @@ public class ImageProcessingModelTest {
    * */
   @Test(expected = IllegalArgumentException.class)
   public void testNegativeMax(){
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, -10);
+    ImageClass test = new ImageClassImpl(this.testBoard, -10);
   }
 
   /**
@@ -73,7 +73,7 @@ public class ImageProcessingModelTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void testZeroMax(){
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, 0);
+    ImageClass test = new ImageClassImpl(this.testBoard, 0);
   }
 
   /**
@@ -82,7 +82,7 @@ public class ImageProcessingModelTest {
   @Test
   public void testGetImage() {
     int[][][] otherTest = new int[][][]{{{1, 1, 1}, {1, 1, 1}}, {{1, 1, 1}, {1, 1, 1}}};
-    ImageProcessingModel test = new ImageProcessingModelImpl(otherTest, 255);
+    ImageClass test = new ImageClassImpl(otherTest, 255);
     int[][][] returnTest = test.getImage();
     returnTest[0][0][0] = 10;
     assertArrayEquals(otherTest, test.getImage());
@@ -93,9 +93,9 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testGetWidth() {
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, 255);
-    ImageProcessingModel test2 = new ImageProcessingModelImpl(new int[3][5][3], 255);
-    ImageProcessingModel test3 = new ImageProcessingModelImpl(new int[10][1][3], 255);
+    ImageClass test = new ImageClassImpl(this.testBoard, 255);
+    ImageClass test2 = new ImageClassImpl(new int[3][5][3], 255);
+    ImageClass test3 = new ImageClassImpl(new int[10][1][3], 255);
     assertEquals(2, test.getWidth());
     assertEquals(5, test2.getWidth());
     assertEquals(1, test3.getWidth());
@@ -106,9 +106,9 @@ public class ImageProcessingModelTest {
    */
   @Test
   public void testGetHeight() {
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, 255);
-    ImageProcessingModel test2 = new ImageProcessingModelImpl(new int[3][5][3], 255);
-    ImageProcessingModel test3 = new ImageProcessingModelImpl(new int[10][1][3], 255);
+    ImageClass test = new ImageClassImpl(this.testBoard, 255);
+    ImageClass test2 = new ImageClassImpl(new int[3][5][3], 255);
+    ImageClass test3 = new ImageClassImpl(new int[10][1][3], 255);
     assertEquals(2, test.getHeight());
     assertEquals(3, test2.getHeight());
     assertEquals(10, test3.getHeight());
@@ -119,9 +119,9 @@ public class ImageProcessingModelTest {
    * */
   @Test
   public void testGetMax(){
-    ImageProcessingModel test = new ImageProcessingModelImpl(this.testBoard, 255);
-    ImageProcessingModel test2 = new ImageProcessingModelImpl(new int[3][5][3], 10);
-    ImageProcessingModel test3 = new ImageProcessingModelImpl(new int[10][1][3], 300);
+    ImageClass test = new ImageClassImpl(this.testBoard, 255);
+    ImageClass test2 = new ImageClassImpl(new int[3][5][3], 10);
+    ImageClass test3 = new ImageClassImpl(new int[10][1][3], 300);
     assertEquals(255, test.getMax());
     assertEquals(10, test2.getMax());
     assertEquals(300, test3.getMax());

@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * This class represents a command that returns a greyscale image based on the blue colors of

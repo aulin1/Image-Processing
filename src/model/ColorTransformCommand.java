@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * A command that gets a color changed image from another image.

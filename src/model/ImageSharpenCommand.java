@@ -1,4 +1,4 @@
-package command;
+package model;
 
 /**
  * A class that represents a command that can sharpen an image.

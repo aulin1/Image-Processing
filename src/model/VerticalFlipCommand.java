@@ -1,8 +1,8 @@
-package command;
+package model;
 
+import image.ImageClass;
+import image.ImageClassImpl;
 import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
-import view.ImageProcessingView;
 
 /**
  * This class represents a command that flips an image vertically (across a horizontal axis).
@@ -10,7 +10,7 @@ import view.ImageProcessingView;
 public class VerticalFlipCommand implements ImageProcessingCommand {
 
   @Override
-  public ImageProcessingModel execute(ImageProcessingModel model) throws IllegalArgumentException {
+  public ImageClass execute(ImageClass model) throws IllegalArgumentException {
     if (model == null) {
       throw new IllegalArgumentException("The model cannot be null");
     }
@@ -21,11 +21,11 @@ public class VerticalFlipCommand implements ImageProcessingCommand {
         img[model.getHeight() - 1 - i][j] = model.getImage()[i][j];
       }
     }
-    return new ImageProcessingModelImpl(img, model.getMax());
+    return new ImageClassImpl(img, model.getMax());
   }
 
   @Override
-  public void execute(ImageProcessingView view) throws UnsupportedOperationException {
+  public void execute(ImageProcessingModel view) throws UnsupportedOperationException {
     throw new UnsupportedOperationException("This method is not supported by this command object.");
   }
 }

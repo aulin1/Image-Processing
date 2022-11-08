@@ -1,11 +1,11 @@
-package model;
+package image;
 
 import static java.lang.Math.max;
 
 /**
  * A model that processes PPM Images.
  */
-public class ImageProcessingModelImpl implements ImageProcessingModel {
+public class ImageClassImpl implements ImageClass {
 
   /**
    * The image saved as a 3D integer array.
@@ -26,7 +26,7 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
    * @throws IllegalArgumentException if imageBoard is null, or if the max value is less than or
    * equal to 0.
    */
-  public ImageProcessingModelImpl(int[][][] imageBoard, int maxValue) {
+  public ImageClassImpl(int[][][] imageBoard, int maxValue) {
     if (imageBoard == null) {
       throw new IllegalArgumentException("Image or name cannot be null.");
     }

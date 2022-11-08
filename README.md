@@ -46,24 +46,24 @@ Processing Model.
 </li></ol></li>
 
 <li>Interface <strong>ImageProcessingModel</strong>:</li> a representation of what 
-  an image processing model which contains 
+  an image processing image which contains 
 the methods that all image processing models should contain.
 <ol>
-  <li><strong>ImageProcessingModelImpl</strong>: A model which implements the model interface and represents an image.</li>
+  <li><strong>ImageProcessingModelImpl</strong>: A image which implements the image interface and represents an image.</li>
 </ol>
 <li>Interface <strong>ImageProcessingView</strong>: a representation of what an image processing 
-view which contains all the methods that all image processing views should contain. It greatly 
+model which contains all the methods that all image processing views should contain. It greatly 
 handles the loading and saving of images in the program.</li>
 <ol>
-<li><strong>PPMProcessingView</strong>: A view which implements the view interface and can load and save a PPM image.</li>
-<li><strong>MockView</strong>: A view which takes in a log. It is uses to test controller's input.
+<li><strong>PPMProcessingView</strong>: A model which implements the model interface and can load and save a PPM image.</li>
+<li><strong>MockView</strong>: A model which takes in a log. It is uses to test controller's input.
 </li></ol>
 
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
-<ol><li><strong>MockViewTest</strong>: Tests for ImageProcessingControllerImpl 
+<ol><li><strong>MockModelTest</strong>: Tests for ImageProcessingControllerImpl 
 class.</li>
-<li><strong>ImageProcessingModelTest</strong>: Tests for ImageProcessingModel class.</li>
+<li><strong>ImageClassTest</strong>: Tests for ImageProcessingModel class.</li>
 <li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>
 <li><strong>ImageProcessingCommandTest</strong>: Tests for the commands.</li>
 <li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
@@ -83,12 +83,12 @@ in this assignment. They are original images converted to PPM image format.
 
 ### Design Changes
 
-The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
+The image was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The image should now be complete. 
 
-The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the model. This is for abstraction and better mutability as now new commands can be added without changing the model interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
+The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the image. This is for abstraction and better mutability as now new commands can be added without changing the image interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
 
 Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
 accepted commands* to USEME.md for usage clarity.
 
-saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this view only supports save and load of PPM files
+saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this model only supports save and load of PPM files
 
