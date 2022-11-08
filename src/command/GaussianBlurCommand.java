@@ -6,6 +6,6 @@ package command;
 public class GaussianBlurCommand extends BlurSharpenCommand{
   @Override
   double[][] getWeightMatrix() {
-    return new double[][]{{1.0/16, 1.0/8, 1.0/16}, {1.0/8, 1.0/4, 1.0/8}, {1.0/16, 1.0/8, 1.0/16}};
+    return new double[][]{{0.0625, 0.125, 0.0625}, {0.125, 0.25, 0.125}, {0.0625, 0.125, 0.0625}};
   }
 }

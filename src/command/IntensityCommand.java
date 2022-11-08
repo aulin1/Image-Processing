@@ -8,8 +8,8 @@ public class IntensityCommand extends FilterCommand {
 
   @Override
   protected int[] getCorrectValues(int[][][] image, int row, int col) {
-    int avg = (image[row][col][0] + image[row][col][1]
-            + image[row][col][2]) / 3;
+    int avg = (int) Math.round((image[row][col][0] + image[row][col][1]
+            + image[row][col][2]) / 3.0);
     return new int[]{avg, avg, avg};
   }
 }
