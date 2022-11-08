@@ -19,10 +19,11 @@ public interface ImageProcessingView {
   //TODO: check if returning a model is needed
 
   /**
-   * Saves a given image to the image path.
+   * Saves a given image to the image path with the format indicated through the provided image
+   * path.
    *
-   * @param imagePath the path which the image will be saved to
-   * @param imageName the referred name of the image in the program to be saved
+   * @param imagePath  the path which the image will be saved to
+   * @param imageName  the referred name of the image in the program to be saved
    * @throws IllegalStateException if the image cannot be saved
    * @throws IllegalArgumentException if the image name provided does not exist in the memory
    */

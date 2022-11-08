@@ -46,6 +46,16 @@ public class PPMProcessingView implements ImageProcessingView {
   @Override
   public void saveImage(String imagePath, String imageName) throws IllegalArgumentException,
           IllegalStateException {
+    if (imagePath == null || imageName == null) {
+      throw new IllegalArgumentException("The arguments cannot be null.");
+    }
+
+    String[] imagePathParsed = imagePath.split("\\.");
+    if (!imagePathParsed[imagePathParsed.length - 1].equals("ppm")) {
+      throw new IllegalArgumentException("The provided filepath indicate the export of a ppm file" +
+              "."); //TODO: update readme about this catch
+    }
+
     ImageProcessingModel model = this.memory.getOrDefault(imageName, null);
     if (model == null) {
       throw new IllegalArgumentException("The image has yet to be loaded to the program.");
@@ -90,7 +100,6 @@ public class PPMProcessingView implements ImageProcessingView {
               + " program. ");
     }
   }
-
 
   @Override
   public ImageProcessingModel getModel(String imageName) {

@@ -22,8 +22,7 @@ public class MockView implements ImageProcessingView {
   }
 
   @Override
-  public ImageProcessingModel loadImage(String imagePath, String imageName)
-          throws IllegalArgumentException {
+  public ImageProcessingModel loadImage(String imagePath, String imageName) throws IllegalArgumentException {
     this.receivedInput = this.receivedInput.append(imagePath).append(" ").append(imageName);
     return null;
   }
