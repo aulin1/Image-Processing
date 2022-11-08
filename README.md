@@ -85,5 +85,10 @@ in this assignment. They are original images converted to PPM image format.
 
 The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
 
+The command pattern has been redone with abstraction and abstract classes to avoid repetitive code.
+
 Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
 accepted commands* to USEME.md for usage clarity.
+
+saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this view only supports save and load of PPM files
+
