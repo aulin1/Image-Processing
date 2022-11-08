@@ -1,5 +1,8 @@
 package view;
 
+import javax.imageio.ImageIO;
+
+import controller.ImageUtil;
 import model.ImageProcessingModel;
 import model.PPMProcessingModel;
 
@@ -12,11 +15,14 @@ public class UpdatedProcessingView extends PPMProcessingView {
   @Override
   public void saveImage(String imagePath, String imageName) throws IllegalArgumentException,
           IllegalStateException {
+    // buffered image then ImageIO write
   }
 
   @Override
   public ImageProcessingModel loadImage(String imagePath, String imageName)
           throws IllegalArgumentException {
-    return new PPMProcessingModel(new int[24][32][3], 255);
+    ImageProcessingModel model = ImageUtil.readIMG(imagePath);
+    this.storeImage(imageName, model);
+    return model;
   }
 }

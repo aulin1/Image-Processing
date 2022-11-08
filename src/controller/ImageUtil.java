@@ -23,9 +23,14 @@ public class ImageUtil {
    *
    * @param filename the path of the file
    * @return an ImageProcessingModel representation of the loaded image
-   * @throws IllegalArgumentException if the file cannot be found or if the file is not a PPM file
+   * @throws IllegalArgumentException if the file cannot be found, the file is not a PPM file or
+   * the file name is null
    */
   public static ImageProcessingModel readPPM(String filename) throws IllegalArgumentException {
+    if (filename == null) {
+      throw new IllegalArgumentException("The filename cannot be null.");
+    }
+
     Scanner sc;
 
     try {
@@ -73,13 +78,25 @@ public class ImageUtil {
   }
 
   /**
-   * Read an image file in the PPM format and print the colors.
+   * Read an image file in the supported format and print the colors.
    *
    * @param filename the path of the file
    * @return an ImageProcessingModel representation of the loaded image
    * @throws IllegalArgumentException if the file cannot be found or if the file is not a PPM file
    */
   public static ImageProcessingModel readIMG(String filename) throws IllegalArgumentException {
+    ImageProcessingModel model;
+
+    if (filename == null) {
+      throw new IllegalArgumentException("The filename cannot be null.");
+    }
+    // if file is a ppm, use the previous reader
+    String[] format = filename.split("\\.");
+    if (format[1].equals("ppm")) {
+      model = readPPM(filename);
+      return model;
+    }
+
     BufferedImage buffImg;
 
     try {
@@ -98,16 +115,16 @@ public class ImageUtil {
     for (int i = 0; i < height; i++) { // row
       for (int j = 0; j < width; j++) { // col
         int color = buffImg.getRGB(j, i); //24 bits representation of the ARGB values
-        int b = color & 0xff;
-        int g = (color >> 8) & 0xff;
-        int r = (color >> 16) & 0xff;
+        int b = color & 0xff; // last 8 bits
+        int g = (color >> 8) & 0xff; // second to last 8 bits
+        int r = (color >> 16) & 0xff; // second from top 8 bits
         imageBoard[i][j][0] = r;
         imageBoard[i][j][1] = g;
         imageBoard[i][j][2] = b;
       }
     }
 
-    ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue);
+    model = new PPMProcessingModel(imageBoard, maxValue);
     return model;
   }
 }
