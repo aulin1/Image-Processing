@@ -225,4 +225,6 @@ public class ImageProcessingControllerImplTest {
     assertEquals("The image has yet loaded to the program. Please load a valid image "
             + "before processing it.", splitString[splitString.length - 2]);
   }
+
+  //TODO: add checking instructions for new instructions
 }
