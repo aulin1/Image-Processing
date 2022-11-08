@@ -53,7 +53,7 @@ public class PPMProcessingView implements ImageProcessingView {
     String[] imagePathParsed = imagePath.split("\\.");
     if (!imagePathParsed[imagePathParsed.length - 1].equals("ppm")) {
       throw new IllegalArgumentException("The provided filepath indicate the export of a ppm file" +
-              "."); //TODO: update readme about this catch
+              ".");
     }
 
     ImageProcessingModel model = this.memory.getOrDefault(imageName, null);
