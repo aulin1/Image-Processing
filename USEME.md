@@ -54,6 +54,9 @@ name</li></ul>
 </li>
 
 ### New functionalities supported by the updated controller
+<li><strong>save image-path image-name</strong>: Save a <em>supported format</em> of image of the provided name to a PPM 
+file at the provided file path.
+</li>
 <li><strong>load image-path image-name</strong>: Load a <em>supported format</em> of image from 
 the 
 provided image path and 
@@ -70,5 +73,49 @@ destination name.
 <li><strong>greyscale image-name dest-image-name</strong>: 
 create a greyscale image with the weighted sum 0.2126r + 0.7152g + 0.0722b.
 </li>
+<li><strong>sepia image-name dest-image-name</strong>: 
+create a sepia version of the image with the provided name and refer to it as the destination 
+image name.
+</li>
 
-### Examples of accepted commands
+### Examples of accepted commands (supported by the updated version of the program)
+1. Load Pixel.png from the res/ folder and call it *pixel*
+> load res/Pixel.png pixel
+2. Change the reference name from *pixel* to *pixelOG*
+> change-name pixel pixelOG
+3. Create a greyscale with the red component of *pixelOG* and refer to the new image as *pixelRed*
+> red-component pixelOG pixelRed
+4. Create a greyscale with the green component of *pixelOG* and refer to the new image as 
+   *pixelGreen*
+> green-component pixelOG pixelGreen
+5. Create a greyscale with the blue component of *pixelOG* and refer to the new image as *pixelBlue*
+> blue-component pixelOG pixelBlue
+6. Create a greyscale with the maximum value of the three components of *pixelRed* and refer to 
+   the new image as *pixelRedValue*
+> value pixelRed pixelRedValue
+7. Create a greyscale with the weighted sum 0.2126r + 0.7152g + 0.0722b from *pixelBlue* and 
+   refer to it as *pixelBlueLuma*
+> luma pixelBlue pixelBlueLuma
+8. Create a greyscale image with the average of the three components for each pixel from 
+   *pixelGreen* and refer to it as *pixelGreenIntensity*
+> intensity pixelGreen pixelGreenIntensity
+9. Flip *pixelOG* horizontally and refer to it as *pixelHorizontal*
+> horizontal-flip pixelOG pixelHorizontal
+10. Flip *pixelOG* vertically and refer to it as *pixelVertical*
+> vertical-flip pixelOG pixelVertical
+11. Brighten *pixelRedValue* by 10 and refer to it as *pixelRedValueBrightened*
+> brighten pixelRedValue pixelRedValueBrightened 10
+12. Darken *pixelOG* by 20 and refer to it as *pixelDarken*
+> brighten pixelOG pixelDarken -20
+13. Brighten *pixelOG* by 0 and refer to it as *pixelNoChange*
+> brighten pixelOG pixelNoChange 0
+14. Apply gaussian blur on *pixelBlueLuma* and refer to it as *pixelBlueLumaBlur*
+> gaussian-blur pixelBlueLuma pixelBlueLumaBlur
+15. Sharpen *pixelGreen* and refer to it as *pixelGreenSharpen*
+> sharpen pixelGreen pixelGreenSharpen
+16. Create a greyscale of *pixelOG* and refer to it as *pixelGreyscale*
+> greyscale pixelOG pixelGreyscale
+17. Create a sepia version of *pixelOG* and refer to it as *pixelSepia*
+> sepia pixelOG pixelSepia
+17. Save *pixelGreenIntensity* to the res/ folder as a bmp and refer to it as *PGI.bmp*
+> save res/PGI.bmp pixelGreenIntensity
