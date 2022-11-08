@@ -85,7 +85,7 @@ in this assignment. They are original images converted to PPM image format.
 
 The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The model should now be complete. 
 
-The command pattern has been redone with abstraction and abstract classes to avoid repetitive code.
+The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the model. This is for abstraction and better mutability as now new commands can be added without changing the model interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
 
 Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
 accepted commands* to USEME.md for usage clarity.
