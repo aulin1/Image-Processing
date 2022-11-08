@@ -5,7 +5,7 @@ import static java.lang.Math.max;
 /**
  * A model that processes PPM Images.
  */
-public class PPMProcessingModel implements ImageProcessingModel {
+public class ImageProcessingModelImpl implements ImageProcessingModel {
 
   /**
    * The image saved as a 3D integer array.
@@ -26,7 +26,7 @@ public class PPMProcessingModel implements ImageProcessingModel {
    * @throws IllegalArgumentException if imageBoard is null, or if the max value is less than or
    * equal to 0.
    */
-  public PPMProcessingModel(int[][][] imageBoard, int maxValue) {
+  public ImageProcessingModelImpl(int[][][] imageBoard, int maxValue) {
     if (imageBoard == null) {
       throw new IllegalArgumentException("Image or name cannot be null.");
     }

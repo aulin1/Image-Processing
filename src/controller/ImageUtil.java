@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 
 
 /**
@@ -63,7 +63,7 @@ public class ImageUtil {
       }
     }
 
-    ImageProcessingModel model = new PPMProcessingModel(imageBoard, maxValue);
+    ImageProcessingModel model = new ImageProcessingModelImpl(imageBoard, maxValue);
     return model;
   }
 }

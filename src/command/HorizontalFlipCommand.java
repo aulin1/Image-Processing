@@ -1,7 +1,7 @@
 package command;
 
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 import view.ImageProcessingView;
 
 /**
@@ -21,7 +21,7 @@ public class HorizontalFlipCommand implements ImageProcessingCommand {
         img[i][model.getWidth() - 1 - j] = model.getImage()[i][j];
       }
     }
-    return new PPMProcessingModel(img, model.getMax());
+    return new ImageProcessingModelImpl(img, model.getMax());
   }
 
   @Override

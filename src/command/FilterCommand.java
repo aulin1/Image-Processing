@@ -1,7 +1,7 @@
 package command;
 
 import model.ImageProcessingModel;
-import model.PPMProcessingModel;
+import model.ImageProcessingModelImpl;
 import view.ImageProcessingView;
 
 /**
@@ -55,7 +55,7 @@ abstract class FilterCommand implements ImageProcessingCommand{
         img[i][j][2] = vals[2];
       }
     }
-    return new PPMProcessingModel(img, model.getMax());
+    return new ImageProcessingModelImpl(img, model.getMax());
   }
 
   @Override
