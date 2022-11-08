@@ -418,12 +418,12 @@ public class ImageProcessingIntegrationTest {
   public void testSaveLoadPNG() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load res/Pixel.png Pixel vertical-flip Pixel edit "
-            + "save res/PNGPixelEdit.png edit q");
+            + "save res/PixelEdit.png edit q");
     Map<String, ImageClass> map = new HashMap<>();
-    ImageProcessingModel view = new PPMProcessingModel(map);
+    ImageProcessingModel view = new UpdatedProcessingModel(map);
     ImageProcessingController test = new UpdatedIPController(out, in, view);
     test.start();
-    ImageClass model2 = view.loadImage("res/PNGPixelEdit.png", "2");
+    ImageClass model2 = view.loadImage("res/PixelEdit.png", "2");
     //Test loading
     assertArrayEquals(new int[][][]
                     {{{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}},
@@ -437,7 +437,7 @@ public class ImageProcessingIntegrationTest {
                     {{153, 217, 234}, {12, 102, 36}, {255, 242, 0}, {153, 217, 234}},
                     {{153, 217, 234}, {237, 28, 36}, {205, 85, 207}, {153, 217, 234}},
                     {{0, 0, 0}, {153, 217, 234}, {153, 217, 234}, {127, 127, 127}}},
-            view.getImage("2").getImage());
+            model2.getImage());
   }
   /**
    * Tests loading in a jpg, running a command on it, and saving it.
@@ -446,12 +446,12 @@ public class ImageProcessingIntegrationTest {
   public void testSaveLoadJPG() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load res/Pixel.jpg Pixel vertical-flip Pixel edit "
-            + "save res/PNGPixelEdit.jpg edit q");
+            + "save res/PixelEdit.jpg edit q");
     Map<String, ImageClass> map = new HashMap<>();
-    ImageProcessingModel view = new PPMProcessingModel(map);
+    ImageProcessingModel view = new UpdatedProcessingModel(map);
     ImageProcessingController test = new UpdatedIPController(out, in, view);
     test.start();
-    ImageClass model2 = view.loadImage("res/PNGPixelEdit.jpg", "2");
+    ImageClass model2 = view.loadImage("res/PixelEdit.jpg", "2");
     //Test loading
     assertArrayEquals(new int[][][]
                     {{{0, 169, 238}, {153, 222, 237}, {160, 219, 233}, {255, 247, 248}},
@@ -465,7 +465,7 @@ public class ImageProcessingIntegrationTest {
                             {{157, 217, 218}, {15, 95, 44}, {255, 240, 0}, {169, 215, 238}},
                             {{150, 219, 234}, {234, 28, 28}, {205, 90, 217}, {155, 209, 247}},
                             {{7, 0, 8}, {153, 221, 230}, {145, 218, 227}, {126, 131, 124}}},
-            view.getImage("2").getImage());
+            model2.getImage());
   }
 
   /**
@@ -475,12 +475,12 @@ public class ImageProcessingIntegrationTest {
   public void testSaveLoadBMP() {
     StringBuffer out = new StringBuffer();
     StringReader in = new StringReader("load res/Pixel.bmp Pixel vertical-flip Pixel edit "
-            + "save res/PNGPixelEdit.bmp edit q");
+            + "save res/PixelEdit.bmp edit q");
     Map<String, ImageClass> map = new HashMap<>();
-    ImageProcessingModel view = new PPMProcessingModel(map);
+    ImageProcessingModel view = new UpdatedProcessingModel(map);
     ImageProcessingController test = new UpdatedIPController(out, in, view);
     test.start();
-    ImageClass model2 = view.loadImage("res/PNGPixelEdit.bmp", "2");
+    ImageClass model2 = view.loadImage("res/PixelEdit.bmp", "2");
     //Test loading
     assertArrayEquals(new int[][][]
                     {{{0, 162, 232}, {153, 217, 234}, {153, 217, 234}, {255, 255, 255}},

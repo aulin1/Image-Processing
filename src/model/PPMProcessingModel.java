@@ -13,7 +13,7 @@ import static controller.ImageUtil.readPPM;
  * saving and loading of images to and from the program.
  */
 public class PPMProcessingModel implements ImageProcessingModel {
-  private final Map<String, ImageClass> memory; //according to prof, memory is in view
+  private final Map<String, ImageClass> memory;
 
   /**
    * A constructor for a PPMProcessingView.
