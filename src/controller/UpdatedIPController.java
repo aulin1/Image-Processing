@@ -7,6 +7,7 @@ import command.ImageSharpenCommand;
 import command.LoadCommand;
 import command.LumaCommand;
 import command.SepiaToneCommand;
+import view.ImageProcessingView;
 import view.UpdatedProcessingView;
 
 /**
@@ -25,6 +26,18 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
    */
   public UpdatedIPController() {
     super(System.out, new InputStreamReader(System.in), new UpdatedProcessingView());
+  }
+
+  /**
+   * Creates a new controller for the Image Processing Program.
+   *
+   * @param output the desired output of the messages
+   * @param input  the desired input of the user's interaction
+   * @throws IllegalArgumentException if any of the field is null
+   */
+  public UpdatedIPController(Appendable output, Readable input, ImageProcessingView view)
+          throws IllegalArgumentException {
+    super(output, input, view);
   }
 
   @Override

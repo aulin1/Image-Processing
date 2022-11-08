@@ -6,8 +6,22 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import command.BlueCompCommand;
+import command.BrightnessCommand;
+import command.GaussianBlurCommand;
+import command.GreenCompCommand;
+import command.HorizontalFlipCommand;
+import command.ImageProcessingCommand;
+import command.ImageSharpenCommand;
+import command.IntensityCommand;
+import command.LumaCommand;
+import command.RedCompCommand;
+import command.SepiaToneCommand;
+import command.ValueCommand;
+import command.VerticalFlipCommand;
 import controller.ImageProcessingController;
 import controller.ImageProcessingControllerImpl;
+import controller.UpdatedIPController;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 import view.ImageProcessingView;
@@ -221,6 +235,70 @@ public class ImageProcessingIntegrationTest {
             map.get("Koala.ppm").getImage());
   }
 
+  //TODO: replace asserts when finished
+  /**
+   * Tests each command individually and makes sure that they do the correct operation.
+   */
+  @Test
+  public void testAllCommandsOld() {
+    StringBuffer out = new StringBuffer();
+    StringReader in = new StringReader("load " + filePath + " " + fileName
+            + " red-component " + fileName + " " + fileName + "_red"
+            + " save res/" + fileName + "_red.ppm " + fileName + "_red"
+            + " green-component " + fileName + " " + fileName + "_green"
+            + " save res/" + fileName + "_green.ppm " + fileName + "_green"
+            + " blue-component " + fileName + " " + fileName + "_blue"
+            + " save res/" + fileName + "_blue.ppm " + fileName + "_blue"
+            + " value " + fileName + " " + fileName + "_value"
+            + " save res/" + fileName + "_value.ppm " + fileName + "_value"
+            + " intensity " + fileName + " " + fileName + "_intensity"
+            + " save res/" + fileName + "_intensity.ppm " + fileName + "_intensity"
+            + " luma " + fileName + " " + fileName + "_luma"
+            + " save res/" + fileName + "_luma.ppm " + fileName + "_luma"
+            + " horizontal-flip " + fileName + " " + fileName + "_horizontal_flip"
+            + " save res/" + fileName + "_horizontal_flip.ppm " + fileName + "_horizontal_flip"
+            + " vertical-flip " + fileName + " " + fileName + "_vertical_flip"
+            + " save res/" + fileName + "_vertical_flip.ppm " + fileName + "_vertical_flip"
+            + " brighten " + fileName + " " + fileName + "_brighten 100"
+            + " save res/" + fileName + "_brighten.ppm " + fileName + "_brighten"
+            + " brighten " + fileName + " " + fileName + "_darken -100"
+            + " save res/" + fileName + "_darken.ppm " + fileName + "_darken q");
+    Map<String, ImageProcessingModel> map = new HashMap<>();
+    ImageProcessingView view = new PPMProcessingView(map);
+    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    test.start();
+    ImageProcessingCommand command = new RedCompCommand();
+    assertArrayEquals(map.get(fileName + "_red").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new GreenCompCommand();
+    assertArrayEquals(map.get(fileName + "_green").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BlueCompCommand();
+    assertArrayEquals(map.get(fileName + "_blue").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new ValueCommand();
+    assertArrayEquals(map.get(fileName + "_value").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new IntensityCommand();
+    assertArrayEquals(map.get(fileName + "_intensity").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new LumaCommand();
+    assertArrayEquals(map.get(fileName + "_luma").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new HorizontalFlipCommand();
+    assertArrayEquals(map.get(fileName + "_horizontal_flip").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new VerticalFlipCommand();
+    assertArrayEquals(map.get(fileName + "_vertical_flip").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BrightnessCommand(100);
+    assertArrayEquals(map.get(fileName + "_brighten").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BrightnessCommand(-100);
+    assertArrayEquals(map.get(fileName + "_darken").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+  }
+
   /**
    * Tests each command individually and makes sure that they do the correct operation.
    */
@@ -247,36 +325,73 @@ public class ImageProcessingIntegrationTest {
             + " brighten " + fileName + " " + fileName + "_brighten 100"
             + " save res/" + fileName + "_brighten.ppm " + fileName + "_brighten"
             + " brighten " + fileName + " " + fileName + "_darken -100"
-            + " save res/" + fileName + "_darken.ppm " + fileName + "_darken q");
-    //TODO: add new commands
+            + " save res/" + fileName + "_darken.ppm " + fileName + "_darken"
+            + " gaussian-blur " + fileName + " " + fileName + "_gaussian_blur"
+            + " save res/" + fileName + "_gaussian_blur.ppm " + fileName + "_gaussian_blur"
+            + " greyscale " + fileName + " " + fileName + "_greyscale"
+            + " save res/" + fileName + "_greyscale.ppm " + fileName + "_greyscale"
+            + " sharpen " + fileName + " " + fileName + "_sharpen"
+            + " save res/" + fileName + "_sharpen.ppm " + fileName + "_sharpen"
+            + " sepia " + fileName + " " + fileName + "_sepia"
+            + " save res/" + fileName + "_sepia.ppm " + fileName + "_sepia q");
     Map<String, ImageProcessingModel> map = new HashMap<>();
     ImageProcessingView view = new PPMProcessingView(map);
-    ImageProcessingController test = new ImageProcessingControllerImpl(out, in, view);
+    ImageProcessingController test = new UpdatedIPController(out, in, view);
     test.start();
-    //TODO: fix asserts
-    /*assertArrayEquals(map.get(fileName + "_red").getImage(),
-            view.getModel(fileName).returnRedImage().getImage());
+    ImageProcessingCommand command = new RedCompCommand();
+    assertArrayEquals(map.get(fileName + "_red").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new GreenCompCommand();
     assertArrayEquals(map.get(fileName + "_green").getImage(),
-            view.getModel(fileName).returnGreenImage().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BlueCompCommand();
     assertArrayEquals(map.get(fileName + "_blue").getImage(),
-            view.getModel(fileName).returnBlueImage().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new ValueCommand();
     assertArrayEquals(map.get(fileName + "_value").getImage(),
-            view.getModel(fileName).returnValueImage().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new IntensityCommand();
     assertArrayEquals(map.get(fileName + "_intensity").getImage(),
-            view.getModel(fileName).returnIntensityImage().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new LumaCommand();
     assertArrayEquals(map.get(fileName + "_luma").getImage(),
-            view.getModel(fileName).returnLumaImage().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new HorizontalFlipCommand();
     assertArrayEquals(map.get(fileName + "_horizontal_flip").getImage(),
-            view.getModel(fileName).flipImageHorizontally().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new VerticalFlipCommand();
     assertArrayEquals(map.get(fileName + "_vertical_flip").getImage(),
-            view.getModel(fileName).flipImageVertically().getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BrightnessCommand(100);
     assertArrayEquals(map.get(fileName + "_brighten").getImage(),
-            view.getModel(fileName).changeBrightness(100).getImage());
+            command.execute(view.getModel(fileName)).getImage());
+    command = new BrightnessCommand(-100);
     assertArrayEquals(map.get(fileName + "_darken").getImage(),
-            view.getModel(fileName).changeBrightness(-100).getImage());*/
+            command.execute(view.getModel(fileName)).getImage());
+    command = new GaussianBlurCommand();
+    assertArrayEquals(map.get(fileName + "_gaussian_blur").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new LumaCommand();
+    assertArrayEquals(map.get(fileName + "_greyscale").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new ImageSharpenCommand();
+    assertArrayEquals(map.get(fileName + "_sharpen").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
+    command = new SepiaToneCommand();
+    assertArrayEquals(map.get(fileName + "_sepia").getImage(),
+            command.execute(view.getModel(fileName)).getImage());
   }
-  //TODO: tests loading in png, jpg, and bmp
-  //TODO: tests saving in png, jpb, and bmp
   //As long as you test that loading and saving give the correct model, then it can be assumed that
   //Since the operations are on the model in general, the operations are correct.
+  //TODO: implement following tests
+  /**
+   * Tests loading in a png, running a command on it, and saving it.
+   * */
+  /**
+   * Tests loading in a jpg, running a command on it, and saving it.
+   * */
+  /**
+   * Tests loading in a bmp, running a command on it, and saving it.
+   * */
+
 }

@@ -96,6 +96,8 @@ public class ImageProcessingControllerImplTest {
     }
   }
 
+  //TODO: Test the three above with new controller
+
   /**
    * Check if the controller throws an exception if it runs out of input before quiting the program.
    */
