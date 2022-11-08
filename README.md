@@ -30,9 +30,12 @@ horizontally/vertically to create a new image.</li>
 <li><strong>ImageSharpenCommand</strong>: a function object which sharpens an image.</li>
   <li><strong>SepiaToneCommand</strong>: a function object which creates a Sepia Tone filter on an image.</li>
     </ol>
+  <ol>
   <li><strong>LoadPPMCommand</strong>: a function object which contains the function to load a PPM image.</li>
   <li><strong>SavePPMCommand</strong>: a function object which contains the function to save a PPM image.</li>
+  </ol>
 </li>
+  
 
 <li>Interface <strong>ImageProcessingController</strong>: a representation of an image processing 
 controller 
