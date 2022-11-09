@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -73,8 +74,8 @@ public class ImageUtil {
       }
     }
 
-    ImageClass model = new ImageClassImpl(imageBoard, maxValue);
-    return model;
+    ImageClass img = new ImageClassImpl(imageBoard, maxValue);
+    return img;
   }
 
   /**
@@ -85,7 +86,7 @@ public class ImageUtil {
    * @throws IllegalArgumentException if the file cannot be found or if the file is not a PPM file
    */
   public static ImageClass readIMG(String filename) throws IllegalArgumentException {
-    ImageClass model;
+    ImageClass img;
 
     if (filename == null) {
       throw new IllegalArgumentException("The filename cannot be null.");
@@ -93,8 +94,8 @@ public class ImageUtil {
     // if file is a ppm, use the previous reader
     String[] format = filename.split("\\.");
     if (format[1].equals("ppm")) {
-      model = readPPM(filename);
-      return model;
+      img = readPPM(filename);
+      return img;
     }
 
     BufferedImage buffImg;
@@ -114,18 +115,15 @@ public class ImageUtil {
 
     for (int i = 0; i < height; i++) { // row
       for (int j = 0; j < width; j++) { // col
-        int color = buffImg.getRGB(j, i); //24 bits representation of the ARGB values
-        int b = color & 0xff; // last 8 bits
-        int g = (color >> 8) & 0xff; // second to last 8 bits
-        int r = (color >> 16) & 0xff; // second from top 8 bits
-        imageBoard[i][j][0] = r;
-        imageBoard[i][j][1] = g;
-        imageBoard[i][j][2] = b;
+        Color color = new Color(buffImg.getRGB(j, i));
+        imageBoard[i][j][0] = color.getRed();
+        imageBoard[i][j][1] = color.getGreen();
+        imageBoard[i][j][2] = color.getBlue();
       }
     }
 
-    model = new ImageClassImpl(imageBoard, maxValue);
-    return model;
+    img = new ImageClassImpl(imageBoard, maxValue);
+    return img;
   }
 }
 

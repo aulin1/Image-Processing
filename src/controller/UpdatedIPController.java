@@ -32,11 +32,12 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
    *
    * @param output the desired output of the messages
    * @param input  the desired input of the user's interaction
+   * @param model  the desired model to handle the storage of images
    * @throws IllegalArgumentException if any of the field is null
    */
-  public UpdatedIPController(Appendable output, Readable input, ImageProcessingModel view)
+  public UpdatedIPController(Appendable output, Readable input, ImageProcessingModel model)
           throws IllegalArgumentException {
-    super(output, input, view);
+    super(output, input, model);
   }
 
   @Override

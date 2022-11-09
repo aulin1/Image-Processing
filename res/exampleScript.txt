@@ -1,0 +1,19 @@
+load res/Pixel.png pixel
+change-name pixel pixelOG
+red-component pixelOG pixelRed
+green-component pixelOG pixelGreen
+blue-component pixelOG pixelBlue
+value pixelRed pixelRedValue
+luma pixelBlue pixelBlueLuma
+intensity pixelGreen pixelGreenIntensity
+horizontal-flip pixelOG pixelHorizontal
+vertical-flip pixelOG pixelVertical
+brighten pixelRedValue pixelRedValueBrightened 10
+brighten pixelOG pixelDarken -20
+brighten pixelOG pixelNoChange 0
+gaussian-blur pixelBlueLuma pixelBlueLumaBlur
+sharpen pixelGreen pixelGreenSharpen
+greyscale pixelOG pixelGreyscale
+sepia pixelOG pixelSepia
+save res/PGI.bmp pixelGreenIntensity
+q

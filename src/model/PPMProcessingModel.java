@@ -9,21 +9,21 @@ import image.ImageClass;
 import static controller.ImageUtil.readPPM;
 
 /**
- * A class that represents a view for PPM images. A view is mainly responsible for managing the
+ * A class that represents a model for PPM images. A model is mainly responsible for managing the
  * saving and loading of images to and from the program.
  */
 public class PPMProcessingModel implements ImageProcessingModel {
   private final Map<String, ImageClass> memory;
 
   /**
-   * A constructor for a PPMProcessingView.
+   * A constructor for a PPMProcessingModel.
    */
   public PPMProcessingModel() {
     this.memory = new HashMap<>();
   }
 
   /**
-   * A constructor for a PPMProcessingView that takes in a HashMap.
+   * A constructor for a PPMProcessingModel that takes in a HashMap.
    *
    * @param map the hashmap for memory.
    * @throws IllegalArgumentException if the map is null.

@@ -29,8 +29,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   protected final Map<String, Function<Scanner, ModelCommand>> modelCommandMap;
   private final Appendable output;
   private final Readable input;
-  private final ImageProcessingModel view;
-// TODO: add example of supported comms for the old ver of the assignment
+  private final ImageProcessingModel model;
 
   /**
    * Default constructor for image processing controller with input from the keyboard and output
@@ -47,7 +46,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param input  the desired input of the user's interaction
    * @throws IllegalArgumentException if any of the field is null
    */
-  public ImageProcessingControllerImpl(Appendable output, Readable input, ImageProcessingModel view)
+  public ImageProcessingControllerImpl(Appendable output, Readable input,
+                                       ImageProcessingModel model)
           throws IllegalArgumentException {
     if (input == null || output == null) {
       throw new IllegalArgumentException("The fields to the controller"
@@ -57,7 +57,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.input = input;
     this.imgProcCommandMap = new HashMap<>();
     this.modelCommandMap = new HashMap<>();
-    this.view = view;
+    this.model = model;
     initiateComms();
   }
 
@@ -98,7 +98,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     if (modelCommFunc != null) {
       ModelCommand command = modelCommFunc.apply(sc);
       try {
-        command.execute(view);
+        command.execute(model);
         writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       } catch (Exception e) {
         writeMessage(e.getMessage() + System.lineSeparator());
@@ -109,15 +109,15 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       String imageName = sc.next();
       String destImageName = sc.next();
       // try to find the file based on the file name
-      ImageClass model = view.getImage(imageName);
-      if (model == null) {
+      ImageClass img = this.model.getImage(imageName);
+      if (img == null) {
         writeMessage("The image has yet loaded to the program. Please load a valid image "
                 + "before processing it." + System.lineSeparator());
       } else {
         ImageProcessingCommand command = imgProCommFunc.apply(sc);
-        ImageClass processedModel = command.execute(model);
+        ImageClass processedModel = command.execute(img);
         // saves new model with designated name
-        view.storeImage(destImageName, processedModel);
+        model.storeImage(destImageName, processedModel);
         writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       }
     }
