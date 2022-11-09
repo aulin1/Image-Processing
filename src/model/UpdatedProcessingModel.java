@@ -15,21 +15,21 @@ import image.ImageClass;
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
 /**
- * This class represents a view for the program which handles the saving and loading of images to
+ * This class represents a model for the program which handles the saving and loading of images to
  * the program. It supports all functionality of the previous view version but also able to save,
  * load and store images of all supported format besides PPM, such as JPEG, PNG,....
  */
 public class UpdatedProcessingModel extends PPMProcessingModel {
 
   /**
-   * Basic constructor for UpdatedProcessingView.
+   * Basic constructor for UpdatedProcessingModel.
    * */
   public UpdatedProcessingModel(){
     super();
   }
 
   /**
-   * Another constructor for the updated view.
+   * Another constructor for the updated model.
    * */
   public UpdatedProcessingModel(Map<String, ImageClass> map){
     super(map);

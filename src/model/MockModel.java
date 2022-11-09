@@ -3,13 +3,13 @@ package model;
 import image.ImageClass;
 
 /**
- * This class represents a mock view for testing the controller.
+ * This class represents a mock model for testing the controller.
  */
 public class MockModel implements ImageProcessingModel {
   StringBuilder receivedInput;
 
   /**
-   * Constructor for mock view.
+   * Constructor for mock model.
    *
    * @param receivedInput the stringBuilder use to view the input received by the view
    * @throws IllegalArgumentException if received input stringbuilder is null
