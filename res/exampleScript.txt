@@ -1,4 +1,4 @@
-load res/Pixel.png pixel
+load Pixel.png pixel
 change-name pixel pixelOG
 red-component pixelOG pixelRed
 green-component pixelOG pixelGreen
@@ -15,5 +15,5 @@ gaussian-blur pixelBlueLuma pixelBlueLumaBlur
 sharpen pixelGreen pixelGreenSharpen
 greyscale pixelOG pixelGreyscale
 sepia pixelOG pixelSepia
-save res/PGI.bmp pixelGreenIntensity
+save PGI.bmp pixelGreenIntensity
 q

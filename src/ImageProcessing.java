@@ -28,8 +28,11 @@ public final class ImageProcessing {
         case "old" :
           controller = new ImageProcessingControllerImpl();
           break;
-        default: // reading a script txt
-          String text = args[0];
+        case "-file": //reading a text file
+          if(args.length == 1){
+            throw new IllegalArgumentException("Not enough inputs!");
+          }
+          String text = args[1];
           String[] textArr = text.split("\\.");
           if (!textArr[1].equals("txt")) {
             throw new IllegalArgumentException("The provided file is not a txt file.");
@@ -42,6 +45,9 @@ public final class ImageProcessing {
               throw new IllegalArgumentException("Cannot find the file.");
             }
           }
+          break;
+        default: //input is not accepted
+          controller = new UpdatedIPController();
       }
       controller.start();
     }
