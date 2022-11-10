@@ -97,33 +97,54 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
     if (modelCommFunc != null) {
       ModelCommand command = modelCommFunc.apply(sc);
-      try {
-        command.execute(model);
-        writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-      } catch (Exception e) {
-        writeMessage(e.getMessage() + System.lineSeparator());
-      }
+      modelCommandFunc(command, s);
     }
 
     if (imgProCommFunc != null) {
-      String imageName = sc.next();
-      String destImageName = sc.next();
-      // try to find the file based on the file name
-      ImageClass img = this.model.getImage(imageName);
-      if (img == null) {
-        writeMessage("The image has yet loaded to the program. Please load a valid image "
-                + "before processing it." + System.lineSeparator());
-      } else {
-        ImageProcessingCommand command = imgProCommFunc.apply(sc);
-        ImageClass processedModel = command.execute(img);
-        // saves new model with designated name
-        model.storeImage(destImageName, processedModel);
-        writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
-      }
+      imgProcCommand(sc, imgProCommFunc, s);
     }
 
     if (modelCommFunc == null && imgProCommFunc == null) {
       writeMessage("Command is not supported." + System.lineSeparator());
+    }
+  }
+
+  /**
+   * A helper function that runs a model command.
+   *
+   * @param command the command to be run.
+   * @String s the string that calls the command.
+   * */
+  private void modelCommandFunc(ModelCommand command, String s){
+    try {
+      command.execute(model);
+      writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
+    } catch (Exception e) {
+      writeMessage(e.getMessage() + System.lineSeparator());
+    }
+  }
+
+  /**
+   * A helper function that runs an image processing command.
+   *
+   * @param sc the scanner to get in additional information
+   * @param imgProCommFunc the map of functions for the ImageProcessingCommands.
+   * @param s the string that represents the command.
+   * */
+  private void imgProcCommand(Scanner sc, Function<Scanner, ImageProcessingCommand> imgProCommFunc, String s){
+    String imageName = sc.next();
+    String destImageName = sc.next();
+    // try to find the file based on the file name
+    ImageClass img = this.model.getImage(imageName);
+    if (img == null) {
+      writeMessage("The image has yet loaded to the program. Please load a valid image "
+              + "before processing it." + System.lineSeparator());
+    } else {
+      ImageProcessingCommand command = imgProCommFunc.apply(sc);
+      ImageClass processedModel = command.execute(img);
+      // saves new model with designated name
+      model.storeImage(destImageName, processedModel);
+      writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
     }
   }
 
