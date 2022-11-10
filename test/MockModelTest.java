@@ -4,7 +4,6 @@ import java.io.StringReader;
 
 import controller.ImageProcessingControllerImpl;
 import model.ImageProcessingModel;
-import model.MockModel;
 
 import static org.junit.Assert.assertEquals;
 

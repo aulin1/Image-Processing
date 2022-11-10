@@ -1,6 +1,5 @@
-package model;
-
 import image.ImageClass;
+import model.ImageProcessingModel;
 
 /**
  * This class represents a mock model for testing the controller.
