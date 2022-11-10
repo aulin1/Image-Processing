@@ -50,14 +50,14 @@ which supports all commands included in the script command.</li>
 <li><strong>ImageUtil</strong>: A Util which has the method readPPM() which helps read a PPM file 
 into an Image 
 Processing Model.
-  <li><strong>UpdatedIPController</strong>: A controller which adds the new methods and can read in other image types.
+  <li><strong>UpdatedIPController</strong>: A controller which adds the new methods and can read in other image types
 into an Image 
 Processing Model.
 </li></ol></li>
 
 <li>Interface <strong>ImageClass</strong>:</li> a representation of an image and contains get methods for what is needed for an image.
 <ol>
-  <li><strong>ImageClassImpl</strong>: A image which implements the image interface and represents an image.</li>
+  <li><strong>ImageClassImpl</strong>: A class which implements the image interface and represents an image.</li>
 </ol>
 <li>Interface <strong>ImageProcessingModel</strong>: a representation of what an image processing 
 model which contains all the methods that all image processing models should contain. It greatly 
@@ -91,13 +91,15 @@ in this assignment. They are original images converted to PPM image format.
 
 ### Design Changes
 
-The image was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters. The image should now be complete. 
+The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters, and renamed to ImageClass to better show what it represents. The class should now be complete. 
 
 The commands have been changed, with the functionality the command represents now included in the execute function rather than calling the method from the image. This is for abstraction and better mutability as now new commands can be added without changing the image interface and class. Abstract classes were created to avoid reptitive code, including FilterCommand, which gives the common functionality of commands that use a filter by changing each pixel using some calculation such that execute is not repeated, and ColorTransformCommand and BlurSharpenCommand which take the common functionality of their respective filter types for less code repitition.
 
 The commands have been split into two types: ImageProcessingCommands which process an image and ModelCommands which are commands that directly change the model. This is for better code seperation. 
 
 The commands have been moved into the respective packages that they belong into, rather than a command package. Additionally, model has been renamed into image, and view has been renamed into model to better represent what they actually are.
+
+New helper functions were added to the old implementation of the controller in order for better readability.
 
 Moved sections *How to use the Program*, *Accepted script of commands* and added *Examples of 
 accepted commands* to USEME.md for usage clarity.
