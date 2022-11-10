@@ -25,11 +25,11 @@ public final class ImageProcessing {
 
     if (args.length > 0) { //designating the version of the controller to be used
       switch (args[0]) {
-        case "old" :
+        case "old":
           controller = new ImageProcessingControllerImpl();
           break;
         case "-file": //reading a text file
-          if(args.length == 1){
+          if (args.length == 1) {
             throw new IllegalArgumentException("Not enough inputs!");
           }
           String text = args[1];
@@ -40,7 +40,8 @@ public final class ImageProcessing {
             try {
               FileInputStream fileInputStream = new FileInputStream(text);
               InputStreamReader streamReader = new InputStreamReader(fileInputStream);
-              controller = new UpdatedIPController(System.out, streamReader, new UpdatedProcessingModel());
+              controller = new UpdatedIPController(System.out, streamReader,
+                      new UpdatedProcessingModel());
             } catch (FileNotFoundException e) {
               throw new IllegalArgumentException("Cannot find the file.");
             }

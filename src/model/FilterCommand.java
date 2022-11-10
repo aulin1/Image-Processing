@@ -5,12 +5,12 @@ import image.ImageClassImpl;
 
 /**
  * A command that represents running a filter over an image.
- * */
-abstract class FilterCommand implements ImageProcessingCommand{
+ */
+abstract class FilterCommand implements ImageProcessingCommand {
 
   /**
    * The maximum a color can be.
-   * */
+   */
   private int max;
 
   /**
@@ -19,7 +19,7 @@ abstract class FilterCommand implements ImageProcessingCommand{
    * @param value the integer to be checked.
    * @return the result within the limits set.
    */
-  protected int checkLimits(int value){
+  protected int checkLimits(int value) {
     if (value < 0) {
       return 0;
     }
@@ -36,12 +36,12 @@ abstract class FilterCommand implements ImageProcessingCommand{
    * @param row the row of the pixel.
    * @param col the column of the pixel.
    * @returns the values that the pixel should have as an array.
-   * */
+   */
   abstract int[] getCorrectValues(int[][][] img, int row, int col);
 
   @Override
   public ImageClass execute(ImageClass model) {
-    if(model == null){
+    if (model == null) {
       throw new IllegalArgumentException("The model cannot be null");
     }
     this.max = model.getMax();

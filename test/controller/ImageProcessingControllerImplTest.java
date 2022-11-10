@@ -94,7 +94,8 @@ public class ImageProcessingControllerImplTest {
       ImageProcessingControllerImpl controller = new ImageProcessingControllerImpl(null,
               new StringReader("bool"), new PPMProcessingModel());
     } catch (IllegalArgumentException e) {
-      assertEquals("The fields to the controller constructor cannot be null.", e.getMessage());
+      assertEquals("The fields to the controller constructor cannot be null.",
+              e.getMessage());
     }
   }
 
@@ -105,9 +106,11 @@ public class ImageProcessingControllerImplTest {
   public void controllerThrowsExceptionReadableNull() {
     try {
       ImageProcessingControllerImpl controller =
-              new ImageProcessingControllerImpl(new StringBuilder(), null, new PPMProcessingModel());
+              new ImageProcessingControllerImpl(new StringBuilder(), null,
+                      new PPMProcessingModel());
     } catch (IllegalArgumentException e) {
-      assertEquals("The fields to the controller constructor cannot be null.", e.getMessage());
+      assertEquals("The fields to the controller constructor cannot be null.",
+              e.getMessage());
     }
   }
 
@@ -175,8 +178,8 @@ public class ImageProcessingControllerImplTest {
       ImageProcessingControllerImpl controller =
               new ImageProcessingControllerImpl(new StringBuilder(), input, null);
     } catch (IllegalStateException e) {
-      assertEquals("Readable fails or the program ran out of inputs before " +
-              "quitting.", e.getMessage());
+      assertEquals("Readable fails or the program ran out of inputs before "
+              + "quitting.", e.getMessage());
     }
   }
 
@@ -212,9 +215,9 @@ public class ImageProcessingControllerImplTest {
 
   /**
    * Tests if new controller prints the correct instructions.
-   * */
+   */
   @Test
-  public void controllerPrintInstructions2(){
+  public void controllerPrintInstructions2() {
     StringReader in = new StringReader("q");
     StringBuilder out = new StringBuilder();
     ImageProcessingModel view = new PPMProcessingModel();
@@ -223,7 +226,7 @@ public class ImageProcessingControllerImplTest {
     String[] splitString = out.toString().split("\n");
     String[] inst = instructions2.split("\n");
     assertEquals("Welcome to Image Processing Program!", splitString[0]);
-    for(int i = 0; i < inst.length; i++) {
+    for (int i = 0; i < inst.length; i++) {
       assertEquals(inst[i], splitString[1 + i]);
     }
   }

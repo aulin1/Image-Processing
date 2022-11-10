@@ -2,21 +2,21 @@ package model;
 
 /**
  * A command that gets a color changed image from another image.
- * */
-abstract class ColorTransformCommand extends FilterCommand{
+ */
+abstract class ColorTransformCommand extends FilterCommand {
 
   /**
    * Returns the matrix by which you should multiply the values to get the correct colors. The
    * matrix must be a 3 x 3 matrix.
    *
    * @return the matrix of values for the correct colors.
-   * */
+   */
   abstract double[][] getColorMatrix();
 
   @Override
-  protected int[] getCorrectValues(int[][][] image, int row, int col){
+  protected int[] getCorrectValues(int[][][] image, int row, int col) {
     double[][] vals = this.getColorMatrix();
-    int[] colors =  new int[3];
+    int[] colors = new int[3];
     colors[0] = (int) Math.round(vals[0][0] * image[row][col][0] + vals[0][1] * image[row][col][1]
             + vals[0][2] * image[row][col][2]);
     colors[1] = (int) Math.round(vals[1][0] * image[row][col][0] + vals[1][1] * image[row][col][1]

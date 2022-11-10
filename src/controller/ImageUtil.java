@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,7 +25,7 @@ public class ImageUtil {
    * @param filename the path of the file
    * @return an ImageProcessingModel representation of the loaded image
    * @throws IllegalArgumentException if the file cannot be found, the file is not a PPM file or
-   * the file name is null
+   *                                  the file name is null
    */
   public static ImageClass readPPM(String filename) throws IllegalArgumentException {
     if (filename == null) {

@@ -3,7 +3,7 @@ package model;
 import image.ImageClass;
 
 /**
- * An interface for an image processing view.
+ * An interface for an image processing model.
  */
 public interface ImageProcessingModel {
 

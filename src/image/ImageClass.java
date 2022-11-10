@@ -1,7 +1,7 @@
 package image;
 
 /**
- * An interface which contains the methods that a model for image processing should contain.
+ * An interface which contains the methods that a representation of an image should contain.
  */
 public interface ImageClass {
 

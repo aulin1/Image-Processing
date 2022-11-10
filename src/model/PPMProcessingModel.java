@@ -52,8 +52,8 @@ public class PPMProcessingModel implements ImageProcessingModel {
 
     String[] imagePathParsed = imagePath.split("\\.");
     if (!imagePathParsed[imagePathParsed.length - 1].equals("ppm")) {
-      throw new IllegalArgumentException("The provided filepath indicate the export of a ppm file" +
-              ".");
+      throw new IllegalArgumentException("The provided filepath indicate the export of a ppm file"
+              + ".");
     }
 
     ImageClass model = this.memory.getOrDefault(imageName, null);

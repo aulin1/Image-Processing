@@ -53,13 +53,13 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
   protected void printImageProcessingInst() {
     super.printImageProcessingInst();
     writeMessage("New supported methods!" + System.lineSeparator());
-    writeMessage("gaussian-blur image-name dest-image-name: Create a gaussian-blurred image with " +
-            "the image of the given name" + System.lineSeparator());
-    writeMessage("greyscale image-name dest-image-name: Create a greyscale image with the image " +
-            "of the given name" + System.lineSeparator());
-    writeMessage("sharpen image-name dest-image-name: Create a sharpened image with the image " +
-            "of the given name" + System.lineSeparator());
-    writeMessage("sepia image-name dest-image-name: Create a sepia version of the image " +
-            "of the given name" + System.lineSeparator() + System.lineSeparator());
+    writeMessage("gaussian-blur image-name dest-image-name: Create a gaussian-blurred image with "
+            + "the image of the given name" + System.lineSeparator());
+    writeMessage("greyscale image-name dest-image-name: Create a greyscale image with the image "
+            + "of the given name" + System.lineSeparator());
+    writeMessage("sharpen image-name dest-image-name: Create a sharpened image with the image "
+            + "of the given name" + System.lineSeparator());
+    writeMessage("sepia image-name dest-image-name: Create a sepia version of the image "
+            + "of the given name" + System.lineSeparator() + System.lineSeparator());
   }
 }

@@ -92,8 +92,10 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param sc the scanner which would read additional parameters as necessary.
    */
   private void readComm(String s, Scanner sc) {
-    Function<Scanner, ModelCommand> modelCommFunc = this.modelCommandMap.getOrDefault(s, null);
-    Function<Scanner, ImageProcessingCommand> imgProCommFunc = this.imgProcCommandMap.getOrDefault(s, null);
+    Function<Scanner, ModelCommand> modelCommFunc =
+            this.modelCommandMap.getOrDefault(s, null);
+    Function<Scanner, ImageProcessingCommand> imgProCommFunc =
+            this.imgProcCommandMap.getOrDefault(s, null);
 
     if (modelCommFunc != null) {
       ModelCommand command = modelCommFunc.apply(sc);
@@ -114,8 +116,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    *
    * @param command the command to be run.
    * @String s the string that calls the command.
-   * */
-  private void modelCommandFunc(ModelCommand command, String s){
+   */
+  private void modelCommandFunc(ModelCommand command, String s) {
     try {
       command.execute(model);
       writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
@@ -127,11 +129,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   /**
    * A helper function that runs an image processing command.
    *
-   * @param sc the scanner to get in additional information
+   * @param sc             the scanner to get in additional information
    * @param imgProCommFunc the map of functions for the ImageProcessingCommands.
-   * @param s the string that represents the command.
-   * */
-  private void imgProcCommand(Scanner sc, Function<Scanner, ImageProcessingCommand> imgProCommFunc, String s){
+   * @param s              the string that represents the command.
+   */
+  private void imgProcCommand(Scanner sc, Function<Scanner, ImageProcessingCommand> imgProCommFunc,
+                              String s) {
     String imageName = sc.next();
     String destImageName = sc.next();
     // try to find the file based on the file name
@@ -198,7 +201,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private void printInstructions() throws IllegalStateException {
     writeMessage("Supported commands in this program:" + System.lineSeparator());
 
-   printSaveLoadInst();
+    printSaveLoadInst();
 
     writeMessage("All commands below will be referred by the designated destination name "
             + "after the command by the program:" + System.lineSeparator());

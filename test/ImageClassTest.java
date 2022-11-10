@@ -62,9 +62,9 @@ public class ImageClassTest {
   /**
    * Tests if the constructor of the model throws an IllegalArgumentException if the max value is
    * negative.
-   * */
+   */
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeMax(){
+  public void testNegativeMax() {
     ImageClass test = new ImageClassImpl(this.testBoard, -10);
   }
 
@@ -72,7 +72,7 @@ public class ImageClassTest {
    * Tests if the constructor of the model throws an IllegalArgumentException if the max value is 0.
    */
   @Test(expected = IllegalArgumentException.class)
-  public void testZeroMax(){
+  public void testZeroMax() {
     ImageClass test = new ImageClassImpl(this.testBoard, 0);
   }
 
@@ -90,7 +90,7 @@ public class ImageClassTest {
 
   /**
    * Tests if getWidth gets the correct value. Width is the amount of columns in a row.
-   * */
+   */
   @Test
   public void testGetWidth() {
     ImageClass test = new ImageClassImpl(this.testBoard, 255);
@@ -116,9 +116,9 @@ public class ImageClassTest {
 
   /**
    * Tests if getMax returns the correct value.
-   * */
+   */
   @Test
-  public void testGetMax(){
+  public void testGetMax() {
     ImageClass test = new ImageClassImpl(this.testBoard, 255);
     ImageClass test2 = new ImageClassImpl(new int[3][5][3], 10);
     ImageClass test3 = new ImageClassImpl(new int[10][1][3], 300);

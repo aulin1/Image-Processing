@@ -23,15 +23,15 @@ public class UpdatedProcessingModel extends PPMProcessingModel {
 
   /**
    * Basic constructor for UpdatedProcessingModel.
-   * */
-  public UpdatedProcessingModel(){
+   */
+  public UpdatedProcessingModel() {
     super();
   }
 
   /**
    * Another constructor for the updated model.
-   * */
-  public UpdatedProcessingModel(Map<String, ImageClass> map){
+   */
+  public UpdatedProcessingModel(Map<String, ImageClass> map) {
     super(map);
   }
 
