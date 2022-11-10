@@ -3,9 +3,9 @@
 ### Running a script file through the command line
 Provide an existing TXT file in form of a file path through the command line to run the program 
 with the arguments provided in the document. An example of a valid input is:
-> res/exampleScript.txt
+> exampleScript.txt
 
-Only TXT file is supported in this method. An exception will be throw if otherwise.
+Only TXT file is supported in this method. An exception will be throw if otherwise. The jar file is located in the res folder, so pathing must work from there.
 
 **Ensure that the final line in the script provided is *"q"* to exit the program**. If not, the 
 program will throw an exception as the program ran out of input before quitting.
@@ -16,7 +16,7 @@ when running the program.
 The expected command has to be the <strong>first string in the command line</strong>. The program 
 would not run if provided otherwise.
 
-If there is no argument provided, the default new version of the controller will run instead
+If there is no argument provided, the default new version of the controller will run instead. If the argument provided is not an accepted command, the new version of the controller will run instead.
 
 ### Condition of command usage
 #### Using the command line prior to running the program
