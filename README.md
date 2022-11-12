@@ -89,7 +89,9 @@ assignment. It is an original image created in the PPM image format.
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
 in this assignment. They are original images converted to PPM image format.
 
-### Design Changes
+## Design Changes
+
+### Design Changes 1.0
 
 The model was revamped, with most of the filtering functionality moved to the command pattern, thus allowing for easier creation of future filters, and renamed to ImageClass to better show what it represents. The class should now be complete. 
 
@@ -106,3 +108,6 @@ accepted commands* to USEME.md for usage clarity.
 
 saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this model only supports save and load of PPM files
 
+### Design Changes 2.0
+
+The functionality of directly saving an image for PPMProcessingModel and UpdatedProcessingModel has been moved to static methods in ImageUtil as they should not directly be in the model package.
