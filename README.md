@@ -106,3 +106,6 @@ accepted commands* to USEME.md for usage clarity.
 
 saveImage() in PPMProcessingView class now has an additional check for the indicated export format in the provided filepath to prevent the user from inputting incorrect file path (e.g: res/KoalaRed.jpg) as this model only supports save and load of PPM files
 
+## Design Changes 2.0
+
+The functionality of directly saving an image for PPMProcessingModel and UpdatedProcessingModel has been moved to static methods in ImageUtil as they should not directly be in the model package.
