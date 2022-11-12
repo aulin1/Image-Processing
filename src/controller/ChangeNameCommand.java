@@ -28,7 +28,7 @@ public class ChangeNameCommand implements ModelCommand {
   @Override
   public void execute(ImageProcessingModel view) throws IllegalArgumentException {
     if (view == null) {
-      throw new IllegalArgumentException("The view cannot be null");
+      throw new IllegalArgumentException("The model cannot be null");
     }
     view.changeName(this.oldName, this.newName);
   }

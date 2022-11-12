@@ -29,7 +29,7 @@ public class SaveCommand implements ModelCommand {
   public void execute(ImageProcessingModel view) throws IllegalStateException,
           IllegalArgumentException {
     if (view == null) {
-      throw new IllegalArgumentException("The view cannot be null");
+      throw new IllegalArgumentException("The model cannot be null");
     }
 
     view.saveImage(this.filePath, this.fileName);

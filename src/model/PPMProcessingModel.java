@@ -7,6 +7,7 @@ import java.util.Map;
 import image.ImageClass;
 
 import static controller.ImageUtil.readPPM;
+import static controller.ImageUtil.savePPM;
 
 /**
  * A class that represents a model for PPM images. A model is mainly responsible for managing the
@@ -49,37 +50,11 @@ public class PPMProcessingModel implements ImageProcessingModel {
     if (imagePath == null || imageName == null) {
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
-
-    String[] imagePathParsed = imagePath.split("\\.");
-    if (!imagePathParsed[imagePathParsed.length - 1].equals("ppm")) {
-      throw new IllegalArgumentException("The provided filepath indicate the export of a ppm file"
-              + ".");
-    }
-
     ImageClass model = this.memory.getOrDefault(imageName, null);
     if (model == null) {
       throw new IllegalArgumentException("The image has yet to be loaded to the program.");
     }
-
-    try {
-      PrintWriter outfile = new PrintWriter(imagePath);
-      outfile.println("P3");
-      outfile.println("# Image created by Trang Do and Audrey Lin's program");
-      outfile.println(model.getWidth() + " " + model.getHeight());
-      outfile.println(255);
-
-      int[][][] imageBoard = model.getImage();
-      for (int r = 0; r < model.getHeight(); r++) {
-        for (int c = 0; c < model.getWidth(); c++) {
-          outfile.println(imageBoard[r][c][0]); // print red value
-          outfile.println(imageBoard[r][c][1]); // print green value
-          outfile.println(imageBoard[r][c][2]); // print blue value
-        }
-      }
-      outfile.close();
-    } catch (Exception e) {
-      throw new IllegalStateException("Unable to save file to destination. ");
-    }
+    savePPM(imagePath, model);
   }
 
   @Override

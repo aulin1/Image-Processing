@@ -12,6 +12,7 @@ import javax.imageio.stream.ImageOutputStream;
 import controller.ImageUtil;
 import image.ImageClass;
 
+import static controller.ImageUtil.saveIMG;
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
 /**
@@ -50,25 +51,7 @@ public class UpdatedProcessingModel extends PPMProcessingModel {
 
     // buffered image then ImageIO write
     ImageClass model = this.getImage(imageName);
-    int[][][] imageBoard = model.getImage();
-    BufferedImage buffImg = new BufferedImage(model.getWidth(), model.getHeight(), TYPE_INT_RGB);
-
-    // transfer rgb by pixels from model to the buffered img
-    for (int row = 0; row < model.getHeight(); row++) {
-      for (int col = 0; col < model.getWidth(); col++) {
-        int r = imageBoard[row][col][0]; // print red value
-        int rg = (r << 8) + imageBoard[row][col][1]; // print green value
-        int rgb = (rg << 8) + imageBoard[row][col][2]; // print blue value
-        buffImg.setRGB(col, row, rgb); //pos-x, pos-y, 8 bit rep of rgb
-      }
-    }
-
-    try {
-      ImageOutputStream imgOutStream = new FileImageOutputStream(new File(imagePath));
-      ImageIO.write(buffImg, formatName, imgOutStream);
-    } catch (IOException e) {
-      throw new IllegalStateException("Unable to save file to destination. ");
-    }
+    saveIMG(imagePath, model, formatName);
   }
 
   @Override

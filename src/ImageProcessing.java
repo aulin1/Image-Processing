@@ -18,11 +18,6 @@ public final class ImageProcessing {
    */
   public static void main(String[] args) {
     ImageProcessingController controller;
-    if (args.length == 0) { // default controller is the new version
-      controller = new UpdatedIPController();
-      controller.start();
-    }
-
     if (args.length > 0) { //designating the version of the controller to be used
       switch (args[0]) {
         case "old":
@@ -47,10 +42,16 @@ public final class ImageProcessing {
             }
           }
           break;
-        default: //input is not accepted
+        case "-text":
           controller = new UpdatedIPController();
+          break;
+        default: //not an accepted input
+          throw new IllegalArgumentException("Not an accepted input!");
       }
-      controller.start();
+    } else { //TODO: add GUI once implemented
+      //The length can't be less than 0, so this is if there are not other arguments.
+      controller = new UpdatedIPController();
     }
+    controller.start();
   }
 }
