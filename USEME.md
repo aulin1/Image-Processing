@@ -1,16 +1,22 @@
 # How to run the program
 
-### Running a script file through the command line
-Provide an existing TXT file in form of a file path through the command line to run the program 
-with the arguments provided in the document. An example of a valid input is:
-> exampleScript.txt
+## Running through the command line
+If you wish to run the program, then navigate to the res folder and type **"java -jar Image-Processing.jar"** followed by any arguments as listed below. If you do not have additional arguments, the program will open a GUI to interact with.
+
+### Running with a script file.
+To run with a script file, use the command **"-file"** followed by the path for the script file. You must provide an existing TXT file in form of a file path through the command line. An example of a valid input is:
+> -file exampleScript.txt
 
 Only TXT file is supported in this method. An exception will be throw if otherwise. The jar file is located in the res folder, so pathing must work from there.
 
 **Ensure that the final line in the script provided is *"q"* to exit the program**. If not, the 
 program will throw an exception as the program ran out of input before quitting.
+
+### Running a text based version.
+To run a text based version of the image processing program, use the command **"-text"**. Then, in the console, type the commands as listed below. The program will not quit until you type **"q"**.
+
 ### Choosing Image Processing Program Version
-Through command line, provide the string **"old"** to use the older version of the program. Arguments besides the ones mentioned above will throw an exception 
+Through command line, provide the string **"-old"** to use the older version of the program. Arguments besides the ones mentioned above will throw an exception 
 when running the program.
 
 The expected command has to be the <strong>first string in the command line</strong>. The program 
