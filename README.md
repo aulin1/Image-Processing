@@ -55,10 +55,16 @@ into an Image
 Processing Model.
 </li></ol></li>
 
-<li>Interface <strong>ImageClass</strong>:</li> a representation of an image and contains get methods for what is needed for an image.
+<li>Interface <strong>ImageClass</strong>:</li> a representation of an image and contains the get methods for what is needed for an image.
 <ol>
   <li><strong>ImageClassImpl</strong>: A class which implements the image interface and represents an image.</li>
 </ol>
+
+<li>Interface <strong>IHistogram</strong>:</li> a representation of a histogram and contains the methods for calculating and using a histogram.
+<ol>
+  <li><strong>SimpleHistogram</strong>: A class which implements the histogram interface and contains methods for a simple histogram. The histogram cannot manipulate the values within it.</li>
+</ol>
+
 <li>Interface <strong>ImageProcessingModel</strong>: a representation of what an image processing 
 model which contains all the methods that all image processing models should contain. It greatly 
 handles the loading and saving of images in the program.</li>

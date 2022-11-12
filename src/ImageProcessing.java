@@ -20,7 +20,7 @@ public final class ImageProcessing {
     ImageProcessingController controller;
     if (args.length > 0) { //designating the version of the controller to be used
       switch (args[0]) {
-        case "old":
+        case "-old":
           controller = new ImageProcessingControllerImpl();
           break;
         case "-file": //reading a text file
