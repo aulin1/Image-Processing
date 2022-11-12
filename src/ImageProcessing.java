@@ -7,6 +7,8 @@ import controller.ImageProcessingControllerImpl;
 import controller.UpdatedIPController;
 import model.UpdatedProcessingModel;
 
+import static controller.ImageUtil.parseTXT;
+
 /**
  * This class represents the main access to the image processing program.
  */
@@ -28,19 +30,9 @@ public final class ImageProcessing {
             throw new IllegalArgumentException("Not enough inputs!");
           }
           String text = args[1];
-          String[] textArr = text.split("\\.");
-          if (!textArr[1].equals("txt")) {
-            throw new IllegalArgumentException("The provided file is not a txt file.");
-          } else {
-            try {
-              FileInputStream fileInputStream = new FileInputStream(text);
-              InputStreamReader streamReader = new InputStreamReader(fileInputStream);
-              controller = new UpdatedIPController(System.out, streamReader,
-                      new UpdatedProcessingModel());
-            } catch (FileNotFoundException e) {
-              throw new IllegalArgumentException("Cannot find the file.");
-            }
-          }
+          Readable commands = parseTXT(text);
+          controller = new UpdatedIPController(System.out, commands,
+                  new UpdatedProcessingModel());
           break;
         case "-text":
           controller = new UpdatedIPController();

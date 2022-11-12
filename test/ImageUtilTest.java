@@ -1,12 +1,14 @@
 import org.junit.Test;
 
+import java.util.Scanner;
+
 import controller.ImageUtil;
 import image.ImageClass;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * This class represents tests for controller.ImageUtil.
+ * This class represents tests for ImageUtil.
  */
 public class ImageUtilTest {
   String koalaPath = "res/Koala.ppm";
@@ -24,6 +26,23 @@ public class ImageUtilTest {
           + "218\n" + "15\n" + "95\n" + "44\n" + "255\n" + "240\n" + "0\n" + "169\n" + "215\n"
           + "238\n" + "0\n" + "169\n" + "238\n" + "153\n" + "222\n" + "237\n" + "160\n" + "219\n"
           + "233\n" + "255\n" + "247\n" + "248\n";
+
+  String scriptTXT = "load Pixel.png pixel change-name pixel pixelOG red-component pixelOG "
+          + "pixelRed green-component pixelOG pixelGreen blue-component pixelOG pixelBlue "
+          + "value pixelRed pixelRedValue luma pixelBlue pixelBlueLuma intensity pixelGreen "
+          + "pixelGreenIntensity horizontal-flip pixelOG pixelHorizontal vertical-flip pixelOG "
+          + "pixelVertical brighten pixelRedValue pixelRedValueBrightened 10 brighten pixelOG "
+          + "pixelDarken -20 brighten pixelOG pixelNoChange 0 gaussian-blur pixelBlueLuma "
+          + "pixelBlueLumaBlur sharpen pixelGreen pixelGreenSharpen greyscale pixelOG "
+          + "pixelGreyscale sepia pixelOG pixelSepia save PGI.bmp pixelGreenIntensity q";
+  String scriptTXT2 = "load\nPixel.png\npixel\nchange-name\npixel\npixelOG\nred-component\npixelOG\n"
+          + "pixelRed\ngreen-component\npixelOG\npixelGreen\nblue-component\npixelOG\npixelBlue\n"
+          + "value\npixelRed\npixelRedValue\nluma\npixelBlue\npixelBlueLuma\nintensity\npixelGreen\n"
+          + "pixelGreenIntensity\nhorizontal-flip\npixelOG\npixelHorizontal\nvertical-flip\npixelOG\n"
+          + "pixelVertical\nbrighten\npixelRedValue\npixelRedValueBrightened\n10\nbrighten\npixelOG\n"
+          + "pixelDarken\n-20\nbrighten\npixelOG\npixelNoChange\n0\ngaussian-blur\npixelBlueLuma\n"
+          + "pixelBlueLumaBlur\nsharpen\npixelGreen\npixelGreenSharpen\ngreyscale\npixelOG\n"
+          + "pixelGreyscale\nsepia\npixelOG\npixelSepia\nsave\nPGI.bmp\npixelGreenIntensity\nq";
 
   /**
    * Test if readPPM() correctly reads a ppm file to a 3D array of the imageBoard pixels.
@@ -179,7 +198,6 @@ public class ImageUtilTest {
     assertEquals(pixelImg, imageRead.toString());
   }
 
-
   /**
    * Test if readIMG() throw an exception if the file cannot be found.
    */
@@ -201,6 +219,68 @@ public class ImageUtilTest {
       ImageClass model = ImageUtil.readPPM(null);
     } catch (IllegalArgumentException e) {
       assertEquals("The filename cannot be null.", e.getMessage());
+    }
+  }
+
+  /**
+   * Tests if parseTXT() throws an exception if the filepath is null.
+   * */
+  @Test
+  public void testParseTXTNullFilepath(){
+    try{
+      ImageUtil.parseTXT(null);
+    } catch (IllegalArgumentException e){
+      assertEquals("Path cannot be null.", e.getMessage());
+    }
+  }
+
+  /**
+   * Tests if parseTXT() throws an exception if the filepath isn't a txt file.
+   * */
+  @Test
+  public void testParseTXTNotTXT(){
+    try{
+      ImageUtil.parseTXT("res/Pixel.bmp");
+    } catch (IllegalArgumentException e){
+      assertEquals("The provided file is not a txt file.", e.getMessage());
+    }
+  }
+
+  /**
+   * Tests if parseTXT() throws an exception if the filepath doesn't exist.
+   * */
+  @Test
+  public void testParseTXTNotExist(){
+    try{
+      ImageUtil.parseTXT("res/file.txt");
+    } catch (IllegalStateException e){
+      assertEquals("Cannot find file.", e.getMessage());
+    }
+  }
+
+  /**
+   * Tests if parseTXT() reads a text file correctly with spaces.
+   * */
+  @Test
+  public void testParseTXT(){
+    Readable txt = ImageUtil.parseTXT("res/exampleScript.txt");
+    Scanner sc = new Scanner(txt);
+    String[] splitText = scriptTXT.split(" ");
+    for(int i = 0; i < splitText.length; i++){
+      assertEquals(splitText[i], sc.next());
+    }
+  }
+
+  /**
+   * Tests if parseTXT() reads a text file correctly with new lines.
+   * */
+  @Test
+  public void testParseTXT2(){
+    Readable txt = ImageUtil.parseTXT("res/exampleScript.txt");
+    Scanner sc = new Scanner(txt);
+    String[] splitText = scriptTXT2.split("\n");
+    for(int i = 0; i < splitText.length; i++){
+      assertEquals(splitText[i], sc.next());
     }
   }
 }

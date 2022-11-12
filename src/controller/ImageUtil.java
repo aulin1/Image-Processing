@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -20,8 +21,7 @@ import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
 
 /**
- * This class contains utility methods to read a PPM image from file and simply print its
- * contents.
+ * This class contains utility methods to read, save, and load various files.
  */
 public class ImageUtil {
 
@@ -204,6 +204,32 @@ public class ImageUtil {
       ImageIO.write(buffImg, formatName, imgOutStream);
     } catch (IOException e) {
       throw new IllegalStateException("Unable to save file to destination. ");
+    }
+  }
+
+  /**
+   * Reads a script file and returns
+   *
+   * @param filepath the path of the script file.
+   * @return a Readable of the commands.
+   * @throws IllegalArgumentException if the filepath is null, or is not a text file.
+   * @throws IllegalStateException if it cannot find the file.
+   * */
+  public static Readable parseTXT(String filepath) throws IllegalArgumentException,
+          IllegalStateException {
+    if(filepath == null){
+      throw new IllegalArgumentException("Path cannot be null.");
+    }
+    String[] textArr = filepath.split("\\.");
+    if (!textArr[1].equals("txt")) {
+      throw new IllegalArgumentException("The provided file is not a txt file.");
+    }
+    try {
+      FileInputStream fileInputStream = new FileInputStream(filepath);
+      InputStreamReader streamReader = new InputStreamReader(fileInputStream);
+      return streamReader;
+    } catch(FileNotFoundException e){
+      throw new IllegalStateException("Cannot find file.");
     }
   }
 }

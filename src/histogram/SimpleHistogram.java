@@ -33,7 +33,7 @@ public class SimpleHistogram implements IHistogram{
   private void fillValues(int[][][] img, int max){
     int colors = img[0][0].length; //the number of colors there are
     if(max != this.max || this.values == null || colors != this.values.length){
-      this.values = new int[colors][max];
+      this.values = new int[colors][max + 1];
     }
     for(int i = 0; i < img.length; i++){
       for(int j = 0; j < img[0].length; j++){
@@ -51,6 +51,12 @@ public class SimpleHistogram implements IHistogram{
 
   @Override
   public int[][] getHistogram() {
-    return Arrays.copyOf(values, values.length);
+    int[][] arr = new int[values.length][values[0].length];
+    for(int i = 0; i < values.length; i++){
+      for(int j = 0; j < values[0].length; j++){
+        arr[i][j] = values[i][j];
+      }
+    }
+    return arr;
   }
 }
