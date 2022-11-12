@@ -16,13 +16,12 @@ program will throw an exception as the program ran out of input before quitting.
 To run a text based version of the image processing program, use the command **"-text"**. Then, in the console, type the commands as listed below. The program will not quit until you type **"q"**.
 
 ### Choosing Image Processing Program Version
-Through command line, provide the string **"-old"** to use the older version of the program. Arguments besides the ones mentioned above will throw an exception 
-when running the program.
+Through command line, provide the string **"-old"** to use the older version of the program. 
+
+Arguments besides the ones mentioned above will throw an exception when running the program.
 
 The expected command has to be the <strong>first string in the command line</strong>. The program 
 would not run if provided otherwise.
-
-If there is no argument provided, the default new version of the controller will run instead. If the argument provided is not an accepted command, the new version of the controller will run instead.
 
 ### Condition of command usage
 #### Using the command line prior to running the program
