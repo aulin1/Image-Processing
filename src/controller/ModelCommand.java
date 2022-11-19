@@ -1,5 +1,6 @@
 package controller;
 
+import image.ImageClass;
 import model.ImageProcessingModel;
 
 /**
@@ -11,5 +12,5 @@ public interface ModelCommand {
    *
    * @param view the view to apply the command on
    */
-  void execute(ImageProcessingModel view);
+  ImageClass execute(ImageProcessingModel view);
 }

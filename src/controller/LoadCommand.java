@@ -1,5 +1,6 @@
 package controller;
 
+import image.ImageClass;
 import model.ImageProcessingModel;
 
 /**
@@ -25,11 +26,12 @@ public class LoadCommand implements ModelCommand {
   }
 
   @Override
-  public void execute(ImageProcessingModel view) throws IllegalArgumentException {
-    if (view == null) {
+  public ImageClass execute(ImageProcessingModel model) throws IllegalArgumentException {
+    if (model == null) {
       throw new IllegalArgumentException("The model cannot be null");
     }
 
-    view.loadImage(this.imagePath, this.imageName);
+    model.loadImage(this.imagePath, this.imageName);
+    return model.getImage(this.imageName);
   }
 }
