@@ -5,7 +5,7 @@ import image.ImageClass;
 /**
  * An interface for an image processing model.
  */
-public interface ImageProcessingModel {
+public interface ImageProcessingModel extends ImageProcessingModelState {
 
   /**
    * Loads an image using a given imagePath and imageName.
@@ -36,14 +36,6 @@ public interface ImageProcessingModel {
    * @param model     the model to be stored
    */
   void storeImage(String imageName, ImageClass model);
-
-  /**
-   * Returns the model stored in the map with the provided name.
-   *
-   * @param imageName the name of the image to be retrieved the model for
-   * @return the model if the model exists in the map and null if the model is not in the map.
-   */
-  ImageClass getImage(String imageName);
 
   /**
    * Changes the name of an image.

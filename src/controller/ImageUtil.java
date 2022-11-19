@@ -186,6 +186,29 @@ public class ImageUtil {
     if(filepath == null || image == null || formatName == null){
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
+
+    BufferedImage buffImg = getBuffImage(image);
+
+    try {
+      ImageOutputStream imgOutStream = new FileImageOutputStream(new File(filepath));
+      ImageIO.write(buffImg, formatName, imgOutStream);
+    } catch (IOException e) {
+      throw new IllegalStateException("Unable to save file to destination. ");
+    }
+  }
+
+  /**
+   * Generate a buffered image from the provided object from the ImageClass.
+   *
+   * @param image the image to be converted to a buffered image
+   * @return the buffered image version of the image provided
+   * @throws IllegalArgumentException if the provided image is null
+   */
+  public static BufferedImage getBuffImage(ImageClass image) throws IllegalArgumentException {
+    if (image == null) {
+      throw new IllegalArgumentException("The argument cannot be null"); //TODO: test
+    }
+
     int[][][] imageBoard = image.getImage();
     BufferedImage buffImg = new BufferedImage(image.getWidth(), image.getHeight(), TYPE_INT_RGB);
 
@@ -198,13 +221,7 @@ public class ImageUtil {
         buffImg.setRGB(col, row, rgb); //pos-x, pos-y, 8 bit rep of rgb
       }
     }
-
-    try {
-      ImageOutputStream imgOutStream = new FileImageOutputStream(new File(filepath));
-      ImageIO.write(buffImg, formatName, imgOutStream);
-    } catch (IOException e) {
-      throw new IllegalStateException("Unable to save file to destination. ");
-    }
+    return buffImg;
   }
 
   /**

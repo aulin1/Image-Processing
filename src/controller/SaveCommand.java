@@ -1,5 +1,6 @@
 package controller;
 
+import image.ImageClass;
 import model.ImageProcessingModel;
 
 /**
@@ -26,12 +27,12 @@ public class SaveCommand implements ModelCommand {
   }
 
   @Override
-  public void execute(ImageProcessingModel view) throws IllegalStateException,
+  public ImageClass execute(ImageProcessingModel model) throws IllegalStateException,
           IllegalArgumentException {
-    if (view == null) {
+    if (model == null) {
       throw new IllegalArgumentException("The model cannot be null");
     }
-
-    view.saveImage(this.filePath, this.fileName);
+    model.saveImage(this.filePath, this.fileName);
+    return model.getImage(this.fileName);
   }
 }
