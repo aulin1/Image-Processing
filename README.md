@@ -88,6 +88,8 @@ class.</li>
 <li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>
 <li><strong>ImageProcessingCommandTest</strong>: Tests for the commands.</li>
 <li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
+  <li><strong>ViewTest</strong>: Tests for the GUI View, including integration tests.</li>
+  <li><strong>IPFeatureImplTest</strong>: Tests for IPFeatureImpl.</li>
 </ol></li>
 </ol>
 
