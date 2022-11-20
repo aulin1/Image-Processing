@@ -26,11 +26,12 @@ public class ImagePanelImpl extends JPanel implements ImagePanel {
    */
   public ImagePanelImpl(ImageProcessingModelState modelState) throws IllegalArgumentException {
     super();
-    this.setBackground(Color.PINK);
     if (modelState == null) {
       throw new IllegalArgumentException("The argument cannot be null.");
     }
     this.modelState = modelState;
+
+    this.setBackground(Color.PINK);
   }
 
   @Override
