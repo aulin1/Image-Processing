@@ -54,6 +54,13 @@ Processing Model.
 into an Image 
 Processing Model.
 </li></ol></li>
+<li>Interface <strong>IPFeature</strong>: a representation of an image processing 
+controller for GUI which contains the processInput() method.
+<ol><li><strong>IPFeatureImpl</strong>: An implementation of the controller 
+interface for GUI which supports all commands included in the script command. </li>
+</ol></li>
+<li><strong>ControllerCommandUtil</strong>: an abstract class which contains all of the functions needed for command maps and utilizing commands.</li>
+
 
 <li>Interface <strong>ImageClass</strong>:</li> a representation of an image and contains the get methods for what is needed for an image.
 <ol>
@@ -81,6 +88,8 @@ class.</li>
 <li><strong>ImageUtilTest</strong>: Tests for ImageUtil class.</li>
 <li><strong>ImageProcessingCommandTest</strong>: Tests for the commands.</li>
 <li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
+  <li><strong>ViewTest</strong>: Tests for the GUI View, including integration tests.</li>
+  <li><strong>IPFeatureImplTest</strong>: Tests for IPFeatureImpl.</li>
 </ol></li>
 </ol>
 
@@ -117,3 +126,5 @@ saveImage() in PPMProcessingView class now has an additional check for the indic
 ### Design Changes 2.0
 
 The functionality of directly saving an image for PPMProcessingModel and UpdatedProcessingModel has been moved to static methods in ImageUtil as they should not directly be in the model package.
+
+All functionality for reading in commands, initiating commands, and using commands has been moved to the abstract class ControllerCommandImpl in order to avoid code repitition and for easier editing in the future.
