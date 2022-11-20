@@ -81,6 +81,7 @@ public class ImageUtil {
     }
 
     ImageClass img = new ImageClassImpl(imageBoard, maxValue);
+
     return img;
   }
 
@@ -129,6 +130,7 @@ public class ImageUtil {
     }
 
     img = new ImageClassImpl(imageBoard, maxValue);
+
     return img;
   }
 

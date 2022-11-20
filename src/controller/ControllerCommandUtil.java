@@ -74,6 +74,7 @@ abstract class ControllerCommandUtil {
       writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       renderImage(img);
     } catch (Exception e) {
+      //TODO: figure out what's erroring
       writeMessage(e.getMessage() + System.lineSeparator());
     }
   }
@@ -85,7 +86,6 @@ abstract class ControllerCommandUtil {
    * @param imgProCommFunc the map of functions for the ImageProcessingCommands.
    * @param s              the string that represents the command.
    */
-  //TODO: fix
   protected void imgProcCommand(Scanner sc, Function<Scanner,
           ImageProcessingCommand> imgProCommFunc, String s) {
     String imageName = sc.next();

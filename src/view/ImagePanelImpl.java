@@ -42,10 +42,8 @@ public class ImagePanelImpl extends JPanel implements ImagePanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    int originX = this.getWidth() / 12;
-    int originY = this.getHeight() / 12;
     if (this.image != null) {
-      g.drawImage(this.image, originX, originY, this);
+      g.drawImage(this.image, 0, 0, this);
     }
   }
 
