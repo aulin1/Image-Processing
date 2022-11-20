@@ -3,10 +3,13 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.IPFeature;
 
@@ -31,7 +34,6 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
     this.setBackground(Color.orange);
 
     addComponent();
-    setActionListener(new MenuItemClicked());
   }
 
   /**
@@ -49,9 +51,13 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
     this.fileMenu = new JMenu("File");
     this.add(this.fileMenu);
 
+    //TODO: support open recent
     String[] fileMenuItem = new String[]{"Save file", "Load file", "Change file name"};
-    for (String s : fileMenuItem) {
-      JMenuItem menuItem = new JMenuItem(s);
+    String[] fileComm = new String[]{"save ", "load ", "change-name "};
+    for (int i = 0; i < fileMenuItem.length; i++) {
+      JMenuItem menuItem = new JMenuItem(fileMenuItem[i]);
+      menuItem.setActionCommand(fileComm[i]);
+      menuItem.addActionListener(new MenuItemClicked(menuItem));
       this.fileMenuItem.add(menuItem);
       this.fileMenu.add(menuItem);
     }
@@ -94,24 +100,59 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
           JMenuItem menuItem = new JMenuItem(s);
           currentMenu.add(menuItem);
         }
+        break;
       case "Flip" :
         JMenuItem menuItem = new JMenuItem("Horizontal flip");
         this.ipMenuItem.get(order).add(menuItem);
-        menuItem = new JMenuItem("Horizontal flip");
+        menuItem = new JMenuItem("Vertical flip");
         currentMenu.add(menuItem);
+        break;
       case "Filter" :
         String[] filterMenu = new String[]{"Intensity", "Value", "Brightness"};
         for (String s : filterMenu) {
           menuItem = new JMenuItem(s);
           currentMenu.add(menuItem);
         }
+        break;
       default :
         throw new IllegalArgumentException("The provided menu is not supported.");
     }
   }
 
-  private void setActionListener(ActionListener listener) {
+  private String getCorrectInput(AbstractButton button) {
+    switch(button.getActionCommand()) {
+      case "load " :
+        return openFileChooser(button);
+      default:
+        throw new IllegalArgumentException("The button is not supported by this method.");
+    }
+  }
 
+  /**
+   * Display a panel for choosing file and return the filepath of the file to be opened.
+   *
+   * @param component the component which triggers this method when an action is performed
+   * @return the filepath of the file to be opened
+   * @throws IllegalArgumentException if the component is null
+   */
+  private String openFileChooser(Component component) throws IllegalArgumentException {
+    if (component == null) {
+      throw new IllegalArgumentException("The argument cannot be null.");
+    }
+    String filePath = "";
+    String fileName = "";
+
+    final JFileChooser fchooser = new JFileChooser(".");
+    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+            "Images", "jpg", "png", "bpm", "ppm");
+    fchooser.setFileFilter(filter);
+    int retvalue = fchooser.showOpenDialog(component);
+    if (retvalue == JFileChooser.APPROVE_OPTION) {
+      File f = fchooser.getSelectedFile();
+      filePath = f.getAbsolutePath();
+      fileName = f.getName();
+    }
+    return filePath + " " + fileName;
   }
 
   @Override
@@ -134,9 +175,16 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
    * This class emits message when the menu item was clicked.
    */
   private class MenuItemClicked implements ActionListener {
+    private final AbstractButton button;
+
+    private MenuItemClicked(AbstractButton button) {
+      this.button = Objects.requireNonNull(button);
+    }
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
-      e.getActionCommand();
+      feature.processInput(e.getActionCommand() + " " + getCorrectInput(button));
     }
   }
 }
