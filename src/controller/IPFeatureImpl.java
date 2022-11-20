@@ -40,7 +40,7 @@ public class IPFeatureImpl extends ControllerCommandUtil implements IPFeature {
       readComm(s.toLowerCase(), sc);
     }
 //    this.view.renderMessage("Error: Insufficient args.");
-    this.view.renderMessage("Command executed!");
+    this.view.renderMessage("Command executed!" + System.lineSeparator());
   }
 
   @Override

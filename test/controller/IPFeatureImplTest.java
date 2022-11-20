@@ -55,7 +55,10 @@ public class IPFeatureImplTest {
     ImageProcessingView view = new MockGUIView(log);
     IPFeature test = new IPFeatureImpl(model, view);
     test.processInput("incorrect comm");
-    //TODO: fix
-    assertEquals("Called renderMessage(): Command is not supported. Command Executed.\n", log.toString());
+    String[] splitString = log.toString().split("\n");
+    assertEquals("Called registerFeature()", splitString[0]);
+    assertEquals("Called renderMessage(): Command is not supported.", splitString[1]);
+    assertEquals("Called renderMessage(): Command is not supported.", splitString[3]);
+    assertEquals("Called renderMessage(): Command executed!", splitString[5]);
   }
 }
