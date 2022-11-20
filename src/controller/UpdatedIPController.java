@@ -2,11 +2,7 @@ package controller;
 
 import java.io.InputStreamReader;
 
-import model.GaussianBlurCommand;
 import model.ImageProcessingModel;
-import model.ImageSharpenCommand;
-import model.LumaCommand;
-import model.SepiaToneCommand;
 import model.UpdatedProcessingModel;
 
 /**
@@ -18,13 +14,13 @@ import model.UpdatedProcessingModel;
  * tone.</p>
  */
 public class UpdatedIPController extends ImageProcessingControllerImpl {
-
   /**
    * Create the default controller for the image processing program using the new updated
    * processing view.
    */
   public UpdatedIPController() {
     super(System.out, new InputStreamReader(System.in), new UpdatedProcessingModel());
+    initiateComms();
   }
 
   /**
@@ -38,15 +34,7 @@ public class UpdatedIPController extends ImageProcessingControllerImpl {
   public UpdatedIPController(Appendable output, Readable input, ImageProcessingModel model)
           throws IllegalArgumentException {
     super(output, input, model);
-  }
-
-  @Override
-  protected void initiateComms() {
-    super.initiateComms();
-    this.imgProcCommandMap.put("greyscale", s -> new LumaCommand());
-    this.imgProcCommandMap.put("gaussian-blur", s -> new GaussianBlurCommand());
-    this.imgProcCommandMap.put("sharpen", s -> new ImageSharpenCommand());
-    this.imgProcCommandMap.put("sepia", s -> new SepiaToneCommand());
+    initiateComms();
   }
 
   @Override
