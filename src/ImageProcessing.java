@@ -1,11 +1,11 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-
+import controller.IPFeatureImpl;
 import controller.ImageProcessingController;
 import controller.ImageProcessingControllerImpl;
 import controller.UpdatedIPController;
+import model.ImageProcessingModel;
 import model.UpdatedProcessingModel;
+import view.ImageProcessingGUI;
+import view.ImageProcessingView;
 
 import static controller.ImageUtil.parseTXT;
 
@@ -19,8 +19,8 @@ public final class ImageProcessing {
    * @param args the command line inputs
    */
   public static void main(String[] args) {
-    ImageProcessingController controller;
     if (args.length > 0) { //designating the version of the controller to be used
+      ImageProcessingController controller;
       switch (args[0]) {
         case "-old":
           controller = new ImageProcessingControllerImpl();
@@ -40,10 +40,14 @@ public final class ImageProcessing {
         default: //not an accepted input
           throw new IllegalArgumentException("Not an accepted input!");
       }
-    } else { //TODO: add GUI once implemented
+      controller.start();
+    } else {
       //The length can't be less than 0, so this is if there are not other arguments.
-      controller = new UpdatedIPController();
+      ImageProcessingModel model = new UpdatedProcessingModel();
+      ImageProcessingView view = new ImageProcessingGUI(model);
+      IPFeatureImpl controller = new IPFeatureImpl(model, view);
+      view.makeVisible();
     }
-    controller.start();
+
   }
 }
