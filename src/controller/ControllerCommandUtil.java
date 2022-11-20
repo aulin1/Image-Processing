@@ -74,7 +74,6 @@ abstract class ControllerCommandUtil {
       writeMessage("Command " + s + " successfully processed!" + System.lineSeparator());
       renderImage(img);
     } catch (Exception e) {
-      //TODO: figure out what's erroring
       writeMessage(e.getMessage() + System.lineSeparator());
     }
   }

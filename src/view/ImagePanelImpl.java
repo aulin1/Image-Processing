@@ -50,5 +50,6 @@ public class ImagePanelImpl extends JPanel implements ImagePanel {
   @Override
   public void setImage(ImageClass image) {
     this.image = ImageUtil.getBuffImage(image);
+    this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT);
   }
 }

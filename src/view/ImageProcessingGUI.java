@@ -84,11 +84,13 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   @Override
   public void renderMessage(String message) {
     this.logPanel.renderLog(message);
+    refresh();
   }
 
   @Override
   public void renderImage(ImageClass image) {
     this.imagePanel.setImage(image);
+    refresh();
   }
 
   @Override

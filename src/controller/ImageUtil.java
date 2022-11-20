@@ -98,9 +98,10 @@ public class ImageUtil {
     if (filename == null) {
       throw new IllegalArgumentException("The filename cannot be null.");
     }
+
     // if file is a ppm, use the previous reader
     String[] format = filename.split("\\.");
-    if (format[1].equals("ppm")) {
+    if (format[format.length - 1].equals("ppm")) {
       img = readPPM(filename);
       return img;
     }
