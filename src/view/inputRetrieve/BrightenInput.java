@@ -1,5 +1,9 @@
 package view.inputRetrieve;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 import javax.swing.*;
 
 import view.ImageProcessingPanel;
@@ -26,10 +30,22 @@ public class BrightenInput extends AbstractInputRetComm {
     String newName = this.menu.getImageName() + button.getActionCommand();
     this.menu.setImageName(newName);
 
-    String userInput = JOptionPane.showInputDialog("Input increment of " +
-            "brightness here:" + System.lineSeparator() + "Negative value will result in darken " +
-            "and vice versa. 0 will result in the same image", 10);
+    int[] intOptions = IntStream.range(-100, 100).toArray();
+    List<String> stringOptions = new ArrayList<>();
+    for (int intOption : intOptions) {
+      stringOptions.add(String.valueOf(intOption));
+    }
 
+    String userInput = (String)JOptionPane.showInputDialog(
+            button,
+            "Input increment of " +
+                    "brightness here:" + System.lineSeparator() + "Negative value will result in darken " +
+                    "and vice versa. 0 will result in the same image",
+            "Brightness increment",
+            JOptionPane.PLAIN_MESSAGE,
+            null,
+            stringOptions.toArray(),
+            "10");
     return oldName + " " + newName + " " + userInput;
   }
 }

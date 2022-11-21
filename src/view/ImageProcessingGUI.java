@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 import javax.swing.*;
@@ -88,7 +89,13 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
 
   @Override
   public void renderImage(ImageClass image) {
-    ImageIcon imageDisplayed = new ImageIcon(ImageUtil.getBuffImage(image));
+    Image buffImage = ImageUtil.getBuffImage(image);
+    if (image.getWidth() < this.imagePanel.getWidth() ||
+            image.getHeight() < this.imagePanel.getHeight()) {
+      buffImage = buffImage.getScaledInstance(this.imageScroll.getWidth(),
+              this.imageScroll.getHeight(), Image.SCALE_DEFAULT);
+    }
+    ImageIcon imageDisplayed = new ImageIcon(buffImage);
     this.imagePanel.setIcon(imageDisplayed);
     this.logPanel.changeLogistics(image);
     refresh();
