@@ -15,26 +15,35 @@ public class HistogramTest {
 
   ImageClass img1;
   ImageClass img2;
-  ImageClass img3;
   int[][] result1;
   int[][] result2;
-  int[][] result3;
+  int[][][] graph1;
+  int[][][] graph2;
 
   @Before
   public void createImageClasses(){
     int[][][] i = new int[][][]{{{0, 1, 2}, {0, 0, 0}, {1, 1, 2}}, {{5, 5, 5},
-            {10, 10, 2}, {0, 1, 2}}, {{0, 1, 2}, {6, 10, 10}, {9, 9, 9}}};
+            {10, 10, 1}, {0, 1, 2}}, {{0, 1, 2}, {6, 10, 10}, {9, 9, 9}}};
     int[][][] j = new int[][][]{{{1, 1, 1}, {1, 2, 3}, {1, 3, 3}}, {{1, 1, 1}, {5, 5, 5},
             {6, 4, 6}}, {{6, 6, 6}, {1, 3, 5}, {6, 6, 6}}};
-    int[][][] k = new int[][][] {{{5, 5}, {1, 0}}, {{5, 2}, {2, 3}}};
     img1 = new ImageClassImpl(i, 10);
     img2 = new ImageClassImpl(j, 7);
-    img3 = new ImageClassImpl(k, 5);
     result1 = new int[][]{{4, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1},
-            {1, 4, 0, 0, 0, 1, 0, 0, 0, 1, 2}, {1, 0, 5, 0, 0, 1, 0, 0, 0, 1, 1}};
+            {1, 4, 0, 0, 0, 1, 0, 0, 0, 1, 2}, {1, 1, 4, 0, 0, 1, 0, 0, 0, 1, 1},
+            {1, 4, 0, 0, 0, 1, 0, 1, 0, 2, 0}};
     result2 = new int[][]{{0, 5, 0, 0, 0, 1, 3, 0}, {0, 2, 1, 2, 1, 1, 2, 0},
-            {0, 2, 0, 2, 0, 2, 3, 0}};
-    result3 = new int[][]{{0, 1, 1, 0, 0, 2}, {1, 0, 1, 1, 0, 1}};
+            {0, 2, 0, 2, 0, 2, 3, 0}, {0, 2, 2, 1, 0, 2, 2, 0}};
+    graph1 = new int[][][]
+            {{{200, 0, 0}, {0 ,190, 0}, {0, 0, 200}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}},
+            {{200, 0, 0}, {0, 190, 0}, {0, 0, 200}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}},
+            {{200, 0, 0}, {0, 190, 0}, {0, 0, 200}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {255, 255, 255}, {100, 100, 100}, {0, 200, 0}},
+            {{190, 190, 190}, {190, 190, 190}, {0, 0, 200}, {255, 255, 255}, {255, 255, 255}, {190, 190, 190}, {200, 0, 0}, {100, 100, 100}, {255, 255, 255}, {190, 190, 190}, {200, 200, 200}}};
+    graph2 = new int[][][]
+                  {{{255,255,255},{200, 0, 0},{255,255,255},{255,255,255},{255,255,255},{255,255,255},{255,255,255},{255,255,255}},
+                    {{255,255,255},{200, 0, 0},{255,255,255},{255,255,255},{255,255,255},{255,255,255},{255,255,255},{255,255,255}},
+                    {{255,255,255},{200, 0, 0},{255,255,255},{255,255,255},{255,255,255},{255,255,255},{200, 0, 200},{255,255,255}},
+                    {{255,255,255},{190, 190, 190},{100,100,100},{0,200,200},{255,255,255},{0,0,190},{190, 190, 190},{255,255,255}},
+                    {{255,255,255},{190, 190, 190},{0, 190, 0},{0,190,190},{0,200,0},{190, 190, 190},{190, 190, 190},{255,255,255}}};
   }
 
   /**
@@ -46,17 +55,16 @@ public class HistogramTest {
   }
 
   /**
-   * Tests if it gives the correct histogram given a ImageClass.
+   * Tests if it gives the correct histogram and graph given a ImageClass.
    * */
   @Test
   public void testHistogram(){
     IHistogram test = new SimpleHistogram(img1);
     IHistogram test2 = new SimpleHistogram(img2);
-    IHistogram test3 = new SimpleHistogram(img3);
-    int[][] vals = test.getHistogram();
-    assertArrayEquals(result1, vals);
+    assertArrayEquals(result1, test.getHistogram());
+    assertArrayEquals(graph1, test.getGraph().getImage());
     assertArrayEquals(result2, test2.getHistogram());
-    assertArrayEquals(result3, test3.getHistogram());
+    assertArrayEquals(graph2, test2.getGraph().getImage());
   }
 
   /**
@@ -67,10 +75,10 @@ public class HistogramTest {
     IHistogram test = new SimpleHistogram(img1);
     test.updateHistogram(img2);
     assertArrayEquals(result2, test.getHistogram());
-    test.updateHistogram(img3);
-    assertArrayEquals(result3, test.getHistogram());
+    assertArrayEquals(graph2, test.getGraph().getImage());
     test.updateHistogram(img1);
     assertArrayEquals(result1, test.getHistogram());
+    assertArrayEquals(graph1, test.getGraph().getImage());
   }
 
   /**

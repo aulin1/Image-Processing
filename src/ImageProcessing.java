@@ -48,6 +48,5 @@ public final class ImageProcessing {
       IPFeatureImpl controller = new IPFeatureImpl(model, view);
       view.makeVisible();
     }
-
   }
 }

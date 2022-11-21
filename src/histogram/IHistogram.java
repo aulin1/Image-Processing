@@ -21,4 +21,11 @@ public interface IHistogram {
    * values and the second index holds the actual value for the histogram.
    * */
   int[][] getHistogram();
+
+  /**
+   * Gets the graph of the histogram as an image.
+   *
+   * @return the histogram as an image.
+   * */
+  ImageClass getGraph();
 }

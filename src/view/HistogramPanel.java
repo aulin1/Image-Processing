@@ -5,20 +5,20 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.IPFeature;
+import controller.ImageUtil;
 import histogram.IHistogram;
 import histogram.SimpleHistogram;
 import image.ImageClass;
-
-import static java.awt.GridBagConstraints.PAGE_END;
 
 /**
  * This class represents the panel which draws the histogram in the Image Processing Program.
  */
 public class HistogramPanel extends JPanel implements ImagePanel {
   private IPFeature feature;
-  private ImageClass image;
+  private ImageClass image; // image used to calculate graph
+  private Image graph; // graph to be displayed
   private IHistogram histogram;
-  private JTextArea xAxis;
+  private JTextField xAxis;
   private JTextArea yAxis;
 
   /**
@@ -26,24 +26,7 @@ public class HistogramPanel extends JPanel implements ImagePanel {
    */
   public HistogramPanel() {
     super();
-    this.setLayout(new GridBagLayout());
     setBackground(Color.white);
-    setUp();
-  }
-
-  private void setUp(){
-    this.xAxis = new JTextArea("X-Axis");
-    this.xAxis.setEditable(false);
-    this.xAxis.setVisible(true);
-    GridBagConstraints xConstraints = new GridBagConstraints();
-    xConstraints.fill = GridBagConstraints.HORIZONTAL;
-    xConstraints.anchor = GridBagConstraints.PAGE_END;
-    this.add(xAxis, xConstraints);
-
-    this.yAxis = new JTextArea("N/A");
-    this.yAxis.setEditable(false);
-    this.yAxis.setVisible(true);
-    this.add(yAxis);
   }
 
   @Override
@@ -63,30 +46,23 @@ public class HistogramPanel extends JPanel implements ImagePanel {
     setHistogram();
   }
 
-  /**
-   * A helper method to find the maximum value for the histogram.
-   *
-   * @return the max value.
-   * */
-  private int getMax(){
-    if(this.histogram == null){
-      return 0;
+  @Override
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    if (this.graph != null) {
+      int x = (this.getWidth() - this.graph.getWidth(null)) / 2;
+      int y = (this.getHeight() - this.graph.getHeight(null)) / 2;
+      g.drawImage(this.graph, x, y, this);
     }
-    int[][] h = this.histogram.getHistogram();
-    int max = 0;
-    for(int i = 0; i < h[0].length; i++){
-      max = Math.max(Math.max(Math.max(max, h[0][i]), h[1][i]), h[2][i]);
-    }
-    return max;
   }
 
   /**
    * Set up the new histogram based on the currently working image.
    */
   private void setHistogram() {
+    //here
     this.histogram = new SimpleHistogram(this.image);
-    //TODO: make setHistogram work here
-    this.xAxis.setText(String.format("Value from 0-%d",this.image.getMax()));
-    this.yAxis.setText(String.format("Number from 0-%d", this.getMax()));
+    this.graph = ImageUtil.getBuffImage(this.histogram.getGraph());
+    this.graph = this.graph.getScaledInstance(this.getWidth() - 20, this.getHeight() - 20, Image.SCALE_DEFAULT);
   }
 }
