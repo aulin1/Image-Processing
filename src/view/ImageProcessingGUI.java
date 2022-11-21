@@ -23,8 +23,6 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   private LogisticPanelImpl logPanel;
   // observable model of all images being processed
   private final ImageProcessingModelState modelState;
-  // display message from the controller to the user
-  private JOptionPane messagePane;
   // width of the screen
   private final int screenWidth = 800;
   // height of the screen

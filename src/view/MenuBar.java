@@ -63,9 +63,8 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
     this.fileMenu = currentMenu;
     this.add(this.fileMenu);
 
-    //TODO: support open recent
-    String[] fileMenuItem = new String[]{"Save file", "Load file", "Change file name"};
-    String[] fileComm = new String[]{"save", "load", "change-name"};
+    String[] fileMenuItem = new String[]{"Save file", "Load file"};
+    String[] fileComm = new String[]{"save", "load"};
     setUpMenuItem(currentMenu, fileMenuItem, fileComm);
   }
 

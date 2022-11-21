@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
@@ -48,7 +49,13 @@ public class ImagePanelImpl extends JPanel implements ImagePanel {
 
   @Override
   public void setImage(ImageClass image) {
-    this.image = ImageUtil.getBuffImage(image);
-    this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT);
+    BufferedImage buffImage = ImageUtil.getBuffImage(image);
+    if (buffImage.getWidth() < this.getWidth() || buffImage.getHeight() < this.getHeight()) {
+      this.image = buffImage.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT);
+    } else {
+      this.image = buffImage;
+      this.setSize(new Dimension(buffImage.getWidth(), buffImage.getHeight()));
+      //TODO: the image panel is the correct size, get it to be scrollable on the GUI
+    }
   }
 }
