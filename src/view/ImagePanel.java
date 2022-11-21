@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.*;
+
 import image.ImageClass;
 
 /**
