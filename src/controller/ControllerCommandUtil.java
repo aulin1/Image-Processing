@@ -85,7 +85,6 @@ abstract class ControllerCommandUtil {
    * @param imgProCommFunc the map of functions for the ImageProcessingCommands.
    * @param s              the string that represents the command.
    */
-  //TODO: fix
   protected void imgProcCommand(Scanner sc, Function<Scanner,
           ImageProcessingCommand> imgProCommFunc, String s) {
     String imageName = sc.next();

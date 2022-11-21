@@ -131,7 +131,7 @@ public class ImageProcessingCommandTest {
         command.execute(null);
         fail("The command should not execute with null view");
       } catch (IllegalArgumentException e) {
-        assertEquals("The view cannot be null", e.getMessage());
+        assertEquals("The model cannot be null", e.getMessage());
       }
     }
   }

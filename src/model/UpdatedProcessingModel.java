@@ -1,19 +1,12 @@
 package model;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageOutputStream;
-import javax.imageio.stream.ImageOutputStream;
 
 import controller.ImageUtil;
 import image.ImageClass;
 
 import static controller.ImageUtil.saveIMG;
-import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
 /**
  * This class represents a model for the program which handles the saving and loading of images to

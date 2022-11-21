@@ -46,19 +46,6 @@ public class IPFeatureImplTest {
   }
 
   /**
-   * Tests processInput gives the correct error message.
-   * */
-  @Test
-  public void testProcessInput(){
-    ImageProcessingModel model = new UpdatedProcessingModel();
-    StringBuffer log = new StringBuffer();
-    ImageProcessingView view = new MockGUIView(log);
-    IPFeature test = new IPFeatureImpl(model, view);
-    test.processInput("");
-    assertEquals("Called renderMessage(): Error: Insufficient args.\n", log.toString());
-  }
-
-  /**
    * Tests processInput calls upon readComms correctly with an incorrect command.
    * */
   @Test
@@ -68,6 +55,10 @@ public class IPFeatureImplTest {
     ImageProcessingView view = new MockGUIView(log);
     IPFeature test = new IPFeatureImpl(model, view);
     test.processInput("incorrect comm");
-    assertEquals("Called renderMessage(): Command is not supported.\n", log.toString());
+    String[] splitString = log.toString().split("\n");
+    assertEquals("Called registerFeature()", splitString[0]);
+    assertEquals("Called renderMessage(): Command is not supported.", splitString[1]);
+    assertEquals("Called renderMessage(): Command is not supported.", splitString[3]);
+    assertEquals("Called renderMessage(): Command executed!", splitString[5]);
   }
 }

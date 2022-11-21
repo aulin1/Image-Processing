@@ -22,7 +22,7 @@ public class HistogramPanel extends JPanel implements ImagePanel {
    */
   public HistogramPanel() {
     super();
-    setBackground(Color.cyan);
+    setBackground(Color.white);
   }
   @Override
   public void registerFeature(IPFeature feature) throws IllegalArgumentException {
@@ -46,5 +46,7 @@ public class HistogramPanel extends JPanel implements ImagePanel {
    */
   private void setHistogram() {
     this.histogram = new SimpleHistogram(this.image);
+    //TODO: make setHistogram work here
+
   }
 }
