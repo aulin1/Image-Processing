@@ -14,7 +14,7 @@ import model.ImageProcessingModelState;
  * This class represents a panel that displays the image that is currently being processed by the
  * image processing program.
  */
-public class ImagePanelImpl extends JPanel implements ImagePanel {
+public class ImagePanelImpl extends JLabel implements ImagePanel {
   private IPFeature feature;
   private Image image; // image to be displayed
   private final ImageProcessingModelState modelState;

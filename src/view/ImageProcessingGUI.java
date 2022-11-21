@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.swing.*;
 
 import controller.IPFeature;
+import controller.ImageUtil;
 import image.ImageClass;
 import model.ImageProcessingModelState;
 
@@ -16,7 +17,7 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   // panel contains the menu and its selections
   private MenuBar menuBar;
   // panel which renders the image that is currently being worked on
-  private ImagePanelImpl imagePanel;
+  private JLabel imagePanel;
   // scroll pane for the image panel
   private JScrollPane imageScroll;
   // panel which displays the logistic of the image currently being processed
@@ -55,7 +56,7 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
    * in a Border Layout.
    */
   private void createComponents() {
-    this.imagePanel = new ImagePanelImpl(this.modelState);
+    this.imagePanel = new JLabel();
     this.imageScroll = new JScrollPane(this.imagePanel);
     this.imageScroll.setPreferredSize(new Dimension(this.screenWidth / 3 * 2, this.screenHeight));
     this.add(this.imageScroll, BorderLayout.LINE_START);
@@ -87,7 +88,8 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
 
   @Override
   public void renderImage(ImageClass image) {
-    this.imagePanel.setImage(image);
+    ImageIcon imageDisplayed = new ImageIcon(ImageUtil.getBuffImage(image));
+    this.imagePanel.setIcon(imageDisplayed);
     this.logPanel.changeLogistics(image);
     refresh();
   }
@@ -95,7 +97,6 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   @Override
   public void registerFeature(IPFeature feature) {
     this.menuBar.registerFeature(feature);
-    this.imagePanel.registerFeature(feature);
     this.logPanel.registerFeature(feature);
   }
 }
