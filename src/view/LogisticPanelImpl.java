@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.IPFeature;
+import image.ImageClass;
 
 /**
  * This class represents a logistic panel displayed on the image processing program. It consists
@@ -68,5 +69,10 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
   @Override
   public void renderLog(String text) {
     this.log.setText(this.log.getText() + System.lineSeparator() + text);
+  }
+
+@Override
+  public void changeLogistics(ImageClass image){
+    this.histogramPanel.setImage(image);
   }
 }
