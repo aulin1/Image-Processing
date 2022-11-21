@@ -1,5 +1,8 @@
 # How to run the program
 
+## Running the GUI version using jar file
+Navigate to the res folder and type **"java -jar Image-Processing.jar"** with no trailing arguments. Further arguments will either start the program in command line version or is not supported by the program.
+
 ## Running through the command line
 If you wish to run the program, then navigate to the res folder and type **"java -jar Image-Processing.jar"** followed by any arguments as listed below. If you do not have additional arguments, the program will open a GUI to interact with.
 
@@ -38,6 +41,30 @@ program in order for the process to be successful
 applied to it. An error message will appear if otherwise</li>
 <li>The newer version of the program supports <strong>most conventional image formats</strong></li>
 
+### How to use the Image Processing Program GUI
+#### Starting and general usage of the program
+- If you start the program GUI version in accordance to the appropriate step above, you should see this window pop up. This is the starting screen of the program:
+<img width="802" alt="image" src="https://user-images.githubusercontent.com/116769130/203163931-f092b0cc-d753-4751-af58-2080b13246da.png">
+- To begin using the program, please upload an image of your choice from your machine by clicking on the *File* menu and the *Load file* menu item from the drop down menu:
+<img width="306" alt="image" src="https://user-images.githubusercontent.com/116769130/203164121-8c14368c-a1a5-497f-8f35-3338aade2861.png">
+- After uploading an image, your program would look similar to below. For this example, the *Koala.ppm* file was loaded from the *res* folder:
+<img width="802" alt="image" src="https://user-images.githubusercontent.com/116769130/203164460-09157e27-0dbc-4965-8dec-7ebcfe272aa9.png">
+- To access the functionalities of the image processing program, navigate to the *Image Processing* tab on the menu bar. The *Image Processing* tab should look as below:
+<img width="167" alt="image" src="https://user-images.githubusercontent.com/116769130/203164938-8c7d31d2-1a05-4f86-9033-e24131231e20.png">
+- These are the functionalities of image processing that is supported by the program:
+    - *Color transform* -> *red/blue/green/sepia*: Create a greyscale of the image based on the chosen values
+    - *Flip* -> *Horizontal flip/Vertical flip*: Flip the orientation of the currently processing image to the designatede orientation
+    - *Filter* -> *Intensity/Value/Luma/Brightness*: Filter the chosen value of the currently processing image
+    - *Blur*: Applies Gaussian blur on the current processing image
+    - *Sharpen*: Sharpen the currentt processing image
+
+- If you would like to save the current processing image to your machine, navigate to the *File* menu tab and click on the *Save file* tab from the drop down menu. Then, a file saving panel should pop up.
+    - **It is important that you add the file extension of your desired image format of the image to be saved in the file name while saving as the program would not be able to save it correctly otherwise*
+- If you would like to quit the program, simply close the window which the program is currently running on and the program will automatically close itself.
+
+- On the right side of the program is the logistic panel. Here, you can see the histogram of the key color values of the image which is being processed (top right) and the log of the commands executed in the program (bottom right).
+<img width="270" alt="image" src="https://user-images.githubusercontent.com/116769130/203168507-6cdab7ca-4cf1-48c0-82cb-fa55c12b8b3c.png">
+- If the log get clogged up and you would like to clear it, click the *Clear log* button at the bottom of the logistic panel.
 
 ### Accepted script of commands (old and new version)
 <li><strong>load image-path image-name</strong>: Load a PPM image from the provided image path and 
