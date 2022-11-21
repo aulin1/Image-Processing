@@ -43,7 +43,7 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
     setLayout(new BorderLayout());
     setPreferredSize(new Dimension(this.screenWidth, this.screenHeight));
     setMinimumSize(new Dimension(this.screenWidth, this.screenHeight));
-    setResizable(false); //TODO: make the screen resizable with resizable components
+    setResizable(false);
 
     this.createComponents();
 

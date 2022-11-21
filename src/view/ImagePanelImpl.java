@@ -55,7 +55,6 @@ public class ImagePanelImpl extends JLabel implements ImagePanel {
     } else {
       this.image = buffImage;
       this.setSize(new Dimension(buffImage.getWidth(), buffImage.getHeight()));
-      //TODO: the image panel is the correct size, get it to be scrollable on the GUI
     }
   }
 }

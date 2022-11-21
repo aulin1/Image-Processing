@@ -1,11 +1,14 @@
 import org.junit.Test;
 
+import java.awt.image.BufferedImage;
 import java.util.Scanner;
 
 import controller.ImageUtil;
 import image.ImageClass;
+import image.ImageClassImpl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * This class represents tests for ImageUtil.
@@ -282,5 +285,23 @@ public class ImageUtilTest {
     for(int i = 0; i < splitText.length; i++){
       assertEquals(splitText[i], sc.next());
     }
+  }
+
+  /**
+   * Tests if getBuffImage throws an IllegalArgumentException if the image is null.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testGetBuffImage(){
+    ImageUtil.getBuffImage(null);
+  }
+
+  /**
+   * Tests if getBuffImage gives a result.
+   * */
+  @Test
+  public void testGetBuffImage2(){
+    ImageClass img = new ImageClassImpl(new int[][][]{{{0, 0, 0}}}, 10);
+    BufferedImage test = ImageUtil.getBuffImage(img);
+    assertNotNull(test);
   }
 }

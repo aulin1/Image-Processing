@@ -29,7 +29,7 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
     setAlignment();
   }
 
-  private void createComponent() { //TODO: reformat this
+  private void createComponent() {
     this.histogramPanel = new HistogramPanel();
     this.histogramPanel.setSize(this.getWidth() / 2, this.getHeight() / 2);
     this.histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram:"));
@@ -38,7 +38,6 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
 
     this.log = new JTextArea("The progress of the program will be shown here", 10 ,
             this.getWidth());
-    //TODO: figure out non hard code way
     this.log.setLineWrap(true);
     this.log.setAutoscrolls(true);
     this.log.setEditable(false);

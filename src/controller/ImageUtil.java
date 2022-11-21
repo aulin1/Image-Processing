@@ -209,7 +209,7 @@ public class ImageUtil {
    */
   public static BufferedImage getBuffImage(ImageClass image) throws IllegalArgumentException {
     if (image == null) {
-      throw new IllegalArgumentException("The argument cannot be null"); //TODO: test
+      throw new IllegalArgumentException("The argument cannot be null");
     }
 
     int[][][] imageBoard = image.getImage();

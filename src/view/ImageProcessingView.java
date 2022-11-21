@@ -23,7 +23,6 @@ public interface ImageProcessingView {
    * @param message the message to be displayed
    */
   void renderMessage(String message);
-  //TODO: separate renderLog and renderPopUp; is currently renderLog
 
   /**
    * Display an image in a suitable are of the GUI.

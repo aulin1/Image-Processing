@@ -113,7 +113,7 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
         String[] flipComms = new String[]{"horizontal-flip", "vertical-flip"};
         setUpMenuItem(currentMenu, flipMenu, flipComms);
         break;
-      case "Filter" : //TODO: figure out brighten and user input pop up?
+      case "Filter" :
         String[] filterMenu = new String[]{"Intensity", "Value", "Luma", "Brightness"};
         String[] filterComm = new String[]{"intensity", "value", "luma", "brighten"};
         setUpMenuItem(currentMenu, filterMenu, filterComm);
