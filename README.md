@@ -80,6 +80,46 @@ handles the loading and saving of images in the program.</li>
 <li><strong>MockModel</strong>: A model which takes in a log. It is uses to test controller's input.
 </li></ol>
 
+<li>Interface <strong>ImageProcessingView</strong>: A representation of what a GUI for the Image Processing 
+program should be able to handle. </li>
+  <ol>
+  <li>Interface <strong> DisplayedPanel</strong>: A representation of what a generic panel on the Image Processing Program GUI
+  should handle. </li>
+  <li>Interface <strong>ImageProcessingPanel</strong>: A representation of a generic panel which handles the image transformation
+  processes and all methods it should implements.</li>
+    <ol>
+    <li><strong>MenuBar</strong>: An implementation of the Image Processing Panel in form of a menu bar. The menu is arranged 
+    into two main functionalities: handling the load and save of files to and from the program or initiating image transforming
+    commands. Appropriate subfunctions of the two aforementioned classes are included in the dropdown menu.</li>
+    </ol>
+  <li>Interface <strong>LogisticPanel</strong>: A representation of a generic panel which handles the logistics of the image
+  processing program: displaying the histogram and recording logs.<li>
+    <ol>
+    <li><strong>LogisticPanelImpl</strong>: An implementation of a Logistic Panel which displays the log of communication from the 
+    program to the user plus displays a histogram of the current values of the image which is currently being processed. 
+    Communications from the program includes announcing completion of command executions and internal errors while processing the 
+    image/command.
+    </ol>
+  </ol>
+  
+<li>Interface <strong>InputRetrieveCommand</strong>: A representation of a generic command function object which
+retrieves the correct input for the controller based on the button which initiates the command and potential user input.</li>
+  <ol>
+  <li><strong>AbstractInputRetComm</strong>: An abstract representation of an input retrieving command. </li>
+    <ol>
+    <li><strong>ImageTransformInput</strong>: A command object which handles generic image transforming command without requiring
+    addtional input from the user. This object return a string which is the current referred name of the image internally and the 
+    new referred name of the processed image.</li>
+    <li><strong>SaveInput</strong>: A command object which returns a String which includes the file path of the image that the user
+    wants to save the current processing image at and the reference name of the current processing image internally.</li>
+    <li><strong>LoadInput</strong>: A command object which returns a String which includes the file path of the image that the user 
+    wants to load to the program and the internal reference name of this image.
+    <li><strong>BrightenInput</strong>: A command object which returns a String which includes the current and future name of the
+    image before and after it being processed plus the increment of brightness in which the user wants the image to be brightened
+    by. </li>
+    </ol>
+  </ol>
+
 <li><strong>Image Processing</strong>: Runs the Image Processing Program on the user's console.</li>
 <li>Tests:
 <ol><li><strong>MockModelTest</strong>: Tests for ImageProcessingControllerImpl 
@@ -94,7 +134,10 @@ class.</li>
 </ol>
 
 ### How to run the program
-Run the main function, and type a command from the accepted script of commands into the console.
+- To run the program via command line, run the main function, and type a command from the accepted script of commands into the console.
+- To run the program with GUI, run the main function without arguments and use as appropriately.
+
+**Refer more on how to use this program via USEME.md**
 
 ### Image citation
 
@@ -128,3 +171,7 @@ saveImage() in PPMProcessingView class now has an additional check for the indic
 The functionality of directly saving an image for PPMProcessingModel and UpdatedProcessingModel has been moved to static methods in ImageUtil as they should not directly be in the model package.
 
 All functionality for reading in commands, initiating commands, and using commands has been moved to the abstract class ControllerCommandImpl in order to avoid code repitition and for easier editing in the future.
+
+The functionality of creating a buffered image given the Image Class has been extracted from readIMG and saveIMG.
+
+All commands previously implemented now returns an ImageClass object to be displayed in the GUI.
