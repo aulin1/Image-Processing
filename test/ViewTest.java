@@ -1,10 +1,8 @@
 import org.junit.Test;
 
-import model.ImageProcessingModel;
 import model.ImageProcessingModelState;
 import model.UpdatedProcessingModel;
 import view.HistogramPanel;
-import view.ImagePanelImpl;
 import view.ImageProcessingGUI;
 import view.LogisticPanelImpl;
 import view.MenuBar;
@@ -41,25 +39,6 @@ public class ViewTest {
   public void testHistogramConstructor(){
     HistogramPanel test = new HistogramPanel();
     assertNotNull(test);
-  }
-
-  /**
-   * Tests if ImagePanelImpl constructor works.
-   * */
-  @Test
-  public void testImagePanelImpl(){
-    ImageProcessingModelState model = new UpdatedProcessingModel();
-    ImagePanelImpl test = new ImagePanelImpl(model);
-    assertNotNull(test);
-  }
-
-  /**
-   * Tests if ImagePanelImpl constructor throws an IllegalArgumentException if the ModelState is
-   * null.
-   * */
-  @Test(expected = Exception.class)
-  public void testImagePanelImpl2(){
-    ImagePanelImpl test = new ImagePanelImpl(null);
   }
 
   /**
