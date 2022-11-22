@@ -125,7 +125,7 @@ abstract class ControllerCommandUtil {
   /**
    * A helper function which initiates all of the commands into the map.
    * */
-  protected void initiateComms(){
+  protected void initiateComms() {
     initiateCommsOld();
     this.imgProcCommandMap.put("greyscale", s -> new LumaCommand());
     this.imgProcCommandMap.put("gaussian-blur", s -> new GaussianBlurCommand());

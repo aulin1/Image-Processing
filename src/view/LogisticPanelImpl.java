@@ -1,8 +1,15 @@
 package view;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Color;
+import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JTextArea;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 
 import controller.IPFeature;
 import image.ImageClass;
@@ -33,10 +40,11 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
     this.histogramPanel = new HistogramPanel();
     this.histogramPanel.setSize(this.getWidth() / 2, this.getHeight() / 2);
     this.histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram:"));
-    this.histogramPanel.setMinimumSize(new Dimension(this.getWidth() / 2, this.getHeight() / 2));
+    this.histogramPanel.setMinimumSize(new Dimension(this.getWidth() / 2,
+            this.getHeight() / 2));
     this.add(this.histogramPanel);
 
-    this.log = new JTextArea("The progress of the program will be shown here", 10 ,
+    this.log = new JTextArea("The progress of the program will be shown here", 10,
             this.getWidth());
     this.log.setLineWrap(true);
     this.log.setAutoscrolls(true);
@@ -47,7 +55,8 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
     this.add(this.logPane);
 
     this.clearLogButton = new JButton("Clear Log");
-    this.clearLogButton.addActionListener(e -> log.setText("Log cleared!" + System.lineSeparator()));
+    this.clearLogButton.addActionListener(e -> log.setText("Log cleared!"
+            + System.lineSeparator()));
     this.add(this.clearLogButton);
   }
 
@@ -70,8 +79,8 @@ public class LogisticPanelImpl extends JPanel implements LogisticPanel {
     this.log.setText(this.log.getText() + System.lineSeparator() + text);
   }
 
-@Override
-  public void changeLogistics(ImageClass image){
+  @Override
+  public void changeLogistics(ImageClass image) {
     this.histogramPanel.setImage(image);
   }
 }

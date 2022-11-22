@@ -15,11 +15,13 @@ public class IPFeatureImpl extends ControllerCommandUtil implements IPFeature {
 
   /**
    * Constructs a new IPFeatureImpl given the model and the view.
+   *
    * @param model the model which receives the instruction from this controller
-   * @param view the view which this controller receives the input from
+   * @param view  the view which this controller receives the input from
    * @throws IllegalArgumentException if either the model or the view is null
    */
-  public IPFeatureImpl(ImageProcessingModel model, ImageProcessingView view) throws IllegalArgumentException {
+  public IPFeatureImpl(ImageProcessingModel model, ImageProcessingView view)
+          throws IllegalArgumentException {
     if (model == null || view == null) {
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
@@ -42,12 +44,12 @@ public class IPFeatureImpl extends ControllerCommandUtil implements IPFeature {
   }
 
   @Override
-  protected void writeMessage(String message){
+  protected void writeMessage(String message) {
     this.view.renderMessage(message);
   }
 
   @Override
-  protected void renderImage(ImageClass img){
+  protected void renderImage(ImageClass img) {
     this.view.renderImage(img);
   }
 }

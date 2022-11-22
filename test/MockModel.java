@@ -22,28 +22,30 @@ public class MockModel implements ImageProcessingModel {
 
   @Override
   public ImageClass loadImage(String imagePath, String imageName) throws IllegalArgumentException {
-    this.receivedInput = this.receivedInput.append(imagePath).append(" ").append(imageName);
+    this.receivedInput = this.receivedInput.append(imagePath).append(" ")
+            .append(imageName).append(" ");
     return null;
   }
 
   @Override
   public void saveImage(String imagePath, String imageName) throws IllegalStateException {
-    this.receivedInput = this.receivedInput.append(imagePath).append(" ").append(imageName);
+    this.receivedInput = this.receivedInput.append(imagePath).append(" ")
+            .append(imageName).append(" ");
   }
 
   @Override
   public void storeImage(String imageName, ImageClass model) {
-    this.receivedInput = this.receivedInput.append(imageName).append(" ").append(model);
+    this.receivedInput = this.receivedInput.append(imageName).append(" ").append(model).append(" ");
   }
 
   @Override
   public void changeName(String oldName, String newName) throws IllegalArgumentException {
-    this.receivedInput = this.receivedInput.append(oldName).append(" ").append(newName);
+    this.receivedInput = this.receivedInput.append(oldName).append(" ").append(newName).append(" ");
   }
 
   @Override
   public ImageClass getImage(String imageName) {
-    this.receivedInput = this.receivedInput.append(imageName);
+    this.receivedInput = this.receivedInput.append(imageName).append(" ");
     return null;
   }
 }

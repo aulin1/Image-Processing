@@ -1,15 +1,17 @@
 package view;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.Objects;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Image;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
 
 import controller.IPFeature;
 import controller.ImageUtil;
 import image.ImageClass;
-import model.ImageProcessingModelState;
 
 /**
  * This class represents an implementation of the ImageProcessingView interface using Swing.
@@ -23,8 +25,6 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   private JScrollPane imageScroll;
   // panel which displays the logistic of the image currently being processed
   private LogisticPanelImpl logPanel;
-  // observable model of all images being processed
-  private final ImageProcessingModelState modelState;
   // width of the screen
   private final int screenWidth = 800;
   // height of the screen
@@ -33,12 +33,10 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   /**
    * Constructs the default ImageProcessingGUI with the provided model state.
    *
-   * @param state the state of the images which are being processed by the program
    * @throws IllegalArgumentException if the model state provided is null
    */
-  public ImageProcessingGUI(ImageProcessingModelState state) throws IllegalArgumentException {
+  public ImageProcessingGUI() throws IllegalArgumentException {
     super("Image Processing Program");
-    this.modelState = Objects.requireNonNull(state);
 
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
@@ -90,8 +88,8 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   @Override
   public void renderImage(ImageClass image) {
     Image buffImage = ImageUtil.getBuffImage(image);
-    if (image.getWidth() < this.imagePanel.getWidth() ||
-            image.getHeight() < this.imagePanel.getHeight()) {
+    if (image.getWidth() < this.imagePanel.getWidth()
+            || image.getHeight() < this.imagePanel.getHeight()) {
       buffImage = buffImage.getScaledInstance(this.imageScroll.getWidth(),
               this.imageScroll.getHeight(), Image.SCALE_DEFAULT);
     }

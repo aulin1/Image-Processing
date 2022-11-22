@@ -1,10 +1,11 @@
-package view.inputRetrieve;
+package view.inputretrieve;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 
 import view.ImageProcessingPanel;
 
@@ -38,9 +39,10 @@ public class BrightenInput extends AbstractInputRetComm {
 
     String userInput = (String)JOptionPane.showInputDialog(
             button,
-            "Input increment of " +
-                    "brightness here:" + System.lineSeparator() + "Negative value will result in darken " +
-                    "and vice versa. 0 will result in the same image",
+            "Input increment of "
+                    + "brightness here:" + System.lineSeparator()
+                    + "Negative value will result in darken "
+                    + "and vice versa. 0 will result in the same image",
             "Brightness increment",
             JOptionPane.PLAIN_MESSAGE,
             null,

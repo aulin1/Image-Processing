@@ -38,11 +38,15 @@ public class ImageUtilTest {
           + "pixelDarken -20 brighten pixelOG pixelNoChange 0 gaussian-blur pixelBlueLuma "
           + "pixelBlueLumaBlur sharpen pixelGreen pixelGreenSharpen greyscale pixelOG "
           + "pixelGreyscale sepia pixelOG pixelSepia save PGI.bmp pixelGreenIntensity q";
-  String scriptTXT2 = "load\nPixel.png\npixel\nchange-name\npixel\npixelOG\nred-component\npixelOG\n"
+  String scriptTXT2 = "load\nPixel.png\npixel\nchange-name\npixel\npixelOG"
+          + "\nred-component\npixelOG\n"
           + "pixelRed\ngreen-component\npixelOG\npixelGreen\nblue-component\npixelOG\npixelBlue\n"
-          + "value\npixelRed\npixelRedValue\nluma\npixelBlue\npixelBlueLuma\nintensity\npixelGreen\n"
-          + "pixelGreenIntensity\nhorizontal-flip\npixelOG\npixelHorizontal\nvertical-flip\npixelOG\n"
-          + "pixelVertical\nbrighten\npixelRedValue\npixelRedValueBrightened\n10\nbrighten\npixelOG\n"
+          + "value\npixelRed\npixelRedValue\nluma\npixelBlue"
+          + "\npixelBlueLuma\nintensity\npixelGreen\n"
+          + "pixelGreenIntensity\nhorizontal-flip\npixelOG\npixelHorizontal"
+          + "\nvertical-flip\npixelOG\n"
+          + "pixelVertical\nbrighten\npixelRedValue\npixelRedValueBrightened\n10"
+          + "\nbrighten\npixelOG\n"
           + "pixelDarken\n-20\nbrighten\npixelOG\npixelNoChange\n0\ngaussian-blur\npixelBlueLuma\n"
           + "pixelBlueLumaBlur\nsharpen\npixelGreen\npixelGreenSharpen\ngreyscale\npixelOG\n"
           + "pixelGreyscale\nsepia\npixelOG\npixelSepia\nsave\nPGI.bmp\npixelGreenIntensity\nq";
@@ -227,62 +231,62 @@ public class ImageUtilTest {
 
   /**
    * Tests if parseTXT() throws an exception if the filepath is null.
-   * */
+   */
   @Test
-  public void testParseTXTNullFilepath(){
-    try{
+  public void testParseTXTNullFilepath() {
+    try {
       ImageUtil.parseTXT(null);
-    } catch (IllegalArgumentException e){
+    } catch (IllegalArgumentException e) {
       assertEquals("Path cannot be null.", e.getMessage());
     }
   }
 
   /**
    * Tests if parseTXT() throws an exception if the filepath isn't a txt file.
-   * */
+   */
   @Test
-  public void testParseTXTNotTXT(){
-    try{
+  public void testParseTXTNotTXT() {
+    try {
       ImageUtil.parseTXT("res/Pixel.bmp");
-    } catch (IllegalArgumentException e){
+    } catch (IllegalArgumentException e) {
       assertEquals("The provided file is not a txt file.", e.getMessage());
     }
   }
 
   /**
    * Tests if parseTXT() throws an exception if the filepath doesn't exist.
-   * */
+   */
   @Test
-  public void testParseTXTNotExist(){
-    try{
+  public void testParseTXTNotExist() {
+    try {
       ImageUtil.parseTXT("res/file.txt");
-    } catch (IllegalStateException e){
+    } catch (IllegalStateException e) {
       assertEquals("Cannot find file.", e.getMessage());
     }
   }
 
   /**
    * Tests if parseTXT() reads a text file correctly with spaces.
-   * */
+   */
   @Test
-  public void testParseTXT(){
+  public void testParseTXT() {
     Readable txt = ImageUtil.parseTXT("res/exampleScript.txt");
     Scanner sc = new Scanner(txt);
     String[] splitText = scriptTXT.split(" ");
-    for(int i = 0; i < splitText.length; i++){
+    for (int i = 0; i < splitText.length; i++) {
       assertEquals(splitText[i], sc.next());
     }
   }
 
   /**
    * Tests if parseTXT() reads a text file correctly with new lines.
-   * */
+   */
   @Test
-  public void testParseTXT2(){
+  public void testParseTXT2() {
     Readable txt = ImageUtil.parseTXT("res/exampleScript.txt");
     Scanner sc = new Scanner(txt);
     String[] splitText = scriptTXT2.split("\n");
-    for(int i = 0; i < splitText.length; i++){
+    for (int i = 0; i < splitText.length; i++) {
       assertEquals(splitText[i], sc.next());
     }
   }
@@ -291,15 +295,15 @@ public class ImageUtilTest {
    * Tests if getBuffImage throws an IllegalArgumentException if the image is null.
    */
   @Test(expected = IllegalArgumentException.class)
-  public void testGetBuffImage(){
+  public void testGetBuffImage() {
     ImageUtil.getBuffImage(null);
   }
 
   /**
    * Tests if getBuffImage gives a result.
-   * */
+   */
   @Test
-  public void testGetBuffImage2(){
+  public void testGetBuffImage2() {
     ImageClass img = new ImageClassImpl(new int[][][]{{{0, 0, 0}}}, 10);
     BufferedImage test = ImageUtil.getBuffImage(img);
     assertNotNull(test);

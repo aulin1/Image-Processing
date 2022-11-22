@@ -1,6 +1,6 @@
-package view.inputRetrieve;
+package view.inputretrieve;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
 
 /**
  * This interface contains all methods which an input retrieve command must implement.

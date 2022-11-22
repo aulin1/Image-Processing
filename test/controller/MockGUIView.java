@@ -5,11 +5,11 @@ import view.ImageProcessingView;
 
 /**
  * A mock of the GUIView for testing IPFeatureImpl.
- * */
+ */
 public class MockGUIView implements ImageProcessingView {
   private StringBuffer log;
 
-  public MockGUIView(StringBuffer log){
+  public MockGUIView(StringBuffer log) {
     this.log = log;
   }
 

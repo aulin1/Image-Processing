@@ -44,7 +44,7 @@ public final class ImageProcessing {
     } else {
       //The length can't be less than 0, so this is if there are not other arguments.
       ImageProcessingModel model = new UpdatedProcessingModel();
-      ImageProcessingView view = new ImageProcessingGUI(model);
+      ImageProcessingView view = new ImageProcessingGUI();
       IPFeatureImpl controller = new IPFeatureImpl(model, view);
       view.makeVisible();
     }
