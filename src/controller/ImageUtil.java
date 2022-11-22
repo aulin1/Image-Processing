@@ -139,10 +139,10 @@ public class ImageUtil {
    * Saves a PPM image to a destination.
    *
    * @param filepath the path to save the PPM at.
-   * @param image the image to be saved.
+   * @param image    the image to be saved.
    * @throws IllegalArgumentException if any of the params are null.
-   * @throws IllegalStateException if the image is unable to be saved at the location.
-   * */
+   * @throws IllegalStateException    if the image is unable to be saved at the location.
+   */
   public static void savePPM(String filepath, ImageClass image) throws IllegalArgumentException,
           IllegalStateException {
     if (filepath == null || image == null) {
@@ -180,13 +180,13 @@ public class ImageUtil {
    * Saves an image of a supported format to a destination.
    *
    * @param filepath the path to save the PPM at.
-   * @param image the image to be saved.
+   * @param image    the image to be saved.
    * @throws IllegalArgumentException if any of the params are null.
-   * @throws IllegalStateException if the image is unable to be saved at the location.
-   * */
+   * @throws IllegalStateException    if the image is unable to be saved at the location.
+   */
   public static void saveIMG(String filepath, ImageClass image, String formatName)
           throws IllegalArgumentException, IllegalStateException {
-    if(filepath == null || image == null || formatName == null){
+    if (filepath == null || image == null || formatName == null) {
       throw new IllegalArgumentException("The arguments cannot be null.");
     }
 
@@ -228,16 +228,16 @@ public class ImageUtil {
   }
 
   /**
-   * Reads a script file and returns
+   * Reads a script file and returns a readable.
    *
    * @param filepath the path of the script file.
    * @return a Readable of the commands.
    * @throws IllegalArgumentException if the filepath is null, or is not a text file.
-   * @throws IllegalStateException if it cannot find the file.
-   * */
+   * @throws IllegalStateException    if it cannot find the file.
+   */
   public static Readable parseTXT(String filepath) throws IllegalArgumentException,
           IllegalStateException {
-    if(filepath == null){
+    if (filepath == null) {
       throw new IllegalArgumentException("Path cannot be null.");
     }
     String[] textArr = filepath.split("\\.");
@@ -248,7 +248,7 @@ public class ImageUtil {
       FileInputStream fileInputStream = new FileInputStream(filepath);
       InputStreamReader streamReader = new InputStreamReader(fileInputStream);
       return streamReader;
-    } catch(FileNotFoundException e){
+    } catch (FileNotFoundException e) {
       throw new IllegalStateException("Cannot find file.");
     }
   }

@@ -1,6 +1,4 @@
-package view.inputRetrieve;
-
-import javax.swing.*;
+package view.inputretrieve;
 
 import view.ImageProcessingPanel;
 

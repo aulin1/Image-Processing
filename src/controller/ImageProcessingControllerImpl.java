@@ -13,7 +13,7 @@ import model.PPMProcessingModel;
  * This class represents the implementation of the Image Processing Controller.
  */
 public class ImageProcessingControllerImpl extends ControllerCommandUtil
-        implements ImageProcessingController{
+        implements ImageProcessingController {
   private final Appendable output;
   private final Readable input;
 

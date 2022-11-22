@@ -1,8 +1,9 @@
-package view.inputRetrieve;
+package view.inputretrieve;
 
 import java.io.File;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import view.ImageProcessingPanel;
@@ -28,7 +29,8 @@ public class SaveInput implements InputRetrieveCommand {
 
 
   @Override
-  public String getCorrectInput(AbstractButton button) throws IllegalArgumentException, IllegalStateException {
+  public String getCorrectInput(AbstractButton button) throws IllegalArgumentException,
+          IllegalStateException {
     if (button == null) {
       throw new IllegalArgumentException("The argument cannot be null.");
     }

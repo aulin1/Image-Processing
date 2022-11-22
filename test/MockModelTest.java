@@ -35,7 +35,7 @@ public class MockModelTest {
     controllerInput = new StringReader("save res/Koala.ppm koala q");
     controller = new ImageProcessingControllerImpl(controllerOutput, controllerInput, view);
     controller.start();
-    assertEquals("res/Koala.ppm koala", receivedInput.toString());
+    assertEquals("res/Koala.ppm koala koala ", receivedInput.toString());
   }
 
   /**
@@ -47,7 +47,7 @@ public class MockModelTest {
     controllerInput = new StringReader("load res/Koala.ppm koala q");
     controller = new ImageProcessingControllerImpl(controllerOutput, controllerInput, view);
     controller.start();
-    assertEquals("res/Koala.ppm koala", receivedInput.toString());
+    assertEquals("res/Koala.ppm koala koala ", receivedInput.toString());
   }
 
   /**
@@ -59,6 +59,6 @@ public class MockModelTest {
     controllerInput = new StringReader("change-name koala fancyKoala q");
     controller = new ImageProcessingControllerImpl(controllerOutput, controllerInput, view);
     controller.start();
-    assertEquals("koala fancyKoala", receivedInput.toString());
+    assertEquals("koala fancyKoala fancyKoala ", receivedInput.toString());
   }
 }

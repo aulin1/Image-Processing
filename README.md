@@ -147,6 +147,10 @@ assignment. It is an original image created in the PPM image format.
 The image Pixel.ppm and PixelP6.ppm are the work of Trang Do, and she has authorized their usage
 in this assignment. They are original images converted to PPM image format.
 
+The image Koala.ppm is the image provided with the project.
+
+The screenshot provided is the work of Audrey Lin, and she has authorized its usage in this assignment.
+
 ## Design Changes
 
 ### Design Changes 1.0

@@ -1,8 +1,10 @@
 package view;
 
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Color;
+import java.awt.Graphics;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import controller.IPFeature;
 import controller.ImageUtil;
@@ -14,12 +16,8 @@ import image.ImageClass;
  * This class represents the panel which draws the histogram in the Image Processing Program.
  */
 public class HistogramPanel extends JPanel implements ImagePanel {
-  private IPFeature feature;
   private ImageClass image; // image used to calculate graph
   private Image graph; // graph to be displayed
-  private IHistogram histogram;
-  private JTextField xAxis;
-  private JTextArea yAxis;
 
   /**
    * Default constructor for a histogram panel.
@@ -34,7 +32,6 @@ public class HistogramPanel extends JPanel implements ImagePanel {
     if (feature == null) {
       throw new IllegalArgumentException("The argument cannot be null.");
     }
-    this.feature = feature;
   }
 
   @Override
@@ -61,8 +58,9 @@ public class HistogramPanel extends JPanel implements ImagePanel {
    */
   private void setHistogram() {
     //here
-    this.histogram = new SimpleHistogram(this.image);
-    this.graph = ImageUtil.getBuffImage(this.histogram.getGraph());
-    this.graph = this.graph.getScaledInstance(this.getWidth() - 20, this.getHeight() - 20, Image.SCALE_DEFAULT);
+    IHistogram histogram = new SimpleHistogram(this.image);
+    this.graph = ImageUtil.getBuffImage(histogram.getGraph());
+    this.graph = this.graph.getScaledInstance(this.getWidth() - 20,
+            this.getHeight() - 20, Image.SCALE_DEFAULT);
   }
 }

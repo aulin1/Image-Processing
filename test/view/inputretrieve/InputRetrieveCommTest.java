@@ -1,8 +1,9 @@
-package view.inputRetrieve;
+package view.inputretrieve;
 
 import org.junit.Test;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
 
 import view.ImageProcessingPanel;
 import view.MenuBar;
@@ -13,18 +14,6 @@ import static org.junit.Assert.assertEquals;
  * This class represents tests for objects of InputRetrieveCommand.
  */
 public class InputRetrieveCommTest {
-  /**
-   * Test if loadInput object loads the correctly formatted input given the file exists.
-   */
-
-  /**
-   * Test if a saveInput saves the correctly formatted input.
-   */
-
-  /**
-   * Test if brightenComm returns the correct string.
-   */
-
   /**
    * Test an arbitrary input retrieve comm for its correct composition.
    */

@@ -12,6 +12,7 @@ public interface ImageProcessingView {
    * Make the view visible.
    */
   void makeVisible();
+
   /**
    * Refresh the screen. This is called when the something on the
    * screen is updated, and therefore it must be redrawn.

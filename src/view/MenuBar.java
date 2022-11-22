@@ -1,8 +1,9 @@
 package view;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,14 +11,17 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
-import javax.swing.*;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.AbstractButton;
 
 import controller.IPFeature;
-import view.inputRetrieve.BrightenInput;
-import view.inputRetrieve.ImageTransformInput;
-import view.inputRetrieve.InputRetrieveCommand;
-import view.inputRetrieve.LoadInput;
-import view.inputRetrieve.SaveInput;
+import view.inputretrieve.BrightenInput;
+import view.inputretrieve.ImageTransformInput;
+import view.inputretrieve.InputRetrieveCommand;
+import view.inputretrieve.LoadInput;
+import view.inputretrieve.SaveInput;
 
 /**
  * This class represents a menu displayed on the GUI of the image processing program. The menu
@@ -28,9 +32,6 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
           new HashMap<>();
   private String imageName; // name of the image that is currently being processed
   private IPFeature feature;
-  private JMenu fileMenu;
-  private List<JMenuItem> fileMenuItem = new ArrayList<>(); // contains all items in the file menu
-  private JMenu ipMenu;
   private List<JMenuItem> ipMenuItem = new ArrayList<>();
   // contains all items in the image processing menu
 
@@ -60,8 +61,8 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
    */
   private void addFileMenu() {
     JMenu currentMenu = new JMenu("File");
-    this.fileMenu = currentMenu;
-    this.add(this.fileMenu);
+    JMenu fileMenu = currentMenu;
+    this.add(fileMenu);
 
     String[] fileMenuItem = new String[]{"Save file", "Load file"};
     String[] fileComm = new String[]{"save", "load"};
@@ -72,8 +73,8 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
    * Add the image processing menu to this menu bar.
    */
   private void addIPMenu() {
-    this.ipMenu = new JMenu("Image Processing");
-    this.add(this.ipMenu);
+    JMenu ipMenu = new JMenu("Image Processing");
+    this.add(ipMenu);
 
     String[] ipMenuItem = new String[]{"Color transform", "Flip", "Filter", "Blur", "Sharpen"};
     String[] ipComm = new String[]{"gaussian-blur", "sharpen"};
@@ -89,36 +90,36 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
         menuItem.addActionListener(new MenuItemClicked(menuItem));
         this.ipMenuItem.add(menuItem);
       }
-      this.ipMenu.add(menuItem);
+      ipMenu.add(menuItem);
     }
   }
 
   /**
    * Set up the sub items based on the menu provided.
    *
-   * @param menu the menu to be set up
+   * @param menu  the menu to be set up
    * @param order the order of the menu in the upper list
    */
   private void setSubItem(String menu, int order) {
     JMenuItem currentMenu = this.ipMenuItem.get(order);
-    switch(menu) {
-      case "Color transform" :
+    switch (menu) {
+      case "Color transform":
         String[] colorMenu = new String[]{"Red", "Blue", "Green", "Sepia"};
         String[] colorComm = new String[]{"red-component", "blue-component", "green-component",
-                "sepia"};
+            "sepia"};
         setUpMenuItem(currentMenu, colorMenu, colorComm);
         break;
-      case "Flip" :
+      case "Flip":
         String[] flipMenu = new String[]{"Horizontal flip", "Vertical flip"};
         String[] flipComms = new String[]{"horizontal-flip", "vertical-flip"};
         setUpMenuItem(currentMenu, flipMenu, flipComms);
         break;
-      case "Filter" :
+      case "Filter":
         String[] filterMenu = new String[]{"Intensity", "Value", "Luma", "Brightness"};
         String[] filterComm = new String[]{"intensity", "value", "luma", "brighten"};
         setUpMenuItem(currentMenu, filterMenu, filterComm);
         break;
-      default :
+      default:
         throw new IllegalArgumentException("The provided menu is not supported.");
     }
   }
@@ -126,7 +127,7 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
   /**
    * A helper for setting up submenu/menu items in a menu.
    *
-   * @param currentMenu the menu which these submenus are being added to
+   * @param currentMenu   the menu which these submenus are being added to
    * @param menuItemNames the names of the submenus to be seen on the GUI (in order)
    * @param menuItemComms the action commands of the submenus (in order)
    * @throws IllegalArgumentException if any of the argumenst are null
@@ -156,7 +157,6 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
     Function<ImageProcessingPanel, InputRetrieveCommand> commFunc =
             this.inputRetrieveMap.getOrDefault(actionComm, null);
     if (commFunc == null) {
-//      throw new IllegalStateException("Command not supported.");
       InputRetrieveCommand defaultComm = new ImageTransformInput(this);
       return defaultComm.getCorrectInput(button);
     } else {
