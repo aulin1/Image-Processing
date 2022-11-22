@@ -27,12 +27,12 @@ import view.inputretrieve.SaveInput;
  * This class represents a menu displayed on the GUI of the image processing program. The menu
  * panel contains all buttons which direct to its respective image processing methods.
  */
-public class MenuBar extends JMenuBar implements ImageProcessingPanel {
+public class MenuBar extends JMenuBar implements ImageProcessingPanel, ViewTesting {
   private final Map<String, Function<ImageProcessingPanel, InputRetrieveCommand>> inputRetrieveMap =
           new HashMap<>();
   private String imageName; // name of the image that is currently being processed
   private IPFeature feature;
-  private List<JMenuItem> ipMenuItem = new ArrayList<>();
+  private final List<JMenuItem> ipMenuItem = new ArrayList<>();
   // contains all items in the image processing menu
 
   /**
@@ -61,8 +61,7 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
    */
   private void addFileMenu() {
     JMenu currentMenu = new JMenu("File");
-    JMenu fileMenu = currentMenu;
-    this.add(fileMenu);
+    this.add(currentMenu);
 
     String[] fileMenuItem = new String[]{"Save file", "Load file"};
     String[] fileComm = new String[]{"save", "load"};
@@ -142,6 +141,7 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
       menuItem.setActionCommand(menuItemComms[i]);
       menuItem.addActionListener(new MenuItemClicked(menuItem));
       currentMenu.add(menuItem);
+      this.ipMenuItem.add(menuItem);
     }
   }
 
@@ -184,6 +184,29 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel {
   @Override
   public String getImageName() {
     return this.imageName;
+  }
+
+  /**
+   * Find the correct menu item that has such command as its action command.
+   *
+   * @param command the command expected from a menu item in the list
+   * @param list the list of the menu items that expected to have the menu item in finding
+   * @return the menu item with the provided action command
+   * @throws IllegalArgumentException if the command is not supported by any menu item
+   */
+  private JMenuItem getCorrectItem(String command, List<JMenuItem> list) throws IllegalArgumentException {
+    for (JMenuItem menuItem : list) {
+      if (menuItem.getActionCommand().equals(command)) {
+        return menuItem;
+      }
+    }
+    throw new IllegalArgumentException("No menu item found supported the inputted command.");
+  }
+
+  @Override
+  public void testViewOutput(String actionCommand) {
+    JMenuItem menuItem = getCorrectItem(actionCommand, this.ipMenuItem);
+    menuItem.doClick();
   }
 
   /**

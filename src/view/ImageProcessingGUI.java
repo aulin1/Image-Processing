@@ -51,6 +51,17 @@ public class ImageProcessingGUI extends JFrame implements ImageProcessingView {
   }
 
   /**
+   * Constructs a GUI for testing view outputs/communication with the controller.
+   */
+  public ImageProcessingGUI(MenuBar menuBar) throws IllegalArgumentException {
+    if (menuBar == null) {
+      throw new IllegalArgumentException("The argument cannot be null.");
+    }
+    this.menuBar = menuBar;
+    this.logPanel = new LogisticPanelImpl();
+  }
+
+  /**
    * Create the required components for the Image Processing Program and align it appropriately
    * in a Border Layout.
    */
