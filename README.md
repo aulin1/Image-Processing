@@ -101,6 +101,7 @@ program should be able to handle. </li>
     image/command.
     </ol>
   </ol>
+<li>Interface <strong>ViewTesting</strong>: A representation of all methods required for testing communication between the view and the controller.
   
 <li>Interface <strong>InputRetrieveCommand</strong>: A representation of a generic command function object which
 retrieves the correct input for the controller based on the button which initiates the command and potential user input.</li>
@@ -130,6 +131,8 @@ class.</li>
 <li><strong>ImageProcessingIntegrationTest</strong>: Integration Tests.</li>
   <li><strong>ViewTest</strong>: Tests for the GUI View, including integration tests.</li>
   <li><strong>IPFeatureImplTest</strong>: Tests for IPFeatureImpl.</li>
+  <li><strong>MockController</strong>: A mock of the controller for testing.</li>
+  <li><strong>MockControllerTesting</strong>: Tests for view output and controller input.</li>
 </ol></li>
 </ol>
 
