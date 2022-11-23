@@ -15,7 +15,10 @@ public class MockControllerTest {
   MockController mockController;
   StringBuilder receivedInput;
 
-  public void init() {
+  /**
+   * Sets up the variables for the test.
+   * */
+  private void init() {
     receivedInput = new StringBuilder();
     menuBar = new MenuBar();
     gui = new ImageProcessingGUI(menuBar);

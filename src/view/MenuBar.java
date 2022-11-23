@@ -194,7 +194,8 @@ public class MenuBar extends JMenuBar implements ImageProcessingPanel, ViewTesti
    * @return the menu item with the provided action command
    * @throws IllegalArgumentException if the command is not supported by any menu item
    */
-  private JMenuItem getCorrectItem(String command, List<JMenuItem> list) throws IllegalArgumentException {
+  private JMenuItem getCorrectItem(String command, List<JMenuItem> list)
+          throws IllegalArgumentException {
     for (JMenuItem menuItem : list) {
       if (menuItem.getActionCommand().equals(command)) {
         return menuItem;

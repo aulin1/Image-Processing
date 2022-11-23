@@ -15,7 +15,8 @@ public class MockController implements IPFeature {
    * @param receivedInput the input received from the view
    * @throws IllegalArgumentException if the stringbuilder is null
    */
-  public MockController(StringBuilder receivedInput, ImageProcessingView view) throws IllegalArgumentException {
+  public MockController(StringBuilder receivedInput, ImageProcessingView view)
+          throws IllegalArgumentException {
     this.receivedInput = Objects.requireNonNull(receivedInput);
     view.registerFeature(this);
   }
